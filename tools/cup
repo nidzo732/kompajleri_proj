@@ -1,0 +1,2 @@
+#!/bin/bash
+java -cp ../lib/cup_v10k.jar java_cup.Main -parser Parser -destdir ../src/rs/ac/bg/etf/pp1/ ../src/spec/mjparser.cup

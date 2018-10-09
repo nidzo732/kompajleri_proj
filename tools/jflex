@@ -1,0 +1,2 @@
+#! /bin/bash 
+java -jar $PWD/lib/JFlex.jar -d $PWD/src/rs/ac/bg/etf/pp1/ $PWD/src/spec/mjlexer.flex

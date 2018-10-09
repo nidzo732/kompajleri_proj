@@ -1,0 +1,54 @@
+program P
+const int size = 10, pera=88, perica=33, mikica=14, zika=11;
+class Table {
+    class Interna
+    {
+        int q,b;
+        {
+            void zbka()
+            {
+
+            }
+        }
+    }
+    int pos[], neg[];
+    int proba123;
+    {
+        void putp (int a, int idx, int idz) { this.pos[idx]=a; }
+        void putn (int a, int idx) { this.neg[idx]=a; }
+        int getp (int idx) { return pos[idx]; }
+        int getn (int idx) { return neg[idx]; }
+    }
+}
+{
+    void main()
+    int x, i;
+    { //‐‐‐‐‐‐‐‐‐‐ Initialize val
+        blablabla= 5+4;
+        val = new Table;
+        val.pos = new int [size];
+        val.neg = new int [size];
+        i = 0;
+        do
+        {
+            val.putp(0,i);
+            val.putn(0,i);
+            i++;
+        }while (i < size);
+//‐‐‐‐‐‐‐‐‐‐ Read values
+        read(x);
+        do
+        {
+            if (x >= size) break;
+            if (0 <= x && x < size)
+            {
+                val.putp(val.getp(x)+1);
+            } else
+            if (-size < x && x < 0)
+            {
+                val.putn(val.getn(-x)+1);
+            }
+            read(x);
+        } while (true);
+    }
+}

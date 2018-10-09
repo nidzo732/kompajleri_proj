@@ -1,0 +1,3 @@
+#!/bin/bash
+rm $PWD/src/rs/ac/bg/etf/pp1/ast/*.java
+java -cp $PWD/lib/cup_v10k.jar java_cup.Main -ast $PWD/src/rs/ac/bg/etf/pp1/ast -destdir $PWD/src/rs/ac/bg/etf/pp1/ast -buildtree $PWD/src/spec/mjparser.cup

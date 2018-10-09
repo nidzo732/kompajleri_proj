@@ -1,0 +1,7 @@
+expr ::= (SingleExpr) term
+| (Addition) expr addop term;
+term ::= (SingleTerm) factor
+| (Multiplication) term mulop factor;
+factor ::= (Constant) NUMBER:val;
+addop ::= PLUS {: RESULT="add"; :} | MINUS {: RESULT="sub"; :};
+mulop ::= STAR {: RESULT="mul"; :} | DIVIDE {: RESULT="div"; :};

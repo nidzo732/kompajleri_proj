@@ -1,0 +1,218 @@
+package rs.ac.bg.etf.pp1.ast;
+import rs.ac.bg.etf.pp1.Yylex;
+import java_cup.runtime.Symbol;
+parser code {:
+    @Override
+    protected int error_sync_size()
+    {
+        return 3;
+    }
+
+    @Override
+    public void syntax_error(Symbol cur_token)
+    {
+        System.err.println("Warning");
+        System.err.println("Fixable error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
+        System.err.println("Skipping to next valid code\n");
+    }
+:}
+
+terminal int NUMBER;
+terminal char CHARACTER;
+terminal PROGRAM;
+terminal BREAK;
+terminal CLASS;
+terminal ELSE;
+terminal IF;
+terminal NEW;
+terminal RETURN;
+terminal VOID;
+terminal DO;
+terminal WHILE;
+terminal EXTENDS;
+terminal CONTINUE;
+terminal String IDENT;
+terminal boolean BOOL;
+terminal CONST;
+
+terminal PLUS, MINUS, STAR, DIVIDE, MOD;
+terminal EQUALS, NOTEQUALS, GREATER, GREATEREQUAL, LESS, LESSEQUAL;
+terminal AND, OR;
+terminal ASSIGN;
+terminal INCREMENT, DECREMENT;
+terminal SEMICOLON;
+terminal COMA;
+terminal LPAREN, RPAREN;
+terminal LBRACE, RBRACE;
+terminal LBRACK, RBRACK;
+terminal DOT;
+
+nonterminal factor;
+nonterminal designator;
+nonterminal term;
+nonterminal expr;
+nonterminal type;
+nonterminal actpars;
+nonterminal condterm;
+nonterminal condfactor;
+nonterminal condexpr;
+nonterminal designatorstmt;
+nonterminal statement;
+nonterminal statementblock;
+nonterminal formpars;
+nonterminal namedeclaration;
+nonterminal variabledeclaration;
+nonterminal function;
+nonterminal declarationblock;
+nonterminal constnamedeclaration;
+nonterminal constantdeclaration;
+nonterminal codebody;
+nonterminal classdeclaration;
+nonterminal programdeclarations;
+nonterminal program;
+nonterminal call;
+nonterminal extendsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.TableRef classname;
+nonterminal rs.ac.bg.etf.pp1.TableRef functionname;
+nonterminal rs.ac.bg.etf.pp1.TableRef programname;
+
+program     ::= PROGRAM programname:name programdeclarations LBRACE codebody RBRACE
+                ;
+
+programname ::= (ProgramName) IDENT:name
+                ;
+classname ::= (ClassName) IDENT:name
+              ;
+functionname ::= (FunctionName) IDENT:name
+            ;
+
+programdeclarations     ::=
+                            | programdeclarations classdeclaration
+                            | programdeclarations constantdeclaration SEMICOLON
+                            | programdeclarations variabledeclaration SEMICOLON
+                            ;
+
+extendsdeclaration  ::=    EXTENDS type
+                         | EXTENDS type error
+                         ;
+
+classdeclaration    ::=   (DerivedClass) CLASS classname:name extendsdeclaration LBRACE declarationblock LBRACE codebody RBRACE RBRACE
+                        | (NonDerivedClass) CLASS classname:name LBRACE declarationblock LBRACE codebody RBRACE RBRACE
+                        ;
+codebody   ::=
+                | codebody function
+                ;
+
+function    ::=    (Func) type functionname:name LPAREN formpars RPAREN declarationblock LBRACE statementblock RBRACE
+                 | (Proc) VOID functionname:name LPAREN formpars RPAREN declarationblock LBRACE statementblock RBRACE
+                 ;
+
+declarationblock ::=   (DeclarationBlock) declarationblock variabledeclaration SEMICOLON
+                     | declarationblock classdeclaration
+                     | declarationblock error
+                     | (EmptyDeclarationBlock)
+                     ;
+
+formpars    ::=   (FormPars) formpars COMA type namedeclaration
+                | (FormParsTyped) type namedeclaration
+                | formpars COMA error
+                | error
+                | (EmptyFormPar)
+                ;
+
+constantdeclaration ::=   (ConstantDeclarations) constantdeclaration COMA constnamedeclaration
+                        | (ConstantDeclarationTyped) CONST type constnamedeclaration
+                        | (ConstantDeclarationTypedErr) CONST type error
+                        | constantdeclaration:c1 COMA error
+                        ;
+
+variabledeclaration ::=   (VariableDeclaration) variabledeclaration COMA namedeclaration
+                        | (VariableDeclarationTyped) type namedeclaration
+                        ;
+
+constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val
+                            | (CharConstantDeclaration) IDENT:name ASSIGN CHARACTER:val
+                            | (NumberConstantDeclaration) IDENT:name ASSIGN NUMBER:val
+                            ;
+
+namedeclaration     ::=   (Variable) IDENT:name
+                        | (Array) IDENT:name LBRACK RBRACK
+                        ;
+
+statement   ::=       designatorstmt
+                    | (Block) LBRACE statementblock RBRACE
+                    | (If) IF LPAREN condexpr RPAREN statement
+                    | (Else) ELSE statement
+                    | (DoWhile) DO statement WHILE LPAREN condexpr RPAREN SEMICOLON
+                    | (Break) BREAK SEMICOLON
+                    | (Continue) CONTINUE SEMICOLON
+                    | (Return) RETURN expr SEMICOLON
+                    | (EmptyReturn) RETURN SEMICOLON
+                    | (CallStatement) call SEMICOLON
+                    ;
+
+statementblock  ::=   (EmptyBlock)
+                    | (StatementBlock) statementblock statement
+                    ;
+
+designatorstmt  ::=   (Assign) designator ASSIGN expr SEMICOLON
+                    | (Increment) designator INCREMENT SEMICOLON
+                    | (Decrement) designator DECREMENT SEMICOLON
+                    | error SEMICOLON
+                    ;
+
+condexpr ::=   (SingleCondExpr) condterm
+             | (Or) condexpr OR condterm
+             | condexpr OR error
+             ;
+
+condterm ::=  (SingleCondTerm) condfactor
+            | (And) condterm AND condfactor
+            | condterm AND error
+            ;
+
+condfactor::= (SingleCondFactor) expr
+            | (Equals) expr EQUALS expr
+            | (NotEquals) expr NOTEQUALS expr
+            | (Greater) expr GREATER expr
+            | (GreaterEqual) expr GREATEREQUAL expr
+            | (Less) expr LESS expr
+            | (LessEqual) expr LESSEQUAL expr
+            ;
+
+expr   ::=    (SingleExpr) term
+            | (Addition) expr PLUS term
+            | (Substraction) expr MINUS term
+            ;
+
+term   ::=   (SingleTerm) factor
+           | (Negated) MINUS factor
+           | (Multiplication) term STAR factor
+           | (Division) term DIVIDE factor
+           | (Modulus) term MOD factor
+           ;
+
+call   ::= (FuncCall) designator LPAREN actpars RPAREN;
+
+factor ::=   (NumericConstant) NUMBER:val
+           | (CharacterConstant) CHARACTER:val
+           | (BooleanConstant) BOOL:val
+           | (SingleFactor) designator
+           | (NewObject) NEW type
+           | (NewArray) NEW type LBRACK expr RBRACK
+           | (Parenthesized) LPAREN expr RPAREN
+           | (CallResult) call
+           ;
+
+designator  ::=   (BaseDesignator) IDENT:val
+                | (PathDesignator) designator DOT IDENT:val
+                | (IndexDesignator) designator LBRACK expr RBRACK
+            ;
+
+type        ::= (Type) IDENT:name
+            ;
+
+actpars     ::=   (Parameter) expr
+                | (Parameters) actpars COMA expr
+                | (EmptyParameters)
+                ;
