@@ -1,11 +1,12 @@
 package rs.ac.bg.etf.pp1.ast;
 import rs.ac.bg.etf.pp1.Yylex;
+import rs.ac.bg.etf.pp1.CompilerError;
 import java_cup.runtime.Symbol;
 parser code {:
     @Override
     protected int error_sync_size()
     {
-        return 3;
+        return 1;
     }
 
     @Override
@@ -14,6 +15,11 @@ parser code {:
         System.err.println("Warning");
         System.err.println("Fixable error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
         System.err.println("Skipping to next valid code\n");
+    }
+
+    @Override
+    public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
+        CompilerError.raise("Unfixable syntax error", ((Yylex)getScanner()).getLineNo(), ((Yylex)getScanner()).getColumn());
     }
 :}
 
@@ -60,6 +66,7 @@ nonterminal designatorstmt;
 nonterminal statement;
 nonterminal statementblock;
 nonterminal formpars;
+nonterminal formparswrapper;
 nonterminal namedeclaration;
 nonterminal variabledeclaration;
 nonterminal function;
@@ -75,6 +82,7 @@ nonterminal extendsdeclaration;
 nonterminal rs.ac.bg.etf.pp1.TableRef classname;
 nonterminal rs.ac.bg.etf.pp1.TableRef functionname;
 nonterminal rs.ac.bg.etf.pp1.TableRef programname;
+nonterminal errsep;
 
 program     ::= PROGRAM programname:name programdeclarations LBRACE codebody RBRACE
                 ;
@@ -103,32 +111,33 @@ codebody   ::=
                 | codebody function
                 ;
 
-function    ::=    (Func) type functionname:name LPAREN formpars RPAREN declarationblock LBRACE statementblock RBRACE
-                 | (Proc) VOID functionname:name LPAREN formpars RPAREN declarationblock LBRACE statementblock RBRACE
+function    ::=    (Func) type functionname:name formparswrapper declarationblock LBRACE statementblock RBRACE
+                 | (Proc) VOID functionname:name formparswrapper declarationblock LBRACE statementblock RBRACE
                  ;
 
 declarationblock ::=   (DeclarationBlock) declarationblock variabledeclaration SEMICOLON
                      | declarationblock classdeclaration
-                     | declarationblock error
                      | (EmptyDeclarationBlock)
                      ;
 
-formpars    ::=   (FormPars) formpars COMA type namedeclaration
-                | (FormParsTyped) type namedeclaration
+formparswrapper ::=    (FormParsWrapper) LPAREN formpars RPAREN
+                    ;
+
+formpars    ::=   formpars COMA type namedeclaration
                 | formpars COMA error
-                | error
-                | (EmptyFormPar)
+                | type namedeclaration
+                |
                 ;
 
 constantdeclaration ::=   (ConstantDeclarations) constantdeclaration COMA constnamedeclaration
                         | (ConstantDeclarationTyped) CONST type constnamedeclaration
-                        | (ConstantDeclarationTypedErr) CONST type error
-                        | constantdeclaration:c1 COMA error
                         ;
 
-variabledeclaration ::=   (VariableDeclaration) variabledeclaration COMA namedeclaration
-                        | (VariableDeclarationTyped) type namedeclaration
-                        ;
+variabledeclaration ::=     type namedeclaration
+                          | variabledeclaration COMA namedeclaration
+                          | variabledeclaration COMA error
+                          | type error
+                          ;
 
 constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val
                             | (CharConstantDeclaration) IDENT:name ASSIGN CHARACTER:val
@@ -156,19 +165,19 @@ statementblock  ::=   (EmptyBlock)
                     ;
 
 designatorstmt  ::=   (Assign) designator ASSIGN expr SEMICOLON
+                    | (Assign2) designator ASSIGN expr error SEMICOLON
                     | (Increment) designator INCREMENT SEMICOLON
+                    | (Increment2) designator INCREMENT error SEMICOLON
                     | (Decrement) designator DECREMENT SEMICOLON
-                    | error SEMICOLON
+                    | (Decrement2) designator DECREMENT error SEMICOLON
                     ;
 
 condexpr ::=   (SingleCondExpr) condterm
              | (Or) condexpr OR condterm
-             | condexpr OR error
              ;
 
 condterm ::=  (SingleCondTerm) condfactor
             | (And) condterm AND condfactor
-            | condterm AND error
             ;
 
 condfactor::= (SingleCondFactor) expr

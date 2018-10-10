@@ -1,407 +1,719 @@
 ProgramDerived1(
   ProgramName(
-   P
+   test_303
   ) [ProgramName]
-  ProgramdeclarationsDerived2(
-    ProgramdeclarationsDerived3(
-      ProgramdeclarationsDerived1(
-      ) [ProgramdeclarationsDerived1]
-      ConstantDeclarations(
-        ConstantDeclarations(
-          ConstantDeclarations(
-            ConstantDeclarations(
-              ConstantDeclarationTyped(
-                Type(
-                 int
-                ) [Type]
+  ProgramdeclarationsDerived4(
+    ProgramdeclarationsDerived4(
+      ProgramdeclarationsDerived2(
+        ProgramdeclarationsDerived2(
+          ProgramdeclarationsDerived2(
+            ProgramdeclarationsDerived3(
+              ProgramdeclarationsDerived1(
+              ) [ProgramdeclarationsDerived1]
+              ConstantDeclarations(
+                ConstantDeclarationTyped(
+                  Type(
+                   int
+                  ) [Type]
+                  NumberConstantDeclaration(
+                   cinilac
+                   4
+                  ) [NumberConstantDeclaration]
+                ) [ConstantDeclarationTyped]
                 NumberConstantDeclaration(
-                 size
-                 10
+                 delilac
+                 3
                 ) [NumberConstantDeclaration]
-              ) [ConstantDeclarationTyped]
-              NumberConstantDeclaration(
-               pera
-               88
-              ) [NumberConstantDeclaration]
-            ) [ConstantDeclarations]
-            NumberConstantDeclaration(
-             perica
-             33
-            ) [NumberConstantDeclaration]
-          ) [ConstantDeclarations]
-          NumberConstantDeclaration(
-           mikica
-           14
-          ) [NumberConstantDeclaration]
-        ) [ConstantDeclarations]
-        NumberConstantDeclaration(
-         zika
-         11
-        ) [NumberConstantDeclaration]
-      ) [ConstantDeclarations]
-    ) [ProgramdeclarationsDerived3]
-    NonDerivedClass(
-      ClassName(
-       Table
-      ) [ClassName]
-      DeclarationBlock(
-        DeclarationBlock(
-          DeclarationblockDerived1(
-            EmptyDeclarationBlock(
-            ) [EmptyDeclarationBlock]
+              ) [ConstantDeclarations]
+            ) [ProgramdeclarationsDerived3]
             NonDerivedClass(
               ClassName(
-               Interna
+               Predmet
               ) [ClassName]
               DeclarationBlock(
-                EmptyDeclarationBlock(
-                ) [EmptyDeclarationBlock]
-                VariableDeclaration(
-                  VariableDeclarationTyped(
-                    Type(
-                     int
-                    ) [Type]
-                    Variable(
-                     q
-                    ) [Variable]
-                  ) [VariableDeclarationTyped]
-                  Variable(
-                   b
-                  ) [Variable]
-                ) [VariableDeclaration]
-              ) [DeclarationBlock]
-              CodebodyDerived2(
-                CodebodyDerived1(
-                ) [CodebodyDerived1]
-                Proc(
-                  FunctionName(
-                   zbka
-                  ) [FunctionName]
-                  EmptyFormPar(
-                  ) [EmptyFormPar]
-                  EmptyDeclarationBlock(
-                  ) [EmptyDeclarationBlock]
-                  EmptyBlock(
-                  ) [EmptyBlock]
-                ) [Proc]
-              ) [CodebodyDerived2]
-            ) [NonDerivedClass]
-          ) [DeclarationblockDerived1]
-          VariableDeclaration(
-            VariableDeclarationTyped(
-              Type(
-               int
-              ) [Type]
-              Array(
-               pos
-              ) [Array]
-            ) [VariableDeclarationTyped]
-            Array(
-             neg
-            ) [Array]
-          ) [VariableDeclaration]
-        ) [DeclarationBlock]
-        VariableDeclarationTyped(
-          Type(
-           int
-          ) [Type]
-          Variable(
-           proba123
-          ) [Variable]
-        ) [VariableDeclarationTyped]
-      ) [DeclarationBlock]
-      CodebodyDerived2(
-        CodebodyDerived2(
-          CodebodyDerived2(
-            CodebodyDerived2(
-              CodebodyDerived1(
-              ) [CodebodyDerived1]
-              Proc(
-                FunctionName(
-                 putp
-                ) [FunctionName]
-                FormPars(
-                  FormPars(
-                    FormParsTyped(
+                DeclarationBlock(
+                  DeclarationBlock(
+                    DeclarationBlock(
+                      DeclarationBlock(
+                        EmptyDeclarationBlock(
+                        ) [EmptyDeclarationBlock]
+                        VariabledeclarationDerived1(
+                          Type(
+                           int
+                          ) [Type]
+                          Variable(
+                           tezina
+                          ) [Variable]
+                        ) [VariabledeclarationDerived1]
+                      ) [DeclarationBlock]
+                      VariabledeclarationDerived1(
+                        Type(
+                         char
+                        ) [Type]
+                        Variable(
+                         vrsta
+                        ) [Variable]
+                      ) [VariabledeclarationDerived1]
+                    ) [DeclarationBlock]
+                    VariabledeclarationDerived1(
                       Type(
                        int
                       ) [Type]
                       Variable(
-                       a
+                       zzz
                       ) [Variable]
-                    ) [FormParsTyped]
-                    Type(
-                     int
-                    ) [Type]
+                    ) [VariabledeclarationDerived1]
+                  ) [DeclarationBlock]
+                  VariabledeclarationDerived2(
+                    VariabledeclarationDerived2(
+                      VariabledeclarationDerived1(
+                        Type(
+                         int
+                        ) [Type]
+                        Variable(
+                         apv
+                        ) [Variable]
+                      ) [VariabledeclarationDerived1]
+                      Variable(
+                       bpv
+                      ) [Variable]
+                    ) [VariabledeclarationDerived2]
                     Variable(
-                     idx
+                     cpv
                     ) [Variable]
-                  ) [FormPars]
+                  ) [VariabledeclarationDerived2]
+                ) [DeclarationBlock]
+                VariabledeclarationDerived1(
                   Type(
                    int
                   ) [Type]
                   Variable(
-                   idz
+                   abababa
                   ) [Variable]
-                ) [FormPars]
-                EmptyDeclarationBlock(
-                ) [EmptyDeclarationBlock]
-                StatementBlock(
+                ) [VariabledeclarationDerived1]
+              ) [DeclarationBlock]
+              CodebodyDerived2(
+                CodebodyDerived2(
+                  CodebodyDerived2(
+                    CodebodyDerived2(
+                      CodebodyDerived2(
+                        CodebodyDerived1(
+                        ) [CodebodyDerived1]
+                        Proc(
+                          FunctionName(
+                           postaviTezinu
+                          ) [FunctionName]
+                          FormParsWrapper(
+                            FormparsDerived3(
+                              Type(
+                               int
+                              ) [Type]
+                              Variable(
+                               tezina
+                              ) [Variable]
+                            ) [FormparsDerived3]
+                          ) [FormParsWrapper]
+                          EmptyDeclarationBlock(
+                          ) [EmptyDeclarationBlock]
+                          StatementBlock(
+                            EmptyBlock(
+                            ) [EmptyBlock]
+                            StatementDerived1(
+                              Assign(
+                                PathDesignator(
+                                  BaseDesignator(
+                                   this
+                                  ) [BaseDesignator]
+                                 tezina
+                                ) [PathDesignator]
+                                SingleExpr(
+                                  SingleTerm(
+                                    SingleFactor(
+                                      BaseDesignator(
+                                       tezina
+                                      ) [BaseDesignator]
+                                    ) [SingleFactor]
+                                  ) [SingleTerm]
+                                ) [SingleExpr]
+                              ) [Assign]
+                            ) [StatementDerived1]
+                          ) [StatementBlock]
+                        ) [Proc]
+                      ) [CodebodyDerived2]
+                      Proc(
+                        FunctionName(
+                         ucitajTezinu
+                        ) [FunctionName]
+                        FormParsWrapper(
+                          FormparsDerived2(
+                            FormparsDerived3(
+                              Type(
+                               int
+                              ) [Type]
+                              Variable(
+                               qq
+                              ) [Variable]
+                            ) [FormparsDerived3]
+                          ) [FormparsDerived2]
+                        ) [FormParsWrapper]
+                        EmptyDeclarationBlock(
+                        ) [EmptyDeclarationBlock]
+                        StatementBlock(
+                          StatementBlock(
+                            StatementBlock(
+                              EmptyBlock(
+                              ) [EmptyBlock]
+                              CallStatement(
+                                FuncCall(
+                                  BaseDesignator(
+                                   read
+                                  ) [BaseDesignator]
+                                  Parameter(
+                                    SingleExpr(
+                                      SingleTerm(
+                                        SingleFactor(
+                                          BaseDesignator(
+                                           tezina
+                                          ) [BaseDesignator]
+                                        ) [SingleFactor]
+                                      ) [SingleTerm]
+                                    ) [SingleExpr]
+                                  ) [Parameter]
+                                ) [FuncCall]
+                              ) [CallStatement]
+                            ) [StatementBlock]
+                            StatementDerived1(
+                              Assign(
+                                BaseDesignator(
+                                 a
+                                ) [BaseDesignator]
+                                SingleExpr(
+                                  SingleTerm(
+                                    NumericConstant(
+                                     7
+                                    ) [NumericConstant]
+                                  ) [SingleTerm]
+                                ) [SingleExpr]
+                              ) [Assign]
+                            ) [StatementDerived1]
+                          ) [StatementBlock]
+                          CallStatement(
+                            FuncCall(
+                              BaseDesignator(
+                               read
+                              ) [BaseDesignator]
+                              Parameter(
+                                SingleExpr(
+                                  SingleTerm(
+                                    SingleFactor(
+                                      BaseDesignator(
+                                       tezina
+                                      ) [BaseDesignator]
+                                    ) [SingleFactor]
+                                  ) [SingleTerm]
+                                ) [SingleExpr]
+                              ) [Parameter]
+                            ) [FuncCall]
+                          ) [CallStatement]
+                        ) [StatementBlock]
+                      ) [Proc]
+                    ) [CodebodyDerived2]
+                    Func(
+                      Type(
+                       int
+                      ) [Type]
+                      FunctionName(
+                       zapremina
+                      ) [FunctionName]
+                      FormParsWrapper(
+                        FormparsDerived4(
+                        ) [FormparsDerived4]
+                      ) [FormParsWrapper]
+                      EmptyDeclarationBlock(
+                      ) [EmptyDeclarationBlock]
+                      StatementBlock(
+                        EmptyBlock(
+                        ) [EmptyBlock]
+                        Return(
+                          SingleExpr(
+                            SingleTerm(
+                              NumericConstant(
+                               0
+                              ) [NumericConstant]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                        ) [Return]
+                      ) [StatementBlock]
+                    ) [Func]
+                  ) [CodebodyDerived2]
+                  Proc(
+                    FunctionName(
+                     postaviVrstu
+                    ) [FunctionName]
+                    FormParsWrapper(
+                      FormparsDerived3(
+                        Type(
+                         char
+                        ) [Type]
+                        Variable(
+                         vrsta
+                        ) [Variable]
+                      ) [FormparsDerived3]
+                    ) [FormParsWrapper]
+                    EmptyDeclarationBlock(
+                    ) [EmptyDeclarationBlock]
+                    StatementBlock(
+                      EmptyBlock(
+                      ) [EmptyBlock]
+                      StatementDerived1(
+                        Assign(
+                          PathDesignator(
+                            BaseDesignator(
+                             this
+                            ) [BaseDesignator]
+                           vrsta
+                          ) [PathDesignator]
+                          SingleExpr(
+                            SingleTerm(
+                              SingleFactor(
+                                BaseDesignator(
+                                 vrsta
+                                ) [BaseDesignator]
+                              ) [SingleFactor]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                        ) [Assign]
+                      ) [StatementDerived1]
+                    ) [StatementBlock]
+                  ) [Proc]
+                ) [CodebodyDerived2]
+                Func(
+                  Type(
+                   bool
+                  ) [Type]
+                  FunctionName(
+                   getMika
+                  ) [FunctionName]
+                  FormParsWrapper(
+                    FormparsDerived4(
+                    ) [FormparsDerived4]
+                  ) [FormParsWrapper]
+                  EmptyDeclarationBlock(
+                  ) [EmptyDeclarationBlock]
                   EmptyBlock(
                   ) [EmptyBlock]
-                  StatementDerived1(
-                    Assign(
-                      IndexDesignator(
-                        PathDesignator(
-                          BaseDesignator(
-                           this
-                          ) [BaseDesignator]
-                         pos
-                        ) [PathDesignator]
-                        SingleExpr(
-                          SingleTerm(
-                            SingleFactor(
-                              BaseDesignator(
-                               idx
-                              ) [BaseDesignator]
-                            ) [SingleFactor]
-                          ) [SingleTerm]
-                        ) [SingleExpr]
-                      ) [IndexDesignator]
-                      SingleExpr(
-                        SingleTerm(
-                          SingleFactor(
-                            BaseDesignator(
-                             a
-                            ) [BaseDesignator]
-                          ) [SingleFactor]
-                        ) [SingleTerm]
-                      ) [SingleExpr]
-                    ) [Assign]
-                  ) [StatementDerived1]
-                ) [StatementBlock]
-              ) [Proc]
-            ) [CodebodyDerived2]
-            Proc(
-              FunctionName(
-               putn
-              ) [FunctionName]
-              FormPars(
-                FormParsTyped(
-                  Type(
-                   int
-                  ) [Type]
-                  Variable(
-                   a
-                  ) [Variable]
-                ) [FormParsTyped]
+                ) [Func]
+              ) [CodebodyDerived2]
+            ) [NonDerivedClass]
+          ) [ProgramdeclarationsDerived2]
+          DerivedClass(
+            ClassName(
+             Sfera
+            ) [ClassName]
+            ExtendsdeclarationDerived1(
+              Type(
+               Predmet
+              ) [Type]
+            ) [ExtendsdeclarationDerived1]
+            DeclarationBlock(
+              EmptyDeclarationBlock(
+              ) [EmptyDeclarationBlock]
+              VariabledeclarationDerived1(
                 Type(
                  int
                 ) [Type]
                 Variable(
-                 idx
+                 r
                 ) [Variable]
-              ) [FormPars]
-              EmptyDeclarationBlock(
-              ) [EmptyDeclarationBlock]
-              StatementBlock(
-                EmptyBlock(
-                ) [EmptyBlock]
-                StatementDerived1(
-                  Assign(
-                    IndexDesignator(
-                      PathDesignator(
-                        BaseDesignator(
-                         this
-                        ) [BaseDesignator]
-                       neg
-                      ) [PathDesignator]
-                      SingleExpr(
-                        SingleTerm(
-                          SingleFactor(
-                            BaseDesignator(
-                             idx
-                            ) [BaseDesignator]
-                          ) [SingleFactor]
-                        ) [SingleTerm]
-                      ) [SingleExpr]
-                    ) [IndexDesignator]
-                    SingleExpr(
-                      SingleTerm(
-                        SingleFactor(
-                          BaseDesignator(
-                           a
-                          ) [BaseDesignator]
-                        ) [SingleFactor]
-                      ) [SingleTerm]
-                    ) [SingleExpr]
-                  ) [Assign]
-                ) [StatementDerived1]
-              ) [StatementBlock]
-            ) [Proc]
-          ) [CodebodyDerived2]
-          Func(
-            Type(
-             int
-            ) [Type]
-            FunctionName(
-             getp
-            ) [FunctionName]
-            FormParsTyped(
-              Type(
-               int
-              ) [Type]
-              Variable(
-               idx
-              ) [Variable]
-            ) [FormParsTyped]
-            EmptyDeclarationBlock(
-            ) [EmptyDeclarationBlock]
-            StatementBlock(
-              EmptyBlock(
-              ) [EmptyBlock]
-              Return(
-                SingleExpr(
-                  SingleTerm(
-                    SingleFactor(
-                      IndexDesignator(
-                        BaseDesignator(
-                         pos
-                        ) [BaseDesignator]
-                        SingleExpr(
-                          SingleTerm(
-                            SingleFactor(
+              ) [VariabledeclarationDerived1]
+            ) [DeclarationBlock]
+            CodebodyDerived2(
+              CodebodyDerived2(
+                CodebodyDerived2(
+                  CodebodyDerived1(
+                  ) [CodebodyDerived1]
+                  Proc(
+                    FunctionName(
+                     postaviTezinu
+                    ) [FunctionName]
+                    FormParsWrapper(
+                      FormparsDerived3(
+                        Type(
+                         int
+                        ) [Type]
+                        Variable(
+                         tezina
+                        ) [Variable]
+                      ) [FormparsDerived3]
+                    ) [FormParsWrapper]
+                    EmptyDeclarationBlock(
+                    ) [EmptyDeclarationBlock]
+                    StatementBlock(
+                      StatementBlock(
+                        EmptyBlock(
+                        ) [EmptyBlock]
+                        StatementDerived1(
+                          Assign(
+                            PathDesignator(
                               BaseDesignator(
-                               idx
+                               this
                               ) [BaseDesignator]
-                            ) [SingleFactor]
-                          ) [SingleTerm]
-                        ) [SingleExpr]
-                      ) [IndexDesignator]
-                    ) [SingleFactor]
-                  ) [SingleTerm]
-                ) [SingleExpr]
-              ) [Return]
-            ) [StatementBlock]
-          ) [Func]
-        ) [CodebodyDerived2]
-        Func(
-          Type(
-           int
-          ) [Type]
-          FunctionName(
-           getn
-          ) [FunctionName]
-          FormParsTyped(
-            Type(
-             int
-            ) [Type]
-            Variable(
-             idx
-            ) [Variable]
-          ) [FormParsTyped]
-          EmptyDeclarationBlock(
-          ) [EmptyDeclarationBlock]
-          StatementBlock(
-            EmptyBlock(
-            ) [EmptyBlock]
-            Return(
-              SingleExpr(
-                SingleTerm(
-                  SingleFactor(
-                    IndexDesignator(
-                      BaseDesignator(
-                       neg
-                      ) [BaseDesignator]
-                      SingleExpr(
-                        SingleTerm(
-                          SingleFactor(
-                            BaseDesignator(
-                             idx
-                            ) [BaseDesignator]
-                          ) [SingleFactor]
-                        ) [SingleTerm]
-                      ) [SingleExpr]
-                    ) [IndexDesignator]
-                  ) [SingleFactor]
-                ) [SingleTerm]
-              ) [SingleExpr]
-            ) [Return]
-          ) [StatementBlock]
-        ) [Func]
-      ) [CodebodyDerived2]
-    ) [NonDerivedClass]
-  ) [ProgramdeclarationsDerived2]
-  CodebodyDerived2(
-    CodebodyDerived1(
-    ) [CodebodyDerived1]
-    Proc(
-      FunctionName(
-       main
-      ) [FunctionName]
-      EmptyFormPar(
-      ) [EmptyFormPar]
-      DeclarationBlock(
-        EmptyDeclarationBlock(
-        ) [EmptyDeclarationBlock]
-        VariableDeclaration(
-          VariableDeclarationTyped(
-            Type(
-             int
-            ) [Type]
-            Variable(
-             x
-            ) [Variable]
-          ) [VariableDeclarationTyped]
-          Variable(
-           i
-          ) [Variable]
-        ) [VariableDeclaration]
-      ) [DeclarationBlock]
-      StatementBlock(
-        StatementBlock(
-          StatementBlock(
-            StatementBlock(
-              StatementBlock(
-                StatementBlock(
+                             tezina
+                            ) [PathDesignator]
+                            SingleExpr(
+                              SingleTerm(
+                                SingleFactor(
+                                  BaseDesignator(
+                                   tezina
+                                  ) [BaseDesignator]
+                                ) [SingleFactor]
+                              ) [SingleTerm]
+                            ) [SingleExpr]
+                          ) [Assign]
+                        ) [StatementDerived1]
+                      ) [StatementBlock]
+                      StatementDerived1(
+                        Assign(
+                          BaseDesignator(
+                           vrsta
+                          ) [BaseDesignator]
+                          SingleExpr(
+                            SingleTerm(
+                              CharacterConstant(
+                               s
+                              ) [CharacterConstant]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                        ) [Assign]
+                      ) [StatementDerived1]
+                    ) [StatementBlock]
+                  ) [Proc]
+                ) [CodebodyDerived2]
+                Proc(
+                  FunctionName(
+                   postaviPoluprecnik
+                  ) [FunctionName]
+                  FormParsWrapper(
+                    FormparsDerived3(
+                      Type(
+                       int
+                      ) [Type]
+                      Variable(
+                       r
+                      ) [Variable]
+                    ) [FormparsDerived3]
+                  ) [FormParsWrapper]
+                  EmptyDeclarationBlock(
+                  ) [EmptyDeclarationBlock]
                   StatementBlock(
                     StatementBlock(
                       EmptyBlock(
                       ) [EmptyBlock]
                       StatementDerived1(
                         Assign(
-                          BaseDesignator(
-                           blablabla
-                          ) [BaseDesignator]
-                          Addition(
-                            SingleExpr(
-                              SingleTerm(
-                                NumericConstant(
-                                 5
-                                ) [NumericConstant]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
+                          PathDesignator(
+                            BaseDesignator(
+                             this
+                            ) [BaseDesignator]
+                           r
+                          ) [PathDesignator]
+                          SingleExpr(
                             SingleTerm(
-                              NumericConstant(
-                               4
-                              ) [NumericConstant]
+                              SingleFactor(
+                                BaseDesignator(
+                                 r
+                                ) [BaseDesignator]
+                              ) [SingleFactor]
                             ) [SingleTerm]
-                          ) [Addition]
+                          ) [SingleExpr]
+                        ) [Assign]
+                      ) [StatementDerived1]
+                    ) [StatementBlock]
+                    CallStatement(
+                      FuncCall(
+                        BaseDesignator(
+                         postaviVrstu
+                        ) [BaseDesignator]
+                        Parameter(
+                          SingleExpr(
+                            SingleTerm(
+                              CharacterConstant(
+                               s
+                              ) [CharacterConstant]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                        ) [Parameter]
+                      ) [FuncCall]
+                    ) [CallStatement]
+                  ) [StatementBlock]
+                ) [Proc]
+              ) [CodebodyDerived2]
+              Func(
+                Type(
+                 int
+                ) [Type]
+                FunctionName(
+                 zapremina
+                ) [FunctionName]
+                FormParsWrapper(
+                  FormparsDerived4(
+                  ) [FormparsDerived4]
+                ) [FormParsWrapper]
+                DeclarationBlock(
+                  EmptyDeclarationBlock(
+                  ) [EmptyDeclarationBlock]
+                  VariabledeclarationDerived1(
+                    Type(
+                     int
+                    ) [Type]
+                    Variable(
+                     z
+                    ) [Variable]
+                  ) [VariabledeclarationDerived1]
+                ) [DeclarationBlock]
+                StatementBlock(
+                  StatementBlock(
+                    EmptyBlock(
+                    ) [EmptyBlock]
+                    StatementDerived1(
+                      Assign(
+                        BaseDesignator(
+                         z
+                        ) [BaseDesignator]
+                        SingleExpr(
+                          SingleTerm(
+                            SingleFactor(
+                              BaseDesignator(
+                               cinilac
+                              ) [BaseDesignator]
+                            ) [SingleFactor]
+                          ) [SingleTerm]
+                        ) [SingleExpr]
+                      ) [Assign]
+                    ) [StatementDerived1]
+                  ) [StatementBlock]
+                  Return(
+                    SingleExpr(
+                      Multiplication(
+                        SingleTerm(
+                          SingleFactor(
+                            BaseDesignator(
+                             z
+                            ) [BaseDesignator]
+                          ) [SingleFactor]
+                        ) [SingleTerm]
+                        Parenthesized(
+                          SingleExpr(
+                            Division(
+                              SingleTerm(
+                                SingleFactor(
+                                  BaseDesignator(
+                                   r
+                                  ) [BaseDesignator]
+                                ) [SingleFactor]
+                              ) [SingleTerm]
+                              SingleFactor(
+                                BaseDesignator(
+                                 delilac
+                                ) [BaseDesignator]
+                              ) [SingleFactor]
+                            ) [Division]
+                          ) [SingleExpr]
+                        ) [Parenthesized]
+                      ) [Multiplication]
+                    ) [SingleExpr]
+                  ) [Return]
+                ) [StatementBlock]
+              ) [Func]
+            ) [CodebodyDerived2]
+          ) [DerivedClass]
+        ) [ProgramdeclarationsDerived2]
+        DerivedClass(
+          ClassName(
+           Kvadar
+          ) [ClassName]
+          ExtendsdeclarationDerived1(
+            Type(
+             Predmet
+            ) [Type]
+          ) [ExtendsdeclarationDerived1]
+          DeclarationBlock(
+            EmptyDeclarationBlock(
+            ) [EmptyDeclarationBlock]
+            VariabledeclarationDerived2(
+              VariabledeclarationDerived2(
+                VariabledeclarationDerived1(
+                  Type(
+                   int
+                  ) [Type]
+                  Variable(
+                   a
+                  ) [Variable]
+                ) [VariabledeclarationDerived1]
+                Variable(
+                 b
+                ) [Variable]
+              ) [VariabledeclarationDerived2]
+              Variable(
+               c
+              ) [Variable]
+            ) [VariabledeclarationDerived2]
+          ) [DeclarationBlock]
+          CodebodyDerived2(
+            CodebodyDerived2(
+              CodebodyDerived2(
+                CodebodyDerived1(
+                ) [CodebodyDerived1]
+                Proc(
+                  FunctionName(
+                   postaviTezinu
+                  ) [FunctionName]
+                  FormParsWrapper(
+                    FormparsDerived3(
+                      Type(
+                       int
+                      ) [Type]
+                      Variable(
+                       tezina
+                      ) [Variable]
+                    ) [FormparsDerived3]
+                  ) [FormParsWrapper]
+                  EmptyDeclarationBlock(
+                  ) [EmptyDeclarationBlock]
+                  StatementBlock(
+                    StatementBlock(
+                      EmptyBlock(
+                      ) [EmptyBlock]
+                      StatementDerived1(
+                        Assign(
+                          PathDesignator(
+                            BaseDesignator(
+                             this
+                            ) [BaseDesignator]
+                           tezina
+                          ) [PathDesignator]
+                          SingleExpr(
+                            SingleTerm(
+                              SingleFactor(
+                                BaseDesignator(
+                                 tezina
+                                ) [BaseDesignator]
+                              ) [SingleFactor]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
                         ) [Assign]
                       ) [StatementDerived1]
                     ) [StatementBlock]
                     StatementDerived1(
                       Assign(
                         BaseDesignator(
-                         val
+                         vrsta
                         ) [BaseDesignator]
                         SingleExpr(
                           SingleTerm(
-                            NewObject(
-                              Type(
-                               Table
-                              ) [Type]
-                            ) [NewObject]
+                            CharacterConstant(
+                             k
+                            ) [CharacterConstant]
+                          ) [SingleTerm]
+                        ) [SingleExpr]
+                      ) [Assign]
+                    ) [StatementDerived1]
+                  ) [StatementBlock]
+                ) [Proc]
+              ) [CodebodyDerived2]
+              Proc(
+                FunctionName(
+                 postaviStranice
+                ) [FunctionName]
+                FormParsWrapper(
+                  FormparsDerived1(
+                    FormparsDerived1(
+                      FormparsDerived3(
+                        Type(
+                         int
+                        ) [Type]
+                        Variable(
+                         a
+                        ) [Variable]
+                      ) [FormparsDerived3]
+                      Type(
+                       int
+                      ) [Type]
+                      Variable(
+                       b
+                      ) [Variable]
+                    ) [FormparsDerived1]
+                    Type(
+                     int
+                    ) [Type]
+                    Variable(
+                     c
+                    ) [Variable]
+                  ) [FormparsDerived1]
+                ) [FormParsWrapper]
+                EmptyDeclarationBlock(
+                ) [EmptyDeclarationBlock]
+                StatementBlock(
+                  StatementBlock(
+                    StatementBlock(
+                      StatementBlock(
+                        EmptyBlock(
+                        ) [EmptyBlock]
+                        StatementDerived1(
+                          Assign(
+                            PathDesignator(
+                              BaseDesignator(
+                               this
+                              ) [BaseDesignator]
+                             a
+                            ) [PathDesignator]
+                            SingleExpr(
+                              SingleTerm(
+                                SingleFactor(
+                                  BaseDesignator(
+                                   a
+                                  ) [BaseDesignator]
+                                ) [SingleFactor]
+                              ) [SingleTerm]
+                            ) [SingleExpr]
+                          ) [Assign]
+                        ) [StatementDerived1]
+                      ) [StatementBlock]
+                      StatementDerived1(
+                        Assign(
+                          PathDesignator(
+                            BaseDesignator(
+                             this
+                            ) [BaseDesignator]
+                           b
+                          ) [PathDesignator]
+                          SingleExpr(
+                            SingleTerm(
+                              SingleFactor(
+                                BaseDesignator(
+                                 b
+                                ) [BaseDesignator]
+                              ) [SingleFactor]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                        ) [Assign]
+                      ) [StatementDerived1]
+                    ) [StatementBlock]
+                    StatementDerived1(
+                      Assign(
+                        PathDesignator(
+                          BaseDesignator(
+                           this
+                          ) [BaseDesignator]
+                         c
+                        ) [PathDesignator]
+                        SingleExpr(
+                          SingleTerm(
+                            SingleFactor(
+                              BaseDesignator(
+                               c
+                              ) [BaseDesignator]
+                            ) [SingleFactor]
                           ) [SingleTerm]
                         ) [SingleExpr]
                       ) [Assign]
@@ -409,193 +721,204 @@ ProgramDerived1(
                   ) [StatementBlock]
                   StatementDerived1(
                     Assign(
-                      PathDesignator(
-                        BaseDesignator(
-                         val
-                        ) [BaseDesignator]
-                       pos
-                      ) [PathDesignator]
+                      BaseDesignator(
+                       vrsta
+                      ) [BaseDesignator]
                       SingleExpr(
                         SingleTerm(
-                          NewArray(
-                            Type(
-                             int
-                            ) [Type]
-                            SingleExpr(
-                              SingleTerm(
-                                SingleFactor(
-                                  BaseDesignator(
-                                   size
-                                  ) [BaseDesignator]
-                                ) [SingleFactor]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [NewArray]
+                          CharacterConstant(
+                           k
+                          ) [CharacterConstant]
                         ) [SingleTerm]
                       ) [SingleExpr]
                     ) [Assign]
                   ) [StatementDerived1]
                 ) [StatementBlock]
-                StatementDerived1(
-                  Assign(
-                    PathDesignator(
-                      BaseDesignator(
-                       val
-                      ) [BaseDesignator]
-                     neg
-                    ) [PathDesignator]
-                    SingleExpr(
-                      SingleTerm(
-                        NewArray(
-                          Type(
-                           int
-                          ) [Type]
-                          SingleExpr(
-                            SingleTerm(
-                              SingleFactor(
-                                BaseDesignator(
-                                 size
-                                ) [BaseDesignator]
-                              ) [SingleFactor]
-                            ) [SingleTerm]
-                          ) [SingleExpr]
-                        ) [NewArray]
-                      ) [SingleTerm]
-                    ) [SingleExpr]
-                  ) [Assign]
-                ) [StatementDerived1]
-              ) [StatementBlock]
-              StatementDerived1(
-                Assign(
-                  BaseDesignator(
-                   i
-                  ) [BaseDesignator]
-                  SingleExpr(
-                    SingleTerm(
-                      NumericConstant(
-                       0
-                      ) [NumericConstant]
-                    ) [SingleTerm]
-                  ) [SingleExpr]
-                ) [Assign]
-              ) [StatementDerived1]
-            ) [StatementBlock]
-            DoWhile(
-              Block(
+              ) [Proc]
+            ) [CodebodyDerived2]
+            Func(
+              Type(
+               int
+              ) [Type]
+              FunctionName(
+               zapremina
+              ) [FunctionName]
+              FormParsWrapper(
+                FormparsDerived4(
+                ) [FormparsDerived4]
+              ) [FormParsWrapper]
+              DeclarationBlock(
+                EmptyDeclarationBlock(
+                ) [EmptyDeclarationBlock]
+                VariabledeclarationDerived1(
+                  Type(
+                   int
+                  ) [Type]
+                  Variable(
+                   z
+                  ) [Variable]
+                ) [VariabledeclarationDerived1]
+              ) [DeclarationBlock]
+              StatementBlock(
                 StatementBlock(
-                  StatementBlock(
-                    StatementBlock(
-                      EmptyBlock(
-                      ) [EmptyBlock]
-                      CallStatement(
-                        FuncCall(
-                          PathDesignator(
-                            BaseDesignator(
-                             val
-                            ) [BaseDesignator]
-                           putp
-                          ) [PathDesignator]
-                          Parameters(
-                            Parameter(
-                              SingleExpr(
-                                SingleTerm(
-                                  NumericConstant(
-                                   0
-                                  ) [NumericConstant]
-                                ) [SingleTerm]
-                              ) [SingleExpr]
-                            ) [Parameter]
-                            SingleExpr(
-                              SingleTerm(
-                                SingleFactor(
-                                  BaseDesignator(
-                                   i
-                                  ) [BaseDesignator]
-                                ) [SingleFactor]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [Parameters]
-                        ) [FuncCall]
-                      ) [CallStatement]
-                    ) [StatementBlock]
-                    CallStatement(
-                      FuncCall(
-                        PathDesignator(
-                          BaseDesignator(
-                           val
-                          ) [BaseDesignator]
-                         putn
-                        ) [PathDesignator]
-                        Parameters(
-                          Parameter(
-                            SingleExpr(
-                              SingleTerm(
-                                NumericConstant(
-                                 0
-                                ) [NumericConstant]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [Parameter]
-                          SingleExpr(
+                  EmptyBlock(
+                  ) [EmptyBlock]
+                  StatementDerived1(
+                    Assign(
+                      BaseDesignator(
+                       z
+                      ) [BaseDesignator]
+                      SingleExpr(
+                        Multiplication(
+                          Multiplication(
                             SingleTerm(
                               SingleFactor(
                                 BaseDesignator(
-                                 i
+                                 a
                                 ) [BaseDesignator]
                               ) [SingleFactor]
                             ) [SingleTerm]
-                          ) [SingleExpr]
-                        ) [Parameters]
-                      ) [FuncCall]
-                    ) [CallStatement]
-                  ) [StatementBlock]
-                  StatementDerived1(
-                    Increment(
-                      BaseDesignator(
-                       i
-                      ) [BaseDesignator]
-                    ) [Increment]
+                            SingleFactor(
+                              BaseDesignator(
+                               b
+                              ) [BaseDesignator]
+                            ) [SingleFactor]
+                          ) [Multiplication]
+                          SingleFactor(
+                            BaseDesignator(
+                             c
+                            ) [BaseDesignator]
+                          ) [SingleFactor]
+                        ) [Multiplication]
+                      ) [SingleExpr]
+                    ) [Assign]
                   ) [StatementDerived1]
                 ) [StatementBlock]
-              ) [Block]
-              SingleCondExpr(
-                SingleCondTerm(
-                  Less(
+                Return(
+                  SingleExpr(
+                    SingleTerm(
+                      SingleFactor(
+                        BaseDesignator(
+                         z
+                        ) [BaseDesignator]
+                      ) [SingleFactor]
+                    ) [SingleTerm]
+                  ) [SingleExpr]
+                ) [Return]
+              ) [StatementBlock]
+            ) [Func]
+          ) [CodebodyDerived2]
+        ) [DerivedClass]
+      ) [ProgramdeclarationsDerived2]
+      VariabledeclarationDerived2(
+        VariabledeclarationDerived1(
+          Type(
+           int
+          ) [Type]
+          Variable(
+           zapreminaK
+          ) [Variable]
+        ) [VariabledeclarationDerived1]
+        Variable(
+         zapreminaS
+        ) [Variable]
+      ) [VariabledeclarationDerived2]
+    ) [ProgramdeclarationsDerived4]
+    VariabledeclarationDerived2(
+      VariabledeclarationDerived1(
+        Type(
+         int
+        ) [Type]
+        Variable(
+         tezinaK
+        ) [Variable]
+      ) [VariabledeclarationDerived1]
+      Variable(
+       tezinaS
+      ) [Variable]
+    ) [VariabledeclarationDerived2]
+  ) [ProgramdeclarationsDerived4]
+  CodebodyDerived2(
+    CodebodyDerived2(
+      CodebodyDerived1(
+      ) [CodebodyDerived1]
+      Proc(
+        FunctionName(
+         ispis
+        ) [FunctionName]
+        FormParsWrapper(
+          FormparsDerived3(
+            Type(
+             Predmet
+            ) [Type]
+            Variable(
+             p
+            ) [Variable]
+          ) [FormparsDerived3]
+        ) [FormParsWrapper]
+        EmptyDeclarationBlock(
+        ) [EmptyDeclarationBlock]
+        StatementBlock(
+          StatementBlock(
+            StatementBlock(
+              EmptyBlock(
+              ) [EmptyBlock]
+              CallStatement(
+                FuncCall(
+                  BaseDesignator(
+                   print
+                  ) [BaseDesignator]
+                  Parameter(
                     SingleExpr(
                       SingleTerm(
                         SingleFactor(
-                          BaseDesignator(
-                           i
-                          ) [BaseDesignator]
+                          PathDesignator(
+                            BaseDesignator(
+                             p
+                            ) [BaseDesignator]
+                           vrsta
+                          ) [PathDesignator]
                         ) [SingleFactor]
                       ) [SingleTerm]
                     ) [SingleExpr]
-                    SingleExpr(
-                      SingleTerm(
-                        SingleFactor(
-                          BaseDesignator(
-                           size
-                          ) [BaseDesignator]
-                        ) [SingleFactor]
-                      ) [SingleTerm]
-                    ) [SingleExpr]
-                  ) [Less]
-                ) [SingleCondTerm]
-              ) [SingleCondExpr]
-            ) [DoWhile]
+                  ) [Parameter]
+                ) [FuncCall]
+              ) [CallStatement]
+            ) [StatementBlock]
+            CallStatement(
+              FuncCall(
+                BaseDesignator(
+                 print
+                ) [BaseDesignator]
+                Parameter(
+                  SingleExpr(
+                    SingleTerm(
+                      SingleFactor(
+                        BaseDesignator(
+                         eol
+                        ) [BaseDesignator]
+                      ) [SingleFactor]
+                    ) [SingleTerm]
+                  ) [SingleExpr]
+                ) [Parameter]
+              ) [FuncCall]
+            ) [CallStatement]
           ) [StatementBlock]
           CallStatement(
             FuncCall(
               BaseDesignator(
-               read
+               print
               ) [BaseDesignator]
               Parameter(
                 SingleExpr(
                   SingleTerm(
                     SingleFactor(
-                      BaseDesignator(
-                       x
-                      ) [BaseDesignator]
+                      PathDesignator(
+                        BaseDesignator(
+                         p
+                        ) [BaseDesignator]
+                       tezina
+                      ) [PathDesignator]
                     ) [SingleFactor]
                   ) [SingleTerm]
                 ) [SingleExpr]
@@ -603,115 +926,117 @@ ProgramDerived1(
             ) [FuncCall]
           ) [CallStatement]
         ) [StatementBlock]
-        DoWhile(
-          Block(
-            StatementBlock(
-              StatementBlock(
-                StatementBlock(
-                  StatementBlock(
-                    EmptyBlock(
-                    ) [EmptyBlock]
-                    If(
-                      SingleCondExpr(
-                        SingleCondTerm(
-                          GreaterEqual(
-                            SingleExpr(
-                              SingleTerm(
-                                SingleFactor(
-                                  BaseDesignator(
-                                   x
-                                  ) [BaseDesignator]
-                                ) [SingleFactor]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                            SingleExpr(
-                              SingleTerm(
-                                SingleFactor(
-                                  BaseDesignator(
-                                   size
-                                  ) [BaseDesignator]
-                                ) [SingleFactor]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [GreaterEqual]
-                        ) [SingleCondTerm]
-                      ) [SingleCondExpr]
-                      Break(
-                      ) [Break]
-                    ) [If]
-                  ) [StatementBlock]
-                  If(
-                    SingleCondExpr(
-                      And(
-                        SingleCondTerm(
-                          LessEqual(
-                            SingleExpr(
-                              SingleTerm(
-                                NumericConstant(
-                                 0
-                                ) [NumericConstant]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                            SingleExpr(
-                              SingleTerm(
-                                SingleFactor(
-                                  BaseDesignator(
-                                   x
-                                  ) [BaseDesignator]
-                                ) [SingleFactor]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [LessEqual]
-                        ) [SingleCondTerm]
-                        Less(
-                          SingleExpr(
-                            SingleTerm(
-                              SingleFactor(
-                                BaseDesignator(
-                                 x
-                                ) [BaseDesignator]
-                              ) [SingleFactor]
-                            ) [SingleTerm]
-                          ) [SingleExpr]
-                          SingleExpr(
-                            SingleTerm(
-                              SingleFactor(
-                                BaseDesignator(
-                                 size
-                                ) [BaseDesignator]
-                              ) [SingleFactor]
-                            ) [SingleTerm]
-                          ) [SingleExpr]
-                        ) [Less]
-                      ) [And]
-                    ) [SingleCondExpr]
-                    Block(
-                      StatementBlock(
-                        EmptyBlock(
-                        ) [EmptyBlock]
-                        CallStatement(
-                          FuncCall(
-                            PathDesignator(
-                              BaseDesignator(
-                               val
-                              ) [BaseDesignator]
-                             putp
-                            ) [PathDesignator]
-                            Parameter(
-                              Addition(
-                                SingleExpr(
-                                  SingleTerm(
-                                    CallResult(
-                                      FuncCall(
-                                        PathDesignator(
-                                          BaseDesignator(
-                                           val
-                                          ) [BaseDesignator]
-                                         getp
-                                        ) [PathDesignator]
-                                        Parameter(
-                                          SingleExpr(
-                                            SingleTerm(
-                                              SingleFactor(
-                                                BaseDesignator(
-                          
+      ) [Proc]
+    ) [CodebodyDerived2]
+    Proc(
+      FunctionName(
+       main
+      ) [FunctionName]
+      FormParsWrapper(
+        FormparsDerived4(
+        ) [FormparsDerived4]
+      ) [FormParsWrapper]
+      DeclarationBlock(
+        DeclarationBlock(
+          DeclarationBlock(
+            DeclarationBlock(
+              DeclarationBlock(
+                EmptyDeclarationBlock(
+                ) [EmptyDeclarationBlock]
+                VariabledeclarationDerived1(
+                  Type(
+                   Predmet
+                  ) [Type]
+                  Array(
+                   predmeti
+                  ) [Array]
+                ) [VariabledeclarationDerived1]
+              ) [DeclarationBlock]
+              VariabledeclarationDerived1(
+                Type(
+                 int
+                ) [Type]
+                Variable(
+                 i
+                ) [Variable]
+              ) [VariabledeclarationDerived1]
+            ) [DeclarationBlock]
+            VariabledeclarationDerived2(
+              VariabledeclarationDerived2(
+                VariabledeclarationDerived1(
+                  Type(
+                   Sfera
+                  ) [Type]
+                  Variable(
+                   s1
+                  ) [Variable]
+                ) [VariabledeclarationDerived1]
+                Variable(
+                 s2
+                ) [Variable]
+              ) [VariabledeclarationDerived2]
+              Variable(
+               s3
+              ) [Variable]
+            ) [VariabledeclarationDerived2]
+          ) [DeclarationBlock]
+          VariabledeclarationDerived2(
+            VariabledeclarationDerived2(
+              VariabledeclarationDerived1(
+                Type(
+                 Kvadar
+                ) [Type]
+                Variable(
+                 k1
+                ) [Variable]
+              ) [VariabledeclarationDerived1]
+              Variable(
+               k2
+              ) [Variable]
+            ) [VariabledeclarationDerived2]
+            Variable(
+             k3
+            ) [Variable]
+          ) [VariabledeclarationDerived2]
+        ) [DeclarationBlock]
+        VariabledeclarationDerived1(
+          Type(
+           int
+          ) [Type]
+          Variable(
+           t
+          ) [Variable]
+        ) [VariabledeclarationDerived1]
+      ) [DeclarationBlock]
+      StatementBlock(
+        EmptyBlock(
+        ) [EmptyBlock]
+        StatementDerived1(
+          Assign(
+            BaseDesignator(
+             a
+            ) [BaseDesignator]
+            Addition(
+              SingleExpr(
+                SingleTerm(
+                  SingleFactor(
+                    BaseDesignator(
+                     a
+                    ) [BaseDesignator]
+                  ) [SingleFactor]
+                ) [SingleTerm]
+              ) [SingleExpr]
+              SingleTerm(
+                SingleFactor(
+                  BaseDesignator(
+                   b
+                  ) [BaseDesignator]
+                ) [SingleFactor]
+              ) [SingleTerm]
+            ) [Addition]
+          ) [Assign]
+        ) [StatementDerived1]
+      ) [StatementBlock]
+    ) [Proc]
+  ) [CodebodyDerived2]
+) [ProgramDerived1]

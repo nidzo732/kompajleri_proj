@@ -1,11 +1,12 @@
 package rs.ac.bg.etf.pp1.ast;
 import rs.ac.bg.etf.pp1.Yylex;
+import rs.ac.bg.etf.pp1.CompilerError;
 import java_cup.runtime.Symbol;
 parser code {:
     @Override
     protected int error_sync_size()
     {
-        return 3;
+        return 1;
     }
 
     @Override
@@ -14,6 +15,11 @@ parser code {:
         System.err.println("Warning");
         System.err.println("Fixable error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
         System.err.println("Skipping to next valid code\n");
+    }
+
+    @Override
+    public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
+        CompilerError.raise("Unfixable syntax error", ((Yylex)getScanner()).getLineNo(), ((Yylex)getScanner()).getColumn());
     }
 :}
 
@@ -60,6 +66,7 @@ nonterminal Designatorstmt designatorstmt;
 nonterminal Statement statement;
 nonterminal Statementblock statementblock;
 nonterminal Formpars formpars;
+nonterminal Formparswrapper formparswrapper;
 nonterminal Namedeclaration namedeclaration;
 nonterminal Variabledeclaration variabledeclaration;
 nonterminal Function function;
@@ -75,6 +82,7 @@ nonterminal Extendsdeclaration extendsdeclaration;
 nonterminal rs.ac.bg.etf.pp1.TableRef classname;
 nonterminal rs.ac.bg.etf.pp1.TableRef functionname;
 nonterminal rs.ac.bg.etf.pp1.TableRef programname;
+nonterminal Errsep errsep;
 
 program     ::= PROGRAM programname:name programdeclarations:p1 LBRACE codebody:c2 RBRACE {: RESULT=new ProgramDerived1(name, p1, c2); RESULT.setLine(nameleft); :}
                 ;
@@ -103,32 +111,33 @@ codebody   ::= {: RESULT=new CodebodyDerived1(); :}
                 | codebody:c1 function:f2 {: RESULT=new CodebodyDerived2(c1, f2); RESULT.setLine(c1left); :}
                 ;
 
-function    ::=    (Func) type:t1 functionname:name LPAREN formpars:f2 RPAREN declarationblock:d3 LBRACE statementblock:s4 RBRACE {: RESULT=new Func(t1, name, f2, d3, s4); RESULT.setLine(t1left); :}
-                 | (Proc) VOID functionname:name LPAREN formpars:f1 RPAREN declarationblock:d2 LBRACE statementblock:s3 RBRACE {: RESULT=new Proc(name, f1, d2, s3); RESULT.setLine(nameleft); :}
+function    ::=    (Func) type:t1 functionname:name formparswrapper:f2 declarationblock:d3 LBRACE statementblock:s4 RBRACE {: RESULT=new Func(t1, name, f2, d3, s4); RESULT.setLine(t1left); :}
+                 | (Proc) VOID functionname:name formparswrapper:f1 declarationblock:d2 LBRACE statementblock:s3 RBRACE {: RESULT=new Proc(name, f1, d2, s3); RESULT.setLine(nameleft); :}
                  ;
 
 declarationblock ::=   (DeclarationBlock) declarationblock:d1 variabledeclaration:v2 SEMICOLON {: RESULT=new DeclarationBlock(d1, v2); RESULT.setLine(d1left); :}
                      | declarationblock:d1 classdeclaration:c2 {: RESULT=new DeclarationblockDerived1(d1, c2); RESULT.setLine(d1left); :}
-                     | declarationblock:d1 error {: RESULT=new DeclarationblockDerived2(d1); RESULT.setLine(d1left); :}
                      | (EmptyDeclarationBlock) {: RESULT=new EmptyDeclarationBlock(); :}
                      ;
 
-formpars    ::=   (FormPars) formpars:f1 COMA type:t2 namedeclaration:n3 {: RESULT=new FormPars(f1, t2, n3); RESULT.setLine(f1left); :}
-                | (FormParsTyped) type:t1 namedeclaration:n2 {: RESULT=new FormParsTyped(t1, n2); RESULT.setLine(t1left); :}
-                | formpars:f1 COMA error {: RESULT=new FormparsDerived1(f1); RESULT.setLine(f1left); :}
-                | error {: RESULT=new FormparsDerived2(); :}
-                | (EmptyFormPar) {: RESULT=new EmptyFormPar(); :}
+formparswrapper ::=    (FormParsWrapper) LPAREN formpars:f1 RPAREN {: RESULT=new FormParsWrapper(f1); RESULT.setLine(f1left); :}
+                    ;
+
+formpars    ::=   formpars:f1 COMA type:t2 namedeclaration:n3 {: RESULT=new FormparsDerived1(f1, t2, n3); RESULT.setLine(f1left); :}
+                | formpars:f1 error {: RESULT=new FormparsDerived2(f1); RESULT.setLine(f1left); :}
+                | type:t1 namedeclaration:n2 {: RESULT=new FormparsDerived3(t1, n2); RESULT.setLine(t1left); :}
+                | {: RESULT=new FormparsDerived4(); :}
                 ;
 
 constantdeclaration ::=   (ConstantDeclarations) constantdeclaration:c1 COMA constnamedeclaration:c2 {: RESULT=new ConstantDeclarations(c1, c2); RESULT.setLine(c1left); :}
                         | (ConstantDeclarationTyped) CONST type:t1 constnamedeclaration:c2 {: RESULT=new ConstantDeclarationTyped(t1, c2); RESULT.setLine(t1left); :}
-                        | (ConstantDeclarationTypedErr) CONST type:t1 error {: RESULT=new ConstantDeclarationTypedErr(t1); RESULT.setLine(t1left); :}
-                        | constantdeclaration:c1 COMA error {: RESULT=new ConstantdeclarationDerived1(c1); RESULT.setLine(c1left); :}
                         ;
 
-variabledeclaration ::=   (VariableDeclaration) variabledeclaration:v1 COMA namedeclaration:n2 {: RESULT=new VariableDeclaration(v1, n2); RESULT.setLine(v1left); :}
-                        | (VariableDeclarationTyped) type:t1 namedeclaration:n2 {: RESULT=new VariableDeclarationTyped(t1, n2); RESULT.setLine(t1left); :}
-                        ;
+variabledeclaration ::=     type:t1 namedeclaration:n2 {: RESULT=new VariabledeclarationDerived1(t1, n2); RESULT.setLine(t1left); :}
+                          | variabledeclaration:v1 COMA namedeclaration:n2 {: RESULT=new VariabledeclarationDerived2(v1, n2); RESULT.setLine(v1left); :}
+                          | variabledeclaration:v1 COMA error {: RESULT=new VariabledeclarationDerived3(v1); RESULT.setLine(v1left); :}
+                          | type:t1 error {: RESULT=new VariabledeclarationDerived4(t1); RESULT.setLine(t1left); :}
+                          ;
 
 constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val {: RESULT=new BoolConstantDeclaration(name, val); RESULT.setLine(nameleft); :}
                             | (CharConstantDeclaration) IDENT:name ASSIGN CHARACTER:val {: RESULT=new CharConstantDeclaration(name, val); RESULT.setLine(nameleft); :}
@@ -156,19 +165,19 @@ statementblock  ::=   (EmptyBlock) {: RESULT=new EmptyBlock(); :}
                     ;
 
 designatorstmt  ::=   (Assign) designator:d1 ASSIGN expr:e2 SEMICOLON {: RESULT=new Assign(d1, e2); RESULT.setLine(d1left); :}
+                    | (Assign2) designator:d1 ASSIGN expr:e2 error SEMICOLON {: RESULT=new Assign2(d1, e2); RESULT.setLine(d1left); :}
                     | (Increment) designator:d1 INCREMENT SEMICOLON {: RESULT=new Increment(d1); RESULT.setLine(d1left); :}
+                    | (Increment2) designator:d1 INCREMENT error SEMICOLON {: RESULT=new Increment2(d1); RESULT.setLine(d1left); :}
                     | (Decrement) designator:d1 DECREMENT SEMICOLON {: RESULT=new Decrement(d1); RESULT.setLine(d1left); :}
-                    | error SEMICOLON {: RESULT=new DesignatorstmtDerived1(); :}
+                    | (Decrement2) designator:d1 DECREMENT error SEMICOLON {: RESULT=new Decrement2(d1); RESULT.setLine(d1left); :}
                     ;
 
 condexpr ::=   (SingleCondExpr) condterm:c1 {: RESULT=new SingleCondExpr(c1); RESULT.setLine(c1left); :}
              | (Or) condexpr:c1 OR condterm:c2 {: RESULT=new Or(c1, c2); RESULT.setLine(c1left); :}
-             | condexpr:c1 OR error {: RESULT=new CondexprDerived1(c1); RESULT.setLine(c1left); :}
              ;
 
 condterm ::=  (SingleCondTerm) condfactor:c1 {: RESULT=new SingleCondTerm(c1); RESULT.setLine(c1left); :}
             | (And) condterm:c1 AND condfactor:c2 {: RESULT=new And(c1, c2); RESULT.setLine(c1left); :}
-            | condterm:c1 AND error {: RESULT=new CondtermDerived1(c1); RESULT.setLine(c1left); :}
             ;
 
 condfactor::= (SingleCondFactor) expr:e1 {: RESULT=new SingleCondFactor(e1); RESULT.setLine(e1left); :}

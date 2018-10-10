@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 9/9/2018 22:58:35
+// 10/9/2018 20:35:43
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,17 +9,17 @@ public class Func extends Function {
 
     private Type type;
     private Functionname functionname;
-    private Formpars formpars;
+    private Formparswrapper formparswrapper;
     private Declarationblock declarationblock;
     private Statementblock statementblock;
 
-    public Func (Type type, Functionname functionname, Formpars formpars, Declarationblock declarationblock, Statementblock statementblock) {
+    public Func (Type type, Functionname functionname, Formparswrapper formparswrapper, Declarationblock declarationblock, Statementblock statementblock) {
         this.type=type;
         if(type!=null) type.setParent(this);
         this.functionname=functionname;
         if(functionname!=null) functionname.setParent(this);
-        this.formpars=formpars;
-        if(formpars!=null) formpars.setParent(this);
+        this.formparswrapper=formparswrapper;
+        if(formparswrapper!=null) formparswrapper.setParent(this);
         this.declarationblock=declarationblock;
         if(declarationblock!=null) declarationblock.setParent(this);
         this.statementblock=statementblock;
@@ -42,12 +42,12 @@ public class Func extends Function {
         this.functionname=functionname;
     }
 
-    public Formpars getFormpars() {
-        return formpars;
+    public Formparswrapper getFormparswrapper() {
+        return formparswrapper;
     }
 
-    public void setFormpars(Formpars formpars) {
-        this.formpars=formpars;
+    public void setFormparswrapper(Formparswrapper formparswrapper) {
+        this.formparswrapper=formparswrapper;
     }
 
     public Declarationblock getDeclarationblock() {
@@ -73,7 +73,7 @@ public class Func extends Function {
     public void childrenAccept(Visitor visitor) {
         if(type!=null) type.accept(visitor);
         if(functionname!=null) functionname.accept(visitor);
-        if(formpars!=null) formpars.accept(visitor);
+        if(formparswrapper!=null) formparswrapper.accept(visitor);
         if(declarationblock!=null) declarationblock.accept(visitor);
         if(statementblock!=null) statementblock.accept(visitor);
     }
@@ -82,7 +82,7 @@ public class Func extends Function {
         accept(visitor);
         if(type!=null) type.traverseTopDown(visitor);
         if(functionname!=null) functionname.traverseTopDown(visitor);
-        if(formpars!=null) formpars.traverseTopDown(visitor);
+        if(formparswrapper!=null) formparswrapper.traverseTopDown(visitor);
         if(declarationblock!=null) declarationblock.traverseTopDown(visitor);
         if(statementblock!=null) statementblock.traverseTopDown(visitor);
     }
@@ -90,7 +90,7 @@ public class Func extends Function {
     public void traverseBottomUp(Visitor visitor) {
         if(type!=null) type.traverseBottomUp(visitor);
         if(functionname!=null) functionname.traverseBottomUp(visitor);
-        if(formpars!=null) formpars.traverseBottomUp(visitor);
+        if(formparswrapper!=null) formparswrapper.traverseBottomUp(visitor);
         if(declarationblock!=null) declarationblock.traverseBottomUp(visitor);
         if(statementblock!=null) statementblock.traverseBottomUp(visitor);
         accept(visitor);
@@ -113,8 +113,8 @@ public class Func extends Function {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(formpars!=null)
-            buffer.append(formpars.toString("  "+tab));
+        if(formparswrapper!=null)
+            buffer.append(formparswrapper.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

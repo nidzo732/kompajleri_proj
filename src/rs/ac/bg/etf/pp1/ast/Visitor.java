@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 9/9/2018 22:58:35
+// 10/9/2018 20:35:43
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -14,6 +14,7 @@ public interface Visitor {
     public void visit(Programname programname);
     public void visit(Formpars formpars);
     public void visit(Programdeclarations programdeclarations);
+    public void visit(Errsep errsep);
     public void visit(Function function);
     public void visit(Constantdeclaration constantdeclaration);
     public void visit(Program program);
@@ -30,6 +31,7 @@ public interface Visitor {
     public void visit(Functionname functionname);
     public void visit(Variabledeclaration variabledeclaration);
     public void visit(Codebody codebody);
+    public void visit(Formparswrapper formparswrapper);
     public void visit(Call call);
     public void visit(Namedeclaration namedeclaration);
     public void visit(Classname classname);
@@ -65,15 +67,15 @@ public interface Visitor {
     public void visit(NotEquals NotEquals);
     public void visit(Equals Equals);
     public void visit(SingleCondFactor SingleCondFactor);
-    public void visit(CondtermDerived1 CondtermDerived1);
     public void visit(And And);
     public void visit(SingleCondTerm SingleCondTerm);
-    public void visit(CondexprDerived1 CondexprDerived1);
     public void visit(Or Or);
     public void visit(SingleCondExpr SingleCondExpr);
-    public void visit(DesignatorstmtDerived1 DesignatorstmtDerived1);
+    public void visit(Decrement2 Decrement2);
     public void visit(Decrement Decrement);
+    public void visit(Increment2 Increment2);
     public void visit(Increment Increment);
+    public void visit(Assign2 Assign2);
     public void visit(Assign Assign);
     public void visit(StatementBlock StatementBlock);
     public void visit(EmptyBlock EmptyBlock);
@@ -92,19 +94,18 @@ public interface Visitor {
     public void visit(NumberConstantDeclaration NumberConstantDeclaration);
     public void visit(CharConstantDeclaration CharConstantDeclaration);
     public void visit(BoolConstantDeclaration BoolConstantDeclaration);
-    public void visit(VariableDeclarationTyped VariableDeclarationTyped);
-    public void visit(VariableDeclaration VariableDeclaration);
-    public void visit(ConstantdeclarationDerived1 ConstantdeclarationDerived1);
-    public void visit(ConstantDeclarationTypedErr ConstantDeclarationTypedErr);
+    public void visit(VariabledeclarationDerived4 VariabledeclarationDerived4);
+    public void visit(VariabledeclarationDerived3 VariabledeclarationDerived3);
+    public void visit(VariabledeclarationDerived2 VariabledeclarationDerived2);
+    public void visit(VariabledeclarationDerived1 VariabledeclarationDerived1);
     public void visit(ConstantDeclarationTyped ConstantDeclarationTyped);
     public void visit(ConstantDeclarations ConstantDeclarations);
-    public void visit(EmptyFormPar EmptyFormPar);
+    public void visit(FormparsDerived4 FormparsDerived4);
+    public void visit(FormparsDerived3 FormparsDerived3);
     public void visit(FormparsDerived2 FormparsDerived2);
     public void visit(FormparsDerived1 FormparsDerived1);
-    public void visit(FormParsTyped FormParsTyped);
-    public void visit(FormPars FormPars);
+    public void visit(FormParsWrapper FormParsWrapper);
     public void visit(EmptyDeclarationBlock EmptyDeclarationBlock);
-    public void visit(DeclarationblockDerived2 DeclarationblockDerived2);
     public void visit(DeclarationblockDerived1 DeclarationblockDerived1);
     public void visit(DeclarationBlock DeclarationBlock);
     public void visit(Proc Proc);

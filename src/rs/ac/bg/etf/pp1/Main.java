@@ -13,7 +13,7 @@ import java.io.*;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
         Yylex lexer = null;
         parser p = null;
         try {
@@ -21,21 +21,18 @@ public class Main {
             lexer = new Yylex(new FileReader(new File("testdata/code.txt")));
             p = new parser(lexer);
             Symbol sy = p.parse();
-            Tab.init();
+            TableWrapper.init();
             SemanticAnalyzer sa=new SemanticAnalyzer();
             treeOut.println(sy.value.toString());
             ((Program)sy.value).traverseBottomUp(sa);
+            treeOut.flush();
+            treeOut.close();
             Tab.dump();
 
         }
-        catch (Exception ex)
+        catch (CompilerError cerr)
         {
-            System.out.println(ex);
-            ex.printStackTrace();
-            if(lexer!=null)
-            {
-                System.out.println(lexer.getLineNo()+":"+lexer.getColumn());
-            }
+            System.err.println(cerr);
         }
 
     }
