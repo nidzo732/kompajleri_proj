@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 10/9/2018 20:35:43
+// 12/9/2018 12:24:49
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,14 +8,14 @@ package rs.ac.bg.etf.pp1.ast;
 public class NonDerivedClass extends Classdeclaration {
 
     private Classname classname;
-    private Declarationblock declarationblock;
+    private Declarationblockwrapper declarationblockwrapper;
     private Codebody codebody;
 
-    public NonDerivedClass (Classname classname, Declarationblock declarationblock, Codebody codebody) {
+    public NonDerivedClass (Classname classname, Declarationblockwrapper declarationblockwrapper, Codebody codebody) {
         this.classname=classname;
         if(classname!=null) classname.setParent(this);
-        this.declarationblock=declarationblock;
-        if(declarationblock!=null) declarationblock.setParent(this);
+        this.declarationblockwrapper=declarationblockwrapper;
+        if(declarationblockwrapper!=null) declarationblockwrapper.setParent(this);
         this.codebody=codebody;
         if(codebody!=null) codebody.setParent(this);
     }
@@ -28,12 +28,12 @@ public class NonDerivedClass extends Classdeclaration {
         this.classname=classname;
     }
 
-    public Declarationblock getDeclarationblock() {
-        return declarationblock;
+    public Declarationblockwrapper getDeclarationblockwrapper() {
+        return declarationblockwrapper;
     }
 
-    public void setDeclarationblock(Declarationblock declarationblock) {
-        this.declarationblock=declarationblock;
+    public void setDeclarationblockwrapper(Declarationblockwrapper declarationblockwrapper) {
+        this.declarationblockwrapper=declarationblockwrapper;
     }
 
     public Codebody getCodebody() {
@@ -50,20 +50,20 @@ public class NonDerivedClass extends Classdeclaration {
 
     public void childrenAccept(Visitor visitor) {
         if(classname!=null) classname.accept(visitor);
-        if(declarationblock!=null) declarationblock.accept(visitor);
+        if(declarationblockwrapper!=null) declarationblockwrapper.accept(visitor);
         if(codebody!=null) codebody.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(classname!=null) classname.traverseTopDown(visitor);
-        if(declarationblock!=null) declarationblock.traverseTopDown(visitor);
+        if(declarationblockwrapper!=null) declarationblockwrapper.traverseTopDown(visitor);
         if(codebody!=null) codebody.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(classname!=null) classname.traverseBottomUp(visitor);
-        if(declarationblock!=null) declarationblock.traverseBottomUp(visitor);
+        if(declarationblockwrapper!=null) declarationblockwrapper.traverseBottomUp(visitor);
         if(codebody!=null) codebody.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -79,8 +79,8 @@ public class NonDerivedClass extends Classdeclaration {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(declarationblock!=null)
-            buffer.append(declarationblock.toString("  "+tab));
+        if(declarationblockwrapper!=null)
+            buffer.append(declarationblockwrapper.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

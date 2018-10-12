@@ -1,24 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 10/9/2018 20:35:43
+// 12/9/2018 12:24:49
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class BaseDesignator extends Designator {
 
-    private String val;
+    private String name;
 
-    public BaseDesignator (String val) {
-        this.val=val;
+    public BaseDesignator (String name) {
+        this.name=name;
     }
 
-    public String getVal() {
-        return val;
+    public String getName() {
+        return name;
     }
 
-    public void setVal(String val) {
-        this.val=val;
+    public void setName(String name) {
+        this.name=name;
     }
 
     public void accept(Visitor visitor) {
@@ -41,7 +41,7 @@ public class BaseDesignator extends Designator {
         buffer.append(tab);
         buffer.append("BaseDesignator(\n");
 
-        buffer.append(" "+tab+val);
+        buffer.append(" "+tab+name);
         buffer.append("\n");
 
         buffer.append(tab);

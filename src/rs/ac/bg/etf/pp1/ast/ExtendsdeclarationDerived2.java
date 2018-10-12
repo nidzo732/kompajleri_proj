@@ -1,25 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 10/9/2018 20:35:43
+// 12/9/2018 12:24:49
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ExtendsdeclarationDerived2 extends Extendsdeclaration {
 
-    private Type type;
+    private String base;
 
-    public ExtendsdeclarationDerived2 (Type type) {
-        this.type=type;
-        if(type!=null) type.setParent(this);
+    public ExtendsdeclarationDerived2 (String base) {
+        this.base=base;
     }
 
-    public Type getType() {
-        return type;
+    public String getBase() {
+        return base;
     }
 
-    public void setType(Type type) {
-        this.type=type;
+    public void setBase(String base) {
+        this.base=base;
     }
 
     public void accept(Visitor visitor) {
@@ -27,16 +26,13 @@ public class ExtendsdeclarationDerived2 extends Extendsdeclaration {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(type!=null) type.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(type!=null) type.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(type!=null) type.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -45,10 +41,7 @@ public class ExtendsdeclarationDerived2 extends Extendsdeclaration {
         buffer.append(tab);
         buffer.append("ExtendsdeclarationDerived2(\n");
 
-        if(type!=null)
-            buffer.append(type.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
+        buffer.append(" "+tab+base);
         buffer.append("\n");
 
         buffer.append(tab);

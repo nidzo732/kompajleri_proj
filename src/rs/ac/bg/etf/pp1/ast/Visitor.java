@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 10/9/2018 20:35:43
+// 12/9/2018 12:24:49
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -17,6 +17,7 @@ public interface Visitor {
     public void visit(Errsep errsep);
     public void visit(Function function);
     public void visit(Constantdeclaration constantdeclaration);
+    public void visit(Declarationblockwrapper declarationblockwrapper);
     public void visit(Program program);
     public void visit(Classdeclaration classdeclaration);
     public void visit(Extendsdeclaration extendsdeclaration);
@@ -36,6 +37,7 @@ public interface Visitor {
     public void visit(Namedeclaration namedeclaration);
     public void visit(Classname classname);
     public void visit(Constnamedeclaration constnamedeclaration);
+    public void visit(Designatorline designatorline);
     public void visit(EmptyParameters EmptyParameters);
     public void visit(Parameters Parameters);
     public void visit(Parameter Parameter);
@@ -60,6 +62,18 @@ public interface Visitor {
     public void visit(Substraction Substraction);
     public void visit(Addition Addition);
     public void visit(SingleExpr SingleExpr);
+    public void visit(ErrsepDerived12 ErrsepDerived12);
+    public void visit(ErrsepDerived11 ErrsepDerived11);
+    public void visit(ErrsepDerived10 ErrsepDerived10);
+    public void visit(ErrsepDerived9 ErrsepDerived9);
+    public void visit(ErrsepDerived8 ErrsepDerived8);
+    public void visit(ErrsepDerived7 ErrsepDerived7);
+    public void visit(ErrsepDerived6 ErrsepDerived6);
+    public void visit(ErrsepDerived5 ErrsepDerived5);
+    public void visit(ErrsepDerived4 ErrsepDerived4);
+    public void visit(ErrsepDerived3 ErrsepDerived3);
+    public void visit(ErrsepDerived2 ErrsepDerived2);
+    public void visit(ErrsepDerived1 ErrsepDerived1);
     public void visit(LessEqual LessEqual);
     public void visit(Less Less);
     public void visit(GreaterEqual GreaterEqual);
@@ -67,16 +81,18 @@ public interface Visitor {
     public void visit(NotEquals NotEquals);
     public void visit(Equals Equals);
     public void visit(SingleCondFactor SingleCondFactor);
+    public void visit(CondTermError CondTermError);
     public void visit(And And);
     public void visit(SingleCondTerm SingleCondTerm);
+    public void visit(CondExprError CondExprError);
     public void visit(Or Or);
     public void visit(SingleCondExpr SingleCondExpr);
-    public void visit(Decrement2 Decrement2);
     public void visit(Decrement Decrement);
-    public void visit(Increment2 Increment2);
     public void visit(Increment Increment);
-    public void visit(Assign2 Assign2);
     public void visit(Assign Assign);
+    public void visit(DesignatorlineDerived3 DesignatorlineDerived3);
+    public void visit(DesignatorlineDerived2 DesignatorlineDerived2);
+    public void visit(DesignatorlineDerived1 DesignatorlineDerived1);
     public void visit(StatementBlock StatementBlock);
     public void visit(EmptyBlock EmptyBlock);
     public void visit(CallStatement CallStatement);
@@ -104,10 +120,13 @@ public interface Visitor {
     public void visit(FormparsDerived3 FormparsDerived3);
     public void visit(FormparsDerived2 FormparsDerived2);
     public void visit(FormparsDerived1 FormparsDerived1);
+    public void visit(FormParsWrapper3 FormParsWrapper3);
+    public void visit(FormParsWrapper2 FormParsWrapper2);
     public void visit(FormParsWrapper FormParsWrapper);
     public void visit(EmptyDeclarationBlock EmptyDeclarationBlock);
-    public void visit(DeclarationblockDerived1 DeclarationblockDerived1);
     public void visit(DeclarationBlock DeclarationBlock);
+    public void visit(DeclarationBlockWrapper2 DeclarationBlockWrapper2);
+    public void visit(DeclarationBlockWrapper1 DeclarationBlockWrapper1);
     public void visit(Proc Proc);
     public void visit(Func Func);
     public void visit(CodebodyDerived2 CodebodyDerived2);

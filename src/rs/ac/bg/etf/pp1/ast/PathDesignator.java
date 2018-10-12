@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 10/9/2018 20:35:43
+// 12/9/2018 12:24:49
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,12 +8,12 @@ package rs.ac.bg.etf.pp1.ast;
 public class PathDesignator extends Designator {
 
     private Designator designator;
-    private String val;
+    private String name;
 
-    public PathDesignator (Designator designator, String val) {
+    public PathDesignator (Designator designator, String name) {
         this.designator=designator;
         if(designator!=null) designator.setParent(this);
-        this.val=val;
+        this.name=name;
     }
 
     public Designator getDesignator() {
@@ -24,12 +24,12 @@ public class PathDesignator extends Designator {
         this.designator=designator;
     }
 
-    public String getVal() {
-        return val;
+    public String getName() {
+        return name;
     }
 
-    public void setVal(String val) {
-        this.val=val;
+    public void setName(String name) {
+        this.name=name;
     }
 
     public void accept(Visitor visitor) {
@@ -61,7 +61,7 @@ public class PathDesignator extends Designator {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+val);
+        buffer.append(" "+tab+name);
         buffer.append("\n");
 
         buffer.append(tab);

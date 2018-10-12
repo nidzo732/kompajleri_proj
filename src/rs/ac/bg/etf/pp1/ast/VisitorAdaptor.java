@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 10/9/2018 20:35:43
+// 12/9/2018 12:24:49
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -17,6 +17,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Errsep errsep) { }
     public void visit(Function function) { }
     public void visit(Constantdeclaration constantdeclaration) { }
+    public void visit(Declarationblockwrapper declarationblockwrapper) { }
     public void visit(Program program) { }
     public void visit(Classdeclaration classdeclaration) { }
     public void visit(Extendsdeclaration extendsdeclaration) { }
@@ -36,6 +37,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Namedeclaration namedeclaration) { }
     public void visit(Classname classname) { }
     public void visit(Constnamedeclaration constnamedeclaration) { }
+    public void visit(Designatorline designatorline) { }
     public void visit(EmptyParameters EmptyParameters) { visit(); }
     public void visit(Parameters Parameters) { visit(); }
     public void visit(Parameter Parameter) { visit(); }
@@ -60,6 +62,18 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Substraction Substraction) { visit(); }
     public void visit(Addition Addition) { visit(); }
     public void visit(SingleExpr SingleExpr) { visit(); }
+    public void visit(ErrsepDerived12 ErrsepDerived12) { visit(); }
+    public void visit(ErrsepDerived11 ErrsepDerived11) { visit(); }
+    public void visit(ErrsepDerived10 ErrsepDerived10) { visit(); }
+    public void visit(ErrsepDerived9 ErrsepDerived9) { visit(); }
+    public void visit(ErrsepDerived8 ErrsepDerived8) { visit(); }
+    public void visit(ErrsepDerived7 ErrsepDerived7) { visit(); }
+    public void visit(ErrsepDerived6 ErrsepDerived6) { visit(); }
+    public void visit(ErrsepDerived5 ErrsepDerived5) { visit(); }
+    public void visit(ErrsepDerived4 ErrsepDerived4) { visit(); }
+    public void visit(ErrsepDerived3 ErrsepDerived3) { visit(); }
+    public void visit(ErrsepDerived2 ErrsepDerived2) { visit(); }
+    public void visit(ErrsepDerived1 ErrsepDerived1) { visit(); }
     public void visit(LessEqual LessEqual) { visit(); }
     public void visit(Less Less) { visit(); }
     public void visit(GreaterEqual GreaterEqual) { visit(); }
@@ -67,16 +81,18 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(NotEquals NotEquals) { visit(); }
     public void visit(Equals Equals) { visit(); }
     public void visit(SingleCondFactor SingleCondFactor) { visit(); }
+    public void visit(CondTermError CondTermError) { visit(); }
     public void visit(And And) { visit(); }
     public void visit(SingleCondTerm SingleCondTerm) { visit(); }
+    public void visit(CondExprError CondExprError) { visit(); }
     public void visit(Or Or) { visit(); }
     public void visit(SingleCondExpr SingleCondExpr) { visit(); }
-    public void visit(Decrement2 Decrement2) { visit(); }
     public void visit(Decrement Decrement) { visit(); }
-    public void visit(Increment2 Increment2) { visit(); }
     public void visit(Increment Increment) { visit(); }
-    public void visit(Assign2 Assign2) { visit(); }
     public void visit(Assign Assign) { visit(); }
+    public void visit(DesignatorlineDerived3 DesignatorlineDerived3) { visit(); }
+    public void visit(DesignatorlineDerived2 DesignatorlineDerived2) { visit(); }
+    public void visit(DesignatorlineDerived1 DesignatorlineDerived1) { visit(); }
     public void visit(StatementBlock StatementBlock) { visit(); }
     public void visit(EmptyBlock EmptyBlock) { visit(); }
     public void visit(CallStatement CallStatement) { visit(); }
@@ -104,10 +120,13 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(FormparsDerived3 FormparsDerived3) { visit(); }
     public void visit(FormparsDerived2 FormparsDerived2) { visit(); }
     public void visit(FormparsDerived1 FormparsDerived1) { visit(); }
+    public void visit(FormParsWrapper3 FormParsWrapper3) { visit(); }
+    public void visit(FormParsWrapper2 FormParsWrapper2) { visit(); }
     public void visit(FormParsWrapper FormParsWrapper) { visit(); }
     public void visit(EmptyDeclarationBlock EmptyDeclarationBlock) { visit(); }
-    public void visit(DeclarationblockDerived1 DeclarationblockDerived1) { visit(); }
     public void visit(DeclarationBlock DeclarationBlock) { visit(); }
+    public void visit(DeclarationBlockWrapper2 DeclarationBlockWrapper2) { visit(); }
+    public void visit(DeclarationBlockWrapper1 DeclarationBlockWrapper1) { visit(); }
     public void visit(Proc Proc) { visit(); }
     public void visit(Func Func) { visit(); }
     public void visit(CodebodyDerived2 CodebodyDerived2) { visit(); }

@@ -13,8 +13,8 @@ parser code {:
     public void syntax_error(Symbol cur_token)
     {
         System.err.println("Warning");
-        System.err.println("Fixable error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
-        System.err.println("Skipping to next valid code\n");
+        System.err.println("Error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
+        System.err.println("Attempting to recover\n");
     }
 
     @Override
@@ -53,15 +53,15 @@ terminal LBRACE, RBRACE;
 terminal LBRACK, RBRACK;
 terminal DOT;
 
-nonterminal factor;
-nonterminal designator;
-nonterminal term;
-nonterminal expr;
-nonterminal type;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation factor;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation designator;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation term;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation expr;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation type;
 nonterminal actpars;
-nonterminal condterm;
-nonterminal condfactor;
-nonterminal condexpr;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condterm;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condfactor;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condexpr;
 nonterminal designatorstmt;
 nonterminal statement;
 nonterminal statementblock;
@@ -71,18 +71,20 @@ nonterminal namedeclaration;
 nonterminal variabledeclaration;
 nonterminal function;
 nonterminal declarationblock;
+nonterminal declarationblockwrapper;
 nonterminal constnamedeclaration;
 nonterminal constantdeclaration;
 nonterminal codebody;
 nonterminal classdeclaration;
 nonterminal programdeclarations;
 nonterminal program;
-nonterminal call;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation call;
 nonterminal extendsdeclaration;
-nonterminal rs.ac.bg.etf.pp1.TableRef classname;
-nonterminal rs.ac.bg.etf.pp1.TableRef functionname;
-nonterminal rs.ac.bg.etf.pp1.TableRef programname;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation classname;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation functionname;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation programname;
 nonterminal errsep;
+nonterminal designatorline;
 
 program     ::= PROGRAM programname:name programdeclarations LBRACE codebody RBRACE
                 ;
@@ -100,12 +102,12 @@ programdeclarations     ::=
                             | programdeclarations variabledeclaration SEMICOLON
                             ;
 
-extendsdeclaration  ::=    EXTENDS type
-                         | EXTENDS type error
+extendsdeclaration  ::=     IDENT:base LBRACE
+                         |  IDENT:base error LBRACE
                          ;
 
-classdeclaration    ::=   (DerivedClass) CLASS classname:name extendsdeclaration LBRACE declarationblock LBRACE codebody RBRACE RBRACE
-                        | (NonDerivedClass) CLASS classname:name LBRACE declarationblock LBRACE codebody RBRACE RBRACE
+classdeclaration    ::=   (DerivedClass) CLASS classname:name EXTENDS extendsdeclaration declarationblockwrapper codebody RBRACE RBRACE
+                        | (NonDerivedClass) CLASS classname:name LBRACE declarationblockwrapper codebody RBRACE RBRACE
                         ;
 codebody   ::=
                 | codebody function
@@ -115,12 +117,17 @@ function    ::=    (Func) type functionname:name formparswrapper declarationbloc
                  | (Proc) VOID functionname:name formparswrapper declarationblock LBRACE statementblock RBRACE
                  ;
 
+declarationblockwrapper ::=   (DeclarationBlockWrapper1) declarationblock LBRACE
+                            | (DeclarationBlockWrapper2) declarationblock error LBRACE
+                            ;
+
 declarationblock ::=   (DeclarationBlock) declarationblock variabledeclaration SEMICOLON
-                     | declarationblock classdeclaration
                      | (EmptyDeclarationBlock)
                      ;
 
-formparswrapper ::=    (FormParsWrapper) LPAREN formpars RPAREN
+formparswrapper ::=      (FormParsWrapper) LPAREN formpars RPAREN
+                       | (FormParsWrapper2) LPAREN error COMA formpars RPAREN
+                       | (FormParsWrapper3) LPAREN error RPAREN
                     ;
 
 formpars    ::=   formpars COMA type namedeclaration
@@ -148,7 +155,7 @@ namedeclaration     ::=   (Variable) IDENT:name
                         | (Array) IDENT:name LBRACK RBRACK
                         ;
 
-statement   ::=       designatorstmt
+statement   ::=       designatorline
                     | (Block) LBRACE statementblock RBRACE
                     | (If) IF LPAREN condexpr RPAREN statement
                     | (Else) ELSE statement
@@ -164,20 +171,24 @@ statementblock  ::=   (EmptyBlock)
                     | (StatementBlock) statementblock statement
                     ;
 
-designatorstmt  ::=   (Assign) designator ASSIGN expr SEMICOLON
-                    | (Assign2) designator ASSIGN expr error SEMICOLON
-                    | (Increment) designator INCREMENT SEMICOLON
-                    | (Increment2) designator INCREMENT error SEMICOLON
-                    | (Decrement) designator DECREMENT SEMICOLON
-                    | (Decrement2) designator DECREMENT error SEMICOLON
+designatorline  ::=   designatorstmt SEMICOLON
+                    | designatorstmt error SEMICOLON
+                    | error SEMICOLON
+                    ;
+
+designatorstmt  ::=   (Assign) designator ASSIGN expr
+                    | (Increment) designator INCREMENT
+                    | (Decrement) designator DECREMENT
                     ;
 
 condexpr ::=   (SingleCondExpr) condterm
              | (Or) condexpr OR condterm
+             | (CondExprError) condexpr OR error
              ;
 
 condterm ::=  (SingleCondTerm) condfactor
             | (And) condterm AND condfactor
+            | (CondTermError) condterm AND error
             ;
 
 condfactor::= (SingleCondFactor) expr
@@ -187,6 +198,10 @@ condfactor::= (SingleCondFactor) expr
             | (GreaterEqual) expr GREATEREQUAL expr
             | (Less) expr LESS expr
             | (LessEqual) expr LESSEQUAL expr
+            ;
+
+errsep  ::= OR | AND |EQUALS|GREATER|GREATEREQUAL|LESS|LESSEQUAL|DECREMENT|INCREMENT|
+            |IDENT|COMA
             ;
 
 expr   ::=    (SingleExpr) term
@@ -208,13 +223,13 @@ factor ::=   (NumericConstant) NUMBER:val
            | (BooleanConstant) BOOL:val
            | (SingleFactor) designator
            | (NewObject) NEW type
-           | (NewArray) NEW type LBRACK expr RBRACK
+           | (NewArray) NEW type LBRACK expr:count RBRACK
            | (Parenthesized) LPAREN expr RPAREN
            | (CallResult) call
            ;
 
-designator  ::=   (BaseDesignator) IDENT:val
-                | (PathDesignator) designator DOT IDENT:val
+designator  ::=   (BaseDesignator) IDENT:name
+                | (PathDesignator) designator DOT IDENT:name
                 | (IndexDesignator) designator LBRACK expr RBRACK
             ;
 
