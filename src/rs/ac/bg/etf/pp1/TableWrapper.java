@@ -79,6 +79,11 @@ class TableWrapper
         return currentType != null;
     }
 
+    static Struct getActiveType()
+    {
+        return currentType;
+    }
+
     static void closeClassDeclarationBlock(Collection<Obj> baseClassMembers)
     {
         for(Obj baseMember: baseClassMembers)
@@ -102,6 +107,42 @@ class TableWrapper
         else
         {
             return declareName(kind, name, currentType);
+        }
+    }
+
+    static boolean declareConstant(String name, boolean value)
+    {
+        boolean ok = declareName(Obj.Con, name, currentType);
+        if(!ok) return false;
+        getSymbol(name).setAdr(value?1:0);
+        return true;
+    }
+
+    static boolean declareConstant(String name, int value)
+    {
+        boolean ok = declareName(Obj.Con, name, currentType);
+        if(!ok) return false;
+        getSymbol(name).setAdr(value);
+        return true;
+    }
+
+    static boolean declareConstant(String name, char value)
+    {
+        boolean ok = declareName(Obj.Con, name, currentType);
+        if(!ok) return false;
+        getSymbol(name).setAdr((int)value);
+        return true;
+    }
+
+    static Obj getCurrentFunction()
+    {
+        if(scopeStack.peek().getKind()==Obj.Meth)
+        {
+            return scopeStack.peek();
+        }
+        else
+        {
+            return null;
         }
     }
 

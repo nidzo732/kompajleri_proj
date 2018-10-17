@@ -53,12 +53,13 @@ terminal LBRACE, RBRACE;
 terminal LBRACK, RBRACK;
 terminal DOT;
 
+
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation factor;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation designator;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation term;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation expr;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation type;
-nonterminal actpars;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation actpars;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condterm;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condfactor;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condexpr;
@@ -85,6 +86,7 @@ nonterminal rs.ac.bg.etf.pp1.TypeAnnotation functionname;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation programname;
 nonterminal errsep;
 nonterminal designatorline;
+precedence left ELSE;
 
 program     ::= PROGRAM programname:name programdeclarations LBRACE codebody RBRACE
                 ;
@@ -158,7 +160,7 @@ namedeclaration     ::=   (Variable) IDENT:name
 statement   ::=       designatorline
                     | (Block) LBRACE statementblock RBRACE
                     | (If) IF LPAREN condexpr RPAREN statement
-                    | (Else) ELSE statement
+                    | (IfElse) IF LPAREN condexpr RPAREN statement ELSE statement
                     | (DoWhile) DO statement WHILE LPAREN condexpr RPAREN SEMICOLON
                     | (Break) BREAK SEMICOLON
                     | (Continue) CONTINUE SEMICOLON

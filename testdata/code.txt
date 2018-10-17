@@ -15,6 +15,17 @@ class Predmet
 		int zapremina() { return 0;}
 		int Q() {return zapremina() * tezina;}
 		void postaviVrstu(char vrsta) {this.vrsta = vrsta;}
+		void ift()
+		int a,b,c;
+		{
+		    if(a==1)
+		    if(a==2)
+		    if(a==3)
+		    c=0;
+		    else c=1;
+		    else c=2;
+		    else c=3;
+		}
 	}
 }
 
@@ -26,8 +37,6 @@ class Sfera extends Predmet
 		void postaviPoluprecnik(int r) {this.r = r; postaviVrstu('s');}
 		int zapremina()
 		int z;
-		int cinilac;
-		int delilac;
 		{
 			z = cinilac;
 			return z *(r/delilac);
@@ -41,6 +50,7 @@ class Kvadar extends Predmet
 	{
 		void postaviTezinu(int tezina) {this.tezina = tezina; vrsta = 'k';}
 		void postaviStranice(int a, int b, int c) {this.a = a; this.b = b; this.c = c; vrsta = 'k';}
+		int blabla(int q, char c, bool b){ return 3;}
 		int zapremina()
 		int z;
 		{
@@ -75,7 +85,7 @@ int tezinaK, tezinaS;
 		k1 = new Kvadar;
 		k2 = new Kvadar;
 		k3 = new Kvadar;
-        break;
+		k3.blabla(1, "c", true);
 		s1.postaviPoluprecnik(1);
 		s2.postaviPoluprecnik(2);
 		s3.postaviPoluprecnik(3);

@@ -27,8 +27,8 @@ public class Main {
             ((Program)sy.value).traverseBottomUp(sa);
             treeOut.flush();
             treeOut.close();
-            sa.dumpReferences(System.out);
-            Tab.dump();
+            //sa.dumpReferences(System.out);
+            //Tab.dump();
         }
         catch (CompilerError cerr)
         {

@@ -7,12 +7,15 @@ import rs.etf.pp1.symboltable.concepts.Struct;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SemanticAnalyzer extends VisitorAdaptor
 {
 
     private List<String> references = new ArrayList<>();
+    private Struct activeDesignatorType = null;
+    private String pathBaseName = "";
 
     @Override
     public void visit(ProgramName programName)
@@ -29,25 +32,25 @@ public class SemanticAnalyzer extends VisitorAdaptor
     @Override
     public void visit(ClassName className)
     {
-        if(className.getParent() instanceof DerivedClass)
+        if (className.getParent() instanceof DerivedClass)
         {
-            DerivedClass cls = ((DerivedClass)className.getParent());
+            DerivedClass cls = ((DerivedClass) className.getParent());
             Extendsdeclaration edc = cls.getExtendsdeclaration();
             String baseName;
-            if(edc instanceof ExtendsdeclarationDerived1)
+            if (edc instanceof ExtendsdeclarationDerived1)
             {
-                baseName=((ExtendsdeclarationDerived1)edc).getBase();
+                baseName = ((ExtendsdeclarationDerived1) edc).getBase();
             }
             else
             {
-                baseName=((ExtendsdeclarationDerived2)edc).getBase();
+                baseName = ((ExtendsdeclarationDerived2) edc).getBase();
             }
             Struct baseClass = TableWrapper.getType(baseName);
-            if(baseClass==null)
+            if (baseClass == null)
             {
                 CompilerError.raise("Unknown type: " + baseName, className);
             }
-            if(baseClass.getKind()!=Struct.Class)
+            if (baseClass.getKind() != Struct.Class)
             {
                 CompilerError.raise("Cannot inherit from a non-class type", className);
             }
@@ -70,10 +73,11 @@ public class SemanticAnalyzer extends VisitorAdaptor
     @Override
     public void visit(FunctionName functionName)
     {
-        if(!TableWrapper.declareFunction(functionName.getName(), functionName.getParent() instanceof Proc))
+        if (!TableWrapper.declareFunction(functionName.getName(), functionName.getParent() instanceof Proc))
         {
-            CompilerError.raise("Redeclaration of name: "+functionName.getName(), functionName);
-        };
+            CompilerError.raise("Redeclaration of name: " + functionName.getName(), functionName);
+        }
+        ;
     }
 
     @Override
@@ -95,25 +99,25 @@ public class SemanticAnalyzer extends VisitorAdaptor
         {
             CompilerError.raise("Unknown type: " + type.getName(), type);
         }
-        type.typeannotation=new TypeAnnotation();
-        type.typeannotation.type=TableWrapper.getType(type.getName());
+        type.typeannotation = new TypeAnnotation();
+        type.typeannotation.type = TableWrapper.getType(type.getName());
     }
 
     @Override
     public void visit(Array array)
     {
-        if(!TableWrapper.declareVariable(array.getName(), true))
+        if (!TableWrapper.declareVariable(array.getName(), true))
         {
-            CompilerError.raise("Redeclaration of name: "+array.getName(), array);
+            CompilerError.raise("Redeclaration of name: " + array.getName(), array);
         }
     }
 
     @Override
     public void visit(Variable variable)
     {
-        if(!TableWrapper.declareVariable(variable.getName(), false))
+        if (!TableWrapper.declareVariable(variable.getName(), false))
         {
-            CompilerError.raise("Redeclaration of name: "+variable.getName(), variable);
+            CompilerError.raise("Redeclaration of name: " + variable.getName(), variable);
         }
     }
 
@@ -133,99 +137,96 @@ public class SemanticAnalyzer extends VisitorAdaptor
         TableWrapper.methodHeaderDone();
     }
 
-    private Struct activeDesignatorType=null;
-    private String pathBaseName="";
-
     public void visit(BaseDesignator bd)
     {
         Obj obj = TableWrapper.getSymbol(bd.getName());
-        if(obj==null)
+        if (obj == null)
         {
-            CompilerError.raise("Unknown symbol: "+bd.getName(), bd);
+            CompilerError.raise("Unknown symbol: " + bd.getName(), bd);
         }
         else
         {
-            references.add("Symbol referenced: "+bd.getName()+" on Line:"+bd.getLine());
-            activeDesignatorType=obj.getType();
+            references.add("Symbol referenced: " + bd.getName() + " on Line:" + bd.getLine());
+            activeDesignatorType = obj.getType();
             pathBaseName = bd.getName();
-            bd.typeannotation=new TypeAnnotation();
-            bd.typeannotation.obj=obj;
-            bd.typeannotation.type=activeDesignatorType;
-            bd.typeannotation.path=pathBaseName;
+            bd.typeannotation = new TypeAnnotation();
+            bd.typeannotation.obj = obj;
+            bd.typeannotation.type = activeDesignatorType;
+            bd.typeannotation.path = pathBaseName;
         }
     }
 
     public void visit(PathDesignator pd)
     {
-        Obj obj=null;
-        if(activeDesignatorType!=null && activeDesignatorType.getMembers()!=null)
+        Obj obj = null;
+        if (activeDesignatorType != null && activeDesignatorType.getMembers() != null)
         {
-            for(Obj member:activeDesignatorType.getMembers())
+            for (Obj member : activeDesignatorType.getMembers())
             {
-                if(member.getName().equals(pd.getName()))
+                if (member.getName().equals(pd.getName()))
                 {
-                    obj=member;
+                    obj = member;
                     break;
                 }
             }
         }
-        if(obj==null)
+        if (obj == null)
         {
-            CompilerError.raise("Object "+pathBaseName+" does not have a field named: "+pd.getName(), pd);
+            CompilerError.raise("Object " + pathBaseName + " does not have a field named: " + pd.getName(), pd);
         }
         else
         {
-            references.add("Field: "+pd.getName()+" of object: "+pathBaseName+" referenced on Line:"+pd.getLine());
-            activeDesignatorType=obj.getType();
-            pathBaseName += "."+pd.getName();
-            pd.typeannotation=new TypeAnnotation();
-            pd.typeannotation.obj=obj;
-            pd.typeannotation.type=activeDesignatorType;
-            pd.typeannotation.path=pathBaseName;
+            references.add("Field: " + pd.getName() + " of object: " + pathBaseName + " referenced on Line:" + pd.getLine());
+            activeDesignatorType = obj.getType();
+            pathBaseName += "." + pd.getName();
+            pd.typeannotation = new TypeAnnotation();
+            pd.typeannotation.obj = obj;
+            pd.typeannotation.type = activeDesignatorType;
+            pd.typeannotation.path = pathBaseName;
         }
     }
 
     public void visit(IndexDesignator id)
     {
-        if(!id.getExpr().typeannotation.type.compatibleWith(TableWrapper.getType("int")))
+        if (!id.getExpr().typeannotation.type.compatibleWith(TableWrapper.getType("int")))
         {
             CompilerError.raise("Array index must be an integer", id);
         }
-        activeDesignatorType=id.getDesignator().typeannotation.type;
-        pathBaseName=id.getDesignator().typeannotation.path;
-        if(activeDesignatorType!=null && activeDesignatorType.getKind()==Struct.Array)
+        activeDesignatorType = id.getDesignator().typeannotation.type;
+        pathBaseName = id.getDesignator().typeannotation.path;
+        if (activeDesignatorType != null && activeDesignatorType.getKind() == Struct.Array)
         {
-            references.add("Array member of object: "+pathBaseName+" referenced on Line:"+id.getLine());
-            activeDesignatorType=activeDesignatorType.getElemType();
+            references.add("Array member of object: " + pathBaseName + " referenced on Line:" + id.getLine());
+            activeDesignatorType = activeDesignatorType.getElemType();
             pathBaseName += "[...]";
-            id.typeannotation=new TypeAnnotation();
-            id.typeannotation.type=activeDesignatorType;
-            id.typeannotation.path=pathBaseName;
+            id.typeannotation = new TypeAnnotation();
+            id.typeannotation.type = activeDesignatorType;
+            id.typeannotation.path = pathBaseName;
         }
         else
         {
-            CompilerError.raise(pathBaseName+" is not an array", id);
+            CompilerError.raise(pathBaseName + " is not an array", id);
         }
     }
 
     @Override
     public void visit(DeclarationBlockWrapper1 dbw)
     {
-        if(dbw.getParent() instanceof DerivedClass)
+        if (dbw.getParent() instanceof DerivedClass)
         {
-            DerivedClass cls = ((DerivedClass)dbw.getParent());
+            DerivedClass cls = ((DerivedClass) dbw.getParent());
             Extendsdeclaration edc = cls.getExtendsdeclaration();
             String baseName;
-            if(edc instanceof ExtendsdeclarationDerived1)
+            if (edc instanceof ExtendsdeclarationDerived1)
             {
-                baseName=((ExtendsdeclarationDerived1)edc).getBase();
+                baseName = ((ExtendsdeclarationDerived1) edc).getBase();
             }
             else
             {
-                baseName=((ExtendsdeclarationDerived2)edc).getBase();
+                baseName = ((ExtendsdeclarationDerived2) edc).getBase();
             }
             Struct baseClass = TableWrapper.getType(baseName);
-            if(baseClass==null)
+            if (baseClass == null)
             {
                 CompilerError.raise("Unknown type: " + baseName, dbw);
             }
@@ -236,21 +237,21 @@ public class SemanticAnalyzer extends VisitorAdaptor
     @Override
     public void visit(DeclarationBlockWrapper2 dbw)
     {
-        if(dbw.getParent() instanceof DerivedClass)
+        if (dbw.getParent() instanceof DerivedClass)
         {
-            DerivedClass cls = ((DerivedClass)dbw.getParent());
+            DerivedClass cls = ((DerivedClass) dbw.getParent());
             Extendsdeclaration edc = cls.getExtendsdeclaration();
             String baseName;
-            if(edc instanceof ExtendsdeclarationDerived1)
+            if (edc instanceof ExtendsdeclarationDerived1)
             {
-                baseName=((ExtendsdeclarationDerived1)edc).getBase();
+                baseName = ((ExtendsdeclarationDerived1) edc).getBase();
             }
             else
             {
-                baseName=((ExtendsdeclarationDerived2)edc).getBase();
+                baseName = ((ExtendsdeclarationDerived2) edc).getBase();
             }
             Struct baseClass = TableWrapper.getType(baseName);
-            if(baseClass==null)
+            if (baseClass == null)
             {
                 CompilerError.raise("Unknown type: " + baseName, dbw);
             }
@@ -261,91 +262,149 @@ public class SemanticAnalyzer extends VisitorAdaptor
     @Override
     public void visit(NumericConstant c)
     {
-        c.typeannotation=new TypeAnnotation();
-        c.typeannotation.type=TableWrapper.getType("int");
+        c.typeannotation = new TypeAnnotation();
+        c.typeannotation.type = TableWrapper.getType("int");
     }
 
     @Override
     public void visit(BooleanConstant c)
     {
-        c.typeannotation=new TypeAnnotation();
-        c.typeannotation.type=TableWrapper.getType("bool");
+        c.typeannotation = new TypeAnnotation();
+        c.typeannotation.type = TableWrapper.getType("bool");
     }
 
     @Override
     public void visit(CharacterConstant c)
     {
-        c.typeannotation=new TypeAnnotation();
-        c.typeannotation.type=TableWrapper.getType("char");
+        c.typeannotation = new TypeAnnotation();
+        c.typeannotation.type = TableWrapper.getType("char");
     }
 
     @Override
     public void visit(SingleFactor c)
     {
-        c.typeannotation=new TypeAnnotation();
+        c.typeannotation = new TypeAnnotation();
         c.typeannotation.type = c.getDesignator().typeannotation.type;
     }
 
     @Override
     public void visit(NewObject c)
     {
-        c.typeannotation=new TypeAnnotation();
-        c.typeannotation.type=c.getType().typeannotation.type;
+        c.typeannotation = new TypeAnnotation();
+        c.typeannotation.type = c.getType().typeannotation.type;
     }
 
     @Override
     public void visit(NewArray c)
     {
         enforceTypes(c, "int", "Array size must be an integer", c.getExpr().typeannotation);
-        c.typeannotation=new TypeAnnotation();
-        c.typeannotation.type= new Struct(Struct.Array, c.getType().typeannotation.type);
+        c.typeannotation = new TypeAnnotation();
+        c.typeannotation.type = new Struct(Struct.Array, c.getType().typeannotation.type);
     }
 
     @Override
     public void visit(Parenthesized p)
     {
-        p.typeannotation=new TypeAnnotation();
-        p.typeannotation.type=p.getExpr().typeannotation.type;
+        p.typeannotation = new TypeAnnotation();
+        p.typeannotation.type = p.getExpr().typeannotation.type;
     }
 
     @Override
     public void visit(CallResult cr)
     {
-        cr.typeannotation=new TypeAnnotation();
-        cr.typeannotation.type=cr.getCall().typeannotation.type;
+        cr.typeannotation = new TypeAnnotation();
+        cr.typeannotation.type = cr.getCall().typeannotation.type;
     }
 
     @Override
     public void visit(FuncCall fc)
     {
-        fc.typeannotation=new TypeAnnotation();
-        if(fc.getDesignator().typeannotation.obj.getKind()!=Obj.Meth)
+        fc.typeannotation = new TypeAnnotation();
+        Obj function= fc.getDesignator().typeannotation.obj;
+        if (function.getKind() != Obj.Meth)
         {
             CompilerError.raise("Attempting to call a non-callable object", fc);
         }
-        fc.typeannotation.type=fc.getDesignator().typeannotation.type;
+        fc.typeannotation.type = fc.getDesignator().typeannotation.type;
+        Actpars pars = fc.getActpars();
+        int argc = function.getLevel();
+        List<TypeAnnotation> taList=new LinkedList<>();
+        if(pars.typeannotation!=null)
+        {
+            taList=pars.typeannotation.arglist;
+        }
+        if(taList.size()<argc)
+        {
+            CompilerError.raise("Too few arguments for call, "+argc+" required, got "+taList.size(), fc);
+        }
+        if(taList.size()>argc)
+        {
+            CompilerError.raise("Too many arguments for call, "+argc+" required, got "+taList.size(), fc);
+        }
+        if(argc>0)
+        {
+            if(function.getName().equals("read") || function.getName().equals("print"))
+            {
+                if(!taList.get(0).type.compatibleWith(TableWrapper.getType("int")) &&
+                        !taList.get(0).type.compatibleWith(TableWrapper.getType("bool")) &&
+                        !taList.get(0).type.compatibleWith(TableWrapper.getType("char")))
+                {
+                    CompilerError.raise(function.getName()+" can only handle builtin types", fc);
+                }
+                return;
+            }
+            int ac = 0;
+            for (Obj obj: function.getLocalSymbols())
+            {
+                if(obj.getName().equals("this")) continue;;
+                ac +=1;
+                if(ac>taList.size()) break;
+                if(!taList.get(ac-1).type.compatibleWith(obj.getType()))
+                {
+                    CompilerError.raise("Incompatible type for parameter #"+ac+" in function call", fc);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void visit(Parameter param)
+    {
+        param.typeannotation=new TypeAnnotation();
+        param.typeannotation.type=param.getExpr().typeannotation.type;
+        param.typeannotation.arglist = new LinkedList<>();
+        param.typeannotation.arglist.add(param.typeannotation);
+    }
+
+    @Override
+    public void visit(Parameters param)
+    {
+        param.typeannotation=new TypeAnnotation();
+        param.typeannotation.type=param.getExpr().typeannotation.type;
+        param.typeannotation.arglist=param.getActpars().typeannotation.arglist;
+        param.typeannotation.arglist.add(param.typeannotation);
     }
 
     @Override
     public void visit(SingleTerm st)
     {
-        st.typeannotation=new TypeAnnotation();
-        st.typeannotation.type=st.getFactor().typeannotation.type;
+        st.typeannotation = new TypeAnnotation();
+        st.typeannotation.type = st.getFactor().typeannotation.type;
     }
 
     @Override
     public void visit(Negated ne)
     {
-        enforceTypes(ne, "int","Only integers can be negated", ne.getFactor().typeannotation);
-        ne.typeannotation=new TypeAnnotation();
-        ne.typeannotation.type=ne.getFactor().typeannotation.type;
+        enforceTypes(ne, "int", "Only integers can be negated", ne.getFactor().typeannotation);
+        ne.typeannotation = new TypeAnnotation();
+        ne.typeannotation.type = ne.getFactor().typeannotation.type;
     }
 
     @Override
     public void visit(Multiplication mu)
     {
         enforceTypes(mu, "int", "Only integers can be multiplied", mu.getTerm().typeannotation, mu.getFactor().typeannotation);
-        mu.typeannotation=new TypeAnnotation();
+        mu.typeannotation = new TypeAnnotation();
         mu.typeannotation.type = TableWrapper.getType("int");
     }
 
@@ -353,7 +412,7 @@ public class SemanticAnalyzer extends VisitorAdaptor
     public void visit(Division di)
     {
         enforceTypes(di, "int", "Only integers can be divided", di.getTerm().typeannotation, di.getFactor().typeannotation);
-        di.typeannotation=new TypeAnnotation();
+        di.typeannotation = new TypeAnnotation();
         di.typeannotation.type = TableWrapper.getType("int");
     }
 
@@ -361,22 +420,22 @@ public class SemanticAnalyzer extends VisitorAdaptor
     public void visit(Modulus mo)
     {
         enforceTypes(mo, "int", "Only integers can be divided", mo.getTerm().typeannotation, mo.getFactor().typeannotation);
-        mo.typeannotation=new TypeAnnotation();
+        mo.typeannotation = new TypeAnnotation();
         mo.typeannotation.type = TableWrapper.getType("int");
     }
 
     @Override
     public void visit(SingleExpr se)
     {
-        se.typeannotation=new TypeAnnotation();
-        se.typeannotation.type=se.getTerm().typeannotation.type;
+        se.typeannotation = new TypeAnnotation();
+        se.typeannotation.type = se.getTerm().typeannotation.type;
     }
 
     @Override
     public void visit(Addition ad)
     {
         enforceTypes(ad, "int", "Only integers can be added", ad.getExpr().typeannotation, ad.getTerm().typeannotation);
-        ad.typeannotation=new TypeAnnotation();
+        ad.typeannotation = new TypeAnnotation();
         ad.typeannotation.type = TableWrapper.getType("int");
     }
 
@@ -384,172 +443,153 @@ public class SemanticAnalyzer extends VisitorAdaptor
     public void visit(Substraction su)
     {
         enforceTypes(su, "int", "Only integers can be substracted", su.getExpr().typeannotation, su.getTerm().typeannotation);
-        su.typeannotation=new TypeAnnotation();
+        su.typeannotation = new TypeAnnotation();
         su.typeannotation.type = TableWrapper.getType("int");
     }
 
     @Override
     public void visit(SingleCondFactor scf)
     {
-        scf.typeannotation=new TypeAnnotation();
-        scf.typeannotation.type=scf.getExpr().typeannotation.type;
+        scf.typeannotation = new TypeAnnotation();
+        scf.typeannotation.type = scf.getExpr().typeannotation.type;
     }
 
     @Override
     public void visit(Equals eq)
     {
-        if((eq.getExpr().typeannotation.type.getKind()==Struct.Array)
-                && (eq.getExpr1().typeannotation.type.getKind()==Struct.Array)
+        if ((eq.getExpr().typeannotation.type.getKind() == Struct.Array)
+                && (eq.getExpr1().typeannotation.type.getKind() == Struct.Array)
                 && !(eq.getExpr().typeannotation.type.getElemType().compatibleWith(eq.getExpr1().typeannotation.type.getElemType())))
         {
             CompilerError.raise("Equality test between incompatible types", eq);
         }
-        else if(!eq.getExpr().typeannotation.type.compatibleWith(eq.getExpr1().typeannotation.type))
+        else if (!eq.getExpr().typeannotation.type.compatibleWith(eq.getExpr1().typeannotation.type))
         {
             CompilerError.raise("Equality test between incompatible types", eq);
         }
-        eq.typeannotation=new TypeAnnotation();
-        eq.typeannotation.type=TableWrapper.getType("bool");
+        eq.typeannotation = new TypeAnnotation();
+        eq.typeannotation.type = TableWrapper.getType("bool");
     }
 
     @Override
     public void visit(NotEquals neq)
     {
-        if((neq.getExpr().typeannotation.type.getKind()==Struct.Array)
-                && (neq.getExpr1().typeannotation.type.getKind()==Struct.Array)
+        if ((neq.getExpr().typeannotation.type.getKind() == Struct.Array)
+                && (neq.getExpr1().typeannotation.type.getKind() == Struct.Array)
                 && !(neq.getExpr().typeannotation.type.getElemType().compatibleWith(neq.getExpr1().typeannotation.type.getElemType())))
         {
             CompilerError.raise("Inequality test between incompatible types", neq);
         }
-        else if(!neq.getExpr().typeannotation.type.compatibleWith(neq.getExpr1().typeannotation.type))
+        else if (!neq.getExpr().typeannotation.type.compatibleWith(neq.getExpr1().typeannotation.type))
         {
             CompilerError.raise("Inequality test between incompatible types", neq);
         }
-        neq.typeannotation=new TypeAnnotation();
-        neq.typeannotation.type=TableWrapper.getType("bool");
+        neq.typeannotation = new TypeAnnotation();
+        neq.typeannotation.type = TableWrapper.getType("bool");
     }
 
     @Override
     public void visit(Greater gr)
     {
         enforceTypes(gr, "int", "Only integers can be compared", gr.getExpr().typeannotation, gr.getExpr1().typeannotation);
-        gr.typeannotation=new TypeAnnotation();
-        gr.typeannotation.type=TableWrapper.getType("bool");
+        gr.typeannotation = new TypeAnnotation();
+        gr.typeannotation.type = TableWrapper.getType("bool");
     }
 
     @Override
     public void visit(GreaterEqual gre)
     {
         enforceTypes(gre, "int", "Only integers can be compared", gre.getExpr().typeannotation, gre.getExpr1().typeannotation);
-        gre.typeannotation=new TypeAnnotation();
-        gre.typeannotation.type=TableWrapper.getType("bool");
+        gre.typeannotation = new TypeAnnotation();
+        gre.typeannotation.type = TableWrapper.getType("bool");
     }
 
     @Override
     public void visit(Less le)
     {
         enforceTypes(le, "int", "Only integers can be compared", le.getExpr().typeannotation, le.getExpr1().typeannotation);
-        le.typeannotation=new TypeAnnotation();
-        le.typeannotation.type=TableWrapper.getType("bool");
+        le.typeannotation = new TypeAnnotation();
+        le.typeannotation.type = TableWrapper.getType("bool");
     }
 
     @Override
     public void visit(LessEqual leq)
     {
         enforceTypes(leq, "int", "Only integers can be compared", leq.getExpr().typeannotation, leq.getExpr1().typeannotation);
-        leq.typeannotation=new TypeAnnotation();
-        leq.typeannotation.type=TableWrapper.getType("bool");
+        leq.typeannotation = new TypeAnnotation();
+        leq.typeannotation.type = TableWrapper.getType("bool");
     }
 
     @Override
     public void visit(SingleCondTerm sct)
     {
-        sct.typeannotation=new TypeAnnotation();
-        sct.typeannotation.type=sct.getCondfactor().typeannotation.type;
+        sct.typeannotation = new TypeAnnotation();
+        sct.typeannotation.type = sct.getCondfactor().typeannotation.type;
     }
 
     @Override
     public void visit(CondTermError sct)
     {
-        sct.typeannotation=new TypeAnnotation();
-        sct.typeannotation.type=sct.getCondterm().typeannotation.type;
+        sct.typeannotation = new TypeAnnotation();
+        sct.typeannotation.type = sct.getCondterm().typeannotation.type;
     }
 
     @Override
     public void visit(And and)
     {
-        enforceTypes(and, "bool","AND can only be done on bool", and.getCondfactor().typeannotation, and.getCondterm().typeannotation);
-        and.typeannotation=new TypeAnnotation();
-        and.typeannotation.type=TableWrapper.getType("bool");
+        enforceTypes(and, "bool", "AND can only be done on bool", and.getCondfactor().typeannotation, and.getCondterm().typeannotation);
+        and.typeannotation = new TypeAnnotation();
+        and.typeannotation.type = TableWrapper.getType("bool");
     }
 
     @Override
     public void visit(SingleCondExpr sce)
     {
-        sce.typeannotation=new TypeAnnotation();
-        sce.typeannotation.type=sce.getCondterm().typeannotation.type;
+        sce.typeannotation = new TypeAnnotation();
+        sce.typeannotation.type = sce.getCondterm().typeannotation.type;
     }
 
     @Override
     public void visit(CondExprError cee)
     {
-        cee.typeannotation=new TypeAnnotation();
-        cee.typeannotation.type=cee.getCondexpr().typeannotation.type;
+        cee.typeannotation = new TypeAnnotation();
+        cee.typeannotation.type = cee.getCondexpr().typeannotation.type;
     }
 
     @Override
     public void visit(Or or)
     {
-        enforceTypes(or, "bool","OR can only be done on bool", or.getCondexpr().typeannotation, or.getCondterm().typeannotation);
-        or.typeannotation=new TypeAnnotation();
-        or.typeannotation.type=TableWrapper.getType("bool");
+        enforceTypes(or, "bool", "OR can only be done on bool", or.getCondexpr().typeannotation, or.getCondterm().typeannotation);
+        or.typeannotation = new TypeAnnotation();
+        or.typeannotation.type = TableWrapper.getType("bool");
     }
 
     @Override
     public void visit(If ifstmt)
     {
         enforceTypes(ifstmt, "bool", "IF condition must be a bool", ifstmt.getCondexpr().typeannotation);
+        System.out.println("IF(cnd on line "+ifstmt.getLine()+") THEN COMMAND ON LINE "+ifstmt.getStatement().getLine());
     }
 
     @Override
-    public void visit(Else els)
+    public void visit(IfElse ifstmt)
     {
-        StatementBlock parent;
-        if(els.getParent() instanceof StatementBlock)
-        {
-            parent=(StatementBlock)els.getParent();
-            if(parent.getStatementblock() instanceof StatementBlock)
-            {
-                StatementBlock sibling=(StatementBlock)parent.getStatementblock();
-                if(sibling.getStatement() instanceof If)
-                {
-                    return;
-                }
-                if(sibling.getStatement() instanceof Else)
-                {
-                    Statement siblingStatement = ((Else)sibling.getStatement()).getStatement();
-                    if(siblingStatement instanceof If)
-                    {
-                        return;
-                    }
+        enforceTypes(ifstmt, "bool", "IF condition must be a bool", ifstmt.getCondexpr().typeannotation);
+        System.out.println("IF(cnd on line "+ifstmt.getLine()+") THEN COMMAND ON LINE "+ifstmt.getStatement().getLine()+" ELSE COMMAND ON LINE "+ifstmt.getStatement1().getLine());
 
-                }
-            }
-        }
-        CompilerError.raise("ELSE must be preceded by an IF or ELSE IF", els);
     }
 
     @Override
     public void visit(Continue cnt)
     {
-        SyntaxNode node=cnt;
-        while (node.getParent()!=null)
+        SyntaxNode node = cnt;
+        while (node.getParent() != null)
         {
-            if(node.getParent() instanceof DoWhile)
+            if (node.getParent() instanceof DoWhile)
             {
                 return;
             }
-            node=node.getParent();
+            node = node.getParent();
         }
         CompilerError.raise("CONTINUE must be called in a loop", cnt);
     }
@@ -557,14 +597,14 @@ public class SemanticAnalyzer extends VisitorAdaptor
     @Override
     public void visit(Break brk)
     {
-        SyntaxNode node=brk;
-        while (node.getParent()!=null)
+        SyntaxNode node = brk;
+        while (node.getParent() != null)
         {
-            if(node.getParent() instanceof DoWhile)
+            if (node.getParent() instanceof DoWhile)
             {
                 return;
             }
-            node=node.getParent();
+            node = node.getParent();
         }
         CompilerError.raise("CONTINUE must be called in a loop", brk);
     }
@@ -575,11 +615,80 @@ public class SemanticAnalyzer extends VisitorAdaptor
         enforceTypes(dw, "bool", "WHILE condition must be bool", dw.getCondexpr().typeannotation);
     }
 
-    private void enforceTypes(SyntaxNode node, String type, String message, TypeAnnotation ...tas)
+    @Override
+    public void visit(Return rs)
     {
-        for (TypeAnnotation ta:tas)
+        if (TableWrapper.getCurrentFunction() == null)
         {
-            if(!ta.type.compatibleWith(TableWrapper.getType(type)))
+            CompilerError.raise("Return called outside of function", rs);
+        }
+        if (TableWrapper.getCurrentFunction().getType().getKind() == Struct.None)
+        {
+            CompilerError.raise("Void function can not return a value", rs);
+        }
+        if (!TableWrapper.getCurrentFunction().getType().compatibleWith(rs.getExpr().typeannotation.type))
+        {
+            CompilerError.raise("Returned value does not match function type", rs);
+        }
+    }
+
+    @Override
+    public void visit(EmptyReturn rs)
+    {
+        if (TableWrapper.getCurrentFunction() == null)
+        {
+            CompilerError.raise("Return called outside of function", rs);
+        }
+        if (TableWrapper.getCurrentFunction().getType().getKind() != Struct.None)
+        {
+            CompilerError.raise("Empty return statement in a non-void function", rs);
+        }
+    }
+
+    @Override
+    public void visit(BoolConstantDeclaration bcd)
+    {
+        if (!TableWrapper.getActiveType().compatibleWith(TableWrapper.getType("bool")))
+        {
+            CompilerError.raise("Mismatch between constant type and value", bcd);
+        }
+        if (!TableWrapper.declareConstant(bcd.getName(), bcd.getVal()))
+        {
+            CompilerError.raise("Redeclaration of name: " + bcd.getName(), bcd);
+        }
+    }
+
+    @Override
+    public void visit(NumberConstantDeclaration ncd)
+    {
+        if (!TableWrapper.getActiveType().compatibleWith(TableWrapper.getType("int")))
+        {
+            CompilerError.raise("Mismatch between constant type and value", ncd);
+        }
+        if (!TableWrapper.declareConstant(ncd.getName(), ncd.getVal()))
+        {
+            CompilerError.raise("Redeclaration of name: " + ncd.getName(), ncd);
+        }
+    }
+
+    @Override
+    public void visit(CharConstantDeclaration ccd)
+    {
+        if (!TableWrapper.getActiveType().compatibleWith(TableWrapper.getType("char")))
+        {
+            CompilerError.raise("Mismatch between constant type and value", ccd);
+        }
+        if (!TableWrapper.declareConstant(ccd.getName(), ccd.getVal()))
+        {
+            CompilerError.raise("Redeclaration of name: " + ccd.getName(), ccd);
+        }
+    }
+
+    private void enforceTypes(SyntaxNode node, String type, String message, TypeAnnotation... tas)
+    {
+        for (TypeAnnotation ta : tas)
+        {
+            if (!ta.type.compatibleWith(TableWrapper.getType(type)))
             {
                 CompilerError.raise(message, node);
             }
@@ -588,7 +697,7 @@ public class SemanticAnalyzer extends VisitorAdaptor
 
     void dumpReferences(PrintStream stream)
     {
-        for(String reference: references)
+        for (String reference : references)
         {
             stream.println(reference);
         }
