@@ -1,854 +1,189 @@
 ProgramDerived1(
   ProgramName(
-   test_303
+   P
   ) [ProgramName]
-  ProgramdeclarationsDerived4(
-    ProgramdeclarationsDerived4(
-      ProgramdeclarationsDerived2(
-        ProgramdeclarationsDerived2(
-          ProgramdeclarationsDerived2(
-            ProgramdeclarationsDerived3(
-              ProgramdeclarationsDerived1(
-              ) [ProgramdeclarationsDerived1]
-              ConstantDeclarations(
-                ConstantDeclarationTyped(
+  ProgramdeclarationsDerived6(
+    ProgramdeclarationsDerived2(
+      ProgramdeclarationsDerived3(
+        ProgramdeclarationsDerived4(
+          ProgramdeclarationsDerived5(
+            ProgramdeclarationsDerived1(
+            ) [ProgramdeclarationsDerived1]
+            ConstantDeclarationTyped(
+              Type(
+               int
+              ) [Type]
+              NumberConstantDeclaration(
+               size
+               10
+              ) [NumberConstantDeclaration]
+            ) [ConstantDeclarationTyped]
+          ) [ProgramdeclarationsDerived5]
+          EnumDeclaration(
+            EnumName(
+             Num
+            ) [EnumName]
+            EnuminnerDerived2(
+              EnuminnerDerived2(
+                EnuminnerDerived1(
+                  EnumConstant(
+                   ZERO
+                  ) [EnumConstant]
+                ) [EnuminnerDerived1]
+                EnumConstant(
+                 ONE
+                ) [EnumConstant]
+              ) [EnuminnerDerived2]
+              NumberedEnumConstant(
+               TEN
+               10
+              ) [NumberedEnumConstant]
+            ) [EnuminnerDerived2]
+          ) [EnumDeclaration]
+        ) [ProgramdeclarationsDerived4]
+        InterfaceDeclaration(
+          InterfaceName(
+           I
+          ) [InterfaceName]
+          InterfaceMethodDeclaration(
+            InterfaceMethodDeclaration(
+              EmptyInterfaceInner(
+              ) [EmptyInterfaceInner]
+              FuncHeader(
+                FunctionName(
                   Type(
                    int
                   ) [Type]
-                  NumberConstantDeclaration(
-                   cinilac
-                   4
-                  ) [NumberConstantDeclaration]
-                ) [ConstantDeclarationTyped]
-                NumberConstantDeclaration(
-                 delilac
-                 3
-                ) [NumberConstantDeclaration]
-              ) [ConstantDeclarations]
-            ) [ProgramdeclarationsDerived3]
-            NonDerivedClass(
-              ClassName(
-               Predmet
-              ) [ClassName]
-              DeclarationBlockWrapper1(
-                DeclarationBlock(
-                  DeclarationBlock(
-                    EmptyDeclarationBlock(
-                    ) [EmptyDeclarationBlock]
-                    VariabledeclarationDerived1(
-                      Type(
-                       int
-                      ) [Type]
-                      Variable(
-                       tezina
-                      ) [Variable]
-                    ) [VariabledeclarationDerived1]
-                  ) [DeclarationBlock]
-                  VariabledeclarationDerived1(
+                 getp
+                ) [FunctionName]
+                FormParsWrapper(
+                  FormparsDerived2(
                     Type(
-                     char
+                     int
                     ) [Type]
                     Variable(
-                     vrsta
+                     i
                     ) [Variable]
-                  ) [VariabledeclarationDerived1]
-                ) [DeclarationBlock]
-              ) [DeclarationBlockWrapper1]
-              CodebodyDerived2(
-                CodebodyDerived2(
-                  CodebodyDerived2(
-                    CodebodyDerived2(
-                      CodebodyDerived2(
-                        CodebodyDerived2(
-                          CodebodyDerived1(
-                          ) [CodebodyDerived1]
-                          Proc(
-                            FunctionName(
-                             postaviTezinu
-                            ) [FunctionName]
-                            FormParsWrapper(
-                              FormparsDerived3(
-                                Type(
-                                 int
-                                ) [Type]
-                                Variable(
-                                 tezina
-                                ) [Variable]
-                              ) [FormparsDerived3]
-                            ) [FormParsWrapper]
-                            EmptyDeclarationBlock(
-                            ) [EmptyDeclarationBlock]
-                            StatementBlock(
-                              EmptyBlock(
-                              ) [EmptyBlock]
-                              StatementDerived1(
-                                DesignatorlineDerived1(
-                                  Assign(
-                                    PathDesignator(
-                                      BaseDesignator(
-                                       this
-                                      ) [BaseDesignator]
-                                     tezina
-                                    ) [PathDesignator]
-                                    SingleExpr(
-                                      SingleTerm(
-                                        SingleFactor(
-                                          BaseDesignator(
-                                           tezina
-                                          ) [BaseDesignator]
-                                        ) [SingleFactor]
-                                      ) [SingleTerm]
-                                    ) [SingleExpr]
-                                  ) [Assign]
-                                ) [DesignatorlineDerived1]
-                              ) [StatementDerived1]
-                            ) [StatementBlock]
-                          ) [Proc]
-                        ) [CodebodyDerived2]
-                        Proc(
-                          FunctionName(
-                           ucitajTezinu
-                          ) [FunctionName]
-                          FormParsWrapper(
-                            FormparsDerived4(
-                            ) [FormparsDerived4]
-                          ) [FormParsWrapper]
-                          EmptyDeclarationBlock(
-                          ) [EmptyDeclarationBlock]
-                          StatementBlock(
-                            EmptyBlock(
-                            ) [EmptyBlock]
-                            CallStatement(
-                              FuncCall(
-                                BaseDesignator(
-                                 read
-                                ) [BaseDesignator]
-                                Parameter(
-                                  SingleExpr(
-                                    SingleTerm(
-                                      SingleFactor(
-                                        BaseDesignator(
-                                         tezina
-                                        ) [BaseDesignator]
-                                      ) [SingleFactor]
-                                    ) [SingleTerm]
-                                  ) [SingleExpr]
-                                ) [Parameter]
-                              ) [FuncCall]
-                            ) [CallStatement]
-                          ) [StatementBlock]
-                        ) [Proc]
-                      ) [CodebodyDerived2]
-                      Func(
-                        Type(
-                         int
-                        ) [Type]
-                        FunctionName(
-                         zapremina
-                        ) [FunctionName]
-                        FormParsWrapper(
-                          FormparsDerived4(
-                          ) [FormparsDerived4]
-                        ) [FormParsWrapper]
-                        EmptyDeclarationBlock(
-                        ) [EmptyDeclarationBlock]
-                        StatementBlock(
-                          EmptyBlock(
-                          ) [EmptyBlock]
-                          Return(
-                            SingleExpr(
-                              SingleTerm(
-                                NumericConstant(
-                                 0
-                                ) [NumericConstant]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [Return]
-                        ) [StatementBlock]
-                      ) [Func]
-                    ) [CodebodyDerived2]
-                    Func(
-                      Type(
-                       int
-                      ) [Type]
-                      FunctionName(
-                       Q
-                      ) [FunctionName]
-                      FormParsWrapper(
-                        FormparsDerived4(
-                        ) [FormparsDerived4]
-                      ) [FormParsWrapper]
-                      EmptyDeclarationBlock(
-                      ) [EmptyDeclarationBlock]
-                      StatementBlock(
-                        EmptyBlock(
-                        ) [EmptyBlock]
-                        Return(
-                          SingleExpr(
-                            Multiplication(
-                              SingleTerm(
-                                CallResult(
-                                  FuncCall(
-                                    BaseDesignator(
-                                     zapremina
-                                    ) [BaseDesignator]
-                                    EmptyParameters(
-                                    ) [EmptyParameters]
-                                  ) [FuncCall]
-                                ) [CallResult]
-                              ) [SingleTerm]
-                              SingleFactor(
-                                BaseDesignator(
-                                 tezina
-                                ) [BaseDesignator]
-                              ) [SingleFactor]
-                            ) [Multiplication]
-                          ) [SingleExpr]
-                        ) [Return]
-                      ) [StatementBlock]
-                    ) [Func]
-                  ) [CodebodyDerived2]
-                  Proc(
-                    FunctionName(
-                     postaviVrstu
-                    ) [FunctionName]
-                    FormParsWrapper(
-                      FormparsDerived3(
-                        Type(
-                         char
-                        ) [Type]
-                        Variable(
-                         vrsta
-                        ) [Variable]
-                      ) [FormparsDerived3]
-                    ) [FormParsWrapper]
-                    EmptyDeclarationBlock(
-                    ) [EmptyDeclarationBlock]
-                    StatementBlock(
-                      EmptyBlock(
-                      ) [EmptyBlock]
-                      StatementDerived1(
-                        DesignatorlineDerived1(
-                          Assign(
-                            PathDesignator(
-                              BaseDesignator(
-                               this
-                              ) [BaseDesignator]
-                             vrsta
-                            ) [PathDesignator]
-                            SingleExpr(
-                              SingleTerm(
-                                SingleFactor(
-                                  BaseDesignator(
-                                   vrsta
-                                  ) [BaseDesignator]
-                                ) [SingleFactor]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [Assign]
-                        ) [DesignatorlineDerived1]
-                      ) [StatementDerived1]
-                    ) [StatementBlock]
-                  ) [Proc]
-                ) [CodebodyDerived2]
-                Proc(
-                  FunctionName(
-                   ift
-                  ) [FunctionName]
-                  FormParsWrapper(
-                    FormparsDerived4(
-                    ) [FormparsDerived4]
-                  ) [FormParsWrapper]
-                  DeclarationBlock(
-                    EmptyDeclarationBlock(
-                    ) [EmptyDeclarationBlock]
-                    VariabledeclarationDerived2(
-                      VariabledeclarationDerived2(
-                        VariabledeclarationDerived1(
-                          Type(
-                           int
-                          ) [Type]
-                          Variable(
-                           a
-                          ) [Variable]
-                        ) [VariabledeclarationDerived1]
-                        Variable(
-                         b
-                        ) [Variable]
-                      ) [VariabledeclarationDerived2]
-                      Variable(
-                       c
-                      ) [Variable]
-                    ) [VariabledeclarationDerived2]
-                  ) [DeclarationBlock]
-                  StatementBlock(
-                    EmptyBlock(
-                    ) [EmptyBlock]
-                    IfElse(
-                      SingleCondExpr(
-                        SingleCondTerm(
-                          Equals(
-                            SingleExpr(
-                              SingleTerm(
-                                SingleFactor(
-                                  BaseDesignator(
-                                   a
-                                  ) [BaseDesignator]
-                                ) [SingleFactor]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                            SingleExpr(
-                              SingleTerm(
-                                NumericConstant(
-                                 1
-                                ) [NumericConstant]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [Equals]
-                        ) [SingleCondTerm]
-                      ) [SingleCondExpr]
-                      IfElse(
-                        SingleCondExpr(
-                          SingleCondTerm(
-                            Equals(
-                              SingleExpr(
-                                SingleTerm(
-                                  SingleFactor(
-                                    BaseDesignator(
-                                     a
-                                    ) [BaseDesignator]
-                                  ) [SingleFactor]
-                                ) [SingleTerm]
-                              ) [SingleExpr]
-                              SingleExpr(
-                                SingleTerm(
-                                  NumericConstant(
-                                   2
-                                  ) [NumericConstant]
-                                ) [SingleTerm]
-                              ) [SingleExpr]
-                            ) [Equals]
-                          ) [SingleCondTerm]
-                        ) [SingleCondExpr]
-                        IfElse(
-                          SingleCondExpr(
-                            SingleCondTerm(
-                              Equals(
-                                SingleExpr(
-                                  SingleTerm(
-                                    SingleFactor(
-                                      BaseDesignator(
-                                       a
-                                      ) [BaseDesignator]
-                                    ) [SingleFactor]
-                                  ) [SingleTerm]
-                                ) [SingleExpr]
-                                SingleExpr(
-                                  SingleTerm(
-                                    NumericConstant(
-                                     3
-                                    ) [NumericConstant]
-                                  ) [SingleTerm]
-                                ) [SingleExpr]
-                              ) [Equals]
-                            ) [SingleCondTerm]
-                          ) [SingleCondExpr]
-                          StatementDerived1(
-                            DesignatorlineDerived1(
-                              Assign(
-                                BaseDesignator(
-                                 c
-                                ) [BaseDesignator]
-                                SingleExpr(
-                                  SingleTerm(
-                                    NumericConstant(
-                                     0
-                                    ) [NumericConstant]
-                                  ) [SingleTerm]
-                                ) [SingleExpr]
-                              ) [Assign]
-                            ) [DesignatorlineDerived1]
-                          ) [StatementDerived1]
-                          StatementDerived1(
-                            DesignatorlineDerived1(
-                              Assign(
-                                BaseDesignator(
-                                 c
-                                ) [BaseDesignator]
-                                SingleExpr(
-                                  SingleTerm(
-                                    NumericConstant(
-                                     1
-                                    ) [NumericConstant]
-                                  ) [SingleTerm]
-                                ) [SingleExpr]
-                              ) [Assign]
-                            ) [DesignatorlineDerived1]
-                          ) [StatementDerived1]
-                        ) [IfElse]
-                        StatementDerived1(
-                          DesignatorlineDerived1(
-                            Assign(
-                              BaseDesignator(
-                               c
-                              ) [BaseDesignator]
-                              SingleExpr(
-                                SingleTerm(
-                                  NumericConstant(
-                                   2
-                                  ) [NumericConstant]
-                                ) [SingleTerm]
-                              ) [SingleExpr]
-                            ) [Assign]
-                          ) [DesignatorlineDerived1]
-                        ) [StatementDerived1]
-                      ) [IfElse]
-                      StatementDerived1(
-                        DesignatorlineDerived1(
-                          Assign(
-                            BaseDesignator(
-                             c
-                            ) [BaseDesignator]
-                            SingleExpr(
-                              SingleTerm(
-                                NumericConstant(
-                                 3
-                                ) [NumericConstant]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [Assign]
-                        ) [DesignatorlineDerived1]
-                      ) [StatementDerived1]
-                    ) [IfElse]
-                  ) [StatementBlock]
-                ) [Proc]
-              ) [CodebodyDerived2]
-            ) [NonDerivedClass]
-          ) [ProgramdeclarationsDerived2]
-          DerivedClass(
-            ClassName(
-             Sfera
-            ) [ClassName]
-            ExtendsdeclarationDerived1(
-             Predmet
-            ) [ExtendsdeclarationDerived1]
-            DeclarationBlockWrapper1(
-              DeclarationBlock(
-                EmptyDeclarationBlock(
-                ) [EmptyDeclarationBlock]
-                VariabledeclarationDerived1(
-                  Type(
-                   int
-                  ) [Type]
-                  Variable(
-                   r
-                  ) [Variable]
-                ) [VariabledeclarationDerived1]
-              ) [DeclarationBlock]
-            ) [DeclarationBlockWrapper1]
-            CodebodyDerived2(
-              CodebodyDerived2(
-                CodebodyDerived2(
-                  CodebodyDerived1(
-                  ) [CodebodyDerived1]
-                  Proc(
-                    FunctionName(
-                     postaviTezinu
-                    ) [FunctionName]
-                    FormParsWrapper(
-                      FormparsDerived3(
-                        Type(
-                         int
-                        ) [Type]
-                        Variable(
-                         tezina
-                        ) [Variable]
-                      ) [FormparsDerived3]
-                    ) [FormParsWrapper]
-                    EmptyDeclarationBlock(
-                    ) [EmptyDeclarationBlock]
-                    StatementBlock(
-                      StatementBlock(
-                        EmptyBlock(
-                        ) [EmptyBlock]
-                        StatementDerived1(
-                          DesignatorlineDerived1(
-                            Assign(
-                              PathDesignator(
-                                BaseDesignator(
-                                 this
-                                ) [BaseDesignator]
-                               tezina
-                              ) [PathDesignator]
-                              SingleExpr(
-                                SingleTerm(
-                                  SingleFactor(
-                                    BaseDesignator(
-                                     tezina
-                                    ) [BaseDesignator]
-                                  ) [SingleFactor]
-                                ) [SingleTerm]
-                              ) [SingleExpr]
-                            ) [Assign]
-                          ) [DesignatorlineDerived1]
-                        ) [StatementDerived1]
-                      ) [StatementBlock]
-                      StatementDerived1(
-                        DesignatorlineDerived1(
-                          Assign(
-                            BaseDesignator(
-                             vrsta
-                            ) [BaseDesignator]
-                            SingleExpr(
-                              SingleTerm(
-                                CharacterConstant(
-                                 s
-                                ) [CharacterConstant]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [Assign]
-                        ) [DesignatorlineDerived1]
-                      ) [StatementDerived1]
-                    ) [StatementBlock]
-                  ) [Proc]
-                ) [CodebodyDerived2]
-                Proc(
-                  FunctionName(
-                   postaviPoluprecnik
-                  ) [FunctionName]
-                  FormParsWrapper(
-                    FormparsDerived3(
-                      Type(
-                       int
-                      ) [Type]
-                      Variable(
-                       r
-                      ) [Variable]
-                    ) [FormparsDerived3]
-                  ) [FormParsWrapper]
-                  EmptyDeclarationBlock(
-                  ) [EmptyDeclarationBlock]
-                  StatementBlock(
-                    StatementBlock(
-                      EmptyBlock(
-                      ) [EmptyBlock]
-                      StatementDerived1(
-                        DesignatorlineDerived1(
-                          Assign(
-                            PathDesignator(
-                              BaseDesignator(
-                               this
-                              ) [BaseDesignator]
-                             r
-                            ) [PathDesignator]
-                            SingleExpr(
-                              SingleTerm(
-                                SingleFactor(
-                                  BaseDesignator(
-                                   r
-                                  ) [BaseDesignator]
-                                ) [SingleFactor]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [Assign]
-                        ) [DesignatorlineDerived1]
-                      ) [StatementDerived1]
-                    ) [StatementBlock]
-                    CallStatement(
-                      FuncCall(
-                        BaseDesignator(
-                         postaviVrstu
-                        ) [BaseDesignator]
-                        Parameter(
-                          SingleExpr(
-                            SingleTerm(
-                              CharacterConstant(
-                               s
-                              ) [CharacterConstant]
-                            ) [SingleTerm]
-                          ) [SingleExpr]
-                        ) [Parameter]
-                      ) [FuncCall]
-                    ) [CallStatement]
-                  ) [StatementBlock]
-                ) [Proc]
-              ) [CodebodyDerived2]
-              Func(
+                  ) [FormparsDerived2]
+                ) [FormParsWrapper]
+              ) [FuncHeader]
+            ) [InterfaceMethodDeclaration]
+            FuncHeader(
+              FunctionName(
                 Type(
                  int
                 ) [Type]
-                FunctionName(
-                 zapremina
-                ) [FunctionName]
-                FormParsWrapper(
-                  FormparsDerived4(
-                  ) [FormparsDerived4]
-                ) [FormParsWrapper]
-                DeclarationBlock(
-                  EmptyDeclarationBlock(
-                  ) [EmptyDeclarationBlock]
-                  VariabledeclarationDerived1(
-                    Type(
-                     int
-                    ) [Type]
-                    Variable(
-                     z
-                    ) [Variable]
-                  ) [VariabledeclarationDerived1]
-                ) [DeclarationBlock]
-                StatementBlock(
-                  StatementBlock(
-                    EmptyBlock(
-                    ) [EmptyBlock]
-                    StatementDerived1(
-                      DesignatorlineDerived1(
-                        Assign(
-                          BaseDesignator(
-                           z
-                          ) [BaseDesignator]
-                          SingleExpr(
-                            SingleTerm(
-                              SingleFactor(
-                                BaseDesignator(
-                                 cinilac
-                                ) [BaseDesignator]
-                              ) [SingleFactor]
-                            ) [SingleTerm]
-                          ) [SingleExpr]
-                        ) [Assign]
-                      ) [DesignatorlineDerived1]
-                    ) [StatementDerived1]
-                  ) [StatementBlock]
-                  Return(
-                    SingleExpr(
-                      Multiplication(
-                        SingleTerm(
-                          SingleFactor(
-                            BaseDesignator(
-                             z
-                            ) [BaseDesignator]
-                          ) [SingleFactor]
-                        ) [SingleTerm]
-                        Parenthesized(
-                          SingleExpr(
-                            Division(
-                              SingleTerm(
-                                SingleFactor(
-                                  BaseDesignator(
-                                   r
-                                  ) [BaseDesignator]
-                                ) [SingleFactor]
-                              ) [SingleTerm]
-                              SingleFactor(
-                                BaseDesignator(
-                                 delilac
-                                ) [BaseDesignator]
-                              ) [SingleFactor]
-                            ) [Division]
-                          ) [SingleExpr]
-                        ) [Parenthesized]
-                      ) [Multiplication]
-                    ) [SingleExpr]
-                  ) [Return]
-                ) [StatementBlock]
-              ) [Func]
-            ) [CodebodyDerived2]
-          ) [DerivedClass]
-        ) [ProgramdeclarationsDerived2]
-        DerivedClass(
-          ClassName(
-           Kvadar
-          ) [ClassName]
-          ExtendsdeclarationDerived1(
-           Predmet
-          ) [ExtendsdeclarationDerived1]
-          DeclarationBlockWrapper1(
-            DeclarationBlock(
-              EmptyDeclarationBlock(
-              ) [EmptyDeclarationBlock]
-              VariabledeclarationDerived2(
-                VariabledeclarationDerived2(
-                  VariabledeclarationDerived1(
-                    Type(
-                     int
-                    ) [Type]
-                    Variable(
-                     a
-                    ) [Variable]
-                  ) [VariabledeclarationDerived1]
+               getn
+              ) [FunctionName]
+              FormParsWrapper(
+                FormparsDerived2(
+                  Type(
+                   int
+                  ) [Type]
                   Variable(
-                   b
+                   i
                   ) [Variable]
-                ) [VariabledeclarationDerived2]
-                Variable(
-                 c
-                ) [Variable]
-              ) [VariabledeclarationDerived2]
-            ) [DeclarationBlock]
-          ) [DeclarationBlockWrapper1]
+                ) [FormparsDerived2]
+              ) [FormParsWrapper]
+            ) [FuncHeader]
+          ) [InterfaceMethodDeclaration]
+        ) [InterfaceDeclaration]
+      ) [ProgramdeclarationsDerived3]
+      Class(
+        ClassName(
+         Table
+        ) [ClassName]
+        EmptyExtendsDeclaration(
+        ) [EmptyExtendsDeclaration]
+        ImplementsdeclarationDerived1(
+          NonemptyimplementsdeclarationDerived1(
+            ImplementedName(
+              Type(
+               I
+              ) [Type]
+            ) [ImplementedName]
+          ) [NonemptyimplementsdeclarationDerived1]
+        ) [ImplementsdeclarationDerived1]
+        DeclarationBlockWrapper1(
+          DeclarationBlock(
+            EmptyDeclarationBlock(
+            ) [EmptyDeclarationBlock]
+            VariabledeclarationDerived2(
+              VariabledeclarationDerived1(
+                Type(
+                 int
+                ) [Type]
+                Array(
+                 pos
+                ) [Array]
+              ) [VariabledeclarationDerived1]
+              Array(
+               neg
+              ) [Array]
+            ) [VariabledeclarationDerived2]
+          ) [DeclarationBlock]
+        ) [DeclarationBlockWrapper1]
+        ClasscodebodyDerived1(
           CodebodyDerived2(
             CodebodyDerived2(
               CodebodyDerived2(
                 CodebodyDerived2(
                   CodebodyDerived1(
                   ) [CodebodyDerived1]
-                  Proc(
-                    FunctionName(
-                     postaviTezinu
-                    ) [FunctionName]
-                    FormParsWrapper(
-                      FormparsDerived3(
-                        Type(
-                         int
-                        ) [Type]
-                        Variable(
-                         tezina
-                        ) [Variable]
-                      ) [FormparsDerived3]
-                    ) [FormParsWrapper]
-                    EmptyDeclarationBlock(
-                    ) [EmptyDeclarationBlock]
-                    StatementBlock(
-                      StatementBlock(
-                        EmptyBlock(
-                        ) [EmptyBlock]
-                        StatementDerived1(
-                          DesignatorlineDerived1(
-                            Assign(
-                              PathDesignator(
-                                BaseDesignator(
-                                 this
-                                ) [BaseDesignator]
-                               tezina
-                              ) [PathDesignator]
-                              SingleExpr(
-                                SingleTerm(
-                                  SingleFactor(
-                                    BaseDesignator(
-                                     tezina
-                                    ) [BaseDesignator]
-                                  ) [SingleFactor]
-                                ) [SingleTerm]
-                              ) [SingleExpr]
-                            ) [Assign]
-                          ) [DesignatorlineDerived1]
-                        ) [StatementDerived1]
-                      ) [StatementBlock]
-                      StatementDerived1(
-                        DesignatorlineDerived1(
-                          Assign(
-                            BaseDesignator(
-                             vrsta
-                            ) [BaseDesignator]
-                            SingleExpr(
-                              SingleTerm(
-                                CharacterConstant(
-                                 k
-                                ) [CharacterConstant]
-                              ) [SingleTerm]
-                            ) [SingleExpr]
-                          ) [Assign]
-                        ) [DesignatorlineDerived1]
-                      ) [StatementDerived1]
-                    ) [StatementBlock]
-                  ) [Proc]
-                ) [CodebodyDerived2]
-                Proc(
-                  FunctionName(
-                   postaviStranice
-                  ) [FunctionName]
-                  FormParsWrapper(
-                    FormparsDerived1(
-                      FormparsDerived1(
-                        FormparsDerived3(
+                  Function(
+                    FuncHeader(
+                      ProcedureName(
+                       putp
+                      ) [ProcedureName]
+                      FormParsWrapper(
+                        FormparsDerived1(
+                          FormparsDerived2(
+                            Type(
+                             int
+                            ) [Type]
+                            Variable(
+                             a
+                            ) [Variable]
+                          ) [FormparsDerived2]
                           Type(
                            int
                           ) [Type]
                           Variable(
-                           a
+                           idx
                           ) [Variable]
-                        ) [FormparsDerived3]
-                        Type(
-                         int
-                        ) [Type]
-                        Variable(
-                         b
-                        ) [Variable]
-                      ) [FormparsDerived1]
-                      Type(
-                       int
-                      ) [Type]
-                      Variable(
-                       c
-                      ) [Variable]
-                    ) [FormparsDerived1]
-                  ) [FormParsWrapper]
-                  EmptyDeclarationBlock(
-                  ) [EmptyDeclarationBlock]
-                  StatementBlock(
+                        ) [FormparsDerived1]
+                      ) [FormParsWrapper]
+                    ) [FuncHeader]
+                    EmptyDeclarationBlock(
+                    ) [EmptyDeclarationBlock]
                     StatementBlock(
-                      StatementBlock(
-                        StatementBlock(
-                          EmptyBlock(
-                          ) [EmptyBlock]
-                          StatementDerived1(
-                            DesignatorlineDerived1(
-                              Assign(
-                                PathDesignator(
-                                  BaseDesignator(
-                                   this
-                                  ) [BaseDesignator]
-                                 a
-                                ) [PathDesignator]
-                                SingleExpr(
-                                  SingleTerm(
-                                    SingleFactor(
-                                      BaseDesignator(
-                                       a
-                                      ) [BaseDesignator]
-                                    ) [SingleFactor]
-                                  ) [SingleTerm]
-                                ) [SingleExpr]
-                              ) [Assign]
-                            ) [DesignatorlineDerived1]
-                          ) [StatementDerived1]
-                        ) [StatementBlock]
-                        StatementDerived1(
-                          DesignatorlineDerived1(
-                            Assign(
+                      EmptyBlock(
+                      ) [EmptyBlock]
+                      StatementDerived1(
+                        DesignatorlineDerived1(
+                          Assign(
+                            IndexDesignator(
                               PathDesignator(
                                 BaseDesignator(
                                  this
                                 ) [BaseDesignator]
-                               b
+                               pos
                               ) [PathDesignator]
                               SingleExpr(
                                 SingleTerm(
                                   SingleFactor(
                                     BaseDesignator(
-                                     b
+                                     idx
                                     ) [BaseDesignator]
                                   ) [SingleFactor]
                                 ) [SingleTerm]
                               ) [SingleExpr]
-                            ) [Assign]
-                          ) [DesignatorlineDerived1]
-                        ) [StatementDerived1]
-                      ) [StatementBlock]
-                      StatementDerived1(
-                        DesignatorlineDerived1(
-                          Assign(
-                            PathDesignator(
-                              BaseDesignator(
-                               this
-                              ) [BaseDesignator]
-                             c
-                            ) [PathDesignator]
+                            ) [IndexDesignator]
                             SingleExpr(
                               SingleTerm(
                                 SingleFactor(
                                   BaseDesignator(
-                                   c
+                                   a
                                   ) [BaseDesignator]
                                 ) [SingleFactor]
                               ) [SingleTerm]
@@ -857,58 +192,91 @@ ProgramDerived1(
                         ) [DesignatorlineDerived1]
                       ) [StatementDerived1]
                     ) [StatementBlock]
+                  ) [Function]
+                ) [CodebodyDerived2]
+                Function(
+                  FuncHeader(
+                    ProcedureName(
+                     putn
+                    ) [ProcedureName]
+                    FormParsWrapper(
+                      FormparsDerived1(
+                        FormparsDerived2(
+                          Type(
+                           int
+                          ) [Type]
+                          Variable(
+                           a
+                          ) [Variable]
+                        ) [FormparsDerived2]
+                        Type(
+                         int
+                        ) [Type]
+                        Variable(
+                         idx
+                        ) [Variable]
+                      ) [FormparsDerived1]
+                    ) [FormParsWrapper]
+                  ) [FuncHeader]
+                  EmptyDeclarationBlock(
+                  ) [EmptyDeclarationBlock]
+                  StatementBlock(
+                    EmptyBlock(
+                    ) [EmptyBlock]
                     StatementDerived1(
                       DesignatorlineDerived1(
                         Assign(
-                          BaseDesignator(
-                           vrsta
-                          ) [BaseDesignator]
+                          IndexDesignator(
+                            PathDesignator(
+                              BaseDesignator(
+                               this
+                              ) [BaseDesignator]
+                             neg
+                            ) [PathDesignator]
+                            SingleExpr(
+                              SingleTerm(
+                                SingleFactor(
+                                  BaseDesignator(
+                                   idx
+                                  ) [BaseDesignator]
+                                ) [SingleFactor]
+                              ) [SingleTerm]
+                            ) [SingleExpr]
+                          ) [IndexDesignator]
                           SingleExpr(
                             SingleTerm(
-                              CharacterConstant(
-                               k
-                              ) [CharacterConstant]
+                              SingleFactor(
+                                BaseDesignator(
+                                 a
+                                ) [BaseDesignator]
+                              ) [SingleFactor]
                             ) [SingleTerm]
                           ) [SingleExpr]
                         ) [Assign]
                       ) [DesignatorlineDerived1]
                     ) [StatementDerived1]
                   ) [StatementBlock]
-                ) [Proc]
+                ) [Function]
               ) [CodebodyDerived2]
-              Func(
-                Type(
-                 int
-                ) [Type]
-                FunctionName(
-                 blabla
-                ) [FunctionName]
-                FormParsWrapper(
-                  FormparsDerived1(
-                    FormparsDerived1(
-                      FormparsDerived3(
-                        Type(
-                         int
-                        ) [Type]
-                        Variable(
-                         q
-                        ) [Variable]
-                      ) [FormparsDerived3]
+              Function(
+                FuncHeader(
+                  FunctionName(
+                    Type(
+                     int
+                    ) [Type]
+                   getp
+                  ) [FunctionName]
+                  FormParsWrapper(
+                    FormparsDerived2(
                       Type(
-                       char
+                       int
                       ) [Type]
                       Variable(
-                       c
+                       idx
                       ) [Variable]
-                    ) [FormparsDerived1]
-                    Type(
-                     bool
-                    ) [Type]
-                    Variable(
-                     b
-                    ) [Variable]
-                  ) [FormparsDerived1]
-                ) [FormParsWrapper]
+                    ) [FormparsDerived2]
+                  ) [FormParsWrapper]
+                ) [FuncHeader]
                 EmptyDeclarationBlock(
                 ) [EmptyDeclarationBlock]
                 StatementBlock(
@@ -917,317 +285,196 @@ ProgramDerived1(
                   Return(
                     SingleExpr(
                       SingleTerm(
-                        NumericConstant(
-                         3
-                        ) [NumericConstant]
+                        SingleFactor(
+                          IndexDesignator(
+                            BaseDesignator(
+                             pos
+                            ) [BaseDesignator]
+                            SingleExpr(
+                              SingleTerm(
+                                SingleFactor(
+                                  BaseDesignator(
+                                   idx
+                                  ) [BaseDesignator]
+                                ) [SingleFactor]
+                              ) [SingleTerm]
+                            ) [SingleExpr]
+                          ) [IndexDesignator]
+                        ) [SingleFactor]
                       ) [SingleTerm]
                     ) [SingleExpr]
                   ) [Return]
                 ) [StatementBlock]
-              ) [Func]
+              ) [Function]
             ) [CodebodyDerived2]
-            Func(
-              Type(
-               int
-              ) [Type]
-              FunctionName(
-               zapremina
-              ) [FunctionName]
-              FormParsWrapper(
-                FormparsDerived4(
-                ) [FormparsDerived4]
-              ) [FormParsWrapper]
-              DeclarationBlock(
-                EmptyDeclarationBlock(
-                ) [EmptyDeclarationBlock]
-                VariabledeclarationDerived1(
+            Function(
+              FuncHeader(
+                FunctionName(
                   Type(
                    int
                   ) [Type]
-                  Variable(
-                   z
-                  ) [Variable]
-                ) [VariabledeclarationDerived1]
-              ) [DeclarationBlock]
+                 getn
+                ) [FunctionName]
+                FormParsWrapper(
+                  FormparsDerived2(
+                    Type(
+                     int
+                    ) [Type]
+                    Variable(
+                     idx
+                    ) [Variable]
+                  ) [FormparsDerived2]
+                ) [FormParsWrapper]
+              ) [FuncHeader]
+              EmptyDeclarationBlock(
+              ) [EmptyDeclarationBlock]
               StatementBlock(
-                StatementBlock(
-                  EmptyBlock(
-                  ) [EmptyBlock]
-                  StatementDerived1(
-                    DesignatorlineDerived1(
-                      Assign(
-                        BaseDesignator(
-                         z
-                        ) [BaseDesignator]
-                        SingleExpr(
-                          Multiplication(
-                            Multiplication(
-                              SingleTerm(
-                                SingleFactor(
-                                  BaseDesignator(
-                                   a
-                                  ) [BaseDesignator]
-                                ) [SingleFactor]
-                              ) [SingleTerm]
-                              SingleFactor(
-                                BaseDesignator(
-                                 b
-                                ) [BaseDesignator]
-                              ) [SingleFactor]
-                            ) [Multiplication]
-                            SingleFactor(
-                              BaseDesignator(
-                               c
-                              ) [BaseDesignator]
-                            ) [SingleFactor]
-                          ) [Multiplication]
-                        ) [SingleExpr]
-                      ) [Assign]
-                    ) [DesignatorlineDerived1]
-                  ) [StatementDerived1]
-                ) [StatementBlock]
+                EmptyBlock(
+                ) [EmptyBlock]
                 Return(
                   SingleExpr(
                     SingleTerm(
                       SingleFactor(
-                        BaseDesignator(
-                         z
-                        ) [BaseDesignator]
+                        IndexDesignator(
+                          BaseDesignator(
+                           neg
+                          ) [BaseDesignator]
+                          SingleExpr(
+                            SingleTerm(
+                              SingleFactor(
+                                BaseDesignator(
+                                 idx
+                                ) [BaseDesignator]
+                              ) [SingleFactor]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                        ) [IndexDesignator]
                       ) [SingleFactor]
                     ) [SingleTerm]
                   ) [SingleExpr]
                 ) [Return]
               ) [StatementBlock]
-            ) [Func]
+            ) [Function]
           ) [CodebodyDerived2]
-        ) [DerivedClass]
-      ) [ProgramdeclarationsDerived2]
-      VariabledeclarationDerived2(
-        VariabledeclarationDerived1(
-          Type(
-           int
-          ) [Type]
-          Variable(
-           zapreminaK
-          ) [Variable]
-        ) [VariabledeclarationDerived1]
-        Variable(
-         zapreminaS
-        ) [Variable]
-      ) [VariabledeclarationDerived2]
-    ) [ProgramdeclarationsDerived4]
-    VariabledeclarationDerived2(
-      VariabledeclarationDerived1(
-        Type(
-         int
-        ) [Type]
-        Variable(
-         tezinaK
-        ) [Variable]
-      ) [VariabledeclarationDerived1]
+        ) [ClasscodebodyDerived1]
+      ) [Class]
+    ) [ProgramdeclarationsDerived2]
+    VariabledeclarationDerived1(
+      Type(
+       Table
+      ) [Type]
       Variable(
-       tezinaS
+       val
       ) [Variable]
-    ) [VariabledeclarationDerived2]
-  ) [ProgramdeclarationsDerived4]
+    ) [VariabledeclarationDerived1]
+  ) [ProgramdeclarationsDerived6]
   CodebodyDerived2(
     CodebodyDerived2(
       CodebodyDerived1(
       ) [CodebodyDerived1]
-      Proc(
-        FunctionName(
-         ispis
-        ) [FunctionName]
-        FormParsWrapper(
-          FormparsDerived3(
-            Type(
-             Predmet
-            ) [Type]
-            Variable(
-             p
-            ) [Variable]
-          ) [FormparsDerived3]
-        ) [FormParsWrapper]
-        EmptyDeclarationBlock(
-        ) [EmptyDeclarationBlock]
-        StatementBlock(
-          StatementBlock(
-            StatementBlock(
-              EmptyBlock(
-              ) [EmptyBlock]
-              CallStatement(
-                FuncCall(
-                  BaseDesignator(
-                   print
-                  ) [BaseDesignator]
-                  Parameter(
-                    SingleExpr(
-                      SingleTerm(
-                        SingleFactor(
-                          PathDesignator(
-                            BaseDesignator(
-                             p
-                            ) [BaseDesignator]
-                           vrsta
-                          ) [PathDesignator]
-                        ) [SingleFactor]
-                      ) [SingleTerm]
-                    ) [SingleExpr]
-                  ) [Parameter]
-                ) [FuncCall]
-              ) [CallStatement]
-            ) [StatementBlock]
-            CallStatement(
-              FuncCall(
-                BaseDesignator(
-                 print
-                ) [BaseDesignator]
-                Parameter(
-                  SingleExpr(
-                    SingleTerm(
-                      SingleFactor(
-                        BaseDesignator(
-                         eol
-                        ) [BaseDesignator]
-                      ) [SingleFactor]
-                    ) [SingleTerm]
-                  ) [SingleExpr]
-                ) [Parameter]
-              ) [FuncCall]
-            ) [CallStatement]
-          ) [StatementBlock]
-          CallStatement(
-            FuncCall(
-              BaseDesignator(
-               print
-              ) [BaseDesignator]
-              Parameter(
-                SingleExpr(
-                  SingleTerm(
-                    SingleFactor(
-                      PathDesignator(
-                        BaseDesignator(
-                         p
-                        ) [BaseDesignator]
-                       tezina
-                      ) [PathDesignator]
-                    ) [SingleFactor]
-                  ) [SingleTerm]
-                ) [SingleExpr]
-              ) [Parameter]
-            ) [FuncCall]
-          ) [CallStatement]
-        ) [StatementBlock]
-      ) [Proc]
-    ) [CodebodyDerived2]
-    Proc(
-      FunctionName(
-       main
-      ) [FunctionName]
-      FormParsWrapper(
-        FormparsDerived4(
-        ) [FormparsDerived4]
-      ) [FormParsWrapper]
-      DeclarationBlock(
-        DeclarationBlock(
-          DeclarationBlock(
-            DeclarationBlock(
-              DeclarationBlock(
-                DeclarationBlock(
-                  DeclarationBlock(
-                    DeclarationBlock(
-                      EmptyDeclarationBlock(
-                      ) [EmptyDeclarationBlock]
-                      VariabledeclarationDerived1(
-                        Type(
-                         Predmet
-                        ) [Type]
-                        Array(
-                         predmeti
-                        ) [Array]
-                      ) [VariabledeclarationDerived1]
-                    ) [DeclarationBlock]
-                    VariabledeclarationDerived1(
-                      Type(
-                       int
-                      ) [Type]
-                      Variable(
-                       i
-                      ) [Variable]
-                    ) [VariabledeclarationDerived1]
-                  ) [DeclarationBlock]
-                  VariabledeclarationDerived2(
-                    VariabledeclarationDerived2(
-                      VariabledeclarationDerived1(
-                        Type(
-                         Sfera
-                        ) [Type]
-                        Variable(
-                         s1
-                        ) [Variable]
-                      ) [VariabledeclarationDerived1]
-                      Variable(
-                       s2
-                      ) [Variable]
-                    ) [VariabledeclarationDerived2]
-                    Variable(
-                     s3
-                    ) [Variable]
-                  ) [VariabledeclarationDerived2]
-                ) [DeclarationBlock]
-                VariabledeclarationDerived2(
-                  VariabledeclarationDerived2(
-                    VariabledeclarationDerived1(
-                      Type(
-                       Kvadar
-                      ) [Type]
-                      Variable(
-                       k1
-                      ) [Variable]
-                    ) [VariabledeclarationDerived1]
-                    Variable(
-                     k2
-                    ) [Variable]
-                  ) [VariabledeclarationDerived2]
+      Function(
+        FuncHeader(
+          ProcedureName(
+           f
+          ) [ProcedureName]
+          FormParsWrapper(
+            FormparsDerived1(
+              FormparsDerived1(
+                FormparsDerived2(
+                  Type(
+                   char
+                  ) [Type]
                   Variable(
-                   k3
+                   ch
                   ) [Variable]
-                ) [VariabledeclarationDerived2]
-              ) [DeclarationBlock]
-              VariabledeclarationDerived1(
+                ) [FormparsDerived2]
                 Type(
                  int
                 ) [Type]
                 Variable(
-                 t
+                 a
                 ) [Variable]
-              ) [VariabledeclarationDerived1]
-            ) [DeclarationBlock]
-            VariabledeclarationDerived1(
+              ) [FormparsDerived1]
               Type(
-               Sfera
+               int
               ) [Type]
-              Array(
-               sq
-              ) [Array]
-            ) [VariabledeclarationDerived1]
-          ) [DeclarationBlock]
+              Variable(
+               arg
+              ) [Variable]
+            ) [FormparsDerived1]
+          ) [FormParsWrapper]
+        ) [FuncHeader]
+        DeclarationBlock(
+          EmptyDeclarationBlock(
+          ) [EmptyDeclarationBlock]
           VariabledeclarationDerived1(
             Type(
              int
             ) [Type]
-            Array(
-             qq1
-            ) [Array]
+            Variable(
+             x
+            ) [Variable]
           ) [VariabledeclarationDerived1]
+        ) [DeclarationBlock]
+        StatementBlock(
+          EmptyBlock(
+          ) [EmptyBlock]
+          StatementDerived1(
+            DesignatorlineDerived1(
+              Assign(
+                BaseDesignator(
+                 x
+                ) [BaseDesignator]
+                SingleExpr(
+                  SingleTerm(
+                    SingleFactor(
+                      BaseDesignator(
+                       arg
+                      ) [BaseDesignator]
+                    ) [SingleFactor]
+                  ) [SingleTerm]
+                ) [SingleExpr]
+              ) [Assign]
+            ) [DesignatorlineDerived1]
+          ) [StatementDerived1]
+        ) [StatementBlock]
+      ) [Function]
+    ) [CodebodyDerived2]
+    Function(
+      FuncHeader(
+        ProcedureName(
+         main
+        ) [ProcedureName]
+        FormParsWrapper(
+          FormparsDerived3(
+          ) [FormparsDerived3]
+        ) [FormParsWrapper]
+      ) [FuncHeader]
+      DeclarationBlock(
+        DeclarationBlock(
+          EmptyDeclarationBlock(
+          ) [EmptyDeclarationBlock]
+          VariabledeclarationDerived2(
+            VariabledeclarationDerived1(
+              Type(
+               int
+              ) [Type]
+              Variable(
+               x
+              ) [Variable]
+            ) [VariabledeclarationDerived1]
+            Variable(
+             i
+            ) [Variable]
+          ) [VariabledeclarationDerived2]
         ) [DeclarationBlock]
         VariabledeclarationDerived1(
           Type(
-           int
+           char
           ) [Type]
-          Array(
-           qq2
-          ) [Array]
+          Variable(
+           c
+          ) [Variable]
         ) [VariabledeclarationDerived1]
       ) [DeclarationBlock]
       StatementBlock(
@@ -1237,1401 +484,259 @@ ProgramDerived1(
               StatementBlock(
                 StatementBlock(
                   StatementBlock(
-                    StatementBlock(
-                      StatementBlock(
-                        StatementBlock(
-                          StatementBlock(
-                            StatementBlock(
-                              StatementBlock(
-                                StatementBlock(
-                                  StatementBlock(
-                                    StatementBlock(
-                                      StatementBlock(
-                                        StatementBlock(
-                                          StatementBlock(
-                                            StatementBlock(
-                                              StatementBlock(
-                                                StatementBlock(
-                                                  StatementBlock(
-                                                    StatementBlock(
-                                                      StatementBlock(
-                                                        StatementBlock(
-                                                          StatementBlock(
-                                                            StatementBlock(
-                                                              StatementBlock(
-                                                                StatementBlock(
-                                                                  StatementBlock(
-                                                                    StatementBlock(
-                                                                      StatementBlock(
-                                                                        StatementBlock(
-                                                                          StatementBlock(
-                                                                            StatementBlock(
-                                                                              StatementBlock(
-                                                                                StatementBlock(
-                                                                                  StatementBlock(
-                                                                                    StatementBlock(
-                                                                                      StatementBlock(
-                                                                                        EmptyBlock(
-                                                                                        ) [EmptyBlock]
-                                                                                        StatementDerived1(
-                                                                                          DesignatorlineDerived1(
-                                                                                            Assign(
-                                                                                              PathDesignator(
-                                                                                                IndexDesignator(
-                                                                                                  BaseDesignator(
-                                                                                                   sq
-                                                                                                  ) [BaseDesignator]
-                                                                                                  SingleExpr(
-                                                                                                    SingleTerm(
-                                                                                                      NumericConstant(
-                                                                                                       0
-                                                                                                      ) [NumericConstant]
-                                                                                                    ) [SingleTerm]
-                                                                                                  ) [SingleExpr]
-                                                                                                ) [IndexDesignator]
-                                                                                               tezina
-                                                                                              ) [PathDesignator]
-                                                                                              SingleExpr(
-                                                                                                SingleTerm(
-                                                                                                  NumericConstant(
-                                                                                                   6
-                                                                                                  ) [NumericConstant]
-                                                                                                ) [SingleTerm]
-                                                                                              ) [SingleExpr]
-                                                                                            ) [Assign]
-                                                                                          ) [DesignatorlineDerived1]
-                                                                                        ) [StatementDerived1]
-                                                                                      ) [StatementBlock]
-                                                                                      StatementDerived1(
-                                                                                        DesignatorlineDerived1(
-                                                                                          Assign(
-                                                                                            BaseDesignator(
-                                                                                             predmeti
-                                                                                            ) [BaseDesignator]
-                                                                                            SingleExpr(
-                                                                                              SingleTerm(
-                                                                                                NewArray(
-                                                                                                  Type(
-                                                                                                   Predmet
-                                                                                                  ) [Type]
-                                                                                                  SingleExpr(
-                                                                                                    SingleTerm(
-                                                                                                      NumericConstant(
-                                                                                                       6
-                                                                                                      ) [NumericConstant]
-                                                                                                    ) [SingleTerm]
-                                                                                                  ) [SingleExpr]
-                                                                                                ) [NewArray]
-                                                                                              ) [SingleTerm]
-                                                                                            ) [SingleExpr]
-                                                                                          ) [Assign]
-                                                                                        ) [DesignatorlineDerived1]
-                                                                                      ) [StatementDerived1]
-                                                                                    ) [StatementBlock]
-                                                                                    StatementDerived1(
-                                                                                      DesignatorlineDerived1(
-                                                                                        Assign(
-                                                                                          BaseDesignator(
-                                                                                           s1
-                                                                                          ) [BaseDesignator]
-                                                                                          SingleExpr(
-                                                                                            SingleTerm(
-                                                                                              NewObject(
-                                                                                                Type(
-                                                                                                 Sfera
-                                                                                                ) [Type]
-                                                                                              ) [NewObject]
-                                                                                            ) [SingleTerm]
-                                                                                          ) [SingleExpr]
-                                                                                        ) [Assign]
-                                                                                      ) [DesignatorlineDerived1]
-                                                                                    ) [StatementDerived1]
-                                                                                  ) [StatementBlock]
-                                                                                  StatementDerived1(
-                                                                                    DesignatorlineDerived1(
-                                                                                      Assign(
-                                                                                        BaseDesignator(
-                                                                                         s2
-                                                                                        ) [BaseDesignator]
-                                                                                        SingleExpr(
-                                                                                          SingleTerm(
-                                                                                            NewObject(
-                                                                                              Type(
-                                                                                               Sfera
-                                                                                              ) [Type]
-                                                                                            ) [NewObject]
-                                                                                          ) [SingleTerm]
-                                                                                        ) [SingleExpr]
-                                                                                      ) [Assign]
-                                                                                    ) [DesignatorlineDerived1]
-                                                                                  ) [StatementDerived1]
-                                                                                ) [StatementBlock]
-                                                                                StatementDerived1(
-                                                                                  DesignatorlineDerived1(
-                                                                                    Assign(
-                                                                                      BaseDesignator(
-                                                                                       s3
-                                                                                      ) [BaseDesignator]
-                                                                                      SingleExpr(
-                                                                                        SingleTerm(
-                                                                                          NewObject(
-                                                                                            Type(
-                                                                                             Sfera
-                                                                                            ) [Type]
-                                                                                          ) [NewObject]
-                                                                                        ) [SingleTerm]
-                                                                                      ) [SingleExpr]
-                                                                                    ) [Assign]
-                                                                                  ) [DesignatorlineDerived1]
-                                                                                ) [StatementDerived1]
-                                                                              ) [StatementBlock]
-                                                                              StatementDerived1(
-                                                                                DesignatorlineDerived1(
-                                                                                  Assign(
-                                                                                    BaseDesignator(
-                                                                                     k1
-                                                                                    ) [BaseDesignator]
-                                                                                    SingleExpr(
-                                                                                      SingleTerm(
-                                                                                        NewObject(
-                                                                                          Type(
-                                                                                           Kvadar
-                                                                                          ) [Type]
-                                                                                        ) [NewObject]
-                                                                                      ) [SingleTerm]
-                                                                                    ) [SingleExpr]
-                                                                                  ) [Assign]
-                                                                                ) [DesignatorlineDerived1]
-                                                                              ) [StatementDerived1]
-                                                                            ) [StatementBlock]
-                                                                            StatementDerived1(
-                                                                              DesignatorlineDerived1(
-                                                                                Assign(
-                                                                                  BaseDesignator(
-                                                                                   k2
-                                                                                  ) [BaseDesignator]
-                                                                                  SingleExpr(
-                                                                                    SingleTerm(
-                                                                                      NewObject(
-                                                                                        Type(
-                                                                                         Kvadar
-                                                                                        ) [Type]
-                                                                                      ) [NewObject]
-                                                                                    ) [SingleTerm]
-                                                                                  ) [SingleExpr]
-                                                                                ) [Assign]
-                                                                              ) [DesignatorlineDerived1]
-                                                                            ) [StatementDerived1]
-                                                                          ) [StatementBlock]
-                                                                          StatementDerived1(
-                                                                            DesignatorlineDerived1(
-                                                                              Assign(
-                                                                                BaseDesignator(
-                                                                                 k3
-                                                                                ) [BaseDesignator]
-                                                                                SingleExpr(
-                                                                                  SingleTerm(
-                                                                                    NewObject(
-                                                                                      Type(
-                                                                                       Kvadar
-                                                                                      ) [Type]
-                                                                                    ) [NewObject]
-                                                                                  ) [SingleTerm]
-                                                                                ) [SingleExpr]
-                                                                              ) [Assign]
-                                                                            ) [DesignatorlineDerived1]
-                                                                          ) [StatementDerived1]
-                                                                        ) [StatementBlock]
-                                                                        CallStatement(
-                                                                          FuncCall(
-                                                                            PathDesignator(
-                                                                              BaseDesignator(
-                                                                               k3
-                                                                              ) [BaseDesignator]
-                                                                             blabla
-                                                                            ) [PathDesignator]
-                                                                            Parameters(
-                                                                              Parameters(
-                                                                                Parameter(
-                                                                                  SingleExpr(
-                                                                                    SingleTerm(
-                                                                                      NumericConstant(
-                                                                                       1
-                                                                                      ) [NumericConstant]
-                                                                                    ) [SingleTerm]
-                                                                                  ) [SingleExpr]
-                                                                                ) [Parameter]
-                                                                                SingleExpr(
-                                                                                  SingleTerm(
-                                                                                    CharacterConstant(
-                                                                                     c
-                                                                                    ) [CharacterConstant]
-                                                                                  ) [SingleTerm]
-                                                                                ) [SingleExpr]
-                                                                              ) [Parameters]
-                                                                              SingleExpr(
-                                                                                SingleTerm(
-                                                                                  BooleanConstant(
-                                                                                   true
-                                                                                  ) [BooleanConstant]
-                                                                                ) [SingleTerm]
-                                                                              ) [SingleExpr]
-                                                                            ) [Parameters]
-                                                                          ) [FuncCall]
-                                                                        ) [CallStatement]
-                                                                      ) [StatementBlock]
-                                                                      CallStatement(
-                                                                        FuncCall(
-                                                                          PathDesignator(
-                                                                            BaseDesignator(
-                                                                             s1
-                                                                            ) [BaseDesignator]
-                                                                           postaviPoluprecnik
-                                                                          ) [PathDesignator]
-                                                                          Parameter(
-                                                                            SingleExpr(
-                                                                              SingleTerm(
-                                                                                NumericConstant(
-                                                                                 1
-                                                                                ) [NumericConstant]
-                                                                              ) [SingleTerm]
-                                                                            ) [SingleExpr]
-                                                                          ) [Parameter]
-                                                                        ) [FuncCall]
-                                                                      ) [CallStatement]
-                                                                    ) [StatementBlock]
-                                                                    CallStatement(
-                                                                      FuncCall(
-                                                                        PathDesignator(
-                                                                          BaseDesignator(
-                                                                           s2
-                                                                          ) [BaseDesignator]
-                                                                         postaviPoluprecnik
-                                                                        ) [PathDesignator]
-                                                                        Parameter(
-                                                                          SingleExpr(
-                                                                            SingleTerm(
-                                                                              NumericConstant(
-                                                                               2
-                                                                              ) [NumericConstant]
-                                                                            ) [SingleTerm]
-                                                                          ) [SingleExpr]
-                                                                        ) [Parameter]
-                                                                      ) [FuncCall]
-                                                                    ) [CallStatement]
-                                                                  ) [StatementBlock]
-                                                                  CallStatement(
-                                                                    FuncCall(
-                                                                      PathDesignator(
-                                                                        BaseDesignator(
-                                                                         s3
-                                                                        ) [BaseDesignator]
-                                                                       postaviPoluprecnik
-                                                                      ) [PathDesignator]
-                                                                      Parameter(
-                                                                        SingleExpr(
-                                                                          SingleTerm(
-                                                                            NumericConstant(
-                                                                             3
-                                                                            ) [NumericConstant]
-                                                                          ) [SingleTerm]
-                                                                        ) [SingleExpr]
-                                                                      ) [Parameter]
-                                                                    ) [FuncCall]
-                                                                  ) [CallStatement]
-                                                                ) [StatementBlock]
-                                                                CallStatement(
-                                                                  FuncCall(
-                                                                    PathDesignator(
-                                                                      BaseDesignator(
-                                                                       k1
-                                                                      ) [BaseDesignator]
-                                                                     postaviStranice
-                                                                    ) [PathDesignator]
-                                                                    Parameters(
-                                                                      Parameters(
-                                                                        Parameter(
-                                                                          SingleExpr(
-                                                                            SingleTerm(
-                                                                              NumericConstant(
-                                                                               1
-                                                                              ) [NumericConstant]
-                                                                            ) [SingleTerm]
-                                                                          ) [SingleExpr]
-                                                                        ) [Parameter]
-                                                                        SingleExpr(
-                                                                          SingleTerm(
-                                                                            NumericConstant(
-                                                                             2
-                                                                            ) [NumericConstant]
-                                                                          ) [SingleTerm]
-                                                                        ) [SingleExpr]
-                                                                      ) [Parameters]
-                                                                      SingleExpr(
-                                                                        SingleTerm(
-                                                                          NumericConstant(
-                                                                           3
-                                                                          ) [NumericConstant]
-                                                                        ) [SingleTerm]
-                                                                      ) [SingleExpr]
-                                                                    ) [Parameters]
-                                                                  ) [FuncCall]
-                                                                ) [CallStatement]
-                                                              ) [StatementBlock]
-                                                              CallStatement(
-                                                                FuncCall(
-                                                                  PathDesignator(
-                                                                    BaseDesignator(
-                                                                     k2
-                                                                    ) [BaseDesignator]
-                                                                   postaviStranice
-                                                                  ) [PathDesignator]
-                                                                  Parameters(
-                                                                    Parameters(
-                                                                      Parameter(
-                                                                        SingleExpr(
-                                                                          SingleTerm(
-                                                                            NumericConstant(
-                                                                             2
-                                                                            ) [NumericConstant]
-                                                                          ) [SingleTerm]
-                                                                        ) [SingleExpr]
-                                                                      ) [Parameter]
-                                                                      SingleExpr(
-                                                                        SingleTerm(
-                                                                          NumericConstant(
-                                                                           3
-                                                                          ) [NumericConstant]
-                                                                        ) [SingleTerm]
-                                                                      ) [SingleExpr]
-                                                                    ) [Parameters]
-                                                                    SingleExpr(
-                                                                      SingleTerm(
-                                                                        NumericConstant(
-                                                                         4
-                                                                        ) [NumericConstant]
-                                                                      ) [SingleTerm]
-                                                                    ) [SingleExpr]
-                                                                  ) [Parameters]
-                                                                ) [FuncCall]
-                                                              ) [CallStatement]
-                                                            ) [StatementBlock]
-                                                            CallStatement(
-                                                              FuncCall(
-                                                                PathDesignator(
-                                                                  BaseDesignator(
-                                                                   k3
-                                                                  ) [BaseDesignator]
-                                                                 postaviStranice
-                                                                ) [PathDesignator]
-                                                                Parameters(
-                                                                  Parameters(
-                                                                    Parameter(
-                                                                      SingleExpr(
-                                                                        SingleTerm(
-                                                                          NumericConstant(
-                                                                           3
-                                                                          ) [NumericConstant]
-                                                                        ) [SingleTerm]
-                                                                      ) [SingleExpr]
-                                                                    ) [Parameter]
-                                                                    SingleExpr(
-                                                                      SingleTerm(
-                                                                        NumericConstant(
-                                                                         4
-                                                                        ) [NumericConstant]
-                                                                      ) [SingleTerm]
-                                                                    ) [SingleExpr]
-                                                                  ) [Parameters]
-                                                                  SingleExpr(
-                                                                    SingleTerm(
-                                                                      NumericConstant(
-                                                                       5
-                                                                      ) [NumericConstant]
-                                                                    ) [SingleTerm]
-                                                                  ) [SingleExpr]
-                                                                ) [Parameters]
-                                                              ) [FuncCall]
-                                                            ) [CallStatement]
-                                                          ) [StatementBlock]
-                                                          StatementDerived1(
-                                                            DesignatorlineDerived1(
-                                                              Assign(
-                                                                IndexDesignator(
-                                                                  BaseDesignator(
-                                                                   predmeti
-                                                                  ) [BaseDesignator]
-                                                                  SingleExpr(
-                                                                    SingleTerm(
-                                                                      NumericConstant(
-                                                                       0
-                                                                      ) [NumericConstant]
-                                                                    ) [SingleTerm]
-                                                                  ) [SingleExpr]
-                                                                ) [IndexDesignator]
-                                                                SingleExpr(
-                                                                  SingleTerm(
-                                                                    SingleFactor(
-                                                                      BaseDesignator(
-                                                                       s1
-                                                                      ) [BaseDesignator]
-                                                                    ) [SingleFactor]
-                                                                  ) [SingleTerm]
-                                                                ) [SingleExpr]
-                                                              ) [Assign]
-                                                            ) [DesignatorlineDerived1]
-                                                          ) [StatementDerived1]
-                                                        ) [StatementBlock]
-                                                        StatementDerived1(
-                                                          DesignatorlineDerived1(
-                                                            Assign(
-                                                              IndexDesignator(
-                                                                BaseDesignator(
-                                                                 predmeti
-                                                                ) [BaseDesignator]
-                                                                SingleExpr(
-                                                                  SingleTerm(
-                                                                    NumericConstant(
-                                                                     2
-                                                                    ) [NumericConstant]
-                                                                  ) [SingleTerm]
-                                                                ) [SingleExpr]
-                                                              ) [IndexDesignator]
-                                                              SingleExpr(
-                                                                SingleTerm(
-                                                                  SingleFactor(
-                                                                    BaseDesignator(
-                                                                     s2
-                                                                    ) [BaseDesignator]
-                                                                  ) [SingleFactor]
-                                                                ) [SingleTerm]
-                                                              ) [SingleExpr]
-                                                            ) [Assign]
-                                                          ) [DesignatorlineDerived1]
-                                                        ) [StatementDerived1]
-                                                      ) [StatementBlock]
-                                                      StatementDerived1(
-                                                        DesignatorlineDerived1(
-                                                          Assign(
-                                                            IndexDesignator(
-                                                              BaseDesignator(
-                                                               predmeti
-                                                              ) [BaseDesignator]
-                                                              SingleExpr(
-                                                                SingleTerm(
-                                                                  NumericConstant(
-                                                                   4
-                                                                  ) [NumericConstant]
-                                                                ) [SingleTerm]
-                                                              ) [SingleExpr]
-                                                            ) [IndexDesignator]
-                                                            SingleExpr(
-                                                              SingleTerm(
-                                                                SingleFactor(
-                                                                  BaseDesignator(
-                                                                   s3
-                                                                  ) [BaseDesignator]
-                                                                ) [SingleFactor]
-                                                              ) [SingleTerm]
-                                                            ) [SingleExpr]
-                                                          ) [Assign]
-                                                        ) [DesignatorlineDerived1]
-                                                      ) [StatementDerived1]
-                                                    ) [StatementBlock]
-                                                    StatementDerived1(
-                                                      DesignatorlineDerived1(
-                                                        Assign(
-                                                          IndexDesignator(
-                                                            BaseDesignator(
-                                                             predmeti
-                                                            ) [BaseDesignator]
-                                                            SingleExpr(
-                                                              SingleTerm(
-                                                                NumericConstant(
-                                                                 1
-                                                                ) [NumericConstant]
-                                                              ) [SingleTerm]
-                                                            ) [SingleExpr]
-                                                          ) [IndexDesignator]
-                                                          SingleExpr(
-                                                            SingleTerm(
-                                                              SingleFactor(
-                                                                BaseDesignator(
-                                                                 k1
-                                                                ) [BaseDesignator]
-                                                              ) [SingleFactor]
-                                                            ) [SingleTerm]
-                                                          ) [SingleExpr]
-                                                        ) [Assign]
-                                                      ) [DesignatorlineDerived1]
-                                                    ) [StatementDerived1]
-                                                  ) [StatementBlock]
-                                                  StatementDerived1(
-                                                    DesignatorlineDerived1(
-                                                      Assign(
-                                                        IndexDesignator(
-                                                          BaseDesignator(
-                                                           predmeti
-                                                          ) [BaseDesignator]
-                                                          SingleExpr(
-                                                            SingleTerm(
-                                                              NumericConstant(
-                                                               3
-                                                              ) [NumericConstant]
-                                                            ) [SingleTerm]
-                                                          ) [SingleExpr]
-                                                        ) [IndexDesignator]
-                                                        SingleExpr(
-                                                          SingleTerm(
-                                                            SingleFactor(
-                                                              BaseDesignator(
-                                                               k2
-                                                              ) [BaseDesignator]
-                                                            ) [SingleFactor]
-                                                          ) [SingleTerm]
-                                                        ) [SingleExpr]
-                                                      ) [Assign]
-                                                    ) [DesignatorlineDerived1]
-                                                  ) [StatementDerived1]
-                                                ) [StatementBlock]
-                                                StatementDerived1(
-                                                  DesignatorlineDerived1(
-                                                    Assign(
-                                                      IndexDesignator(
-                                                        BaseDesignator(
-                                                         predmeti
-                                                        ) [BaseDesignator]
-                                                        SingleExpr(
-                                                          SingleTerm(
-                                                            NumericConstant(
-                                                             5
-                                                            ) [NumericConstant]
-                                                          ) [SingleTerm]
-                                                        ) [SingleExpr]
-                                                      ) [IndexDesignator]
-                                                      SingleExpr(
-                                                        SingleTerm(
-                                                          SingleFactor(
-                                                            BaseDesignator(
-                                                             k3
-                                                            ) [BaseDesignator]
-                                                          ) [SingleFactor]
-                                                        ) [SingleTerm]
-                                                      ) [SingleExpr]
-                                                    ) [Assign]
-                                                  ) [DesignatorlineDerived1]
-                                                ) [StatementDerived1]
-                                              ) [StatementBlock]
-                                              CallStatement(
-                                                FuncCall(
-                                                  BaseDesignator(
-                                                   read
-                                                  ) [BaseDesignator]
-                                                  Parameter(
-                                                    SingleExpr(
-                                                      SingleTerm(
-                                                        SingleFactor(
-                                                          BaseDesignator(
-                                                           t
-                                                          ) [BaseDesignator]
-                                                        ) [SingleFactor]
-                                                      ) [SingleTerm]
-                                                    ) [SingleExpr]
-                                                  ) [Parameter]
-                                                ) [FuncCall]
-                                              ) [CallStatement]
-                                            ) [StatementBlock]
-                                            StatementDerived1(
-                                              DesignatorlineDerived1(
-                                                Assign(
-                                                  BaseDesignator(
-                                                   i
-                                                  ) [BaseDesignator]
-                                                  SingleExpr(
-                                                    SingleTerm(
-                                                      NumericConstant(
-                                                       0
-                                                      ) [NumericConstant]
-                                                    ) [SingleTerm]
-                                                  ) [SingleExpr]
-                                                ) [Assign]
-                                              ) [DesignatorlineDerived1]
-                                            ) [StatementDerived1]
-                                          ) [StatementBlock]
-                                          DoWhile(
-                                            Block(
-                                              StatementBlock(
-                                                StatementBlock(
-                                                  EmptyBlock(
-                                                  ) [EmptyBlock]
-                                                  CallStatement(
-                                                    FuncCall(
-                                                      PathDesignator(
-                                                        IndexDesignator(
-                                                          BaseDesignator(
-                                                           predmeti
-                                                          ) [BaseDesignator]
-                                                          SingleExpr(
-                                                            SingleTerm(
-                                                              SingleFactor(
-                                                                BaseDesignator(
-                                                                 i
-                                                                ) [BaseDesignator]
-                                                              ) [SingleFactor]
-                                                            ) [SingleTerm]
-                                                          ) [SingleExpr]
-                                                        ) [IndexDesignator]
-                                                       postaviTezinu
-                                                      ) [PathDesignator]
-                                                      Parameter(
-                                                        SingleExpr(
-                                                          SingleTerm(
-                                                            SingleFactor(
-                                                              BaseDesignator(
-                                                               t
-                                                              ) [BaseDesignator]
-                                                            ) [SingleFactor]
-                                                          ) [SingleTerm]
-                                                        ) [SingleExpr]
-                                                      ) [Parameter]
-                                                    ) [FuncCall]
-                                                  ) [CallStatement]
-                                                ) [StatementBlock]
-                                                StatementDerived1(
-                                                  DesignatorlineDerived1(
-                                                    Increment(
-                                                      BaseDesignator(
-                                                       i
-                                                      ) [BaseDesignator]
-                                                    ) [Increment]
-                                                  ) [DesignatorlineDerived1]
-                                                ) [StatementDerived1]
-                                              ) [StatementBlock]
-                                            ) [Block]
-                                            SingleCondExpr(
-                                              SingleCondTerm(
-                                                Less(
-                                                  SingleExpr(
-                                                    SingleTerm(
-                                                      SingleFactor(
-                                                        BaseDesignator(
-                                                         i
-                                                        ) [BaseDesignator]
-                                                      ) [SingleFactor]
-                                                    ) [SingleTerm]
-                                                  ) [SingleExpr]
-                                                  SingleExpr(
-                                                    SingleTerm(
-                                                      NumericConstant(
-                                                       6
-                                                      ) [NumericConstant]
-                                                    ) [SingleTerm]
-                                                  ) [SingleExpr]
-                                                ) [Less]
-                                              ) [SingleCondTerm]
-                                            ) [SingleCondExpr]
-                                          ) [DoWhile]
-                                        ) [StatementBlock]
-                                        StatementDerived1(
-                                          DesignatorlineDerived1(
-                                            Assign(
-                                              BaseDesignator(
-                                               i
-                                              ) [BaseDesignator]
-                                              Addition(
-                                                SingleExpr(
-                                                  SingleTerm(
-                                                    SingleFactor(
-                                                      BaseDesignator(
-                                                       i
-                                                      ) [BaseDesignator]
-                                                    ) [SingleFactor]
-                                                  ) [SingleTerm]
-                                                ) [SingleExpr]
-                                                SingleTerm(
-                                                  CallResult(
-                                                    FuncCall(
-                                                      PathDesignator(
-                                                        BaseDesignator(
-                                                         k3
-                                                        ) [BaseDesignator]
-                                                       Q
-                                                      ) [PathDesignator]
-                                                      EmptyParameters(
-                                                      ) [EmptyParameters]
-                                                    ) [FuncCall]
-                                                  ) [CallResult]
-                                                ) [SingleTerm]
-                                              ) [Addition]
-                                            ) [Assign]
-                                          ) [DesignatorlineDerived1]
-                                        ) [StatementDerived1]
-                                      ) [StatementBlock]
-                                      StatementDerived1(
-                                        DesignatorlineDerived1(
-                                          Assign(
-                                            BaseDesignator(
-                                             i
-                                            ) [BaseDesignator]
-                                            SingleExpr(
-                                              SingleTerm(
-                                                NumericConstant(
-                                                 0
-                                                ) [NumericConstant]
-                                              ) [SingleTerm]
-                                            ) [SingleExpr]
-                                          ) [Assign]
-                                        ) [DesignatorlineDerived1]
-                                      ) [StatementDerived1]
-                                    ) [StatementBlock]
-                                    StatementDerived1(
-                                      DesignatorlineDerived1(
-                                        Assign(
-                                          BaseDesignator(
-                                           zapreminaS
-                                          ) [BaseDesignator]
-                                          SingleExpr(
-                                            SingleTerm(
-                                              NumericConstant(
-                                               0
-                                              ) [NumericConstant]
-                                            ) [SingleTerm]
-                                          ) [SingleExpr]
-                                        ) [Assign]
-                                      ) [DesignatorlineDerived1]
-                                    ) [StatementDerived1]
-                                  ) [StatementBlock]
-                                  StatementDerived1(
-                                    DesignatorlineDerived1(
-                                      Assign(
-                                        BaseDesignator(
-                                         tezinaS
-                                        ) [BaseDesignator]
-                                        SingleExpr(
-                                          SingleTerm(
-                                            NumericConstant(
-                                             0
-                                            ) [NumericConstant]
-                                          ) [SingleTerm]
-                                        ) [SingleExpr]
-                                      ) [Assign]
-                                    ) [DesignatorlineDerived1]
-                                  ) [StatementDerived1]
-                                ) [StatementBlock]
-                                DoWhile(
-                                  Block(
-                                    StatementBlock(
-                                      StatementBlock(
-                                        StatementBlock(
-                                          StatementBlock(
-                                            StatementBlock(
-                                              EmptyBlock(
-                                              ) [EmptyBlock]
-                                              StatementDerived1(
-                                                DesignatorlineDerived1(
-                                                  Increment(
-                                                    BaseDesignator(
-                                                     i
-                                                    ) [BaseDesignator]
-                                                  ) [Increment]
-                                                ) [DesignatorlineDerived1]
-                                              ) [StatementDerived1]
-                                            ) [StatementBlock]
-                                            If(
-                                              SingleCondExpr(
-                                                SingleCondTerm(
-                                                  Equals(
-                                                    SingleExpr(
-                                                      Modulus(
-                                                        SingleTerm(
-                                                          SingleFactor(
-                                                            BaseDesignator(
-                                                             i
-                                                            ) [BaseDesignator]
-                                                          ) [SingleFactor]
-                                                        ) [SingleTerm]
-                                                        NumericConstant(
-                                                         2
-                                                        ) [NumericConstant]
-                                                      ) [Modulus]
-                                                    ) [SingleExpr]
-                                                    SingleExpr(
-                                                      SingleTerm(
-                                                        NumericConstant(
-                                                         0
-                                                        ) [NumericConstant]
-                                                      ) [SingleTerm]
-                                                    ) [SingleExpr]
-                                                  ) [Equals]
-                                                ) [SingleCondTerm]
-                                              ) [SingleCondExpr]
-                                              Continue(
-                                              ) [Continue]
-                                            ) [If]
-                                          ) [StatementBlock]
-                                          StatementDerived1(
-                                            DesignatorlineDerived1(
-                                              Assign(
-                                                BaseDesignator(
-                                                 zapreminaS
-                                                ) [BaseDesignator]
-                                                Addition(
-                                                  SingleExpr(
-                                                    SingleTerm(
-                                                      SingleFactor(
-                                                        BaseDesignator(
-                                                         zapreminaS
-                                                        ) [BaseDesignator]
-                                                      ) [SingleFactor]
-                                                    ) [SingleTerm]
-                                                  ) [SingleExpr]
-                                                  SingleTerm(
-                                                    CallResult(
-                                                      FuncCall(
-                                                        PathDesignator(
-                                                          IndexDesignator(
-                                                            BaseDesignator(
-                                                             predmeti
-                                                            ) [BaseDesignator]
-                                                            Substraction(
-                                                              SingleExpr(
-                                                                SingleTerm(
-                                                                  SingleFactor(
-                                                                    BaseDesignator(
-                                                                     i
-                                                                    ) [BaseDesignator]
-                                                                  ) [SingleFactor]
-                                                                ) [SingleTerm]
-                                                              ) [SingleExpr]
-                                                              SingleTerm(
-                                                                NumericConstant(
-                                                                 1
-                                                                ) [NumericConstant]
-                                                              ) [SingleTerm]
-                                                            ) [Substraction]
-                                                          ) [IndexDesignator]
-                                                         zapremina
-                                                        ) [PathDesignator]
-                                                        EmptyParameters(
-                                                        ) [EmptyParameters]
-                                                      ) [FuncCall]
-                                                    ) [CallResult]
-                                                  ) [SingleTerm]
-                                                ) [Addition]
-                                              ) [Assign]
-                                            ) [DesignatorlineDerived1]
-                                          ) [StatementDerived1]
-                                        ) [StatementBlock]
-                                        StatementDerived1(
-                                          DesignatorlineDerived1(
-                                            Assign(
-                                              BaseDesignator(
-                                               tezinaS
-                                              ) [BaseDesignator]
-                                              Addition(
-                                                SingleExpr(
-                                                  SingleTerm(
-                                                    SingleFactor(
-                                                      BaseDesignator(
-                                                       tezinaS
-                                                      ) [BaseDesignator]
-                                                    ) [SingleFactor]
-                                                  ) [SingleTerm]
-                                                ) [SingleExpr]
-                                                SingleTerm(
-                                                  CallResult(
-                                                    FuncCall(
-                                                      PathDesignator(
-                                                        IndexDesignator(
-                                                          BaseDesignator(
-                                                           predmeti
-                                                          ) [BaseDesignator]
-                                                          Substraction(
-                                                            SingleExpr(
-                                                              SingleTerm(
-                                                                SingleFactor(
-                                                                  BaseDesignator(
-                                                                   i
-                                                                  ) [BaseDesignator]
-                                                                ) [SingleFactor]
-                                                              ) [SingleTerm]
-                                                            ) [SingleExpr]
-                                                            SingleTerm(
-                                                              NumericConstant(
-                                                               1
-                                                              ) [NumericConstant]
-                                                            ) [SingleTerm]
-                                                          ) [Substraction]
-                                                        ) [IndexDesignator]
-                                                       Q
-                                                      ) [PathDesignator]
-                                                      EmptyParameters(
-                                                      ) [EmptyParameters]
-                                                    ) [FuncCall]
-                                                  ) [CallResult]
-                                                ) [SingleTerm]
-                                              ) [Addition]
-                                            ) [Assign]
-                                          ) [DesignatorlineDerived1]
-                                        ) [StatementDerived1]
-                                      ) [StatementBlock]
-                                      CallStatement(
-                                        FuncCall(
-                                          BaseDesignator(
-                                           ispis
-                                          ) [BaseDesignator]
-                                          Parameter(
-                                            SingleExpr(
-                                              SingleTerm(
-                                                SingleFactor(
-                                                  IndexDesignator(
-                                                    BaseDesignator(
-                                                     predmeti
-                                                    ) [BaseDesignator]
-                                                    Substraction(
-                                                      SingleExpr(
-                                                        SingleTerm(
-                                                          SingleFactor(
-                                                            BaseDesignator(
-                                                             i
-                                                            ) [BaseDesignator]
-                                                          ) [SingleFactor]
-                                                        ) [SingleTerm]
-                                                      ) [SingleExpr]
-                                                      SingleTerm(
-                                                        NumericConstant(
-                                                         1
-                                                        ) [NumericConstant]
-                                                      ) [SingleTerm]
-                                                    ) [Substraction]
-                                                  ) [IndexDesignator]
-                                                ) [SingleFactor]
-                                              ) [SingleTerm]
-                                            ) [SingleExpr]
-                                          ) [Parameter]
-                                        ) [FuncCall]
-                                      ) [CallStatement]
-                                    ) [StatementBlock]
-                                  ) [Block]
-                                  SingleCondExpr(
-                                    SingleCondTerm(
-                                      Less(
-                                        SingleExpr(
-                                          SingleTerm(
-                                            SingleFactor(
-                                              BaseDesignator(
-                                               i
-                                              ) [BaseDesignator]
-                                            ) [SingleFactor]
-                                          ) [SingleTerm]
-                                        ) [SingleExpr]
-                                        SingleExpr(
-                                          SingleTerm(
-                                            NumericConstant(
-                                             6
-                                            ) [NumericConstant]
-                                          ) [SingleTerm]
-                                        ) [SingleExpr]
-                                      ) [Less]
-                                    ) [SingleCondTerm]
-                                  ) [SingleCondExpr]
-                                ) [DoWhile]
-                              ) [StatementBlock]
-                              StatementDerived1(
-                                DesignatorlineDerived1(
-                                  Assign(
-                                    BaseDesignator(
-                                     i
-                                    ) [BaseDesignator]
-                                    SingleExpr(
-                                      SingleTerm(
-                                        NumericConstant(
-                                         0
-                                        ) [NumericConstant]
-                                      ) [SingleTerm]
-                                    ) [SingleExpr]
-                                  ) [Assign]
-                                ) [DesignatorlineDerived1]
-                              ) [StatementDerived1]
-                            ) [StatementBlock]
-                            StatementDerived1(
-                              DesignatorlineDerived1(
-                                Assign(
-                                  BaseDesignator(
-                                   zapreminaK
-                                  ) [BaseDesignator]
-                                  SingleExpr(
-                                    SingleTerm(
-                                      NumericConstant(
-                                       0
-                                      ) [NumericConstant]
-                                    ) [SingleTerm]
-                                  ) [SingleExpr]
-                                ) [Assign]
-                              ) [DesignatorlineDerived1]
-                            ) [StatementDerived1]
-                          ) [StatementBlock]
-                          StatementDerived1(
-                            DesignatorlineDerived1(
-                              Assign(
-                                BaseDesignator(
-                                 tezinaK
-                                ) [BaseDesignator]
-                                SingleExpr(
-                                  SingleTerm(
-                                    NumericConstant(
-                                     0
-                                    ) [NumericConstant]
-                                  ) [SingleTerm]
-                                ) [SingleExpr]
-                              ) [Assign]
-                            ) [DesignatorlineDerived1]
-                          ) [StatementDerived1]
-                        ) [StatementBlock]
-                        DoWhile(
-                          Block(
-                            StatementBlock(
-                              StatementBlock(
-                                StatementBlock(
-                                  StatementBlock(
-                                    StatementBlock(
-                                      EmptyBlock(
-                                      ) [EmptyBlock]
-                                      StatementDerived1(
-                                        DesignatorlineDerived1(
-                                          Increment(
-                                            BaseDesignator(
-                                             i
-                                            ) [BaseDesignator]
-                                          ) [Increment]
-                                        ) [DesignatorlineDerived1]
-                                      ) [StatementDerived1]
-                                    ) [StatementBlock]
-                                    If(
-                                      SingleCondExpr(
-                                        SingleCondTerm(
-                                          Equals(
-                                            SingleExpr(
-                                              Modulus(
-                                                SingleTerm(
-                                                  SingleFactor(
-                                                    BaseDesignator(
-                                                     i
-                                                    ) [BaseDesignator]
-                                                  ) [SingleFactor]
-                                                ) [SingleTerm]
-                                                NumericConstant(
-                                                 2
-                                                ) [NumericConstant]
-                                              ) [Modulus]
-                                            ) [SingleExpr]
-                                            SingleExpr(
-                                              SingleTerm(
-                                                NumericConstant(
-                                                 1
-                                                ) [NumericConstant]
-                                              ) [SingleTerm]
-                                            ) [SingleExpr]
-                                          ) [Equals]
-                                        ) [SingleCondTerm]
-                                      ) [SingleCondExpr]
-                                      Continue(
-                                      ) [Continue]
-                                    ) [If]
-                                  ) [StatementBlock]
-                                  StatementDerived1(
-                                    DesignatorlineDerived1(
-                                      Assign(
-                                        BaseDesignator(
-                                         zapreminaK
-                                        ) [BaseDesignator]
-                                        Addition(
-                                          SingleExpr(
-                                            SingleTerm(
-                                              SingleFactor(
-                                                BaseDesignator(
-                                                 zapreminaK
-                                                ) [BaseDesignator]
-                                              ) [SingleFactor]
-                                            ) [SingleTerm]
-                                          ) [SingleExpr]
-                                          SingleTerm(
-                                            CallResult(
-                                              FuncCall(
-                                                PathDesignator(
-                                                  IndexDesignator(
-                                                    BaseDesignator(
-                                                     predmeti
-                                                    ) [BaseDesignator]
-                                                    Substraction(
-                                                      SingleExpr(
-                                                        SingleTerm(
-                                                          SingleFactor(
-                                                            BaseDesignator(
-                                                             i
-                                                            ) [BaseDesignator]
-                                                          ) [SingleFactor]
-                                                        ) [SingleTerm]
-                                                      ) [SingleExpr]
-                                                      SingleTerm(
-                                                        NumericConstant(
-                                                         1
-                                                        ) [NumericConstant]
-                                                      ) [SingleTerm]
-                                                    ) [Substraction]
-                                                  ) [IndexDesignator]
-                                                 zapremina
-                                                ) [PathDesignator]
-                                                EmptyParameters(
-                                                ) [EmptyParameters]
-                                              ) [FuncCall]
-                                            ) [CallResult]
-                                          ) [SingleTerm]
-                                        ) [Addition]
-                                      ) [Assign]
-                                    ) [DesignatorlineDerived1]
-                                  ) [StatementDerived1]
-                                ) [StatementBlock]
-                                StatementDerived1(
-                                  DesignatorlineDerived1(
-                                    Assign(
-                                      BaseDesignator(
-                                       tezinaK
-                                      ) [BaseDesignator]
-                                      Addition(
-                                        SingleExpr(
-                                          SingleTerm(
-                                            SingleFactor(
-                                              BaseDesignator(
-                                               tezinaK
-                                              ) [BaseDesignator]
-                                            ) [SingleFactor]
-                                          ) [SingleTerm]
-                                        ) [SingleExpr]
-                                        SingleTerm(
-                                          CallResult(
-                                            FuncCall(
-                                              PathDesignator(
-                                                IndexDesignator(
-                                                  BaseDesignator(
-                                                   predmeti
-                                                  ) [BaseDesignator]
-                                                  Substraction(
-                                                    SingleExpr(
-                                                      SingleTerm(
-                                                        SingleFactor(
-                                                          BaseDesignator(
-                                                           i
-                                                          ) [BaseDesignator]
-                                                        ) [SingleFactor]
-                                                      ) [SingleTerm]
-                                                    ) [SingleExpr]
-                                                    SingleTerm(
-                                                      NumericConstant(
-                                                       1
-                                                      ) [NumericConstant]
-                                                    ) [SingleTerm]
-                                                  ) [Substraction]
-                                                ) [IndexDesignator]
-                                               Q
-                                              ) [PathDesignator]
-                                              EmptyParameters(
-                                              ) [EmptyParameters]
-                                            ) [FuncCall]
-                                          ) [CallResult]
-                                        ) [SingleTerm]
-                                      ) [Addition]
-                                    ) [Assign]
-                                  ) [DesignatorlineDerived1]
-                                ) [StatementDerived1]
-                              ) [StatementBlock]
-                              CallStatement(
-                                FuncCall(
-                                  BaseDesignator(
-                                   ispis
-                                  ) [BaseDesignator]
-                                  Parameter(
-                                    SingleExpr(
-                                      SingleTerm(
-                                        SingleFactor(
-                                          IndexDesignator(
-                                            BaseDesignator(
-                                             predmeti
-                                            ) [BaseDesignator]
-                                            Substraction(
-                                              SingleExpr(
-                                                SingleTerm(
-                                                  SingleFactor(
-                                                    BaseDesignator(
-                                                     i
-                                                    ) [BaseDesignator]
-                                                  ) [SingleFactor]
-                                                ) [SingleTerm]
-                                              ) [SingleExpr]
-                                              SingleTerm(
-                                                NumericConstant(
-                                                 1
-                                                ) [NumericConstant]
-                                              ) [SingleTerm]
-                                            ) [Substraction]
-                                          ) [IndexDesignator]
-                                        ) [SingleFactor]
-                                      ) [SingleTerm]
-                                    ) [SingleExpr]
-                                  ) [Parameter]
-                                ) [FuncCall]
-                              ) [CallStatement]
-                            ) [StatementBlock]
-                          ) [Block]
-                          SingleCondExpr(
-                            SingleCondTerm(
-                              Less(
-                                SingleExpr(
-                                  SingleTerm(
-                                    SingleFactor(
-                                      BaseDesignator(
-                                       i
-                                      ) [BaseDesignator]
-                                    ) [SingleFactor]
-                                  ) [SingleTerm]
-                                ) [SingleExpr]
-                                SingleExpr(
-                                  SingleTerm(
-                                    NumericConstant(
-                                     6
-                                    ) [NumericConstant]
-                                  ) [SingleTerm]
-                                ) [SingleExpr]
-                              ) [Less]
-                            ) [SingleCondTerm]
-                          ) [SingleCondExpr]
-                        ) [DoWhile]
-                      ) [StatementBlock]
-                      CallStatement(
-                        FuncCall(
+                    EmptyBlock(
+                    ) [EmptyBlock]
+                    StatementDerived1(
+                      DesignatorlineDerived1(
+                        Assign(
                           BaseDesignator(
-                           print
+                           val
                           ) [BaseDesignator]
-                          Parameter(
+                          SingleExpr(
+                            SingleTerm(
+                              NewObject(
+                                Type(
+                                 Table
+                                ) [Type]
+                              ) [NewObject]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                        ) [Assign]
+                      ) [DesignatorlineDerived1]
+                    ) [StatementDerived1]
+                  ) [StatementBlock]
+                  StatementDerived1(
+                    DesignatorlineDerived1(
+                      Assign(
+                        PathDesignator(
+                          BaseDesignator(
+                           val
+                          ) [BaseDesignator]
+                         pos
+                        ) [PathDesignator]
+                        SingleExpr(
+                          SingleTerm(
+                            NewArray(
+                              Type(
+                               int
+                              ) [Type]
+                              SingleExpr(
+                                SingleTerm(
+                                  SingleFactor(
+                                    BaseDesignator(
+                                     size
+                                    ) [BaseDesignator]
+                                  ) [SingleFactor]
+                                ) [SingleTerm]
+                              ) [SingleExpr]
+                            ) [NewArray]
+                          ) [SingleTerm]
+                        ) [SingleExpr]
+                      ) [Assign]
+                    ) [DesignatorlineDerived1]
+                  ) [StatementDerived1]
+                ) [StatementBlock]
+                StatementDerived1(
+                  DesignatorlineDerived1(
+                    Assign(
+                      PathDesignator(
+                        BaseDesignator(
+                         val
+                        ) [BaseDesignator]
+                       neg
+                      ) [PathDesignator]
+                      SingleExpr(
+                        SingleTerm(
+                          NewArray(
+                            Type(
+                             int
+                            ) [Type]
                             SingleExpr(
                               SingleTerm(
                                 SingleFactor(
                                   BaseDesignator(
-                                   zapreminaS
+                                   size
                                   ) [BaseDesignator]
                                 ) [SingleFactor]
                               ) [SingleTerm]
                             ) [SingleExpr]
-                          ) [Parameter]
+                          ) [NewArray]
+                        ) [SingleTerm]
+                      ) [SingleExpr]
+                    ) [Assign]
+                  ) [DesignatorlineDerived1]
+                ) [StatementDerived1]
+              ) [StatementBlock]
+              ForLoop(
+                ForInit(
+                  Assign(
+                    BaseDesignator(
+                     i
+                    ) [BaseDesignator]
+                    SingleExpr(
+                      SingleTerm(
+                        NumericConstant(
+                         0
+                        ) [NumericConstant]
+                      ) [SingleTerm]
+                    ) [SingleExpr]
+                  ) [Assign]
+                ) [ForInit]
+                ForCond(
+                  SingleCondExpr(
+                    SingleCondTerm(
+                      Less(
+                        SingleExpr(
+                          SingleTerm(
+                            SingleFactor(
+                              BaseDesignator(
+                               i
+                              ) [BaseDesignator]
+                            ) [SingleFactor]
+                          ) [SingleTerm]
+                        ) [SingleExpr]
+                        SingleExpr(
+                          SingleTerm(
+                            SingleFactor(
+                              BaseDesignator(
+                               size
+                              ) [BaseDesignator]
+                            ) [SingleFactor]
+                          ) [SingleTerm]
+                        ) [SingleExpr]
+                      ) [Less]
+                    ) [SingleCondTerm]
+                  ) [SingleCondExpr]
+                ) [ForCond]
+                ForIncrement(
+                  Increment(
+                    BaseDesignator(
+                     i
+                    ) [BaseDesignator]
+                  ) [Increment]
+                ) [ForIncrement]
+                Block(
+                  StatementBlock(
+                    StatementBlock(
+                      EmptyBlock(
+                      ) [EmptyBlock]
+                      CallStatement(
+                        FuncCall(
+                          PathDesignator(
+                            BaseDesignator(
+                             val
+                            ) [BaseDesignator]
+                           putp
+                          ) [PathDesignator]
+                          Parameters(
+                            Parameter(
+                              SingleExpr(
+                                SingleTerm(
+                                  NumericConstant(
+                                   0
+                                  ) [NumericConstant]
+                                ) [SingleTerm]
+                              ) [SingleExpr]
+                            ) [Parameter]
+                            SingleExpr(
+                              SingleTerm(
+                                SingleFactor(
+                                  BaseDesignator(
+                                   i
+                                  ) [BaseDesignator]
+                                ) [SingleFactor]
+                              ) [SingleTerm]
+                            ) [SingleExpr]
+                          ) [Parameters]
                         ) [FuncCall]
                       ) [CallStatement]
                     ) [StatementBlock]
                     CallStatement(
                       FuncCall(
-                        BaseDesignator(
-                         print
-                        ) [BaseDesignator]
-                        Parameter(
+                        PathDesignator(
+                          BaseDesignator(
+                           val
+                          ) [BaseDesignator]
+                         putn
+                        ) [PathDesignator]
+                        Parameters(
+                          Parameter(
+                            SingleExpr(
+                              SingleTerm(
+                                NumericConstant(
+                                 0
+                                ) [NumericConstant]
+                              ) [SingleTerm]
+                            ) [SingleExpr]
+                          ) [Parameter]
                           SingleExpr(
                             SingleTerm(
                               SingleFactor(
                                 BaseDesignator(
-                                 eol
+                                 i
                                 ) [BaseDesignator]
                               ) [SingleFactor]
                             ) [SingleTerm]
                           ) [SingleExpr]
-                        ) [Parameter]
+                        ) [Parameters]
                       ) [FuncCall]
                     ) [CallStatement]
                   ) [StatementBlock]
-                  CallStatement(
-                    FuncCall(
-                      BaseDesignator(
-                       print
-                      ) [BaseDesignator]
-                      Parameter(
-                        SingleExpr(
-                          SingleTerm(
-                            SingleFactor(
-                              BaseDesignator(
-                               zapreminaK
-                              ) [BaseDesignator]
-                            ) [SingleFactor]
-                          ) [SingleTerm]
-                        ) [SingleExpr]
-                      ) [Parameter]
-                    ) [FuncCall]
-                  ) [CallStatement]
-                ) [StatementBlock]
-                CallStatement(
-                  FuncCall(
-                    BaseDesignator(
-                     print
-                    ) [BaseDesignator]
+                ) [Block]
+              ) [ForLoop]
+            ) [StatementBlock]
+            CallStatement(
+              FuncCall(
+                BaseDesignator(
+                 f
+                ) [BaseDesignator]
+                Parameters(
+                  Parameters(
                     Parameter(
                       SingleExpr(
                         SingleTerm(
                           SingleFactor(
                             BaseDesignator(
-                             eol
+                             c
                             ) [BaseDesignator]
                           ) [SingleFactor]
                         ) [SingleTerm]
                       ) [SingleExpr]
                     ) [Parameter]
-                  ) [FuncCall]
-                ) [CallStatement]
-              ) [StatementBlock]
-              CallStatement(
-                FuncCall(
-                  BaseDesignator(
-                   print
-                  ) [BaseDesignator]
-                  Parameter(
                     SingleExpr(
                       SingleTerm(
                         SingleFactor(
                           BaseDesignator(
-                           tezinaS
+                           x
                           ) [BaseDesignator]
                         ) [SingleFactor]
                       ) [SingleTerm]
                     ) [SingleExpr]
-                  ) [Parameter]
-                ) [FuncCall]
-              ) [CallStatement]
-            ) [StatementBlock]
-            CallStatement(
-              FuncCall(
-                BaseDesignator(
-                 print
-                ) [BaseDesignator]
-                Parameter(
+                  ) [Parameters]
                   SingleExpr(
                     SingleTerm(
                       SingleFactor(
                         BaseDesignator(
-                         eol
+                         i
                         ) [BaseDesignator]
                       ) [SingleFactor]
                     ) [SingleTerm]
                   ) [SingleExpr]
-                ) [Parameter]
+                ) [Parameters]
               ) [FuncCall]
             ) [CallStatement]
           ) [StatementBlock]
           CallStatement(
             FuncCall(
               BaseDesignator(
-               print
+               read
               ) [BaseDesignator]
               Parameter(
                 SingleExpr(
                   SingleTerm(
                     SingleFactor(
                       BaseDesignator(
-                       tezinaK
+                       x
                       ) [BaseDesignator]
                     ) [SingleFactor]
                   ) [SingleTerm]
@@ -2640,25 +745,301 @@ ProgramDerived1(
             ) [FuncCall]
           ) [CallStatement]
         ) [StatementBlock]
-        CallStatement(
-          FuncCall(
-            BaseDesignator(
-             print
-            ) [BaseDesignator]
-            Parameter(
-              SingleExpr(
-                SingleTerm(
-                  SingleFactor(
-                    BaseDesignator(
-                     eol
-                    ) [BaseDesignator]
-                  ) [SingleFactor]
-                ) [SingleTerm]
-              ) [SingleExpr]
-            ) [Parameter]
-          ) [FuncCall]
-        ) [CallStatement]
+        ForLoop(
+          ForInitEmpty(
+          ) [ForInitEmpty]
+          ForCond(
+            SingleCondExpr(
+              SingleCondTerm(
+                Greater(
+                  SingleExpr(
+                    SingleTerm(
+                      SingleFactor(
+                        BaseDesignator(
+                         x
+                        ) [BaseDesignator]
+                      ) [SingleFactor]
+                    ) [SingleTerm]
+                  ) [SingleExpr]
+                  SingleExpr(
+                    SingleTerm(
+                      NumericConstant(
+                       0
+                      ) [NumericConstant]
+                    ) [SingleTerm]
+                  ) [SingleExpr]
+                ) [Greater]
+              ) [SingleCondTerm]
+            ) [SingleCondExpr]
+          ) [ForCond]
+          ForIncrementEmpty(
+          ) [ForIncrementEmpty]
+          Block(
+            StatementBlock(
+              StatementBlock(
+                EmptyBlock(
+                ) [EmptyBlock]
+                IfElse(
+                  SingleCondExpr(
+                    And(
+                      SingleCondTerm(
+                        LessEqual(
+                          SingleExpr(
+                            SingleTerm(
+                              SingleFactor(
+                                PathDesignator(
+                                  BaseDesignator(
+                                   Num
+                                  ) [BaseDesignator]
+                                 ZERO
+                                ) [PathDesignator]
+                              ) [SingleFactor]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                          SingleExpr(
+                            SingleTerm(
+                              SingleFactor(
+                                BaseDesignator(
+                                 x
+                                ) [BaseDesignator]
+                              ) [SingleFactor]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                        ) [LessEqual]
+                      ) [SingleCondTerm]
+                      Less(
+                        SingleExpr(
+                          SingleTerm(
+                            SingleFactor(
+                              BaseDesignator(
+                               x
+                              ) [BaseDesignator]
+                            ) [SingleFactor]
+                          ) [SingleTerm]
+                        ) [SingleExpr]
+                        SingleExpr(
+                          SingleTerm(
+                            SingleFactor(
+                              BaseDesignator(
+                               size
+                              ) [BaseDesignator]
+                            ) [SingleFactor]
+                          ) [SingleTerm]
+                        ) [SingleExpr]
+                      ) [Less]
+                    ) [And]
+                  ) [SingleCondExpr]
+                  Block(
+                    StatementBlock(
+                      EmptyBlock(
+                      ) [EmptyBlock]
+                      CallStatement(
+                        FuncCall(
+                          PathDesignator(
+                            BaseDesignator(
+                             val
+                            ) [BaseDesignator]
+                           putp
+                          ) [PathDesignator]
+                          Parameters(
+                            Parameter(
+                              Addition(
+                                SingleExpr(
+                                  SingleTerm(
+                                    CallResult(
+                                      FuncCall(
+                                        PathDesignator(
+                                          BaseDesignator(
+                                           val
+                                          ) [BaseDesignator]
+                                         getp
+                                        ) [PathDesignator]
+                                        Parameter(
+                                          SingleExpr(
+                                            SingleTerm(
+                                              SingleFactor(
+                                                BaseDesignator(
+                                                 x
+                                                ) [BaseDesignator]
+                                              ) [SingleFactor]
+                                            ) [SingleTerm]
+                                          ) [SingleExpr]
+                                        ) [Parameter]
+                                      ) [FuncCall]
+                                    ) [CallResult]
+                                  ) [SingleTerm]
+                                ) [SingleExpr]
+                                SingleTerm(
+                                  SingleFactor(
+                                    PathDesignator(
+                                      BaseDesignator(
+                                       Num
+                                      ) [BaseDesignator]
+                                     ONE
+                                    ) [PathDesignator]
+                                  ) [SingleFactor]
+                                ) [SingleTerm]
+                              ) [Addition]
+                            ) [Parameter]
+                            SingleExpr(
+                              SingleTerm(
+                                SingleFactor(
+                                  PathDesignator(
+                                    BaseDesignator(
+                                     Num
+                                    ) [BaseDesignator]
+                                   ZERO
+                                  ) [PathDesignator]
+                                ) [SingleFactor]
+                              ) [SingleTerm]
+                            ) [SingleExpr]
+                          ) [Parameters]
+                        ) [FuncCall]
+                      ) [CallStatement]
+                    ) [StatementBlock]
+                  ) [Block]
+                  If(
+                    SingleCondExpr(
+                      And(
+                        SingleCondTerm(
+                          Less(
+                            SingleExpr(
+                              Negated(
+                                SingleFactor(
+                                  BaseDesignator(
+                                   size
+                                  ) [BaseDesignator]
+                                ) [SingleFactor]
+                              ) [Negated]
+                            ) [SingleExpr]
+                            SingleExpr(
+                              SingleTerm(
+                                SingleFactor(
+                                  BaseDesignator(
+                                   x
+                                  ) [BaseDesignator]
+                                ) [SingleFactor]
+                              ) [SingleTerm]
+                            ) [SingleExpr]
+                          ) [Less]
+                        ) [SingleCondTerm]
+                        Less(
+                          SingleExpr(
+                            SingleTerm(
+                              SingleFactor(
+                                BaseDesignator(
+                                 x
+                                ) [BaseDesignator]
+                              ) [SingleFactor]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                          SingleExpr(
+                            SingleTerm(
+                              NumericConstant(
+                               0
+                              ) [NumericConstant]
+                            ) [SingleTerm]
+                          ) [SingleExpr]
+                        ) [Less]
+                      ) [And]
+                    ) [SingleCondExpr]
+                    Block(
+                      StatementBlock(
+                        EmptyBlock(
+                        ) [EmptyBlock]
+                        CallStatement(
+                          FuncCall(
+                            PathDesignator(
+                              BaseDesignator(
+                               val
+                              ) [BaseDesignator]
+                             putn
+                            ) [PathDesignator]
+                            Parameters(
+                              Parameter(
+                                Addition(
+                                  SingleExpr(
+                                    SingleTerm(
+                                      CallResult(
+                                        FuncCall(
+                                          PathDesignator(
+                                            BaseDesignator(
+                                             val
+                                            ) [BaseDesignator]
+                                           getn
+                                          ) [PathDesignator]
+                                          Parameter(
+                                            SingleExpr(
+                                              Negated(
+                                                SingleFactor(
+                                                  BaseDesignator(
+                                                   x
+                                                  ) [BaseDesignator]
+                                                ) [SingleFactor]
+                                              ) [Negated]
+                                            ) [SingleExpr]
+                                          ) [Parameter]
+                                        ) [FuncCall]
+                                      ) [CallResult]
+                                    ) [SingleTerm]
+                                  ) [SingleExpr]
+                                  SingleTerm(
+                                    NumericConstant(
+                                     1
+                                    ) [NumericConstant]
+                                  ) [SingleTerm]
+                                ) [Addition]
+                              ) [Parameter]
+                              SingleExpr(
+                                SingleTerm(
+                                  CallResult(
+                                    FuncCall(
+                                      BaseDesignator(
+                                       ord
+                                      ) [BaseDesignator]
+                                      Parameter(
+                                        SingleExpr(
+                                          SingleTerm(
+                                            CharacterConstant(
+                                             E
+                                            ) [CharacterConstant]
+                                          ) [SingleTerm]
+                                        ) [SingleExpr]
+                                      ) [Parameter]
+                                    ) [FuncCall]
+                                  ) [CallResult]
+                                ) [SingleTerm]
+                              ) [SingleExpr]
+                            ) [Parameters]
+                          ) [FuncCall]
+                        ) [CallStatement]
+                      ) [StatementBlock]
+                    ) [Block]
+                  ) [If]
+                ) [IfElse]
+              ) [StatementBlock]
+              CallStatement(
+                FuncCall(
+                  BaseDesignator(
+                   read
+                  ) [BaseDesignator]
+                  Parameter(
+                    SingleExpr(
+                      SingleTerm(
+                        SingleFactor(
+                          BaseDesignator(
+                           x
+                          ) [BaseDesignator]
+                        ) [SingleFactor]
+                      ) [SingleTerm]
+                    ) [SingleExpr]
+                  ) [Parameter]
+                ) [FuncCall]
+              ) [CallStatement]
+            ) [StatementBlock]
+          ) [Block]
+        ) [ForLoop]
       ) [StatementBlock]
-    ) [Proc]
+    ) [Function]
   ) [CodebodyDerived2]
 ) [ProgramDerived1]

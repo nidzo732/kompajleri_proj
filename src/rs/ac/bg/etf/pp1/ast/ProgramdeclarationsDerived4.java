@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 17/9/2018 23:25:43
+// 15/11/2018 5:57:14
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,13 +8,13 @@ package rs.ac.bg.etf.pp1.ast;
 public class ProgramdeclarationsDerived4 extends Programdeclarations {
 
     private Programdeclarations programdeclarations;
-    private Variabledeclaration variabledeclaration;
+    private Enumdeclaration enumdeclaration;
 
-    public ProgramdeclarationsDerived4 (Programdeclarations programdeclarations, Variabledeclaration variabledeclaration) {
+    public ProgramdeclarationsDerived4 (Programdeclarations programdeclarations, Enumdeclaration enumdeclaration) {
         this.programdeclarations=programdeclarations;
         if(programdeclarations!=null) programdeclarations.setParent(this);
-        this.variabledeclaration=variabledeclaration;
-        if(variabledeclaration!=null) variabledeclaration.setParent(this);
+        this.enumdeclaration=enumdeclaration;
+        if(enumdeclaration!=null) enumdeclaration.setParent(this);
     }
 
     public Programdeclarations getProgramdeclarations() {
@@ -25,12 +25,12 @@ public class ProgramdeclarationsDerived4 extends Programdeclarations {
         this.programdeclarations=programdeclarations;
     }
 
-    public Variabledeclaration getVariabledeclaration() {
-        return variabledeclaration;
+    public Enumdeclaration getEnumdeclaration() {
+        return enumdeclaration;
     }
 
-    public void setVariabledeclaration(Variabledeclaration variabledeclaration) {
-        this.variabledeclaration=variabledeclaration;
+    public void setEnumdeclaration(Enumdeclaration enumdeclaration) {
+        this.enumdeclaration=enumdeclaration;
     }
 
     public void accept(Visitor visitor) {
@@ -39,18 +39,18 @@ public class ProgramdeclarationsDerived4 extends Programdeclarations {
 
     public void childrenAccept(Visitor visitor) {
         if(programdeclarations!=null) programdeclarations.accept(visitor);
-        if(variabledeclaration!=null) variabledeclaration.accept(visitor);
+        if(enumdeclaration!=null) enumdeclaration.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(programdeclarations!=null) programdeclarations.traverseTopDown(visitor);
-        if(variabledeclaration!=null) variabledeclaration.traverseTopDown(visitor);
+        if(enumdeclaration!=null) enumdeclaration.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(programdeclarations!=null) programdeclarations.traverseBottomUp(visitor);
-        if(variabledeclaration!=null) variabledeclaration.traverseBottomUp(visitor);
+        if(enumdeclaration!=null) enumdeclaration.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -65,8 +65,8 @@ public class ProgramdeclarationsDerived4 extends Programdeclarations {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(variabledeclaration!=null)
-            buffer.append(variabledeclaration.toString("  "+tab));
+        if(enumdeclaration!=null)
+            buffer.append(enumdeclaration.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

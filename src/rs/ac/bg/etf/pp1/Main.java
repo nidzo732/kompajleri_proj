@@ -7,6 +7,8 @@ import rs.ac.bg.etf.pp1.ast.Factor;
 import rs.ac.bg.etf.pp1.ast.Program;
 import rs.ac.bg.etf.pp1.ast.Term;
 import rs.ac.bg.etf.pp1.ast.parser;
+import rs.etf.pp1.mj.runtime.Code;
+import rs.etf.pp1.mj.runtime.disasm;
 import rs.etf.pp1.symboltable.Tab;
 
 import java.io.*;
@@ -17,18 +19,18 @@ public class Main {
         Yylex lexer = null;
         parser p = null;
         try {
-            PrintWriter treeOut = new PrintWriter(new FileWriter(new File("testdata/tree.txt")));
+            System.out.println("=======================SINTAKSNA/LEKSICKA OBRADA=======================");
             lexer = new Yylex(new FileReader(new File("testdata/code.txt")));
             p = new parser(lexer);
             Symbol sy = p.parse();
-            TableWrapper.init();
+            System.out.println("============================SINTAKSNO STABLO===========================");
+            System.out.println(sy.value.toString());
+            System.out.println("===========================SEMANTICKA OBRADA===========================");
+            /*TableWrapper.init();
             SemanticAnalyzer sa=new SemanticAnalyzer();
-            treeOut.println(sy.value.toString());
             ((Program)sy.value).traverseBottomUp(sa);
-            treeOut.flush();
-            treeOut.close();
             //sa.dumpReferences(System.out);
-            //Tab.dump();
+            Tab.dump();*/
         }
         catch (CompilerError cerr)
         {

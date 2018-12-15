@@ -8,11 +8,16 @@ public class CompilerError extends Error
     protected int line;
     protected int column;
 
-    protected CompilerError(String message, int line, int column)
+    private CompilerError(String message, int line, int column)
     {
         this.message = message;
         this.line = line;
         this.column = column;
+    }
+
+    private CompilerError(String message, int line)
+    {
+        this(message, line, -1);
     }
 
     public static void raise(String message, int line, int column)

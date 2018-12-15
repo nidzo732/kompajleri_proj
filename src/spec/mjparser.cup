@@ -12,14 +12,12 @@ parser code {:
     @Override
     public void syntax_error(Symbol cur_token)
     {
-        System.err.println("Warning");
-        System.err.println("Error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
-        System.err.println("Attempting to recover\n");
+        System.err.println("Syntax error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
     }
 
     @Override
     public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
-        CompilerError.raise("Unfixable syntax error", ((Yylex)getScanner()).getLineNo(), ((Yylex)getScanner()).getColumn());
+        System.err.println("Syntax error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
     }
 :}
 
@@ -28,12 +26,15 @@ terminal char CHARACTER;
 terminal PROGRAM;
 terminal BREAK;
 terminal CLASS;
+terminal INTERFACE;
+terminal IMPLEMENTS;
+terminal ENUM;
 terminal ELSE;
 terminal IF;
 terminal NEW;
 terminal RETURN;
 terminal VOID;
-terminal DO;
+terminal FOR;
 terminal WHILE;
 terminal EXTENDS;
 terminal CONTINUE;
@@ -63,6 +64,9 @@ nonterminal rs.ac.bg.etf.pp1.TypeAnnotation actpars;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condterm;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condfactor;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condexpr;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation for1;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation for2;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation for3;
 nonterminal designatorstmt;
 nonterminal statement;
 nonterminal statementblock;
@@ -78,14 +82,28 @@ nonterminal constantdeclaration;
 nonterminal codebody;
 nonterminal classdeclaration;
 nonterminal programdeclarations;
-nonterminal program;
+nonterminal rs.ac.bg.etf.pp1.TypeAnnotation program;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation call;
 nonterminal extendsdeclaration;
+nonterminal nonemptyimplementsdeclaration;
+nonterminal emptyimplementsdeclaration;
+nonterminal implementsdeclaration;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation classname;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation functionname;
 nonterminal rs.ac.bg.etf.pp1.TypeAnnotation programname;
 nonterminal errsep;
 nonterminal designatorline;
+nonterminal interfacedeclaration;
+nonterminal interfaceinner;
+nonterminal interfacename;
+nonterminal functionheader;
+nonterminal enumconstant;
+nonterminal enumdeclaration;
+nonterminal enuminner;
+nonterminal enumname;
+nonterminal classcodebody;
+nonterminal implementedname;
+
 precedence left ELSE;
 
 program     ::= PROGRAM programname:name programdeclarations LBRACE codebody RBRACE
@@ -93,34 +111,77 @@ program     ::= PROGRAM programname:name programdeclarations LBRACE codebody RBR
 
 programname ::= (ProgramName) IDENT:name
                 ;
+
 classname ::= (ClassName) IDENT:name
               ;
-functionname ::= (FunctionName) IDENT:name
+
+enumname ::= (EnumName) IDENT:name
+              ;
+
+enumconstant    ::=   (EnumConstant) IDENT:name
+                    | (NumberedEnumConstant) IDENT:name ASSIGN NUMBER:value
+                    ;
+
+enumdeclaration ::= (EnumDeclaration) ENUM enumname LBRACE enuminner RBRACE
+                    ;
+
+enuminner   ::=     enumconstant
+                  | enuminner COMA enumconstant
+                  ;
+
+interfacedeclaration    ::= (InterfaceDeclaration) INTERFACE interfacename LBRACE interfaceinner RBRACE;
+
+interfacename ::= (InterfaceName) IDENT:name
+              ;
+
+interfaceinner  ::=   (EmptyInterfaceInner)
+                    | (InterfaceMethodDeclaration) interfaceinner functionheader SEMICOLON
+                    ;
+
+functionname ::=  (FunctionName) type IDENT:name
+                | (ProcedureName) VOID IDENT:name
             ;
 
 programdeclarations     ::=
                             | programdeclarations classdeclaration
+                            | programdeclarations interfacedeclaration
+                            | programdeclarations enumdeclaration
                             | programdeclarations constantdeclaration SEMICOLON
                             | programdeclarations variabledeclaration SEMICOLON
                             ;
 
-extendsdeclaration  ::=     IDENT:base LBRACE
-                         |  IDENT:base error LBRACE
+extendsdeclaration  ::=       (ExtendsDeclaration) EXTENDS IDENT:base
+                            | (EmptyExtendsDeclaration)
+//                         |  IDENT:base error LBRACE
                          ;
 
-classdeclaration    ::=   (DerivedClass) CLASS classname:name EXTENDS extendsdeclaration declarationblockwrapper codebody RBRACE RBRACE
-                        | (NonDerivedClass) CLASS classname:name LBRACE declarationblockwrapper codebody RBRACE RBRACE
+implementsdeclaration   ::= nonemptyimplementsdeclaration | emptyimplementsdeclaration;
+
+emptyimplementsdeclaration  ::=;
+nonemptyimplementsdeclaration   ::=   IMPLEMENTS implementedname
+                                    | nonemptyimplementsdeclaration COMA implementedname
+                                    ;
+implementedname     ::=  (ImplementedName) type
                         ;
+
+classdeclaration    ::=   (Class) CLASS classname:name extendsdeclaration implementsdeclaration LBRACE declarationblockwrapper classcodebody RBRACE
+                        ;
+
+classcodebody   ::=   LBRACE codebody RBRACE
+                    |
+                    ;
 codebody   ::=
                 | codebody function
                 ;
 
-function    ::=    (Func) type functionname:name formparswrapper declarationblock LBRACE statementblock RBRACE
-                 | (Proc) VOID functionname:name formparswrapper declarationblock LBRACE statementblock RBRACE
+functionheader  ::=   (FuncHeader) functionname:name formparswrapper
+                    ;
+
+function    ::=    (Function) functionheader  declarationblock LBRACE statementblock RBRACE
                  ;
 
-declarationblockwrapper ::=   (DeclarationBlockWrapper1) declarationblock LBRACE
-                            | (DeclarationBlockWrapper2) declarationblock error LBRACE
+declarationblockwrapper ::=   (DeclarationBlockWrapper1) declarationblock
+                            //| (DeclarationBlockWrapper2) declarationblock error LBRACE
                             ;
 
 declarationblock ::=   (DeclarationBlock) declarationblock variabledeclaration SEMICOLON
@@ -128,12 +189,12 @@ declarationblock ::=   (DeclarationBlock) declarationblock variabledeclaration S
                      ;
 
 formparswrapper ::=      (FormParsWrapper) LPAREN formpars RPAREN
-                       | (FormParsWrapper2) LPAREN error COMA formpars RPAREN
-                       | (FormParsWrapper3) LPAREN error RPAREN
+                       //| (FormParsWrapper2) LPAREN error COMA formpars RPAREN
+                       //| (FormParsWrapper3) LPAREN error RPAREN
                     ;
 
 formpars    ::=   formpars COMA type namedeclaration
-                | formpars COMA error
+                //| formpars COMA error
                 | type namedeclaration
                 |
                 ;
@@ -144,8 +205,8 @@ constantdeclaration ::=   (ConstantDeclarations) constantdeclaration COMA constn
 
 variabledeclaration ::=     type namedeclaration
                           | variabledeclaration COMA namedeclaration
-                          | variabledeclaration COMA error
-                          | type error
+                          //| variabledeclaration COMA error
+                          //| type error
                           ;
 
 constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val
@@ -161,7 +222,8 @@ statement   ::=       designatorline
                     | (Block) LBRACE statementblock RBRACE
                     | (If) IF LPAREN condexpr RPAREN statement
                     | (IfElse) IF LPAREN condexpr RPAREN statement ELSE statement
-                    | (DoWhile) DO statement WHILE LPAREN condexpr RPAREN SEMICOLON
+                    | (While) WHILE LPAREN condexpr RPAREN statement
+                    | (ForLoop) FOR LPAREN for1 SEMICOLON for2 SEMICOLON for3 RPAREN statement
                     | (Break) BREAK SEMICOLON
                     | (Continue) CONTINUE SEMICOLON
                     | (Return) RETURN expr SEMICOLON
@@ -169,13 +231,25 @@ statement   ::=       designatorline
                     | (CallStatement) call SEMICOLON
                     ;
 
+for1    ::=           (ForInit)   designatorstmt
+                    | (ForInitEmpty)
+                    ;
+
+for2    ::=           (ForCond) condexpr
+                    | (ForCondEmpty)
+                    ;
+
+for3    ::=           (ForIncrement) designatorstmt
+                    | (ForIncrementEmpty)
+                    ;
+
 statementblock  ::=   (EmptyBlock)
                     | (StatementBlock) statementblock statement
                     ;
 
 designatorline  ::=   designatorstmt SEMICOLON
-                    | designatorstmt error SEMICOLON
-                    | error SEMICOLON
+                    //| designatorstmt error SEMICOLON
+                    //| error SEMICOLON
                     ;
 
 designatorstmt  ::=   (Assign) designator ASSIGN expr
@@ -185,12 +259,12 @@ designatorstmt  ::=   (Assign) designator ASSIGN expr
 
 condexpr ::=   (SingleCondExpr) condterm
              | (Or) condexpr OR condterm
-             | (CondExprError) condexpr OR error
+             //| (CondExprError) condexpr OR error
              ;
 
 condterm ::=  (SingleCondTerm) condfactor
             | (And) condterm AND condfactor
-            | (CondTermError) condterm AND error
+            //| (CondTermError) condterm AND error
             ;
 
 condfactor::= (SingleCondFactor) expr

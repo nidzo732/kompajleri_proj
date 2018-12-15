@@ -38,12 +38,15 @@ return new_symbol(sym.EOF);
 "program" {return new_symbol(sym.PROGRAM);}
 "break" {return new_symbol(sym.BREAK);}
 "class" {return new_symbol(sym.CLASS);}
+"interface" {return new_symbol(sym.INTERFACE);}
+"implements" {return new_symbol(sym.IMPLEMENTS);}
+"enum" {return new_symbol(sym.ENUM);}
 "else" {return new_symbol(sym.ELSE);}
 "if" {return new_symbol(sym.IF);}
 "new" {return new_symbol(sym.NEW);}
 "return" {return new_symbol(sym.RETURN);}
 "void" {return new_symbol(sym.VOID);}
-"do" {return new_symbol(sym.DO);}
+"for" {return new_symbol(sym.FOR);}
 "while" {return new_symbol(sym.WHILE);}
 "extends" {return new_symbol(sym.EXTENDS);}
 "continue" {return new_symbol(sym.CONTINUE);}
@@ -82,4 +85,4 @@ return new_symbol(sym.EOF);
 [0-9]+ { return new_symbol(sym.NUMBER, new Integer(yytext())); }
 <COMMENT, YYINITIAL> [\r\n] {yybegin(YYINITIAL);}
 [ \t\f] { /* ignore white space. */ }
-. { System.err.println("Illegal character: "+yytext()); }
+. { System.err.println("Illegal character: '"+yytext()+"' at "+(yyline+1)+":"+(yycolumn+1)); }

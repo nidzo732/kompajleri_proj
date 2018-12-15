@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 17/9/2018 23:25:43
+// 15/11/2018 5:57:14
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,13 +8,13 @@ package rs.ac.bg.etf.pp1.ast;
 public class ProgramdeclarationsDerived3 extends Programdeclarations {
 
     private Programdeclarations programdeclarations;
-    private Constantdeclaration constantdeclaration;
+    private Interfacedeclaration interfacedeclaration;
 
-    public ProgramdeclarationsDerived3 (Programdeclarations programdeclarations, Constantdeclaration constantdeclaration) {
+    public ProgramdeclarationsDerived3 (Programdeclarations programdeclarations, Interfacedeclaration interfacedeclaration) {
         this.programdeclarations=programdeclarations;
         if(programdeclarations!=null) programdeclarations.setParent(this);
-        this.constantdeclaration=constantdeclaration;
-        if(constantdeclaration!=null) constantdeclaration.setParent(this);
+        this.interfacedeclaration=interfacedeclaration;
+        if(interfacedeclaration!=null) interfacedeclaration.setParent(this);
     }
 
     public Programdeclarations getProgramdeclarations() {
@@ -25,12 +25,12 @@ public class ProgramdeclarationsDerived3 extends Programdeclarations {
         this.programdeclarations=programdeclarations;
     }
 
-    public Constantdeclaration getConstantdeclaration() {
-        return constantdeclaration;
+    public Interfacedeclaration getInterfacedeclaration() {
+        return interfacedeclaration;
     }
 
-    public void setConstantdeclaration(Constantdeclaration constantdeclaration) {
-        this.constantdeclaration=constantdeclaration;
+    public void setInterfacedeclaration(Interfacedeclaration interfacedeclaration) {
+        this.interfacedeclaration=interfacedeclaration;
     }
 
     public void accept(Visitor visitor) {
@@ -39,18 +39,18 @@ public class ProgramdeclarationsDerived3 extends Programdeclarations {
 
     public void childrenAccept(Visitor visitor) {
         if(programdeclarations!=null) programdeclarations.accept(visitor);
-        if(constantdeclaration!=null) constantdeclaration.accept(visitor);
+        if(interfacedeclaration!=null) interfacedeclaration.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(programdeclarations!=null) programdeclarations.traverseTopDown(visitor);
-        if(constantdeclaration!=null) constantdeclaration.traverseTopDown(visitor);
+        if(interfacedeclaration!=null) interfacedeclaration.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(programdeclarations!=null) programdeclarations.traverseBottomUp(visitor);
-        if(constantdeclaration!=null) constantdeclaration.traverseBottomUp(visitor);
+        if(interfacedeclaration!=null) interfacedeclaration.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -65,8 +65,8 @@ public class ProgramdeclarationsDerived3 extends Programdeclarations {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(constantdeclaration!=null)
-            buffer.append(constantdeclaration.toString("  "+tab));
+        if(interfacedeclaration!=null)
+            buffer.append(interfacedeclaration.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
