@@ -1,12 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 15/11/2018 5:57:14
+// 16/11/2018 17:36:48
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public interface Visitor { 
 
+    public void visit(Functiondeclarationblock functiondeclarationblock);
     public void visit(Program program);
     public void visit(Classname classname);
     public void visit(Call call);
@@ -35,6 +36,8 @@ public interface Visitor {
     public void visit(Condfactor condfactor);
     public void visit(Formpars formpars);
     public void visit(Enumdeclaration enumdeclaration);
+    public void visit(Whilewrapper whilewrapper);
+    public void visit(Jmpcond jmpcond);
     public void visit(Enuminner enuminner);
     public void visit(Namedeclaration namedeclaration);
     public void visit(Programname programname);
@@ -44,15 +47,23 @@ public interface Visitor {
     public void visit(Functionheader functionheader);
     public void visit(Programdeclarations programdeclarations);
     public void visit(Expr expr);
+    public void visit(Forwrapper forwrapper);
+    public void visit(Elsewrapper elsewrapper);
     public void visit(Functionname functionname);
     public void visit(Factor factor);
     public void visit(Declarationblock declarationblock);
+    public void visit(Readcall readcall);
     public void visit(Interfaceinner interfaceinner);
     public void visit(Declarationblockwrapper declarationblockwrapper);
+    public void visit(Printcallw printcallw);
     public void visit(Actpars actpars);
+    public void visit(Printcall printcall);
     public void visit(Emptyimplementsdeclaration emptyimplementsdeclaration);
     public void visit(Designatorline designatorline);
     public void visit(Condterm condterm);
+    public void visit(PrintCallWidth PrintCallWidth);
+    public void visit(PrintCall PrintCall);
+    public void visit(ReadCall ReadCall);
     public void visit(EmptyParameters EmptyParameters);
     public void visit(Parameters Parameters);
     public void visit(Parameter Parameter);
@@ -106,12 +117,19 @@ public interface Visitor {
     public void visit(DesignatorlineDerived1 DesignatorlineDerived1);
     public void visit(StatementBlock StatementBlock);
     public void visit(EmptyBlock EmptyBlock);
+    public void visit(JmpCond JmpCond);
     public void visit(ForIncrementEmpty ForIncrementEmpty);
     public void visit(ForIncrement ForIncrement);
     public void visit(ForCondEmpty ForCondEmpty);
     public void visit(ForCond ForCond);
     public void visit(ForInitEmpty ForInitEmpty);
     public void visit(ForInit ForInit);
+    public void visit(ForWrapper ForWrapper);
+    public void visit(WhileWrapper WhileWrapper);
+    public void visit(ElseWrapper ElseWrapper);
+    public void visit(PrintStatementW PrintStatementW);
+    public void visit(PrintStatement PrintStatement);
+    public void visit(ReadStatement ReadStatement);
     public void visit(CallStatement CallStatement);
     public void visit(EmptyReturn EmptyReturn);
     public void visit(Return Return);
@@ -122,7 +140,7 @@ public interface Visitor {
     public void visit(IfElse IfElse);
     public void visit(If If);
     public void visit(Block Block);
-    public void visit(StatementDerived1 StatementDerived1);
+    public void visit(DesignatorLineStmt DesignatorLineStmt);
     public void visit(Array Array);
     public void visit(Variable Variable);
     public void visit(NumberConstantDeclaration NumberConstantDeclaration);
@@ -139,6 +157,7 @@ public interface Visitor {
     public void visit(EmptyDeclarationBlock EmptyDeclarationBlock);
     public void visit(DeclarationBlock DeclarationBlock);
     public void visit(DeclarationBlockWrapper1 DeclarationBlockWrapper1);
+    public void visit(FunctionDeclarationBlock FunctionDeclarationBlock);
     public void visit(Function Function);
     public void visit(FuncHeader FuncHeader);
     public void visit(CodebodyDerived2 CodebodyDerived2);

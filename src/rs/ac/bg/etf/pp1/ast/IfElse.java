@@ -1,31 +1,34 @@
 // generated with ast extension for cup
 // version 0.8
-// 15/11/2018 5:57:14
+// 16/11/2018 17:36:48
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class IfElse extends Statement {
 
-    private Condexpr condexpr;
+    private Jmpcond jmpcond;
     private Statement statement;
+    private Elsewrapper elsewrapper;
     private Statement statement1;
 
-    public IfElse (Condexpr condexpr, Statement statement, Statement statement1) {
-        this.condexpr=condexpr;
-        if(condexpr!=null) condexpr.setParent(this);
+    public IfElse (Jmpcond jmpcond, Statement statement, Elsewrapper elsewrapper, Statement statement1) {
+        this.jmpcond=jmpcond;
+        if(jmpcond!=null) jmpcond.setParent(this);
         this.statement=statement;
         if(statement!=null) statement.setParent(this);
+        this.elsewrapper=elsewrapper;
+        if(elsewrapper!=null) elsewrapper.setParent(this);
         this.statement1=statement1;
         if(statement1!=null) statement1.setParent(this);
     }
 
-    public Condexpr getCondexpr() {
-        return condexpr;
+    public Jmpcond getJmpcond() {
+        return jmpcond;
     }
 
-    public void setCondexpr(Condexpr condexpr) {
-        this.condexpr=condexpr;
+    public void setJmpcond(Jmpcond jmpcond) {
+        this.jmpcond=jmpcond;
     }
 
     public Statement getStatement() {
@@ -34,6 +37,14 @@ public class IfElse extends Statement {
 
     public void setStatement(Statement statement) {
         this.statement=statement;
+    }
+
+    public Elsewrapper getElsewrapper() {
+        return elsewrapper;
+    }
+
+    public void setElsewrapper(Elsewrapper elsewrapper) {
+        this.elsewrapper=elsewrapper;
     }
 
     public Statement getStatement1() {
@@ -49,21 +60,24 @@ public class IfElse extends Statement {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(condexpr!=null) condexpr.accept(visitor);
+        if(jmpcond!=null) jmpcond.accept(visitor);
         if(statement!=null) statement.accept(visitor);
+        if(elsewrapper!=null) elsewrapper.accept(visitor);
         if(statement1!=null) statement1.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(condexpr!=null) condexpr.traverseTopDown(visitor);
+        if(jmpcond!=null) jmpcond.traverseTopDown(visitor);
         if(statement!=null) statement.traverseTopDown(visitor);
+        if(elsewrapper!=null) elsewrapper.traverseTopDown(visitor);
         if(statement1!=null) statement1.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(condexpr!=null) condexpr.traverseBottomUp(visitor);
+        if(jmpcond!=null) jmpcond.traverseBottomUp(visitor);
         if(statement!=null) statement.traverseBottomUp(visitor);
+        if(elsewrapper!=null) elsewrapper.traverseBottomUp(visitor);
         if(statement1!=null) statement1.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -73,14 +87,20 @@ public class IfElse extends Statement {
         buffer.append(tab);
         buffer.append("IfElse(\n");
 
-        if(condexpr!=null)
-            buffer.append(condexpr.toString("  "+tab));
+        if(jmpcond!=null)
+            buffer.append(jmpcond.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(statement!=null)
             buffer.append(statement.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(elsewrapper!=null)
+            buffer.append(elsewrapper.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

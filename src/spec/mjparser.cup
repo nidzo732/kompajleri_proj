@@ -3,6 +3,7 @@ import rs.ac.bg.etf.pp1.Yylex;
 import rs.ac.bg.etf.pp1.CompilerError;
 import java_cup.runtime.Symbol;
 parser code {:
+    public boolean syntaxError=false;
     @Override
     protected int error_sync_size()
     {
@@ -12,11 +13,13 @@ parser code {:
     @Override
     public void syntax_error(Symbol cur_token)
     {
+        syntaxError=true;
         System.err.println("Syntax error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
     }
 
     @Override
     public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
+        syntaxError=true;
         System.err.println("Syntax error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
     }
 :}
@@ -53,56 +56,66 @@ terminal LPAREN, RPAREN;
 terminal LBRACE, RBRACE;
 terminal LBRACK, RBRACK;
 terminal DOT;
+terminal READ;
+terminal PRINT;
 
 
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation factor;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation designator;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation term;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation expr;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation type;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation actpars;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condterm;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condfactor;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condexpr;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation for1;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation for2;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation for3;
-nonterminal designatorstmt;
-nonterminal statement;
-nonterminal statementblock;
-nonterminal formpars;
-nonterminal formparswrapper;
-nonterminal namedeclaration;
-nonterminal variabledeclaration;
-nonterminal function;
-nonterminal declarationblock;
-nonterminal declarationblockwrapper;
-nonterminal constnamedeclaration;
-nonterminal constantdeclaration;
-nonterminal codebody;
-nonterminal classdeclaration;
-nonterminal programdeclarations;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation program;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation call;
-nonterminal extendsdeclaration;
-nonterminal nonemptyimplementsdeclaration;
-nonterminal emptyimplementsdeclaration;
-nonterminal implementsdeclaration;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation classname;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation functionname;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation programname;
-nonterminal errsep;
-nonterminal designatorline;
-nonterminal interfacedeclaration;
-nonterminal interfaceinner;
-nonterminal interfacename;
-nonterminal functionheader;
-nonterminal enumconstant;
-nonterminal enumdeclaration;
-nonterminal enuminner;
-nonterminal enumname;
-nonterminal classcodebody;
-nonterminal implementedname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation factor;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designator;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation term;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation expr;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation type;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation actpars;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condterm;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condfactor;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condexpr;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for1;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for2;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for3;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designatorstmt;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation statement;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation statementblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation formpars;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation formparswrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation namedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation variabledeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation function;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation declarationblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation declarationblockwrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation constnamedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation constantdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation codebody;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation programdeclarations;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation program;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation call;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation extendsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation nonemptyimplementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation emptyimplementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation implementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functionname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation programname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation errsep;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designatorline;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfacedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfaceinner;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfacename;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functionheader;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumconstant;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enuminner;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classcodebody;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation implementedname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation jmpcond;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functiondeclarationblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation elsewrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation forwrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation whilewrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation readcall;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation printcall;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation printcallw;
 
 precedence left ELSE;
 
@@ -177,8 +190,9 @@ codebody   ::=
 functionheader  ::=   (FuncHeader) functionname:name formparswrapper
                     ;
 
-function    ::=    (Function) functionheader  declarationblock LBRACE statementblock RBRACE
+function    ::=    (Function) functionheader functiondeclarationblock LBRACE statementblock RBRACE
                  ;
+functiondeclarationblock    ::= (FunctionDeclarationBlock) declarationblock;
 
 declarationblockwrapper ::=   (DeclarationBlockWrapper1) declarationblock
                             //| (DeclarationBlockWrapper2) declarationblock error LBRACE
@@ -218,18 +232,25 @@ namedeclaration     ::=   (Variable) IDENT:name
                         | (Array) IDENT:name LBRACK RBRACK
                         ;
 
-statement   ::=       designatorline
+statement   ::=       (DesignatorLineStmt) designatorline
                     | (Block) LBRACE statementblock RBRACE
-                    | (If) IF LPAREN condexpr RPAREN statement
-                    | (IfElse) IF LPAREN condexpr RPAREN statement ELSE statement
-                    | (While) WHILE LPAREN condexpr RPAREN statement
-                    | (ForLoop) FOR LPAREN for1 SEMICOLON for2 SEMICOLON for3 RPAREN statement
+                    | (If) IF LPAREN jmpcond:cond RPAREN statement
+                    | (IfElse) IF LPAREN jmpcond:cond RPAREN statement elsewrapper statement
+                    | (While) whilewrapper LPAREN jmpcond:cond RPAREN statement
+                    | (ForLoop) forwrapper LPAREN for1 SEMICOLON for2 SEMICOLON for3 RPAREN statement
                     | (Break) BREAK SEMICOLON
                     | (Continue) CONTINUE SEMICOLON
                     | (Return) RETURN expr SEMICOLON
                     | (EmptyReturn) RETURN SEMICOLON
                     | (CallStatement) call SEMICOLON
+                    | (ReadStatement)readcall SEMICOLON
+                    | (PrintStatement) printcall SEMICOLON
+                    | (PrintStatementW) printcallw SEMICOLON
                     ;
+
+elsewrapper     ::= (ElseWrapper) ELSE;
+whilewrapper     ::= (WhileWrapper) WHILE;
+forwrapper     ::= (ForWrapper) FOR;
 
 for1    ::=           (ForInit)   designatorstmt
                     | (ForInitEmpty)
@@ -243,6 +264,8 @@ for3    ::=           (ForIncrement) designatorstmt
                     | (ForIncrementEmpty)
                     ;
 
+jmpcond     ::= (JmpCond) condexpr:cond
+                ;
 statementblock  ::=   (EmptyBlock)
                     | (StatementBlock) statementblock statement
                     ;
@@ -315,4 +338,13 @@ type        ::= (Type) IDENT:name
 actpars     ::=   (Parameter) expr
                 | (Parameters) actpars COMA expr
                 | (EmptyParameters)
+                ;
+
+readcall    ::= (ReadCall) READ LPAREN designator RPAREN
+                ;
+
+printcall    ::= (PrintCall) PRINT LPAREN expr RPAREN
+                ;
+
+printcallw    ::= (PrintCallWidth) PRINT LPAREN expr COMA NUMBER:width RPAREN
                 ;

@@ -3,6 +3,7 @@ import rs.ac.bg.etf.pp1.Yylex;
 import rs.ac.bg.etf.pp1.CompilerError;
 import java_cup.runtime.Symbol;
 parser code {:
+    public boolean syntaxError=false;
     @Override
     protected int error_sync_size()
     {
@@ -12,11 +13,13 @@ parser code {:
     @Override
     public void syntax_error(Symbol cur_token)
     {
+        syntaxError=true;
         System.err.println("Syntax error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
     }
 
     @Override
     public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
+        syntaxError=true;
         System.err.println("Syntax error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
     }
 :}
@@ -53,56 +56,66 @@ terminal LPAREN, RPAREN;
 terminal LBRACE, RBRACE;
 terminal LBRACK, RBRACK;
 terminal DOT;
+terminal READ;
+terminal PRINT;
 
 
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation factor;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation designator;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation term;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation expr;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation type;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation actpars;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condterm;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condfactor;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation condexpr;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation for1;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation for2;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation for3;
-nonterminal Designatorstmt designatorstmt;
-nonterminal Statement statement;
-nonterminal Statementblock statementblock;
-nonterminal Formpars formpars;
-nonterminal Formparswrapper formparswrapper;
-nonterminal Namedeclaration namedeclaration;
-nonterminal Variabledeclaration variabledeclaration;
-nonterminal Function function;
-nonterminal Declarationblock declarationblock;
-nonterminal Declarationblockwrapper declarationblockwrapper;
-nonterminal Constnamedeclaration constnamedeclaration;
-nonterminal Constantdeclaration constantdeclaration;
-nonterminal Codebody codebody;
-nonterminal Classdeclaration classdeclaration;
-nonterminal Programdeclarations programdeclarations;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation program;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation call;
-nonterminal Extendsdeclaration extendsdeclaration;
-nonterminal Nonemptyimplementsdeclaration nonemptyimplementsdeclaration;
-nonterminal Emptyimplementsdeclaration emptyimplementsdeclaration;
-nonterminal Implementsdeclaration implementsdeclaration;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation classname;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation functionname;
-nonterminal rs.ac.bg.etf.pp1.TypeAnnotation programname;
-nonterminal Errsep errsep;
-nonterminal Designatorline designatorline;
-nonterminal Interfacedeclaration interfacedeclaration;
-nonterminal Interfaceinner interfaceinner;
-nonterminal Interfacename interfacename;
-nonterminal Functionheader functionheader;
-nonterminal Enumconstant enumconstant;
-nonterminal Enumdeclaration enumdeclaration;
-nonterminal Enuminner enuminner;
-nonterminal Enumname enumname;
-nonterminal Classcodebody classcodebody;
-nonterminal Implementedname implementedname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation factor;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designator;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation term;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation expr;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation type;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation actpars;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condterm;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condfactor;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condexpr;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for1;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for2;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for3;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designatorstmt;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation statement;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation statementblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation formpars;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation formparswrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation namedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation variabledeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation function;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation declarationblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation declarationblockwrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation constnamedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation constantdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation codebody;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation programdeclarations;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation program;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation call;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation extendsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation nonemptyimplementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation emptyimplementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation implementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functionname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation programname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation errsep;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designatorline;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfacedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfaceinner;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfacename;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functionheader;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumconstant;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enuminner;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classcodebody;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation implementedname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation jmpcond;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functiondeclarationblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation elsewrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation forwrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation whilewrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation readcall;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation printcall;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation printcallw;
 
 precedence left ELSE;
 
@@ -177,8 +190,9 @@ codebody   ::= {: RESULT=new CodebodyDerived1(); :}
 functionheader  ::=   (FuncHeader) functionname:name formparswrapper:f1 {: RESULT=new FuncHeader(name, f1); RESULT.setLine(nameleft); :}
                     ;
 
-function    ::=    (Function) functionheader:f1  declarationblock:d2 LBRACE statementblock:s3 RBRACE {: RESULT=new Function(f1, d2, s3); RESULT.setLine(f1left); :}
+function    ::=    (Function) functionheader:f1 functiondeclarationblock:f2 LBRACE statementblock:s3 RBRACE {: RESULT=new Function(f1, f2, s3); RESULT.setLine(f1left); :}
                  ;
+functiondeclarationblock    ::= (FunctionDeclarationBlock) declarationblock:d1 {: RESULT=new FunctionDeclarationBlock(d1); RESULT.setLine(d1left); :};
 
 declarationblockwrapper ::=   (DeclarationBlockWrapper1) declarationblock:d1 {: RESULT=new DeclarationBlockWrapper1(d1); RESULT.setLine(d1left); :}
                             //| (DeclarationBlockWrapper2) declarationblock error LBRACE
@@ -218,18 +232,25 @@ namedeclaration     ::=   (Variable) IDENT:name {: RESULT=new Variable(name); RE
                         | (Array) IDENT:name LBRACK RBRACK {: RESULT=new Array(name); RESULT.setLine(nameleft); :}
                         ;
 
-statement   ::=       designatorline:d1 {: RESULT=new StatementDerived1(d1); RESULT.setLine(d1left); :}
+statement   ::=       (DesignatorLineStmt) designatorline:d1 {: RESULT=new DesignatorLineStmt(d1); RESULT.setLine(d1left); :}
                     | (Block) LBRACE statementblock:s1 RBRACE {: RESULT=new Block(s1); RESULT.setLine(s1left); :}
-                    | (If) IF LPAREN condexpr:c1 RPAREN statement:s2 {: RESULT=new If(c1, s2); RESULT.setLine(c1left); :}
-                    | (IfElse) IF LPAREN condexpr:c1 RPAREN statement:s2 ELSE statement:s3 {: RESULT=new IfElse(c1, s2, s3); RESULT.setLine(c1left); :}
-                    | (While) WHILE LPAREN condexpr:c1 RPAREN statement:s2 {: RESULT=new While(c1, s2); RESULT.setLine(c1left); :}
-                    | (ForLoop) FOR LPAREN for1:f1 SEMICOLON for2:f2 SEMICOLON for3:f3 RPAREN statement:s4 {: RESULT=new ForLoop(f1, f2, f3, s4); RESULT.setLine(f1left); :}
+                    | (If) IF LPAREN jmpcond:cond RPAREN statement:s1 {: RESULT=new If(cond, s1); RESULT.setLine(condleft); :}
+                    | (IfElse) IF LPAREN jmpcond:cond RPAREN statement:s1 elsewrapper:e2 statement:s3 {: RESULT=new IfElse(cond, s1, e2, s3); RESULT.setLine(condleft); :}
+                    | (While) whilewrapper:w1 LPAREN jmpcond:cond RPAREN statement:s2 {: RESULT=new While(w1, cond, s2); RESULT.setLine(w1left); :}
+                    | (ForLoop) forwrapper:f1 LPAREN for1:f2 SEMICOLON for2:f3 SEMICOLON for3:f4 RPAREN statement:s5 {: RESULT=new ForLoop(f1, f2, f3, f4, s5); RESULT.setLine(f1left); :}
                     | (Break) BREAK SEMICOLON {: RESULT=new Break(); :}
                     | (Continue) CONTINUE SEMICOLON {: RESULT=new Continue(); :}
                     | (Return) RETURN expr:e1 SEMICOLON {: RESULT=new Return(e1); RESULT.setLine(e1left); :}
                     | (EmptyReturn) RETURN SEMICOLON {: RESULT=new EmptyReturn(); :}
                     | (CallStatement) call:c1 SEMICOLON {: RESULT=new CallStatement(c1); RESULT.setLine(c1left); :}
+                    | (ReadStatement)readcall:r1 SEMICOLON {: RESULT=new ReadStatement(r1); RESULT.setLine(r1left); :}
+                    | (PrintStatement) printcall:p1 SEMICOLON {: RESULT=new PrintStatement(p1); RESULT.setLine(p1left); :}
+                    | (PrintStatementW) printcallw:p1 SEMICOLON {: RESULT=new PrintStatementW(p1); RESULT.setLine(p1left); :}
                     ;
+
+elsewrapper     ::= (ElseWrapper) ELSE {: RESULT=new ElseWrapper(); :};
+whilewrapper     ::= (WhileWrapper) WHILE {: RESULT=new WhileWrapper(); :};
+forwrapper     ::= (ForWrapper) FOR {: RESULT=new ForWrapper(); :};
 
 for1    ::=           (ForInit)   designatorstmt:d1 {: RESULT=new ForInit(d1); RESULT.setLine(d1left); :}
                     | (ForInitEmpty) {: RESULT=new ForInitEmpty(); :}
@@ -243,6 +264,8 @@ for3    ::=           (ForIncrement) designatorstmt:d1 {: RESULT=new ForIncremen
                     | (ForIncrementEmpty) {: RESULT=new ForIncrementEmpty(); :}
                     ;
 
+jmpcond     ::= (JmpCond) condexpr:cond {: RESULT=new JmpCond(cond); RESULT.setLine(condleft); :}
+                ;
 statementblock  ::=   (EmptyBlock) {: RESULT=new EmptyBlock(); :}
                     | (StatementBlock) statementblock:s1 statement:s2 {: RESULT=new StatementBlock(s1, s2); RESULT.setLine(s1left); :}
                     ;
@@ -315,4 +338,13 @@ type        ::= (Type) IDENT:name {: RESULT=new Type(name); RESULT.setLine(namel
 actpars     ::=   (Parameter) expr:e1 {: RESULT=new Parameter(e1); RESULT.setLine(e1left); :}
                 | (Parameters) actpars:a1 COMA expr:e2 {: RESULT=new Parameters(a1, e2); RESULT.setLine(a1left); :}
                 | (EmptyParameters) {: RESULT=new EmptyParameters(); :}
+                ;
+
+readcall    ::= (ReadCall) READ LPAREN designator:d1 RPAREN {: RESULT=new ReadCall(d1); RESULT.setLine(d1left); :}
+                ;
+
+printcall    ::= (PrintCall) PRINT LPAREN expr:e1 RPAREN {: RESULT=new PrintCall(e1); RESULT.setLine(e1left); :}
+                ;
+
+printcallw    ::= (PrintCallWidth) PRINT LPAREN expr:e1 COMA NUMBER:width RPAREN {: RESULT=new PrintCallWidth(e1, width); RESULT.setLine(e1left); :}
                 ;

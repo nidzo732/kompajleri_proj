@@ -1,12 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 15/11/2018 5:57:14
+// 16/11/2018 17:36:48
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public abstract class VisitorAdaptor implements Visitor { 
 
+    public void visit(Functiondeclarationblock functiondeclarationblock) { }
     public void visit(Program program) { }
     public void visit(Classname classname) { }
     public void visit(Call call) { }
@@ -35,6 +36,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Condfactor condfactor) { }
     public void visit(Formpars formpars) { }
     public void visit(Enumdeclaration enumdeclaration) { }
+    public void visit(Whilewrapper whilewrapper) { }
+    public void visit(Jmpcond jmpcond) { }
     public void visit(Enuminner enuminner) { }
     public void visit(Namedeclaration namedeclaration) { }
     public void visit(Programname programname) { }
@@ -44,15 +47,23 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Functionheader functionheader) { }
     public void visit(Programdeclarations programdeclarations) { }
     public void visit(Expr expr) { }
+    public void visit(Forwrapper forwrapper) { }
+    public void visit(Elsewrapper elsewrapper) { }
     public void visit(Functionname functionname) { }
     public void visit(Factor factor) { }
     public void visit(Declarationblock declarationblock) { }
+    public void visit(Readcall readcall) { }
     public void visit(Interfaceinner interfaceinner) { }
     public void visit(Declarationblockwrapper declarationblockwrapper) { }
+    public void visit(Printcallw printcallw) { }
     public void visit(Actpars actpars) { }
+    public void visit(Printcall printcall) { }
     public void visit(Emptyimplementsdeclaration emptyimplementsdeclaration) { }
     public void visit(Designatorline designatorline) { }
     public void visit(Condterm condterm) { }
+    public void visit(PrintCallWidth PrintCallWidth) { visit(); }
+    public void visit(PrintCall PrintCall) { visit(); }
+    public void visit(ReadCall ReadCall) { visit(); }
     public void visit(EmptyParameters EmptyParameters) { visit(); }
     public void visit(Parameters Parameters) { visit(); }
     public void visit(Parameter Parameter) { visit(); }
@@ -106,12 +117,19 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorlineDerived1 DesignatorlineDerived1) { visit(); }
     public void visit(StatementBlock StatementBlock) { visit(); }
     public void visit(EmptyBlock EmptyBlock) { visit(); }
+    public void visit(JmpCond JmpCond) { visit(); }
     public void visit(ForIncrementEmpty ForIncrementEmpty) { visit(); }
     public void visit(ForIncrement ForIncrement) { visit(); }
     public void visit(ForCondEmpty ForCondEmpty) { visit(); }
     public void visit(ForCond ForCond) { visit(); }
     public void visit(ForInitEmpty ForInitEmpty) { visit(); }
     public void visit(ForInit ForInit) { visit(); }
+    public void visit(ForWrapper ForWrapper) { visit(); }
+    public void visit(WhileWrapper WhileWrapper) { visit(); }
+    public void visit(ElseWrapper ElseWrapper) { visit(); }
+    public void visit(PrintStatementW PrintStatementW) { visit(); }
+    public void visit(PrintStatement PrintStatement) { visit(); }
+    public void visit(ReadStatement ReadStatement) { visit(); }
     public void visit(CallStatement CallStatement) { visit(); }
     public void visit(EmptyReturn EmptyReturn) { visit(); }
     public void visit(Return Return) { visit(); }
@@ -122,7 +140,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(IfElse IfElse) { visit(); }
     public void visit(If If) { visit(); }
     public void visit(Block Block) { visit(); }
-    public void visit(StatementDerived1 StatementDerived1) { visit(); }
+    public void visit(DesignatorLineStmt DesignatorLineStmt) { visit(); }
     public void visit(Array Array) { visit(); }
     public void visit(Variable Variable) { visit(); }
     public void visit(NumberConstantDeclaration NumberConstantDeclaration) { visit(); }
@@ -139,6 +157,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(EmptyDeclarationBlock EmptyDeclarationBlock) { visit(); }
     public void visit(DeclarationBlock DeclarationBlock) { visit(); }
     public void visit(DeclarationBlockWrapper1 DeclarationBlockWrapper1) { visit(); }
+    public void visit(FunctionDeclarationBlock FunctionDeclarationBlock) { visit(); }
     public void visit(Function Function) { visit(); }
     public void visit(FuncHeader FuncHeader) { visit(); }
     public void visit(CodebodyDerived2 CodebodyDerived2) { visit(); }

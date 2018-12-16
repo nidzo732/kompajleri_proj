@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 15/11/2018 5:57:14
+// 16/11/2018 17:36:48
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -11,7 +11,7 @@ public abstract class For3 implements SyntaxNode {
 
     private int line;
 
-    public rs.ac.bg.etf.pp1.TypeAnnotation typeannotation = null;
+    public rs.ac.bg.etf.pp1.CompilerAnnotation compilerannotation = null;
 
     public SyntaxNode getParent() {
         return parent;

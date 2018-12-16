@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 15/11/2018 5:57:14
+// 16/11/2018 17:36:48
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,15 +9,17 @@ public class Function implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
+    public rs.ac.bg.etf.pp1.CompilerAnnotation compilerannotation = null;
+
     private Functionheader functionheader;
-    private Declarationblock declarationblock;
+    private Functiondeclarationblock functiondeclarationblock;
     private Statementblock statementblock;
 
-    public Function (Functionheader functionheader, Declarationblock declarationblock, Statementblock statementblock) {
+    public Function (Functionheader functionheader, Functiondeclarationblock functiondeclarationblock, Statementblock statementblock) {
         this.functionheader=functionheader;
         if(functionheader!=null) functionheader.setParent(this);
-        this.declarationblock=declarationblock;
-        if(declarationblock!=null) declarationblock.setParent(this);
+        this.functiondeclarationblock=functiondeclarationblock;
+        if(functiondeclarationblock!=null) functiondeclarationblock.setParent(this);
         this.statementblock=statementblock;
         if(statementblock!=null) statementblock.setParent(this);
     }
@@ -30,12 +32,12 @@ public class Function implements SyntaxNode {
         this.functionheader=functionheader;
     }
 
-    public Declarationblock getDeclarationblock() {
-        return declarationblock;
+    public Functiondeclarationblock getFunctiondeclarationblock() {
+        return functiondeclarationblock;
     }
 
-    public void setDeclarationblock(Declarationblock declarationblock) {
-        this.declarationblock=declarationblock;
+    public void setFunctiondeclarationblock(Functiondeclarationblock functiondeclarationblock) {
+        this.functiondeclarationblock=functiondeclarationblock;
     }
 
     public Statementblock getStatementblock() {
@@ -68,20 +70,20 @@ public class Function implements SyntaxNode {
 
     public void childrenAccept(Visitor visitor) {
         if(functionheader!=null) functionheader.accept(visitor);
-        if(declarationblock!=null) declarationblock.accept(visitor);
+        if(functiondeclarationblock!=null) functiondeclarationblock.accept(visitor);
         if(statementblock!=null) statementblock.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(functionheader!=null) functionheader.traverseTopDown(visitor);
-        if(declarationblock!=null) declarationblock.traverseTopDown(visitor);
+        if(functiondeclarationblock!=null) functiondeclarationblock.traverseTopDown(visitor);
         if(statementblock!=null) statementblock.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(functionheader!=null) functionheader.traverseBottomUp(visitor);
-        if(declarationblock!=null) declarationblock.traverseBottomUp(visitor);
+        if(functiondeclarationblock!=null) functiondeclarationblock.traverseBottomUp(visitor);
         if(statementblock!=null) statementblock.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -97,8 +99,8 @@ public class Function implements SyntaxNode {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(declarationblock!=null)
-            buffer.append(declarationblock.toString("  "+tab));
+        if(functiondeclarationblock!=null)
+            buffer.append(functiondeclarationblock.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

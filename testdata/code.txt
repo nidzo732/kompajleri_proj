@@ -1,53 +1,76 @@
-program P
-const int size = 10;
-enum Num { ZERO, ONE, TEN = 10 }
-interface I{
-int getp(int i);
-int getn(int i);
+program pera
+enum str{VUCICU=444, PEDERU, TRECI}
+interface String
+{
+    void ispis();
+    void init();
 }
-class Table implements I{
-int pos[], neg[];
+class Vucicu implements String
 {
- void putp (int a, int idx) { this.pos[idx]=a; }
- void putn (int a, int idx) { this.neg[idx]=a; }
- int getp (int idx) { return pos[idx]; }
- int getn (int idx) { return neg[idx]; }
+    str s;
+    {
+        void printstr(char s[])
+        int i;
+        {
+            for(i=0;i<len(s) && ord(s[i])!=0;i++)
+            {
+                print(s[i]);
+            }
+        }
+        void ispis()
+        char c[];
+        {
+            c=new char[10];
+            if(s==str.VUCICU)
+            {
+                c[0]='V';
+                c[1]='u';
+                c[2]='c';
+                c[3]='i';
+                c[4]='c';
+                c[5]='u';
+                c[6]=',';
+                c[7]=' ';
+                c[8]=chr(0);
+            }
+            else if(s==str.PEDERU)
+            {
+                c[0]='p';
+                c[1]='e';
+                c[2]='d';
+                c[3]='e';
+                c[4]='r';
+                c[5]='u';
+                c[6]=chr(0);
+            }
+            else
+            {
+                c[0]='N';
+                c[1]=chr(0);
+            }
+            printstr(c);
+        }
+        void init(){s=str.VUCICU;}
+    }
 }
+class Pederu extends Vucicu
+{
+    {
+        void init(){s=str.PEDERU;}
+    }
 }
-Table val;
 {
-void f(char ch, int a, int arg)
-int x;
-{
-x = arg;
-}
-void
-main()
-int x, i;
-char c;
-{ //---------- Initialize val
-val = new Table;
-val.pos = new int [size];
-val.neg = new int [size];
-for (i = 0; i<size; i++)
-{
-val.putp(0,i);
- val.putn(0,i);
-}
-f(c, x, i);
-//---------- Read values
-read(x);
-for (;x > 0;)
-{
-if (Num.ZERO <= x &&^ x < size)
-{
-val.putp(val.getp(x)+Num.ONE, Num.ZERO);
-} else
- if (-size < x && x < 0)
- {
-val.putn(val.getn(-x)+1, ord('E'));
- }
-read(x);
-
-} }
+    void main()
+    String s[];
+    int i;
+    {
+        s=new String[2];
+        s[0]=new Vucicu;
+        s[1]=new Pederu;
+        for(i=0;i<len(s);i++)
+        {
+            s[i].init();
+            s[i].ispis();
+        }
+    }
 }

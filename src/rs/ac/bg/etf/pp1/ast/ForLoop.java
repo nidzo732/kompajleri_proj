@@ -1,18 +1,21 @@
 // generated with ast extension for cup
 // version 0.8
-// 15/11/2018 5:57:14
+// 16/11/2018 17:36:48
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ForLoop extends Statement {
 
+    private Forwrapper forwrapper;
     private For1 for1;
     private For2 for2;
     private For3 for3;
     private Statement statement;
 
-    public ForLoop (For1 for1, For2 for2, For3 for3, Statement statement) {
+    public ForLoop (Forwrapper forwrapper, For1 for1, For2 for2, For3 for3, Statement statement) {
+        this.forwrapper=forwrapper;
+        if(forwrapper!=null) forwrapper.setParent(this);
         this.for1=for1;
         if(for1!=null) for1.setParent(this);
         this.for2=for2;
@@ -21,6 +24,14 @@ public class ForLoop extends Statement {
         if(for3!=null) for3.setParent(this);
         this.statement=statement;
         if(statement!=null) statement.setParent(this);
+    }
+
+    public Forwrapper getForwrapper() {
+        return forwrapper;
+    }
+
+    public void setForwrapper(Forwrapper forwrapper) {
+        this.forwrapper=forwrapper;
     }
 
     public For1 getFor1() {
@@ -60,6 +71,7 @@ public class ForLoop extends Statement {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(forwrapper!=null) forwrapper.accept(visitor);
         if(for1!=null) for1.accept(visitor);
         if(for2!=null) for2.accept(visitor);
         if(for3!=null) for3.accept(visitor);
@@ -68,6 +80,7 @@ public class ForLoop extends Statement {
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(forwrapper!=null) forwrapper.traverseTopDown(visitor);
         if(for1!=null) for1.traverseTopDown(visitor);
         if(for2!=null) for2.traverseTopDown(visitor);
         if(for3!=null) for3.traverseTopDown(visitor);
@@ -75,6 +88,7 @@ public class ForLoop extends Statement {
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(forwrapper!=null) forwrapper.traverseBottomUp(visitor);
         if(for1!=null) for1.traverseBottomUp(visitor);
         if(for2!=null) for2.traverseBottomUp(visitor);
         if(for3!=null) for3.traverseBottomUp(visitor);
@@ -86,6 +100,12 @@ public class ForLoop extends Statement {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("ForLoop(\n");
+
+        if(forwrapper!=null)
+            buffer.append(forwrapper.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
 
         if(for1!=null)
             buffer.append(for1.toString("  "+tab));
