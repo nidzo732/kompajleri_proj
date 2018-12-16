@@ -1,0 +1,719 @@
+
+  pos: instruction operands
+     | expressionstack
+-----------------------------
+  395: const       112 
+     | 112 
+  400: putstatic   0 
+     | 
+  403: const       114 
+     | 114 
+  408: putstatic   1 
+     | 
+  411: const       111 
+     | 111 
+  416: putstatic   2 
+     | 
+  419: const       99 
+     | 99 
+  424: putstatic   3 
+     | 
+  427: const       101 
+     | 101 
+  432: putstatic   4 
+     | 
+  435: const       115 
+     | 115 
+  440: putstatic   5 
+     | 
+  443: const       115 
+     | 115 
+  448: putstatic   6 
+     | 
+  451: const_m1    
+     | -1 
+  452: putstatic   7 
+     | 
+  455: const       12 
+     | 12 
+  460: putstatic   8 
+     | 
+  463: const       102 
+     | 102 
+  468: putstatic   9 
+     | 
+  471: const       49 
+     | 49 
+  476: putstatic   10 
+     | 
+  479: const_m1    
+     | -1 
+  480: putstatic   11 
+     | 
+  483: const       27 
+     | 27 
+  488: putstatic   12 
+     | 
+  491: const       102 
+     | 102 
+  496: putstatic   13 
+     | 
+  499: const       50 
+     | 50 
+  504: putstatic   14 
+     | 
+  507: const_m1    
+     | -1 
+  508: putstatic   15 
+     | 
+  511: const       37 
+     | 37 
+  516: putstatic   16 
+     | 
+  519: const       102 
+     | 102 
+  524: putstatic   17 
+     | 
+  527: const       51 
+     | 51 
+  532: putstatic   18 
+     | 
+  535: const_m1    
+     | -1 
+  536: putstatic   19 
+     | 
+  539: const       80 
+     | 80 
+  544: putstatic   20 
+     | 
+  547: const       -2 
+     | -2 
+  552: putstatic   21 
+     | 
+  555: const       102 
+     | 102 
+  560: putstatic   22 
+     | 
+  563: const       49 
+     | 49 
+  568: putstatic   23 
+     | 
+  571: const_m1    
+     | -1 
+  572: putstatic   24 
+     | 
+  575: const       27 
+     | 27 
+  580: putstatic   25 
+     | 
+  583: const       102 
+     | 102 
+  588: putstatic   26 
+     | 
+  591: const       50 
+     | 50 
+  596: putstatic   27 
+     | 
+  599: const_m1    
+     | -1 
+  600: putstatic   28 
+     | 
+  603: const       37 
+     | 37 
+  608: putstatic   29 
+     | 
+  611: const       102 
+     | 102 
+  616: putstatic   30 
+     | 
+  619: const       51 
+     | 51 
+  624: putstatic   31 
+     | 
+  627: const_m1    
+     | -1 
+  628: putstatic   32 
+     | 
+  631: const       80 
+     | 80 
+  636: putstatic   33 
+     | 
+  639: const       112 
+     | 112 
+  644: putstatic   34 
+     | 
+  647: const       114 
+     | 114 
+  652: putstatic   35 
+     | 
+  655: const       111 
+     | 111 
+  660: putstatic   36 
+     | 
+  663: const       99 
+     | 99 
+  668: putstatic   37 
+     | 
+  671: const       101 
+     | 101 
+  676: putstatic   38 
+     | 
+  679: const       115 
+     | 115 
+  684: putstatic   39 
+     | 
+  687: const       115 
+     | 115 
+  692: putstatic   40 
+     | 
+  695: const_m1    
+     | -1 
+  696: putstatic   41 
+     | 
+  699: const       91 
+     | 91 
+  704: putstatic   42 
+     | 
+  707: const       -2 
+     | -2 
+  712: putstatic   43 
+     | 
+  715: const       102 
+     | 102 
+  720: putstatic   44 
+     | 
+  723: const       49 
+     | 49 
+  728: putstatic   45 
+     | 
+  731: const_m1    
+     | -1 
+  732: putstatic   46 
+     | 
+  735: const       27 
+     | 27 
+  740: putstatic   47 
+     | 
+  743: const       102 
+     | 102 
+  748: putstatic   48 
+     | 
+  751: const       50 
+     | 50 
+  756: putstatic   49 
+     | 
+  759: const_m1    
+     | -1 
+  760: putstatic   50 
+     | 
+  763: const       37 
+     | 37 
+  768: putstatic   51 
+     | 
+  771: const       112 
+     | 112 
+  776: putstatic   52 
+     | 
+  779: const       114 
+     | 114 
+  784: putstatic   53 
+     | 
+  787: const       111 
+     | 111 
+  792: putstatic   54 
+     | 
+  795: const       99 
+     | 99 
+  800: putstatic   55 
+     | 
+  803: const       101 
+     | 101 
+  808: putstatic   56 
+     | 
+  811: const       115 
+     | 115 
+  816: putstatic   57 
+     | 
+  819: const       115 
+     | 115 
+  824: putstatic   58 
+     | 
+  827: const_m1    
+     | -1 
+  828: putstatic   59 
+     | 
+  831: const       91 
+     | 91 
+  836: putstatic   60 
+     | 
+  839: const       102 
+     | 102 
+  844: putstatic   61 
+     | 
+  847: const       51 
+     | 51 
+  852: putstatic   62 
+     | 
+  855: const_m1    
+     | -1 
+  856: putstatic   63 
+     | 
+  859: const       106 
+     | 106 
+  864: putstatic   64 
+     | 
+  867: const       -2 
+     | -2 
+  872: putstatic   65 
+     | 
+  875: const       112 
+     | 112 
+  880: putstatic   66 
+     | 
+  883: const       114 
+     | 114 
+  888: putstatic   67 
+     | 
+  891: const       101 
+     | 101 
+  896: putstatic   68 
+     | 
+  899: const       112 
+     | 112 
+  904: putstatic   69 
+     | 
+  907: const       114 
+     | 114 
+  912: putstatic   70 
+     | 
+  915: const_m1    
+     | -1 
+  916: putstatic   71 
+     | 
+  919: const       119 
+     | 119 
+  924: putstatic   72 
+     | 
+  927: const       100 
+     | 100 
+  932: putstatic   73 
+     | 
+  935: const       111 
+     | 111 
+  940: putstatic   74 
+     | 
+  943: const       80 
+     | 80 
+  948: putstatic   75 
+     | 
+  951: const       114 
+     | 114 
+  956: putstatic   76 
+     | 
+  959: const       111 
+     | 111 
+  964: putstatic   77 
+     | 
+  967: const       99 
+     | 99 
+  972: putstatic   78 
+     | 
+  975: const_m1    
+     | -1 
+  976: putstatic   79 
+     | 
+  979: const       127 
+     | 127 
+  984: putstatic   80 
+     | 
+  987: const       -2 
+     | -2 
+  992: putstatic   81 
+     | 
+  995: const       100 
+     | 100 
+ 1000: putstatic   82 
+     | 
+ 1003: const       111 
+     | 111 
+ 1008: putstatic   83 
+     | 
+ 1011: const       80 
+     | 80 
+ 1016: putstatic   84 
+     | 
+ 1019: const       114 
+     | 114 
+ 1024: putstatic   85 
+     | 
+ 1027: const       111 
+     | 111 
+ 1032: putstatic   86 
+     | 
+ 1035: const       99 
+     | 99 
+ 1040: putstatic   87 
+     | 
+ 1043: const_m1    
+     | -1 
+ 1044: putstatic   88 
+     | 
+ 1047: const       127 
+     | 127 
+ 1052: putstatic   89 
+     | 
+ 1055: const       112 
+     | 112 
+ 1060: putstatic   90 
+     | 
+ 1063: const       114 
+     | 114 
+ 1068: putstatic   91 
+     | 
+ 1071: const       101 
+     | 101 
+ 1076: putstatic   92 
+     | 
+ 1079: const       112 
+     | 112 
+ 1084: putstatic   93 
+     | 
+ 1087: const       114 
+     | 114 
+ 1092: putstatic   94 
+     | 
+ 1095: const_m1    
+     | -1 
+ 1096: putstatic   95 
+     | 
+ 1099: const       233 
+     | 233 
+ 1104: putstatic   96 
+     | 
+ 1107: const       -2 
+     | -2 
+ 1112: putstatic   97 
+     | 
+ 1115: call        -830 
+     | 
+  285: enter       0 3 
+     | 
+  288: new         8 
+     | 1 
+  291: dup         
+     | 1 1 
+  292: const       82 
+     | 1 1 82 
+  297: putfield    0 
+     | 1 
+  300: store_2     
+     | 
+  301: const_5     
+     | 5 
+  302: newarray    1 
+     | 4 
+  304: store_0     
+     | 
+  305: load_0      
+     | 4 
+  306: const_0     
+     | 4 0 
+  307: new         12 
+     | 4 0 9 
+  310: dup         
+     | 4 0 9 9 
+  311: const_0     
+     | 4 0 9 9 0 
+  312: putfield    0 
+     | 4 0 9 
+  315: astore      
+Arraylength = 5
+Address = 4
+Index = 0
+Value = 9
+
+     | 
+  316: load_0      
+     | 4 
+  317: const_1     
+     | 4 1 
+  318: new         12 
+     | 4 1 12 
+  321: dup         
+     | 4 1 12 12 
+  322: const       22 
+     | 4 1 12 12 22 
+  327: putfield    0 
+     | 4 1 12 
+  330: astore      
+Arraylength = 5
+Address = 4
+Index = 1
+Value = 12
+
+     | 
+  331: load_0      
+     | 4 
+  332: const_2     
+     | 4 2 
+  333: new         12 
+     | 4 2 15 
+  336: dup         
+     | 4 2 15 15 
+  337: const       44 
+     | 4 2 15 15 44 
+  342: putfield    0 
+     | 4 2 15 
+  345: astore      
+Arraylength = 5
+Address = 4
+Index = 2
+Value = 15
+
+     | 
+  346: read        
+     | 2 
+  347: store_1     
+     | 
+  348: load_1      
+     | 2 
+  349: const_0     
+     | 2 0 
+  350: jge         7 
+     | 
+  357: const_1     
+     | 1 
+  358: load_1      
+     | 1 2 
+  359: const_3     
+     | 1 2 3 
+  360: jlt         7 
+     | 1 
+  367: const_1     
+     | 1 1 
+  368: mul         
+     | 1 
+  369: const_0     
+     | 1 0 
+  370: jne         7 
+     | 
+  377: const_1     
+     | 1 
+  378: const_0     
+     | 1 0 
+  379: jeq         14 
+     | 
+  382: load_0      
+     | 4 
+  383: load_1      
+     | 4 2 
+  384: load_2      
+     | 4 2 1 
+  385: call        -144 
+     | 4 2 1 
+  241: enter       3 3 
+     | 
+  244: load_2      
+     | 1 
+  245: dup         
+     | 1 1 
+  246: load_0      
+     | 1 1 4 
+  247: load_1      
+     | 1 1 4 2 
+  248: aload       
+     | 1 1 15 
+  249: ???         
+     | 1 15 1 15 
+  250: pop         
+     | 1 15 1 
+  251: getfield    0 
+     | 1 15 82 
+  254: invokevirtual 100 111 80 114 111 99 -1 
+     | 1 15 
+  127: enter       2 3 
+     | 
+  130: load_0      
+     | 1 
+  131: dup         
+     | 1 1 
+  132: getfield    1 
+     | 1 0 
+  135: const_1     
+     | 1 0 1 
+  136: add         
+     | 1 1 
+  137: putfield    1 
+     | 
+  140: read        
+     | 1 
+  141: store_2     
+     | 
+  142: load_1      
+     | 15 
+  143: dup         
+     | 15 15 
+  144: load_0      
+     | 15 15 1 
+  145: dup         
+     | 15 15 1 1 
+  146: load_2      
+     | 15 15 1 1 1 
+  147: ???         
+     | 15 15 1 1 1 1 
+  148: pop         
+     | 15 15 1 1 1 
+  149: getfield    0 
+     | 15 15 1 1 82 
+  152: invokevirtual 112 112 114 101 112 114 -1 
+     | 15 15 1 1 
+  233: enter       2 2 
+     | 15 15 
+  236: load_1      
+     | 15 15 1 
+  237: const_3     
+     | 15 15 1 3 
+  238: mul         
+     | 15 15 3 
+  239: exit        
+     | 15 15 3 
+  240: return      
+     | 15 15 3 
+  177: ???         
+     | 15 3 15 3 
+  178: pop         
+     | 15 3 15 
+  179: getfield    0 
+     | 15 3 44 
+  182: invokevirtual 102 49 -1 
+     | 15 3 
+   27: enter       2 2 
+     | 
+   30: load_0      
+     | 15 
+   31: load_1      
+     | 15 3 
+   32: putfield    1 
+     | 
+   35: exit        
+     | 
+   36: return      
+     | 
+  195: load_1      
+     | 15 
+  196: dup         
+     | 15 15 
+  197: getfield    0 
+     | 15 44 
+  200: invokevirtual 102 50 102 50 -1 
+     | 15 
+   37: enter       1 1 
+     | 
+   40: load_0      
+     | 15 
+   41: dup         
+     | 15 15 
+   42: getfield    0 
+     | 15 44 
+   45: invokevirtual 112 112 112 114 111 99 101 115 115 -1 
+     | 15 
+   91: enter       1 1 
+     | 
+   94: load_0      
+     | 15 
+   95: load_0      
+     | 15 15 
+   96: getfield    1 
+     | 15 3 
+   99: const_2     
+     | 15 3 2 
+  100: add         
+     | 15 5 
+  101: putfield    1 
+     | 
+  104: exit        
+     | 
+  105: return      
+     | 
+   78: exit        
+     | 
+   79: return      
+     | 
+  213: load_1      
+     | 15 
+  214: dup         
+     | 15 15 
+  215: getfield    0 
+     | 15 44 
+  218: invokevirtual 102 51 102 51 102 102 51 -1 
+     | 15 
+  106: enter       1 1 
+     | 
+  109: load_0      
+     | 15 
+  110: getfield    1 
+     | 5 
+  113: const_4     
+     | 5 4 
+  114: mul         
+     | 20 
+  115: const_0     
+     | 20 0 
+  116: print       20
+     | 
+  117: exit        
+     | 
+  118: return      
+     | 
+  231: exit        
+     | 
+  232: return      
+     | 
+  283: exit        
+     | 
+  284: return      
+     | 
+  388: read        
+     | -5 
+  389: store_1     
+     | 
+  390: jmp         -42 
+     | 
+  348: load_1      
+     | -5 
+  349: const_0     
+     | -5 0 
+  350: jge         7 
+     | 
+  353: const_0     
+     | 0 
+  354: jmp         4 
+     | 0 
+  358: load_1      
+     | 0 -5 
+  359: const_3     
+     | 0 -5 3 
+  360: jlt         7 
+     | 0 
+  367: const_1     
+     | 0 1 
+  368: mul         
+     | 0 
+  369: const_0     
+     | 0 0 
+  370: jne         7 
+     | 
+  373: const_0     
+     | 0 
+  374: jmp         4 
+     | 0 
+  378: const_0     
+     | 0 0 
+  379: jeq         14 
+     | 
+  393: exit        
+     | 
+  394: return      
+     | 
+ 1118: return      
+Completion took 16584 ms
