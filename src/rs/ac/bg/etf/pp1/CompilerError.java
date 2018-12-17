@@ -4,10 +4,11 @@ import rs.ac.bg.etf.pp1.ast.SyntaxNode;
 
 public class CompilerError
 {
-    protected String message;
+    static boolean errorsMade = false;
     protected int line;
-    protected int column;
-    public static boolean errorsMade=false;
+    String message;
+    private int column;
+
     private CompilerError(String message, int line, int column)
     {
         this.message = message;
@@ -20,15 +21,15 @@ public class CompilerError
         this(message, line, -1);
     }
 
-    public static void raise(String message, int line, int column)
+    static void raise(String message, int line, int column)
     {
-        errorsMade=true;
+        errorsMade = true;
         System.err.println(new CompilerError(message, line, column));
     }
 
-    public static void raise(String message, SyntaxNode node)
+    static void raise(String message, SyntaxNode node)
     {
-        errorsMade=true;
+        errorsMade = true;
         raise(message, node.getLine(), -1);
     }
 

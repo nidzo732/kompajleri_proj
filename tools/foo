@@ -64,6 +64,7 @@ class Pederu extends Vucicu
     String s[];
     int i;
     {
+        print(5,5);print(6,5);
         s=new String[2];
         s[0]=new Vucicu;
         s[1]=new Pederu;

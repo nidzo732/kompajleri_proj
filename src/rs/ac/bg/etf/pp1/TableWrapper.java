@@ -1,11 +1,10 @@
 package rs.ac.bg.etf.pp1;
 
-import rs.ac.bg.etf.pp1.ast.Array;
+import rs.ac.bg.etf.pp1.ast.SyntaxNode;
 import rs.etf.pp1.symboltable.Tab;
 import rs.etf.pp1.symboltable.concepts.Obj;
 import rs.etf.pp1.symboltable.concepts.Scope;
 import rs.etf.pp1.symboltable.concepts.Struct;
-import rs.etf.pp1.symboltable.structure.SymbolDataStructure;
 import rs.etf.pp1.symboltable.visitors.DumpSymbolTableVisitor;
 
 import java.util.*;
@@ -16,15 +15,15 @@ class TableWrapper
     private static Set<Obj> classMethods=new HashSet<>();
     private static Map<Obj, Obj> methodToClassMap=new HashMap<>();
     private static Stack<Obj> scopeStack = new Stack<>();
-    public static Map<String,List<String>> VTPData = new HashMap();
+    static Map<String,List<String>> VTPData = new HashMap();
     private static Stack<Integer> adrStack=new Stack<>();
-    public static Obj main=null;
+    static Obj main=null;
     private static int globMethAdr=0;
     private static int noOfClasses=0;
     private static boolean inMethodHeader = false;
     private static Struct currentType = null;
     private static Obj currentTypeObject=null;
-    public static int staticMemorySize=0;
+    static int staticMemorySize=0;
     static int fpAddr=0;
     static boolean inClass=false;
 
@@ -54,8 +53,6 @@ class TableWrapper
     }
     static Scope openScope(Obj scopeObject)
     {
-        //for(int i=0;i<scopeStack.size();i++) System.out.print("    ");
-        //System.out.println(scopeObject.getName());
         scopeStack.push(scopeObject);
         adrStack.push(0);
         Tab.openScope();
@@ -74,8 +71,6 @@ class TableWrapper
             currentType=null;
             currentTypeObject=null;
         }
-        //for(int i=0;i<scopeStack.size();i++) System.out.print("    ");
-        //System.out.println(scope.getName());
         if(scope.getKind()==Obj.Type)
         {
             scope.getType().setMembers(Tab.currentScope().getLocals());
@@ -95,21 +90,27 @@ class TableWrapper
         return programObject;
     }
 
-    static Obj openClassScope(String name)
+    static Obj openClassScope(String name, SyntaxNode location)
     {
-        if(Tab.currentScope().findSymbol(name)!=null) return null;
+        if(Tab.currentScope().findSymbol(name)!=null)
+        {
+            CompilerError.raise("Redeclaration of class "+name, location);
+        }
         Obj classObject = tabInsert(Obj.Type, name, new Struct(Struct.Class));
         openScope(classObject);
         classObject.setAdr(++noOfClasses);
         inClass=true;
         currentType=classObject.getType();
         currentTypeObject=classObject;
-        declareVariable("$clsid", Tab.intType);
+        declareVariable("$clsid", Tab.intType, null);
         return classObject;
     }
-    static Obj openInterfaceScope(String name)
+    static Obj openInterfaceScope(String name, SyntaxNode location)
     {
-        if(Tab.currentScope().findSymbol(name)!=null) return null;
+        if(Tab.currentScope().findSymbol(name)!=null)
+        {
+            CompilerError.raise("Redeclaration of interface "+name, location);
+        }
         Obj interfaceObject = tabInsert(Obj.Type, name, new Struct(Struct.Interface));
         openScope(interfaceObject);
         interfaceObject.setAdr(++noOfClasses);
@@ -118,30 +119,36 @@ class TableWrapper
         inClass=true;
         return interfaceObject;
     }
-    static Obj openEnumScope(String name)
+    static Obj openEnumScope(String name, SyntaxNode location)
     {
-        if(Tab.currentScope().findSymbol(name)!=null) return null;
+        if(Tab.currentScope().findSymbol(name)!=null)
+        {
+            CompilerError.raise("Redeclaration of class "+name, location);
+        }
         Obj enumObject = tabInsert(Obj.Type, name, new Struct(Struct.Enum));
         openScope(enumObject);
         return enumObject;
     }
 
-    static Obj declareEnumConstant(String name, int value)
+    static Obj declareEnumConstant(String name, int value, SyntaxNode location)
     {
-        if(Tab.currentScope().findSymbol(name)!=null) return null;
+        if(Tab.currentScope().findSymbol(name)!=null)
+        {
+            CompilerError.raise("Redeclaration of name "+name, location);
+        }
         Obj enumConstant = tabInsert(Obj.Con, name, scopeStack.peek().getType());
         enumConstant.setAdr(value);
         return enumConstant;
     }
     private static Obj oldBaseFunction;
-    static Obj openFunctionScope(String name, Struct type)
+    static Obj openFunctionScope(String name, Struct type, SyntaxNode location)
     {
         Obj oldSymbol=Tab.currentScope().findSymbol(name);
         if(oldSymbol!=null)
         {
             if(oldSymbol.getKind()!=Obj.Meth)
             {
-                return null;
+                CompilerError.raise("Redeclaration of name "+name, location);
             }
             Tab.currentScope().getLocals().deleteKey(name);
         }
@@ -153,14 +160,14 @@ class TableWrapper
         fpAddr=0;
         if(inClass)
         {
-            declareVariable("this", currentType);
+            declareVariable("this", currentType, location);
             classMethods.add(function);
             methodToClassMap.put(function, currentTypeObject);
         }
         methodParams.put(function, new ArrayList<>());
         return function;
     }
-    static Obj declareVariable(String name, Struct type)
+    static Obj declareVariable(String name, Struct type, SyntaxNode location)
     {
         int kind;
         if(scopeStack.peek().getKind()==Obj.Type)
@@ -168,13 +175,16 @@ class TableWrapper
             if(Tab.currentScope().findSymbol(name)!=null)
             {
                 Tab.currentScope().getLocals().deleteKey(name);
-                return declareVariable(name, type);
+                return declareVariable(name, type,location);
             }
             kind=Obj.Fld;
         }
         else
         {
-            if(Tab.currentScope().findSymbol(name)!=null) return null;
+            if(Tab.currentScope().findSymbol(name)!=null)
+            {
+                CompilerError.raise("Redefinition of variable "+name, location);
+            }
             kind=Obj.Var;
         }
         Obj variable=tabInsert(kind, name, type);
@@ -201,9 +211,12 @@ class TableWrapper
         return variable;
     }
 
-    static Obj declareConstant(String name, Struct type, int value)
+    static Obj declareConstant(String name, Struct type, int value, SyntaxNode location)
     {
-        if(Tab.find(name)!=Tab.noObj) return null;
+        if(Tab.find(name)!=Tab.noObj)
+        {
+            CompilerError.raise("Redeclaration of name "+name, location);
+        }
         Obj con = tabInsert(Obj.Con, name,type);
         con.setAdr(value);
         return con;
@@ -419,156 +432,4 @@ class TableWrapper
     {
         return classMethods.contains(function);
     }
-
-    /*static void startCompiling(String programName)
-    {
-        Obj obj = Tab.find(programName);
-    }
-
-
-    static void openClassScope(String name)
-    {
-        scopeStack.push(Tab.insert(Obj.Type, name, new Struct(Struct.Class)));
-        Tab.openScope();
-    }
-
-    static void closeScope()
-    {
-        Obj scope = scopeStack.pop();
-        scope.setLocals(Tab.currentScope().getLocals());
-        Tab.closeScope();
-    }
-
-    private static boolean declareName(int kind, String name, Struct type)
-    {
-        int cnt1 = Tab.currentScope().values().size();
-        Tab.insert(kind, name, type);
-        int cnt2 = Tab.currentScope().values().size();
-        if (!scopeStack.empty() && scopeStack.peek().getType().getKind() == Struct.Class)
-        {
-            scopeStack.peek().getType().setMembers(Tab.currentScope().getLocals());
-        }
-        return true;
-    }
-
-    static Struct getType(String name)
-    {
-        Obj obj = Tab.find(name);
-        if (obj.getKind() == Obj.Type)
-        {
-            return obj.getType();
-        }
-        return null;
-    }
-
-    static boolean setActiveType(String type)
-    {
-        currentType = getType(type);
-        return currentType != null;
-    }
-
-    static Struct getActiveType()
-    {
-        return currentType;
-    }
-
-    static void closeClassDeclarationBlock(Collection<Obj> baseClassMembers)
-    {
-        for(Obj baseMember: baseClassMembers)
-        {
-            Tab.currentScope().addToLocals(baseMember);
-        }
-    }
-
-    static boolean declareVariable(String name, boolean isArray)
-    {
-        int kind = (scopeStack.peek().getKind() == Obj.Type) ? Obj.Fld : Obj.Var;
-        if (inMethodHeader)
-        {
-            scopeStack.peek().setLevel(scopeStack.peek().getLevel() + 1);
-        }
-        if (isArray)
-        {
-            Struct arrayStruct = new Struct(Struct.Array, currentType);
-            return declareName(kind, name, arrayStruct);
-        }
-        else
-        {
-            return declareName(kind, name, currentType);
-        }
-    }
-
-    static boolean declareConstant(String name, boolean value)
-    {
-        boolean ok = declareName(Obj.Con, name, currentType);
-        if(!ok) return false;
-        getSymbol(name).setAdr(value?1:0);
-        return true;
-    }
-
-    static boolean declareConstant(String name, int value)
-    {
-        boolean ok = declareName(Obj.Con, name, currentType);
-        if(!ok) return false;
-        getSymbol(name).setAdr(value);
-        return true;
-    }
-
-    static boolean declareConstant(String name, char value)
-    {
-        boolean ok = declareName(Obj.Con, name, currentType);
-        if(!ok) return false;
-        getSymbol(name).setAdr((int)value);
-        return true;
-    }
-
-    static Obj getCurrentFunction()
-    {
-        if(scopeStack.peek().getKind()==Obj.Meth)
-        {
-            return scopeStack.peek();
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    static boolean declareFunction(String name, boolean isVoid)
-    {
-        Struct curentClass=null;
-        if(!scopeStack.empty() && scopeStack.peek()!=null && scopeStack.peek().getKind()==Obj.Type)
-        {
-            curentClass=scopeStack.peek().getType();
-        }
-        Struct type = (isVoid) ? Tab.noType : currentType;
-        boolean result = declareName(Obj.Meth, name, type);
-        if(!result)
-        {
-            //TODO: handle overrides
-            return !scopeStack.empty() && scopeStack.peek() != null && scopeStack.peek().getKind() == Obj.Type;
-        }
-        Obj obj=Tab.find(name);
-        obj.setLevel(0);
-        scopeStack.push(obj);
-        Tab.openScope();
-        inMethodHeader = true;
-        if(curentClass!=null)
-        {
-            Tab.insert(Obj.Var, "this", curentClass);
-        }
-        return true;
-    }
-
-    static void methodHeaderDone()
-    {
-        inMethodHeader = false;
-    }
-
-    static Obj getSymbol(String name)
-    {
-        Obj obj = Tab.find(name);
-        return obj == Tab.noObj ? null : obj;
-    }*/
-
 }
