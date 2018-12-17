@@ -22,7 +22,6 @@ return new_symbol(sym.EOF);
     {
         return yycolumn+1;
     }
-    public boolean lexError=false;
     private Symbol new_symbol(int type) {
         return new Symbol(type, yyline+1, yycolumn);
     }
@@ -88,4 +87,4 @@ return new_symbol(sym.EOF);
 [0-9]+ { return new_symbol(sym.NUMBER, new Integer(yytext())); }
 <COMMENT, YYINITIAL> [\r\n] {yybegin(YYINITIAL);}
 [ \t\f] { /* ignore white space. */ }
-. { System.err.println("Illegal character: '"+yytext()+"' at "+(yyline+1)+":"+(yycolumn+1)); lexError=true; }
+. { CompilerError.raise("Illegal character: '"+yytext()+"'", yyline+1, yycolumn+1); }

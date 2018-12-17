@@ -1,72 +1,81 @@
-program P
-interface Comparator{
-    bool compare(int x, int y);
-}
-class LT implements Comparator
+program pera
+enum str{VUCICU=444, PEDERU, TRECI}
+interface String
 {
+    void ispis(int amt);
+    void init();
+}
+char c[];
+class Vucicu implements String
+{
+    str s;
     {
-        bool compare(int x, int y)
+        void printstr(char s[])
+        int i;
         {
-            if(x<y) return true;
-            else return false;
-        }
-    }
-}
-class GT implements Comparator
-{
-    {
-        bool compare(int x, int y)
-        {
-            if(x>y) return true;
-            else return false;
-        }
-    }
-}
-class Base
-{
-    int x;
-    {
-        void f(){x=1;}
-    }
-}
-class Der extends Base
-{
-    //int x;
-    {
-        void f(){x=2;}
-    }
-}
-
-Comparator comparators[];
-{
-    void sort(int x[], int cmp)
-    int i,j,t;
-    {
-        for(i=0;i<len(x)-1;i++)
-        {
-            for(j=i+1;j<len(x);j++)
+            for(i=0;i<len(s) && ord(s[i])!=0;i++)
             {
-                if(comparators[cmp].compare(x[i],x[j])!=true)
-                {
-                    t=x[i];
-                    x[i]=x[j];
-                    x[j]=t;
-                }
+                print(s[i]);
             }
         }
+        void ispis(int amt)
+        int i;
+        {
+            c=new char[10];
+            for(i=0;i<amt;i++)
+            {
+                if(s==str.VUCICU)
+                {
+                    c[0]='V';
+                    c[1]='u';
+                    c[2]='c';
+                    c[3]='i';
+                    c[4]='c';
+                    c[5]='u';
+                    c[6]=',';
+                    c[7]=' ';
+                    c[8]=chr(0);
+                }
+                else if(s==str.PEDERU)
+                {
+                    c[0]='p';
+                    c[1]='e';
+                    c[2]='d';
+                    c[3]='e';
+                    c[4]='r';
+                    c[5]='u';
+                    c[6]=chr(0);
+                }
+                else
+                {
+                    c[0]='N';
+                    c[1]=chr(0);
+                }
+                printstr(c);
+            }
+        }
+        void init(){s=str.VUCICU;}
     }
-    void main()
-    Base b;
-    Der d;
+}
+String s[];
+class Pederu extends Vucicu
+{
     {
-        print(123,6);
-        print(eol);
-        print(1,6);
-        print(eol);
-        d=new Der;
-        b=d;
-        b.f();
-        print(b.x);
-        print(d.x);
+        void init(){s=str.PEDERU;}
+    }
+}
+int i;
+{
+    void main()
+    {
+        print(5,5);print(6,5);
+        s=new String[2];
+        s[0]=new Vucicu;
+        s[1]=new Pederu;
+        for(i=1;i>=0;i--)
+        {
+            s[i].init();
+            s[i].ispis(3);
+        }
     }
 }

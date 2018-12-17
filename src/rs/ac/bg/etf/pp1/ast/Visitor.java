@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 16/11/2018 17:36:48
+// 17/11/2018 21:40:56
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -71,6 +71,7 @@ public interface Visitor {
     public void visit(IndexDesignator IndexDesignator);
     public void visit(PathDesignator PathDesignator);
     public void visit(BaseDesignator BaseDesignator);
+    public void visit(Negated Negated);
     public void visit(CallResult CallResult);
     public void visit(Parenthesized Parenthesized);
     public void visit(NewArray NewArray);
@@ -83,7 +84,6 @@ public interface Visitor {
     public void visit(Modulus Modulus);
     public void visit(Division Division);
     public void visit(Multiplication Multiplication);
-    public void visit(Negated Negated);
     public void visit(SingleTerm SingleTerm);
     public void visit(Substraction Substraction);
     public void visit(Addition Addition);
@@ -111,12 +111,16 @@ public interface Visitor {
     public void visit(SingleCondTerm SingleCondTerm);
     public void visit(Or Or);
     public void visit(SingleCondExpr SingleCondExpr);
+    public void visit(DesignatorstmtDerived2 DesignatorstmtDerived2);
+    public void visit(DesignatorstmtDerived1 DesignatorstmtDerived1);
     public void visit(Decrement Decrement);
     public void visit(Increment Increment);
     public void visit(Assign Assign);
+    public void visit(DesignatorlineDerived2 DesignatorlineDerived2);
     public void visit(DesignatorlineDerived1 DesignatorlineDerived1);
     public void visit(StatementBlock StatementBlock);
     public void visit(EmptyBlock EmptyBlock);
+    public void visit(JmpcondDerived1 JmpcondDerived1);
     public void visit(JmpCond JmpCond);
     public void visit(ForIncrementEmpty ForIncrementEmpty);
     public void visit(ForIncrement ForIncrement);
@@ -141,6 +145,7 @@ public interface Visitor {
     public void visit(If If);
     public void visit(Block Block);
     public void visit(DesignatorLineStmt DesignatorLineStmt);
+    public void visit(NamedeclarationDerived1 NamedeclarationDerived1);
     public void visit(Array Array);
     public void visit(Variable Variable);
     public void visit(NumberConstantDeclaration NumberConstantDeclaration);
@@ -150,12 +155,16 @@ public interface Visitor {
     public void visit(VariabledeclarationDerived1 VariabledeclarationDerived1);
     public void visit(ConstantDeclarationTyped ConstantDeclarationTyped);
     public void visit(ConstantDeclarations ConstantDeclarations);
+    public void visit(FormparsDerived4 FormparsDerived4);
     public void visit(FormparsDerived3 FormparsDerived3);
     public void visit(FormparsDerived2 FormparsDerived2);
     public void visit(FormparsDerived1 FormparsDerived1);
+    public void visit(FormparswrapperDerived1 FormparswrapperDerived1);
     public void visit(FormParsWrapper FormParsWrapper);
+    public void visit(DeclarationblockDerived1 DeclarationblockDerived1);
     public void visit(EmptyDeclarationBlock EmptyDeclarationBlock);
     public void visit(DeclarationBlock DeclarationBlock);
+    public void visit(DeclarationblockwrapperDerived1 DeclarationblockwrapperDerived1);
     public void visit(DeclarationBlockWrapper1 DeclarationBlockWrapper1);
     public void visit(FunctionDeclarationBlock FunctionDeclarationBlock);
     public void visit(Function Function);
@@ -171,8 +180,11 @@ public interface Visitor {
     public void visit(EmptyimplementsdeclarationDerived1 EmptyimplementsdeclarationDerived1);
     public void visit(ImplementsdeclarationDerived2 ImplementsdeclarationDerived2);
     public void visit(ImplementsdeclarationDerived1 ImplementsdeclarationDerived1);
+    public void visit(ExtendsdeclarationDerived2 ExtendsdeclarationDerived2);
+    public void visit(ExtendsdeclarationDerived1 ExtendsdeclarationDerived1);
     public void visit(EmptyExtendsDeclaration EmptyExtendsDeclaration);
     public void visit(ExtendsDeclaration ExtendsDeclaration);
+    public void visit(ProgramdeclarationsDerived7 ProgramdeclarationsDerived7);
     public void visit(ProgramdeclarationsDerived6 ProgramdeclarationsDerived6);
     public void visit(ProgramdeclarationsDerived5 ProgramdeclarationsDerived5);
     public void visit(ProgramdeclarationsDerived4 ProgramdeclarationsDerived4);

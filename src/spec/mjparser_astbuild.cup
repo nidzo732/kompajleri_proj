@@ -4,23 +4,24 @@ import rs.ac.bg.etf.pp1.CompilerError;
 import java_cup.runtime.Symbol;
 parser code {:
     public boolean syntaxError=false;
+    public boolean unrecoveredSyntaxError=false;
     @Override
     protected int error_sync_size()
     {
-        return 1;
+        return 3;
     }
 
     @Override
     public void syntax_error(Symbol cur_token)
     {
         syntaxError=true;
-        System.err.println("Syntax error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
+        CompilerError.raise("Syntax error ", ((Yylex)getScanner()).getLineNo(), ((Yylex)getScanner()).getColumn());
     }
 
     @Override
     public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
         syntaxError=true;
-        System.err.println("Syntax error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
+        unrecoveredSyntaxError=true;
     }
 :}
 
@@ -161,10 +162,13 @@ programdeclarations     ::= {: RESULT=new ProgramdeclarationsDerived1(); :}
                             | programdeclarations:p1 enumdeclaration:e2 {: RESULT=new ProgramdeclarationsDerived4(p1, e2); RESULT.setLine(p1left); :}
                             | programdeclarations:p1 constantdeclaration:c2 SEMICOLON {: RESULT=new ProgramdeclarationsDerived5(p1, c2); RESULT.setLine(p1left); :}
                             | programdeclarations:p1 variabledeclaration:v2 SEMICOLON {: RESULT=new ProgramdeclarationsDerived6(p1, v2); RESULT.setLine(p1left); :}
+                            | programdeclarations:p1 error SEMICOLON {: RESULT=new ProgramdeclarationsDerived7(p1); RESULT.setLine(p1left); :}
                             ;
 
 extendsdeclaration  ::=       (ExtendsDeclaration) EXTENDS IDENT:base {: RESULT=new ExtendsDeclaration(base); RESULT.setLine(baseleft); :}
                             | (EmptyExtendsDeclaration) {: RESULT=new EmptyExtendsDeclaration(); :}
+                            | error {: RESULT=new ExtendsdeclarationDerived1(); :}
+                            | EXTENDS error {: RESULT=new ExtendsdeclarationDerived2(); :}
 //                         |  IDENT:base error LBRACE
                          ;
 
@@ -194,23 +198,26 @@ function    ::=    (Function) functionheader:f1 functiondeclarationblock:f2 LBRA
                  ;
 functiondeclarationblock    ::= (FunctionDeclarationBlock) declarationblock:d1 {: RESULT=new FunctionDeclarationBlock(d1); RESULT.setLine(d1left); :};
 
-declarationblockwrapper ::=   (DeclarationBlockWrapper1) declarationblock:d1 {: RESULT=new DeclarationBlockWrapper1(d1); RESULT.setLine(d1left); :}
+declarationblockwrapper ::=     (DeclarationBlockWrapper1) declarationblock:d1 {: RESULT=new DeclarationBlockWrapper1(d1); RESULT.setLine(d1left); :}
+                              | declarationblock:d1 error {: RESULT=new DeclarationblockwrapperDerived1(d1); RESULT.setLine(d1left); :}
                             //| (DeclarationBlockWrapper2) declarationblock error LBRACE
                             ;
 
 declarationblock ::=   (DeclarationBlock) declarationblock:d1 variabledeclaration:v2 SEMICOLON {: RESULT=new DeclarationBlock(d1, v2); RESULT.setLine(d1left); :}
                      | (EmptyDeclarationBlock) {: RESULT=new EmptyDeclarationBlock(); :}
+                     | declarationblock:d1 error SEMICOLON {: RESULT=new DeclarationblockDerived1(d1); RESULT.setLine(d1left); :}
                      ;
 
-formparswrapper ::=      (FormParsWrapper) LPAREN formpars:f1 RPAREN {: RESULT=new FormParsWrapper(f1); RESULT.setLine(f1left); :}
+formparswrapper ::=        (FormParsWrapper) LPAREN formpars:f1 RPAREN {: RESULT=new FormParsWrapper(f1); RESULT.setLine(f1left); :}
+                         | LPAREN error COMA formpars:f1 RPAREN {: RESULT=new FormparswrapperDerived1(f1); RESULT.setLine(f1left); :}
                        //| (FormParsWrapper2) LPAREN error COMA formpars RPAREN
                        //| (FormParsWrapper3) LPAREN error RPAREN
                     ;
 
 formpars    ::=   formpars:f1 COMA type:t2 namedeclaration:n3 {: RESULT=new FormparsDerived1(f1, t2, n3); RESULT.setLine(f1left); :}
-                //| formpars COMA error
-                | type:t1 namedeclaration:n2 {: RESULT=new FormparsDerived2(t1, n2); RESULT.setLine(t1left); :}
-                | {: RESULT=new FormparsDerived3(); :}
+                | formpars:f1 COMA error {: RESULT=new FormparsDerived2(f1); RESULT.setLine(f1left); :}
+                | type:t1 namedeclaration:n2 {: RESULT=new FormparsDerived3(t1, n2); RESULT.setLine(t1left); :}
+                | {: RESULT=new FormparsDerived4(); :}
                 ;
 
 constantdeclaration ::=   (ConstantDeclarations) constantdeclaration:c1 COMA constnamedeclaration:c2 {: RESULT=new ConstantDeclarations(c1, c2); RESULT.setLine(c1left); :}
@@ -230,6 +237,7 @@ constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:v
 
 namedeclaration     ::=   (Variable) IDENT:name {: RESULT=new Variable(name); RESULT.setLine(nameleft); :}
                         | (Array) IDENT:name LBRACK RBRACK {: RESULT=new Array(name); RESULT.setLine(nameleft); :}
+                        | error {: RESULT=new NamedeclarationDerived1(); :}
                         ;
 
 statement   ::=       (DesignatorLineStmt) designatorline:d1 {: RESULT=new DesignatorLineStmt(d1); RESULT.setLine(d1left); :}
@@ -264,13 +272,15 @@ for3    ::=           (ForIncrement) designatorstmt:d1 {: RESULT=new ForIncremen
                     | (ForIncrementEmpty) {: RESULT=new ForIncrementEmpty(); :}
                     ;
 
-jmpcond     ::= (JmpCond) condexpr:cond {: RESULT=new JmpCond(cond); RESULT.setLine(condleft); :}
+jmpcond     ::=   (JmpCond) condexpr:cond {: RESULT=new JmpCond(cond); RESULT.setLine(condleft); :}
+                | error {: RESULT=new JmpcondDerived1(); :}
                 ;
 statementblock  ::=   (EmptyBlock) {: RESULT=new EmptyBlock(); :}
                     | (StatementBlock) statementblock:s1 statement:s2 {: RESULT=new StatementBlock(s1, s2); RESULT.setLine(s1left); :}
                     ;
 
-designatorline  ::=   designatorstmt:d1 SEMICOLON {: RESULT=new DesignatorlineDerived1(d1); RESULT.setLine(d1left); :}
+designatorline  ::=    designatorstmt:d1 SEMICOLON {: RESULT=new DesignatorlineDerived1(d1); RESULT.setLine(d1left); :}
+                     | error SEMICOLON {: RESULT=new DesignatorlineDerived2(); :}
                     //| designatorstmt error SEMICOLON
                     //| error SEMICOLON
                     ;
@@ -278,6 +288,8 @@ designatorline  ::=   designatorstmt:d1 SEMICOLON {: RESULT=new DesignatorlineDe
 designatorstmt  ::=   (Assign) designator:d1 ASSIGN expr:e2 {: RESULT=new Assign(d1, e2); RESULT.setLine(d1left); :}
                     | (Increment) designator:d1 INCREMENT {: RESULT=new Increment(d1); RESULT.setLine(d1left); :}
                     | (Decrement) designator:d1 DECREMENT {: RESULT=new Decrement(d1); RESULT.setLine(d1left); :}
+                    | designator:d1 ASSIGN error {: RESULT=new DesignatorstmtDerived1(d1); RESULT.setLine(d1left); :}
+                    | designator:d1 error {: RESULT=new DesignatorstmtDerived2(d1); RESULT.setLine(d1left); :}
                     ;
 
 condexpr ::=   (SingleCondExpr) condterm:c1 {: RESULT=new SingleCondExpr(c1); RESULT.setLine(c1left); :}
@@ -309,7 +321,6 @@ expr   ::=    (SingleExpr) term:t1 {: RESULT=new SingleExpr(t1); RESULT.setLine(
             ;
 
 term   ::=   (SingleTerm) factor:f1 {: RESULT=new SingleTerm(f1); RESULT.setLine(f1left); :}
-           | (Negated) MINUS factor:f1 {: RESULT=new Negated(f1); RESULT.setLine(f1left); :}
            | (Multiplication) term:t1 STAR factor:f2 {: RESULT=new Multiplication(t1, f2); RESULT.setLine(t1left); :}
            | (Division) term:t1 DIVIDE factor:f2 {: RESULT=new Division(t1, f2); RESULT.setLine(t1left); :}
            | (Modulus) term:t1 MOD factor:f2 {: RESULT=new Modulus(t1, f2); RESULT.setLine(t1left); :}
@@ -325,6 +336,7 @@ factor ::=   (NumericConstant) NUMBER:val {: RESULT=new NumericConstant(val); RE
            | (NewArray) NEW type:t1 LBRACK expr:count RBRACK {: RESULT=new NewArray(t1, count); RESULT.setLine(t1left); :}
            | (Parenthesized) LPAREN expr:e1 RPAREN {: RESULT=new Parenthesized(e1); RESULT.setLine(e1left); :}
            | (CallResult) call:c1 {: RESULT=new CallResult(c1); RESULT.setLine(c1left); :}
+           | (Negated) MINUS factor:f1 {: RESULT=new Negated(f1); RESULT.setLine(f1left); :}
            ;
 
 designator  ::=   (BaseDesignator) IDENT:name {: RESULT=new BaseDesignator(name); RESULT.setLine(nameleft); :}

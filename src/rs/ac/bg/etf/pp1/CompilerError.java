@@ -2,12 +2,17 @@ package rs.ac.bg.etf.pp1;
 
 import rs.ac.bg.etf.pp1.ast.SyntaxNode;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class CompilerError
 {
     static boolean errorsMade = false;
     protected int line;
-    String message;
+    private String message;
     private int column;
+    private static List<CompilerError> errors=new LinkedList<>();
 
     private CompilerError(String message, int line, int column)
     {
@@ -21,16 +26,24 @@ public class CompilerError
         this(message, line, -1);
     }
 
-    static void raise(String message, int line, int column)
+    public static void raise(String message, int line, int column)
     {
         errorsMade = true;
-        System.err.println(new CompilerError(message, line, column));
+        errors.add(new CompilerError(message, line, column));
     }
 
-    static void raise(String message, SyntaxNode node)
+    public static void raise(String message, SyntaxNode node)
     {
         errorsMade = true;
         raise(message, node.getLine(), -1);
+    }
+
+    public static void dumpAll()
+    {
+        for(CompilerError error: errors)
+        {
+            System.err.println(error);
+        }
     }
 
     @Override

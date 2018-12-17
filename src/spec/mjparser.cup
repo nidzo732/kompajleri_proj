@@ -4,23 +4,24 @@ import rs.ac.bg.etf.pp1.CompilerError;
 import java_cup.runtime.Symbol;
 parser code {:
     public boolean syntaxError=false;
+    public boolean unrecoveredSyntaxError=false;
     @Override
     protected int error_sync_size()
     {
-        return 1;
+        return 3;
     }
 
     @Override
     public void syntax_error(Symbol cur_token)
     {
         syntaxError=true;
-        System.err.println("Syntax error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
+        CompilerError.raise("Syntax error ", ((Yylex)getScanner()).getLineNo(), ((Yylex)getScanner()).getColumn());
     }
 
     @Override
     public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
         syntaxError=true;
-        System.err.println("Syntax error found at Line:"+((Yylex)getScanner()).getLineNo()+" Column:"+((Yylex)getScanner()).getColumn());
+        unrecoveredSyntaxError=true;
     }
 :}
 
@@ -161,10 +162,13 @@ programdeclarations     ::=
                             | programdeclarations enumdeclaration
                             | programdeclarations constantdeclaration SEMICOLON
                             | programdeclarations variabledeclaration SEMICOLON
+                            | programdeclarations error SEMICOLON
                             ;
 
 extendsdeclaration  ::=       (ExtendsDeclaration) EXTENDS IDENT:base
                             | (EmptyExtendsDeclaration)
+                            | error
+                            | EXTENDS error
 //                         |  IDENT:base error LBRACE
                          ;
 
@@ -194,21 +198,24 @@ function    ::=    (Function) functionheader functiondeclarationblock LBRACE sta
                  ;
 functiondeclarationblock    ::= (FunctionDeclarationBlock) declarationblock;
 
-declarationblockwrapper ::=   (DeclarationBlockWrapper1) declarationblock
+declarationblockwrapper ::=     (DeclarationBlockWrapper1) declarationblock
+                              | declarationblock error
                             //| (DeclarationBlockWrapper2) declarationblock error LBRACE
                             ;
 
 declarationblock ::=   (DeclarationBlock) declarationblock variabledeclaration SEMICOLON
                      | (EmptyDeclarationBlock)
+                     | declarationblock error SEMICOLON
                      ;
 
-formparswrapper ::=      (FormParsWrapper) LPAREN formpars RPAREN
+formparswrapper ::=        (FormParsWrapper) LPAREN formpars RPAREN
+                         | LPAREN error COMA formpars RPAREN
                        //| (FormParsWrapper2) LPAREN error COMA formpars RPAREN
                        //| (FormParsWrapper3) LPAREN error RPAREN
                     ;
 
 formpars    ::=   formpars COMA type namedeclaration
-                //| formpars COMA error
+                | formpars COMA error
                 | type namedeclaration
                 |
                 ;
@@ -230,6 +237,7 @@ constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:v
 
 namedeclaration     ::=   (Variable) IDENT:name
                         | (Array) IDENT:name LBRACK RBRACK
+                        | error
                         ;
 
 statement   ::=       (DesignatorLineStmt) designatorline
@@ -264,13 +272,15 @@ for3    ::=           (ForIncrement) designatorstmt
                     | (ForIncrementEmpty)
                     ;
 
-jmpcond     ::= (JmpCond) condexpr:cond
+jmpcond     ::=   (JmpCond) condexpr:cond
+                | error
                 ;
 statementblock  ::=   (EmptyBlock)
                     | (StatementBlock) statementblock statement
                     ;
 
-designatorline  ::=   designatorstmt SEMICOLON
+designatorline  ::=    designatorstmt SEMICOLON
+                     | error SEMICOLON
                     //| designatorstmt error SEMICOLON
                     //| error SEMICOLON
                     ;
@@ -278,6 +288,8 @@ designatorline  ::=   designatorstmt SEMICOLON
 designatorstmt  ::=   (Assign) designator ASSIGN expr
                     | (Increment) designator INCREMENT
                     | (Decrement) designator DECREMENT
+                    | designator ASSIGN error
+                    | designator error
                     ;
 
 condexpr ::=   (SingleCondExpr) condterm
@@ -309,7 +321,6 @@ expr   ::=    (SingleExpr) term
             ;
 
 term   ::=   (SingleTerm) factor
-           | (Negated) MINUS factor
            | (Multiplication) term STAR factor
            | (Division) term DIVIDE factor
            | (Modulus) term MOD factor
@@ -325,6 +336,7 @@ factor ::=   (NumericConstant) NUMBER:val
            | (NewArray) NEW type LBRACK expr:count RBRACK
            | (Parenthesized) LPAREN expr RPAREN
            | (CallResult) call
+           | (Negated) MINUS factor
            ;
 
 designator  ::=   (BaseDesignator) IDENT:name

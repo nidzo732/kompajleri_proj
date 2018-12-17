@@ -247,7 +247,37 @@ public class SemanticAnalyzer extends VisitorAdaptor
             CompilerError.raise("Unknown symbol: " + bd.getName(), bd);
             obj = Tab.noObj;
         }
-        references.add("Symbol referenced: " + bd.getName() + " on Line:" + bd.getLine() + " " + TableWrapper.nodeToString(obj));
+        if(obj.getKind()==Obj.Var)
+        {
+            references.add("Variable referenced: " + bd.getName() + " on Line:" + bd.getLine() + " " + TableWrapper.nodeToString(obj));
+        }
+        else if(obj.getKind()==Obj.Fld)
+        {
+            references.add("Field referenced: " + bd.getName() + " on Line:" + bd.getLine() + " " + TableWrapper.nodeToString(obj));
+        }
+        else if(obj.getKind()==Obj.Meth)
+        {
+            references.add("Method called: " + bd.getName() + " on Line:" + bd.getLine() + " " + TableWrapper.nodeToString(obj));
+        }
+        else if(obj.getKind()==Obj.Type && obj.getType().getKind()==Struct.Enum)
+        {
+            references.add("Enum referenced: " + bd.getName() + " on Line:" + bd.getLine() + " " + TableWrapper.nodeToString(obj));
+        }
+        else if(obj.getKind()==Obj.Con)
+        {
+            if(obj.getType().getKind()==Struct.Enum)
+            {
+                references.add("Enum constant referenced: " + bd.getName() + " on Line:" + bd.getLine() + " " + TableWrapper.nodeToString(obj));
+            }
+            else
+            {
+                references.add("Constant referenced: " + bd.getName() + " on Line:" + bd.getLine() + " " + TableWrapper.nodeToString(obj));
+            }
+        }
+        else
+        {
+            references.add("Symbol referenced: " + bd.getName() + " on Line:" + bd.getLine() + " " + TableWrapper.nodeToString(obj));
+        }
         pathBaseName = bd.getName();
         bd.compilerannotation = new CompilerAnnotation();
         bd.compilerannotation.obj = obj;
@@ -275,7 +305,18 @@ public class SemanticAnalyzer extends VisitorAdaptor
             CompilerError.raise("Object " + pathBaseName + " does not have a field named: " + pd.getName(), pd);
             obj = Tab.noObj;
         }
-        references.add("Field: " + pd.getName() + " of object: " + pathBaseName + " referenced on Line:" + pd.getLine() + " " + TableWrapper.nodeToString(obj));
+        if(obj.getKind()==Obj.Fld)
+        {
+            references.add("Field: " + pd.getName() + " of object: " + pathBaseName + " referenced on Line:" + pd.getLine() + " " + TableWrapper.nodeToString(obj));
+        }
+        else if(obj.getKind()==Obj.Meth)
+        {
+            references.add("Method: " + pd.getName() + " of object: " + pathBaseName + " called on Line:" + pd.getLine() + " " + TableWrapper.nodeToString(obj));
+        }
+        else if(obj.getKind()==Obj.Con)
+        {
+            references.add("Enum constant: " + pd.getName() + " of : " + pathBaseName + " called on Line:" + pd.getLine() + " " + TableWrapper.nodeToString(obj));
+        }
         pathBaseName += "." + pd.getName();
         pd.compilerannotation = new CompilerAnnotation();
         pd.compilerannotation.obj = obj;

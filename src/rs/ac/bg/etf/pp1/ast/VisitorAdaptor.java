@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 16/11/2018 17:36:48
+// 17/11/2018 21:40:56
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -71,6 +71,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(IndexDesignator IndexDesignator) { visit(); }
     public void visit(PathDesignator PathDesignator) { visit(); }
     public void visit(BaseDesignator BaseDesignator) { visit(); }
+    public void visit(Negated Negated) { visit(); }
     public void visit(CallResult CallResult) { visit(); }
     public void visit(Parenthesized Parenthesized) { visit(); }
     public void visit(NewArray NewArray) { visit(); }
@@ -83,7 +84,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Modulus Modulus) { visit(); }
     public void visit(Division Division) { visit(); }
     public void visit(Multiplication Multiplication) { visit(); }
-    public void visit(Negated Negated) { visit(); }
     public void visit(SingleTerm SingleTerm) { visit(); }
     public void visit(Substraction Substraction) { visit(); }
     public void visit(Addition Addition) { visit(); }
@@ -111,12 +111,16 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(SingleCondTerm SingleCondTerm) { visit(); }
     public void visit(Or Or) { visit(); }
     public void visit(SingleCondExpr SingleCondExpr) { visit(); }
+    public void visit(DesignatorstmtDerived2 DesignatorstmtDerived2) { visit(); }
+    public void visit(DesignatorstmtDerived1 DesignatorstmtDerived1) { visit(); }
     public void visit(Decrement Decrement) { visit(); }
     public void visit(Increment Increment) { visit(); }
     public void visit(Assign Assign) { visit(); }
+    public void visit(DesignatorlineDerived2 DesignatorlineDerived2) { visit(); }
     public void visit(DesignatorlineDerived1 DesignatorlineDerived1) { visit(); }
     public void visit(StatementBlock StatementBlock) { visit(); }
     public void visit(EmptyBlock EmptyBlock) { visit(); }
+    public void visit(JmpcondDerived1 JmpcondDerived1) { visit(); }
     public void visit(JmpCond JmpCond) { visit(); }
     public void visit(ForIncrementEmpty ForIncrementEmpty) { visit(); }
     public void visit(ForIncrement ForIncrement) { visit(); }
@@ -141,6 +145,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(If If) { visit(); }
     public void visit(Block Block) { visit(); }
     public void visit(DesignatorLineStmt DesignatorLineStmt) { visit(); }
+    public void visit(NamedeclarationDerived1 NamedeclarationDerived1) { visit(); }
     public void visit(Array Array) { visit(); }
     public void visit(Variable Variable) { visit(); }
     public void visit(NumberConstantDeclaration NumberConstantDeclaration) { visit(); }
@@ -150,12 +155,16 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(VariabledeclarationDerived1 VariabledeclarationDerived1) { visit(); }
     public void visit(ConstantDeclarationTyped ConstantDeclarationTyped) { visit(); }
     public void visit(ConstantDeclarations ConstantDeclarations) { visit(); }
+    public void visit(FormparsDerived4 FormparsDerived4) { visit(); }
     public void visit(FormparsDerived3 FormparsDerived3) { visit(); }
     public void visit(FormparsDerived2 FormparsDerived2) { visit(); }
     public void visit(FormparsDerived1 FormparsDerived1) { visit(); }
+    public void visit(FormparswrapperDerived1 FormparswrapperDerived1) { visit(); }
     public void visit(FormParsWrapper FormParsWrapper) { visit(); }
+    public void visit(DeclarationblockDerived1 DeclarationblockDerived1) { visit(); }
     public void visit(EmptyDeclarationBlock EmptyDeclarationBlock) { visit(); }
     public void visit(DeclarationBlock DeclarationBlock) { visit(); }
+    public void visit(DeclarationblockwrapperDerived1 DeclarationblockwrapperDerived1) { visit(); }
     public void visit(DeclarationBlockWrapper1 DeclarationBlockWrapper1) { visit(); }
     public void visit(FunctionDeclarationBlock FunctionDeclarationBlock) { visit(); }
     public void visit(Function Function) { visit(); }
@@ -171,8 +180,11 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(EmptyimplementsdeclarationDerived1 EmptyimplementsdeclarationDerived1) { visit(); }
     public void visit(ImplementsdeclarationDerived2 ImplementsdeclarationDerived2) { visit(); }
     public void visit(ImplementsdeclarationDerived1 ImplementsdeclarationDerived1) { visit(); }
+    public void visit(ExtendsdeclarationDerived2 ExtendsdeclarationDerived2) { visit(); }
+    public void visit(ExtendsdeclarationDerived1 ExtendsdeclarationDerived1) { visit(); }
     public void visit(EmptyExtendsDeclaration EmptyExtendsDeclaration) { visit(); }
     public void visit(ExtendsDeclaration ExtendsDeclaration) { visit(); }
+    public void visit(ProgramdeclarationsDerived7 ProgramdeclarationsDerived7) { visit(); }
     public void visit(ProgramdeclarationsDerived6 ProgramdeclarationsDerived6) { visit(); }
     public void visit(ProgramdeclarationsDerived5 ProgramdeclarationsDerived5) { visit(); }
     public void visit(ProgramdeclarationsDerived4 ProgramdeclarationsDerived4) { visit(); }

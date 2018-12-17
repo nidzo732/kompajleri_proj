@@ -4,6 +4,7 @@ import java_cup.runtime.Symbol;
 import rs.ac.bg.etf.pp1.ast.SyntaxNode;
 import rs.ac.bg.etf.pp1.ast.parser;
 import rs.etf.pp1.mj.runtime.Code;
+import rs.etf.pp1.mj.runtime.Run;
 import rs.etf.pp1.mj.runtime.disasm;
 import rs.etf.pp1.symboltable.Tab;
 
@@ -14,15 +15,16 @@ import java.io.IOException;
 
 public class Compiler
 {
-    private Yylex lexer;
     private parser parser;
     private SemanticAnalyzer semanticAnalyzer;
     private CodeGenerator codeGenerator;
     private Symbol rootSymbol = null;
+    private boolean verbose = false;
 
     private Compiler(String inputFile) throws IOException
     {
-        lexer = new Yylex(new FileReader(new File(inputFile)));
+        CompilerError.errorsMade = false;
+        Yylex lexer = new Yylex(new FileReader(new File(inputFile)));
         parser = new parser(lexer);
         semanticAnalyzer = new SemanticAnalyzer();
         codeGenerator = new CodeGenerator();
@@ -30,37 +32,61 @@ public class Compiler
 
     public static void main(String[] args) throws Exception
     {
-        Compiler c = new Compiler("testdata/code.txt");
-        c.parse();
-        c.semanticProcess();
-        c.tsdump();
-        c.refDump();
-        System.out.println("==========================END OF INPUT PARSING=========================");
-        if (TableWrapper.main == null)
+        try
         {
-            System.err.println("Failed to find void main()");
+            if(args.length<2)
+            {
+                System.out.println("Format: program.jar INPUT_FILE OUTPUT_FILE [-v] [-x]");
+                return;
+            }
+            boolean verbose = false;
+            boolean execute = false;
+            for (String arg : args)
+            {
+                if ("-x".equals(arg)) execute = true;
+                if ("-v".equals(arg)) verbose = true;
+            }
+            Compiler c = new Compiler(args[0]);
+            c.verbose = verbose;
+            c.parse();
+            if (!c.parser.unrecoveredSyntaxError) c.semanticProcess();
+            if (verbose) c.tsdump();
+            if (verbose) c.refDump();
+            if (verbose) System.out.println("==========================END OF INPUT PARSING=========================");
+            if (!c.compileable() || TableWrapper.main == null)
+            {
+                System.out.flush();
+                System.err.flush();
+                CompilerError.dumpAll();
+                if(TableWrapper.main==null)
+                {
+                    System.err.println("void main() not found");
+                }
+                System.err.println("Input contains errors, skipping compilation");
+                System.err.flush();
+            }
+            else
+            {
+                c.compile();
+                c.dump(args[1]);
+                if(execute)
+                {
+                    Run.main(new String[]{args[1]});
+                }
+            }
         }
-        if (!c.compileable())
+        catch (IOException ex)
         {
-            System.err.println("Input contains error, skipping compilation");
+            System.out.println("Failed to open files " + ex.getLocalizedMessage());
         }
-        else
-        {
-            c.compile();
-            c.dump("testdata/output.obj");
-        }
-        //Run.main(new String[]{"testdata/output.obj"});
-
-        /*//sa.dumpReferences(System.out);
-        Tab.dump();*/
     }
 
     private void parse() throws Exception
     {
-        System.out.println("=======================SYNTAX/LEXICAL PROCESSING=======================");
+        if (verbose) System.out.println("=======================SYNTAX/LEXICAL PROCESSING=======================");
         rootSymbol = parser.parse();
-        System.out.println("===============================SYNTAX TREE=============================");
-        if(rootSymbol!=null && rootSymbol.value!=null)
+        if (verbose) System.out.println("===============================SYNTAX TREE=============================");
+        if (verbose && rootSymbol != null && rootSymbol.value != null)
         {
             System.out.println(rootSymbol.value.toString());
         }
@@ -68,10 +94,9 @@ public class Compiler
 
     private void semanticProcess()
     {
-        System.out.println("==========================SEMANTIC PROCESSING==========================");
+        if (verbose) System.out.println("==========================SEMANTIC PROCESSING==========================");
         TableWrapper.init();
-        CompilerError.errorsMade = false;
-        if(rootSymbol!=null && rootSymbol.value!=null)
+        if (rootSymbol != null && rootSymbol.value != null)
         {
             ((SyntaxNode) rootSymbol.value).traverseBottomUp(semanticAnalyzer);
         }
@@ -97,13 +122,13 @@ public class Compiler
 
     private boolean compileable()
     {
-        return !(lexer.lexError || parser.syntaxError || CompilerError.errorsMade || TableWrapper.main == null);
+        return !(CompilerError.errorsMade || TableWrapper.main == null);
     }
 
     private void compile()
     {
         ((SyntaxNode) rootSymbol.value).traverseBottomUp(codeGenerator);
-        disasm.decode(Code.buf, Code.pc);
+        if (verbose) disasm.decode(Code.buf, Code.pc);
     }
 
     private void dump(String filename) throws IOException
