@@ -1,0 +1,360 @@
+package rs.ac.bg.etf.pp1.ast;
+import rs.ac.bg.etf.pp1.Yylex;
+import rs.ac.bg.etf.pp1.CompilerError;
+import java_cup.runtime.Symbol;
+parser code {:
+    public boolean syntaxError=false;
+    public boolean unrecoveredSyntaxError=false;
+    @Override
+    protected int error_sync_size()
+    {
+        return 3;
+    }
+
+    @Override
+    public void syntax_error(Symbol cur_token)
+    {
+        syntaxError=true;
+        CompilerError.raise("Syntax error ", ((Yylex)getScanner()).getLineNo(), ((Yylex)getScanner()).getColumn());
+    }
+
+    @Override
+    public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
+        syntaxError=true;
+        unrecoveredSyntaxError=true;
+    }
+:}
+
+terminal int NUMBER;
+terminal char CHARACTER;
+terminal PROGRAM;
+terminal BREAK;
+terminal CLASS;
+terminal INTERFACE;
+terminal IMPLEMENTS;
+terminal ENUM;
+terminal ELSE;
+terminal IF;
+terminal NEW;
+terminal RETURN;
+terminal VOID;
+terminal FOR;
+terminal WHILE;
+terminal EXTENDS;
+terminal CONTINUE;
+terminal String IDENT;
+terminal boolean BOOL;
+terminal CONST;
+
+terminal PLUS, MINUS, STAR, DIVIDE, MOD;
+terminal EQUALS, NOTEQUALS, GREATER, GREATEREQUAL, LESS, LESSEQUAL;
+terminal AND, OR;
+terminal ASSIGN;
+terminal INCREMENT, DECREMENT;
+terminal SEMICOLON;
+terminal COMA;
+terminal LPAREN, RPAREN;
+terminal LBRACE, RBRACE;
+terminal LBRACK, RBRACK;
+terminal DOT;
+terminal READ;
+terminal PRINT;
+
+
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation factor;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designator;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation term;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation expr;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation type;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation actpars;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condterm;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condfactor;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condexpr;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for1;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for2;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for3;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designatorstmt;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation statement;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation statementblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation formpars;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation formparswrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation namedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation variabledeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation function;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation declarationblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation declarationblockwrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation constnamedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation constantdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation codebody;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation programdeclarations;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation program;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation call;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation extendsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation nonemptyimplementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation emptyimplementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation implementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functionname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation programname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation errsep;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designatorline;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfacedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfaceinner;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfacename;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functionheader;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumconstant;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enuminner;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classcodebody;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation implementedname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation jmpcond;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functiondeclarationblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation elsewrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation forwrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation whilewrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation readcall;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation printcall;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation printcallw;
+
+precedence left ELSE;
+
+program     ::= PROGRAM programname:name programdeclarations:p1 LBRACE codebody:c2 RBRACE {: RESULT=new ProgramDerived1(name, p1, c2); RESULT.setLine(nameleft); :}
+                ;
+
+programname ::= (ProgName) IDENT:name {: RESULT=new ProgName(name); RESULT.setLine(nameleft); :}
+                ;
+
+classname ::= (ClsName) IDENT:name {: RESULT=new ClsName(name); RESULT.setLine(nameleft); :}
+              ;
+
+enumname ::= (EnumNm) IDENT:name {: RESULT=new EnumNm(name); RESULT.setLine(nameleft); :}
+              ;
+
+enumconstant    ::=   (EnumConst) IDENT:name {: RESULT=new EnumConst(name); RESULT.setLine(nameleft); :}
+                    | (NumberedEnumConst) IDENT:name ASSIGN NUMBER:value {: RESULT=new NumberedEnumConst(name, value); RESULT.setLine(nameleft); :}
+                    ;
+
+enumdeclaration ::= (EnumDecl) ENUM enumname:e1 LBRACE enuminner:e2 RBRACE {: RESULT=new EnumDecl(e1, e2); RESULT.setLine(e1left); :}
+                    ;
+
+enuminner   ::=     enumconstant:e1 {: RESULT=new EnuminnerDerived1(e1); RESULT.setLine(e1left); :}
+                  | enuminner:e1 COMA enumconstant:e2 {: RESULT=new EnuminnerDerived2(e1, e2); RESULT.setLine(e1left); :}
+                  ;
+
+interfacedeclaration    ::= (InterfaceDecl) INTERFACE interfacename:i1 LBRACE interfaceinner:i2 RBRACE {: RESULT=new InterfaceDecl(i1, i2); RESULT.setLine(i1left); :};
+
+interfacename ::= (InterfName) IDENT:name {: RESULT=new InterfName(name); RESULT.setLine(nameleft); :}
+              ;
+
+interfaceinner  ::=   (EmptyInterfaceInner) {: RESULT=new EmptyInterfaceInner(); :}
+                    | (InterfaceMethodDeclaration) interfaceinner:i1 functionheader:f2 SEMICOLON {: RESULT=new InterfaceMethodDeclaration(i1, f2); RESULT.setLine(i1left); :}
+                    ;
+
+functionname ::=  (FuncName) type:t1 IDENT:name {: RESULT=new FuncName(t1, name); RESULT.setLine(t1left); :}
+                | (ProcedureName) VOID IDENT:name {: RESULT=new ProcedureName(name); RESULT.setLine(nameleft); :}
+            ;
+
+programdeclarations     ::= {: RESULT=new ProgramdeclarationsDerived1(); :}
+                            | programdeclarations:p1 classdeclaration:c2 {: RESULT=new ProgramdeclarationsDerived2(p1, c2); RESULT.setLine(p1left); :}
+                            | programdeclarations:p1 interfacedeclaration:i2 {: RESULT=new ProgramdeclarationsDerived3(p1, i2); RESULT.setLine(p1left); :}
+                            | programdeclarations:p1 enumdeclaration:e2 {: RESULT=new ProgramdeclarationsDerived4(p1, e2); RESULT.setLine(p1left); :}
+                            | programdeclarations:p1 constantdeclaration:c2 SEMICOLON {: RESULT=new ProgramdeclarationsDerived5(p1, c2); RESULT.setLine(p1left); :}
+                            | programdeclarations:p1 variabledeclaration:v2 SEMICOLON {: RESULT=new ProgramdeclarationsDerived6(p1, v2); RESULT.setLine(p1left); :}
+                            | programdeclarations:p1 error SEMICOLON {: RESULT=new ProgramdeclarationsDerived7(p1); RESULT.setLine(p1left); :}
+                            ;
+
+extendsdeclaration  ::=       (ExtendsDecl) EXTENDS IDENT:base {: RESULT=new ExtendsDecl(base); RESULT.setLine(baseleft); :}
+                            | (EmptyExtendsDeclaration) {: RESULT=new EmptyExtendsDeclaration(); :}
+                            | error {: RESULT=new ExtendsdeclarationDerived1(); :}
+                            | EXTENDS error {: RESULT=new ExtendsdeclarationDerived2(); :}
+//                         |  IDENT:base error LBRACE
+                         ;
+
+implementsdeclaration   ::= nonemptyimplementsdeclaration:n1 {: RESULT=new ImplementsdeclarationDerived1(n1); RESULT.setLine(n1left); :} | emptyimplementsdeclaration:e1 {: RESULT=new ImplementsdeclarationDerived2(e1); RESULT.setLine(e1left); :};
+
+emptyimplementsdeclaration  ::= {: RESULT=new EmptyimplementsdeclarationDerived1(); :};
+nonemptyimplementsdeclaration   ::=   IMPLEMENTS implementedname:i1 {: RESULT=new NonemptyimplementsdeclarationDerived1(i1); RESULT.setLine(i1left); :}
+                                    | nonemptyimplementsdeclaration:n1 COMA implementedname:i2 {: RESULT=new NonemptyimplementsdeclarationDerived2(n1, i2); RESULT.setLine(n1left); :}
+                                    ;
+implementedname     ::=  (ImplementedNm) type:t1 {: RESULT=new ImplementedNm(t1); RESULT.setLine(t1left); :}
+                        ;
+
+classdeclaration    ::=   (Class) CLASS classname:name extendsdeclaration:e1 implementsdeclaration:i2 LBRACE declarationblockwrapper:d3 classcodebody:c4 RBRACE {: RESULT=new Class(name, e1, i2, d3, c4); RESULT.setLine(nameleft); :}
+                        ;
+
+classcodebody   ::=   LBRACE codebody:c1 RBRACE {: RESULT=new ClasscodebodyDerived1(c1); RESULT.setLine(c1left); :}
+                    | {: RESULT=new ClasscodebodyDerived2(); :}
+                    ;
+codebody   ::= {: RESULT=new CodebodyDerived1(); :}
+                | codebody:c1 function:f2 {: RESULT=new CodebodyDerived2(c1, f2); RESULT.setLine(c1left); :}
+                ;
+
+functionheader  ::=   (FuncHeader) functionname:name formparswrapper:f1 {: RESULT=new FuncHeader(name, f1); RESULT.setLine(nameleft); :}
+                    ;
+
+function    ::=    (Function) functionheader:f1 functiondeclarationblock:f2 LBRACE statementblock:s3 RBRACE {: RESULT=new Function(f1, f2, s3); RESULT.setLine(f1left); :}
+                 ;
+functiondeclarationblock    ::= (FunctionDeclBlock) declarationblock:d1 {: RESULT=new FunctionDeclBlock(d1); RESULT.setLine(d1left); :};
+
+declarationblockwrapper ::=     (DeclarationBlockWrapper1) declarationblock:d1 {: RESULT=new DeclarationBlockWrapper1(d1); RESULT.setLine(d1left); :}
+                              | declarationblock:d1 error {: RESULT=new DeclarationblockwrapperDerived1(d1); RESULT.setLine(d1left); :}
+                            //| (DeclarationBlockWrapper2) declarationblock error LBRACE
+                            ;
+
+declarationblock ::=   (DeclBlock) declarationblock:d1 variabledeclaration:v2 SEMICOLON {: RESULT=new DeclBlock(d1, v2); RESULT.setLine(d1left); :}
+                     | (EmptyDeclarationBlock) {: RESULT=new EmptyDeclarationBlock(); :}
+                     | declarationblock:d1 error SEMICOLON {: RESULT=new DeclarationblockDerived1(d1); RESULT.setLine(d1left); :}
+                     ;
+
+formparswrapper ::=        (FormParsWrap) LPAREN formpars:f1 RPAREN {: RESULT=new FormParsWrap(f1); RESULT.setLine(f1left); :}
+                         | LPAREN error COMA formpars:f1 RPAREN {: RESULT=new FormparswrapperDerived1(f1); RESULT.setLine(f1left); :}
+                    ;
+
+formpars    ::=   formpars:f1 COMA type:t2 namedeclaration:n3 {: RESULT=new FormparsDerived1(f1, t2, n3); RESULT.setLine(f1left); :}
+                | formpars:f1 COMA error {: RESULT=new FormparsDerived2(f1); RESULT.setLine(f1left); :}
+                | type:t1 namedeclaration:n2 {: RESULT=new FormparsDerived3(t1, n2); RESULT.setLine(t1left); :}
+                | {: RESULT=new FormparsDerived4(); :}
+                ;
+
+constantdeclaration ::=   (ConstantDeclarations) constantdeclaration:c1 COMA constnamedeclaration:c2 {: RESULT=new ConstantDeclarations(c1, c2); RESULT.setLine(c1left); :}
+                        | (ConstantDeclarationTyped) CONST type:t1 constnamedeclaration:c2 {: RESULT=new ConstantDeclarationTyped(t1, c2); RESULT.setLine(t1left); :}
+                        ;
+
+variabledeclaration ::=     type:t1 namedeclaration:n2 {: RESULT=new VariabledeclarationDerived1(t1, n2); RESULT.setLine(t1left); :}
+                          | variabledeclaration:v1 COMA namedeclaration:n2 {: RESULT=new VariabledeclarationDerived2(v1, n2); RESULT.setLine(v1left); :}
+                          //| variabledeclaration COMA error
+                          //| type error
+                          ;
+
+constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val {: RESULT=new BoolConstantDeclaration(name, val); RESULT.setLine(nameleft); :}
+                            | (CharConstantDeclaration) IDENT:name ASSIGN CHARACTER:val {: RESULT=new CharConstantDeclaration(name, val); RESULT.setLine(nameleft); :}
+                            | (NumberConstantDeclaration) IDENT:name ASSIGN NUMBER:val {: RESULT=new NumberConstantDeclaration(name, val); RESULT.setLine(nameleft); :}
+                            ;
+
+namedeclaration     ::=   (Variable) IDENT:name {: RESULT=new Variable(name); RESULT.setLine(nameleft); :}
+                        | (Array) IDENT:name LBRACK RBRACK {: RESULT=new Array(name); RESULT.setLine(nameleft); :}
+                        | error {: RESULT=new NamedeclarationDerived1(); :}
+                        ;
+
+statement   ::=       (DesignatorLineStmt) designatorline:d1 {: RESULT=new DesignatorLineStmt(d1); RESULT.setLine(d1left); :}
+                    | (Block) LBRACE statementblock:s1 RBRACE {: RESULT=new Block(s1); RESULT.setLine(s1left); :}
+                    | (If) IF LPAREN jmpcond:cond RPAREN statement:s1 {: RESULT=new If(cond, s1); RESULT.setLine(condleft); :}
+                    | (IfElse) IF LPAREN jmpcond:cond RPAREN statement:s1 elsewrapper:e2 statement:s3 {: RESULT=new IfElse(cond, s1, e2, s3); RESULT.setLine(condleft); :}
+                    | (While) whilewrapper:w1 LPAREN jmpcond:cond RPAREN statement:s2 {: RESULT=new While(w1, cond, s2); RESULT.setLine(w1left); :}
+                    | (ForLoop) forwrapper:f1 LPAREN for1:f2 SEMICOLON for2:f3 SEMICOLON for3:f4 RPAREN statement:s5 {: RESULT=new ForLoop(f1, f2, f3, f4, s5); RESULT.setLine(f1left); :}
+                    | (Break) BREAK SEMICOLON {: RESULT=new Break(); :}
+                    | (Continue) CONTINUE SEMICOLON {: RESULT=new Continue(); :}
+                    | (Return) RETURN expr:e1 SEMICOLON {: RESULT=new Return(e1); RESULT.setLine(e1left); :}
+                    | (EmptyReturn) RETURN SEMICOLON {: RESULT=new EmptyReturn(); :}
+                    | (CallStatement) call:c1 SEMICOLON {: RESULT=new CallStatement(c1); RESULT.setLine(c1left); :}
+                    | (ReadStatement)readcall:r1 SEMICOLON {: RESULT=new ReadStatement(r1); RESULT.setLine(r1left); :}
+                    | (PrintStatement) printcall:p1 SEMICOLON {: RESULT=new PrintStatement(p1); RESULT.setLine(p1left); :}
+                    | (PrintStatementW) printcallw:p1 SEMICOLON {: RESULT=new PrintStatementW(p1); RESULT.setLine(p1left); :}
+                    ;
+
+elsewrapper     ::= (ElseWrap) ELSE {: RESULT=new ElseWrap(); :};
+whilewrapper     ::= (WhileWrap) WHILE {: RESULT=new WhileWrap(); :};
+forwrapper     ::= (ForWrap) FOR {: RESULT=new ForWrap(); :};
+
+for1    ::=           (ForInit)   designatorstmt:d1 {: RESULT=new ForInit(d1); RESULT.setLine(d1left); :}
+                    | (ForInitEmpty) {: RESULT=new ForInitEmpty(); :}
+                    ;
+
+for2    ::=           (ForCond) condexpr:c1 {: RESULT=new ForCond(c1); RESULT.setLine(c1left); :}
+                    | (ForCondEmpty) {: RESULT=new ForCondEmpty(); :}
+                    ;
+
+for3    ::=           (ForIncrement) designatorstmt:d1 {: RESULT=new ForIncrement(d1); RESULT.setLine(d1left); :}
+                    | (ForIncrementEmpty) {: RESULT=new ForIncrementEmpty(); :}
+                    ;
+
+jmpcond     ::=   (JmpCondition) condexpr:cond {: RESULT=new JmpCondition(cond); RESULT.setLine(condleft); :}
+                | error {: RESULT=new JmpcondDerived1(); :}
+                ;
+statementblock  ::=   (EmptyBlock) {: RESULT=new EmptyBlock(); :}
+                    | (StmtBlock) statementblock:s1 statement:s2 {: RESULT=new StmtBlock(s1, s2); RESULT.setLine(s1left); :}
+                    ;
+
+designatorline  ::=    designatorstmt:d1 SEMICOLON {: RESULT=new DesignatorlineDerived1(d1); RESULT.setLine(d1left); :}
+                     | error SEMICOLON {: RESULT=new DesignatorlineDerived2(); :}
+                    //| designatorstmt error SEMICOLON
+                    //| error SEMICOLON
+                    ;
+
+designatorstmt  ::=   (Assign) designator:d1 ASSIGN expr:e2 {: RESULT=new Assign(d1, e2); RESULT.setLine(d1left); :}
+                    | (Increment) designator:d1 INCREMENT {: RESULT=new Increment(d1); RESULT.setLine(d1left); :}
+                    | (Decrement) designator:d1 DECREMENT {: RESULT=new Decrement(d1); RESULT.setLine(d1left); :}
+                    | designator:d1 ASSIGN error {: RESULT=new DesignatorstmtDerived1(d1); RESULT.setLine(d1left); :}
+                    | designator:d1 error {: RESULT=new DesignatorstmtDerived2(d1); RESULT.setLine(d1left); :}
+                    ;
+
+condexpr ::=   (SingleCondExpr) condterm:c1 {: RESULT=new SingleCondExpr(c1); RESULT.setLine(c1left); :}
+             | (Or) condexpr:c1 OR condterm:c2 {: RESULT=new Or(c1, c2); RESULT.setLine(c1left); :}
+             //| (CondExprError) condexpr OR error
+             ;
+
+condterm ::=  (SingleCondTerm) condfactor:c1 {: RESULT=new SingleCondTerm(c1); RESULT.setLine(c1left); :}
+            | (And) condterm:c1 AND condfactor:c2 {: RESULT=new And(c1, c2); RESULT.setLine(c1left); :}
+            //| (CondTermError) condterm AND error
+            ;
+
+condfactor::= (SingleCondFactor) expr:e1 {: RESULT=new SingleCondFactor(e1); RESULT.setLine(e1left); :}
+            | (Equals) expr:e1 EQUALS expr:e2 {: RESULT=new Equals(e1, e2); RESULT.setLine(e1left); :}
+            | (NotEquals) expr:e1 NOTEQUALS expr:e2 {: RESULT=new NotEquals(e1, e2); RESULT.setLine(e1left); :}
+            | (Greater) expr:e1 GREATER expr:e2 {: RESULT=new Greater(e1, e2); RESULT.setLine(e1left); :}
+            | (GreaterEqual) expr:e1 GREATEREQUAL expr:e2 {: RESULT=new GreaterEqual(e1, e2); RESULT.setLine(e1left); :}
+            | (Less) expr:e1 LESS expr:e2 {: RESULT=new Less(e1, e2); RESULT.setLine(e1left); :}
+            | (LessEqual) expr:e1 LESSEQUAL expr:e2 {: RESULT=new LessEqual(e1, e2); RESULT.setLine(e1left); :}
+            ;
+
+errsep  ::= OR {: RESULT=new ErrsepDerived1(); :} | AND {: RESULT=new ErrsepDerived2(); :} |EQUALS {: RESULT=new ErrsepDerived3(); :}|GREATER {: RESULT=new ErrsepDerived4(); :}|GREATEREQUAL {: RESULT=new ErrsepDerived5(); :}|LESS {: RESULT=new ErrsepDerived6(); :}|LESSEQUAL {: RESULT=new ErrsepDerived7(); :}|DECREMENT {: RESULT=new ErrsepDerived8(); :}|INCREMENT {: RESULT=new ErrsepDerived9(); :}| {: RESULT=new ErrsepDerived10(); :}
+            |IDENT:I1 {: RESULT=new ErrsepDerived11(I1); RESULT.setLine(I1left); :}|COMA {: RESULT=new ErrsepDerived12(); :}
+            ;
+
+expr   ::=    (SingleExpr) term:t1 {: RESULT=new SingleExpr(t1); RESULT.setLine(t1left); :}
+            | (Addition) expr:e1 PLUS term:t2 {: RESULT=new Addition(e1, t2); RESULT.setLine(e1left); :}
+            | (Substraction) expr:e1 MINUS term:t2 {: RESULT=new Substraction(e1, t2); RESULT.setLine(e1left); :}
+            ;
+
+term   ::=   (SingleTerm) factor:f1 {: RESULT=new SingleTerm(f1); RESULT.setLine(f1left); :}
+           | (Multiplication) term:t1 STAR factor:f2 {: RESULT=new Multiplication(t1, f2); RESULT.setLine(t1left); :}
+           | (Division) term:t1 DIVIDE factor:f2 {: RESULT=new Division(t1, f2); RESULT.setLine(t1left); :}
+           | (Modulus) term:t1 MOD factor:f2 {: RESULT=new Modulus(t1, f2); RESULT.setLine(t1left); :}
+           ;
+
+call   ::= (FuncCall) designator:d1 LPAREN actpars:a2 RPAREN {: RESULT=new FuncCall(d1, a2); RESULT.setLine(d1left); :};
+
+factor ::=   (NumericConstant) NUMBER:val {: RESULT=new NumericConstant(val); RESULT.setLine(valleft); :}
+           | (CharacterConstant) CHARACTER:val {: RESULT=new CharacterConstant(val); RESULT.setLine(valleft); :}
+           | (BooleanConstant) BOOL:val {: RESULT=new BooleanConstant(val); RESULT.setLine(valleft); :}
+           | (SingleFactor) designator:d1 {: RESULT=new SingleFactor(d1); RESULT.setLine(d1left); :}
+           | (NewObject) NEW type:t1 {: RESULT=new NewObject(t1); RESULT.setLine(t1left); :}
+           | (NewArray) NEW type:t1 LBRACK expr:count RBRACK {: RESULT=new NewArray(t1, count); RESULT.setLine(t1left); :}
+           | (Parenthesized) LPAREN expr:e1 RPAREN {: RESULT=new Parenthesized(e1); RESULT.setLine(e1left); :}
+           | (CallResult) call:c1 {: RESULT=new CallResult(c1); RESULT.setLine(c1left); :}
+           | (Negated) MINUS factor:f1 {: RESULT=new Negated(f1); RESULT.setLine(f1left); :}
+           ;
+
+designator  ::=   (BaseDesignator) IDENT:name {: RESULT=new BaseDesignator(name); RESULT.setLine(nameleft); :}
+                | (PathDesignator) designator:d1 DOT IDENT:name {: RESULT=new PathDesignator(d1, name); RESULT.setLine(d1left); :}
+                | (IndexDesignator) designator:d1 LBRACK expr:e2 RBRACK {: RESULT=new IndexDesignator(d1, e2); RESULT.setLine(d1left); :}
+            ;
+
+type        ::= (Type) IDENT:name {: RESULT=new Type(name); RESULT.setLine(nameleft); :}
+            ;
+
+actpars     ::=   (Parameter) expr:e1 {: RESULT=new Parameter(e1); RESULT.setLine(e1left); :}
+                | (Parameters) actpars:a1 COMA expr:e2 {: RESULT=new Parameters(a1, e2); RESULT.setLine(a1left); :}
+                | (EmptyParameters) {: RESULT=new EmptyParameters(); :}
+                ;
+
+readcall    ::= (ReadCallS) READ LPAREN designator:d1 RPAREN {: RESULT=new ReadCallS(d1); RESULT.setLine(d1left); :}
+                ;
+
+printcall    ::= (PrintCallS) PRINT LPAREN expr:e1 RPAREN {: RESULT=new PrintCallS(e1); RESULT.setLine(e1left); :}
+                ;
+
+printcallw    ::= (PrintCallWidth) PRINT LPAREN expr:e1 COMA NUMBER:width RPAREN {: RESULT=new PrintCallWidth(e1, width); RESULT.setLine(e1left); :}
+                ;

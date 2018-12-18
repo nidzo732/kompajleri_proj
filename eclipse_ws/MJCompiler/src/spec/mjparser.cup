@@ -1,0 +1,360 @@
+package rs.ac.bg.etf.pp1.ast;
+import rs.ac.bg.etf.pp1.Yylex;
+import rs.ac.bg.etf.pp1.CompilerError;
+import java_cup.runtime.Symbol;
+parser code {:
+    public boolean syntaxError=false;
+    public boolean unrecoveredSyntaxError=false;
+    @Override
+    protected int error_sync_size()
+    {
+        return 3;
+    }
+
+    @Override
+    public void syntax_error(Symbol cur_token)
+    {
+        syntaxError=true;
+        CompilerError.raise("Syntax error ", ((Yylex)getScanner()).getLineNo(), ((Yylex)getScanner()).getColumn());
+    }
+
+    @Override
+    public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
+        syntaxError=true;
+        unrecoveredSyntaxError=true;
+    }
+:}
+
+terminal int NUMBER;
+terminal char CHARACTER;
+terminal PROGRAM;
+terminal BREAK;
+terminal CLASS;
+terminal INTERFACE;
+terminal IMPLEMENTS;
+terminal ENUM;
+terminal ELSE;
+terminal IF;
+terminal NEW;
+terminal RETURN;
+terminal VOID;
+terminal FOR;
+terminal WHILE;
+terminal EXTENDS;
+terminal CONTINUE;
+terminal String IDENT;
+terminal boolean BOOL;
+terminal CONST;
+
+terminal PLUS, MINUS, STAR, DIVIDE, MOD;
+terminal EQUALS, NOTEQUALS, GREATER, GREATEREQUAL, LESS, LESSEQUAL;
+terminal AND, OR;
+terminal ASSIGN;
+terminal INCREMENT, DECREMENT;
+terminal SEMICOLON;
+terminal COMA;
+terminal LPAREN, RPAREN;
+terminal LBRACE, RBRACE;
+terminal LBRACK, RBRACK;
+terminal DOT;
+terminal READ;
+terminal PRINT;
+
+
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation factor;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designator;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation term;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation expr;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation type;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation actpars;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condterm;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condfactor;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation condexpr;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for1;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for2;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation for3;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designatorstmt;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation statement;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation statementblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation formpars;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation formparswrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation namedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation variabledeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation function;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation declarationblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation declarationblockwrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation constnamedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation constantdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation codebody;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation programdeclarations;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation program;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation call;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation extendsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation nonemptyimplementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation emptyimplementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation implementsdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functionname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation programname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation errsep;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designatorline;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfacedeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfaceinner;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfacename;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functionheader;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumconstant;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumdeclaration;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enuminner;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation enumname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classcodebody;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation implementedname;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation jmpcond;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functiondeclarationblock;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation elsewrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation forwrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation whilewrapper;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation readcall;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation printcall;
+nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation printcallw;
+
+precedence left ELSE;
+
+program     ::= PROGRAM programname:name programdeclarations LBRACE codebody RBRACE
+                ;
+
+programname ::= (ProgName) IDENT:name
+                ;
+
+classname ::= (ClsName) IDENT:name
+              ;
+
+enumname ::= (EnumNm) IDENT:name
+              ;
+
+enumconstant    ::=   (EnumConst) IDENT:name
+                    | (NumberedEnumConst) IDENT:name ASSIGN NUMBER:value
+                    ;
+
+enumdeclaration ::= (EnumDecl) ENUM enumname LBRACE enuminner RBRACE
+                    ;
+
+enuminner   ::=     enumconstant
+                  | enuminner COMA enumconstant
+                  ;
+
+interfacedeclaration    ::= (InterfaceDecl) INTERFACE interfacename LBRACE interfaceinner RBRACE;
+
+interfacename ::= (InterfName) IDENT:name
+              ;
+
+interfaceinner  ::=   (EmptyInterfaceInner)
+                    | (InterfaceMethodDeclaration) interfaceinner functionheader SEMICOLON
+                    ;
+
+functionname ::=  (FuncName) type IDENT:name
+                | (ProcedureName) VOID IDENT:name
+            ;
+
+programdeclarations     ::=
+                            | programdeclarations classdeclaration
+                            | programdeclarations interfacedeclaration
+                            | programdeclarations enumdeclaration
+                            | programdeclarations constantdeclaration SEMICOLON
+                            | programdeclarations variabledeclaration SEMICOLON
+                            | programdeclarations error SEMICOLON
+                            ;
+
+extendsdeclaration  ::=       (ExtendsDecl) EXTENDS IDENT:base
+                            | (EmptyExtendsDeclaration)
+                            | error
+                            | EXTENDS error
+//                         |  IDENT:base error LBRACE
+                         ;
+
+implementsdeclaration   ::= nonemptyimplementsdeclaration | emptyimplementsdeclaration;
+
+emptyimplementsdeclaration  ::=;
+nonemptyimplementsdeclaration   ::=   IMPLEMENTS implementedname
+                                    | nonemptyimplementsdeclaration COMA implementedname
+                                    ;
+implementedname     ::=  (ImplementedNm) type
+                        ;
+
+classdeclaration    ::=   (Class) CLASS classname:name extendsdeclaration implementsdeclaration LBRACE declarationblockwrapper classcodebody RBRACE
+                        ;
+
+classcodebody   ::=   LBRACE codebody RBRACE
+                    |
+                    ;
+codebody   ::=
+                | codebody function
+                ;
+
+functionheader  ::=   (FuncHeader) functionname:name formparswrapper
+                    ;
+
+function    ::=    (Function) functionheader functiondeclarationblock LBRACE statementblock RBRACE
+                 ;
+functiondeclarationblock    ::= (FunctionDeclBlock) declarationblock;
+
+declarationblockwrapper ::=     (DeclarationBlockWrapper1) declarationblock
+                              | declarationblock error
+                            //| (DeclarationBlockWrapper2) declarationblock error LBRACE
+                            ;
+
+declarationblock ::=   (DeclBlock) declarationblock variabledeclaration SEMICOLON
+                     | (EmptyDeclarationBlock)
+                     | declarationblock error SEMICOLON
+                     ;
+
+formparswrapper ::=        (FormParsWrap) LPAREN formpars RPAREN
+                         | LPAREN error COMA formpars RPAREN
+                    ;
+
+formpars    ::=   formpars COMA type namedeclaration
+                | formpars COMA error
+                | type namedeclaration
+                |
+                ;
+
+constantdeclaration ::=   (ConstantDeclarations) constantdeclaration COMA constnamedeclaration
+                        | (ConstantDeclarationTyped) CONST type constnamedeclaration
+                        ;
+
+variabledeclaration ::=     type namedeclaration
+                          | variabledeclaration COMA namedeclaration
+                          //| variabledeclaration COMA error
+                          //| type error
+                          ;
+
+constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val
+                            | (CharConstantDeclaration) IDENT:name ASSIGN CHARACTER:val
+                            | (NumberConstantDeclaration) IDENT:name ASSIGN NUMBER:val
+                            ;
+
+namedeclaration     ::=   (Variable) IDENT:name
+                        | (Array) IDENT:name LBRACK RBRACK
+                        | error
+                        ;
+
+statement   ::=       (DesignatorLineStmt) designatorline
+                    | (Block) LBRACE statementblock RBRACE
+                    | (If) IF LPAREN jmpcond:cond RPAREN statement
+                    | (IfElse) IF LPAREN jmpcond:cond RPAREN statement elsewrapper statement
+                    | (While) whilewrapper LPAREN jmpcond:cond RPAREN statement
+                    | (ForLoop) forwrapper LPAREN for1 SEMICOLON for2 SEMICOLON for3 RPAREN statement
+                    | (Break) BREAK SEMICOLON
+                    | (Continue) CONTINUE SEMICOLON
+                    | (Return) RETURN expr SEMICOLON
+                    | (EmptyReturn) RETURN SEMICOLON
+                    | (CallStatement) call SEMICOLON
+                    | (ReadStatement)readcall SEMICOLON
+                    | (PrintStatement) printcall SEMICOLON
+                    | (PrintStatementW) printcallw SEMICOLON
+                    ;
+
+elsewrapper     ::= (ElseWrap) ELSE;
+whilewrapper     ::= (WhileWrap) WHILE;
+forwrapper     ::= (ForWrap) FOR;
+
+for1    ::=           (ForInit)   designatorstmt
+                    | (ForInitEmpty)
+                    ;
+
+for2    ::=           (ForCond) condexpr
+                    | (ForCondEmpty)
+                    ;
+
+for3    ::=           (ForIncrement) designatorstmt
+                    | (ForIncrementEmpty)
+                    ;
+
+jmpcond     ::=   (JmpCondition) condexpr:cond
+                | error
+                ;
+statementblock  ::=   (EmptyBlock)
+                    | (StmtBlock) statementblock statement
+                    ;
+
+designatorline  ::=    designatorstmt SEMICOLON
+                     | error SEMICOLON
+                    //| designatorstmt error SEMICOLON
+                    //| error SEMICOLON
+                    ;
+
+designatorstmt  ::=   (Assign) designator ASSIGN expr
+                    | (Increment) designator INCREMENT
+                    | (Decrement) designator DECREMENT
+                    | designator ASSIGN error
+                    | designator error
+                    ;
+
+condexpr ::=   (SingleCondExpr) condterm
+             | (Or) condexpr OR condterm
+             //| (CondExprError) condexpr OR error
+             ;
+
+condterm ::=  (SingleCondTerm) condfactor
+            | (And) condterm AND condfactor
+            //| (CondTermError) condterm AND error
+            ;
+
+condfactor::= (SingleCondFactor) expr
+            | (Equals) expr EQUALS expr
+            | (NotEquals) expr NOTEQUALS expr
+            | (Greater) expr GREATER expr
+            | (GreaterEqual) expr GREATEREQUAL expr
+            | (Less) expr LESS expr
+            | (LessEqual) expr LESSEQUAL expr
+            ;
+
+errsep  ::= OR | AND |EQUALS|GREATER|GREATEREQUAL|LESS|LESSEQUAL|DECREMENT|INCREMENT|
+            |IDENT|COMA
+            ;
+
+expr   ::=    (SingleExpr) term
+            | (Addition) expr PLUS term
+            | (Substraction) expr MINUS term
+            ;
+
+term   ::=   (SingleTerm) factor
+           | (Multiplication) term STAR factor
+           | (Division) term DIVIDE factor
+           | (Modulus) term MOD factor
+           ;
+
+call   ::= (FuncCall) designator LPAREN actpars RPAREN;
+
+factor ::=   (NumericConstant) NUMBER:val
+           | (CharacterConstant) CHARACTER:val
+           | (BooleanConstant) BOOL:val
+           | (SingleFactor) designator
+           | (NewObject) NEW type
+           | (NewArray) NEW type LBRACK expr:count RBRACK
+           | (Parenthesized) LPAREN expr RPAREN
+           | (CallResult) call
+           | (Negated) MINUS factor
+           ;
+
+designator  ::=   (BaseDesignator) IDENT:name
+                | (PathDesignator) designator DOT IDENT:name
+                | (IndexDesignator) designator LBRACK expr RBRACK
+            ;
+
+type        ::= (Type) IDENT:name
+            ;
+
+actpars     ::=   (Parameter) expr
+                | (Parameters) actpars COMA expr
+                | (EmptyParameters)
+                ;
+
+readcall    ::= (ReadCallS) READ LPAREN designator RPAREN
+                ;
+
+printcall    ::= (PrintCallS) PRINT LPAREN expr RPAREN
+                ;
+
+printcallw    ::= (PrintCallWidth) PRINT LPAREN expr COMA NUMBER:width RPAREN
+                ;

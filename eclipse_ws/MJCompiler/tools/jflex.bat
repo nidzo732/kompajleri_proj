@@ -1,0 +1,1 @@
+"c:\Program Files\Java\jre1.8.0_151\bin\java.exe" -jar ..\lib\JFlex.jar -d rs\ac\bg\etf\pp1\ spec\mjlexer.flex
