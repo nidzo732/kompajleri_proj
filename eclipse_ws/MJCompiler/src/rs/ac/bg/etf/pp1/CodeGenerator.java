@@ -70,8 +70,16 @@ public class CodeGenerator extends VisitorAdaptor
     @Override
     public void visit(Function function)
     {
-        Code.put(Code.exit);
-        Code.put(Code.return_);
+    	if(function.compilerannotation.obj.getType()==Tab.noType)
+    	{
+    		Code.put(Code.exit);
+            Code.put(Code.return_);
+    	}
+    	else
+    	{
+    		Code.put(Code.trap);
+    		Code.put(42);
+    	}
         if (function.compilerannotation.obj == TableWrapper.main)
         {
             Code.mainPc = Code.pc;
@@ -454,16 +462,16 @@ public class CodeGenerator extends VisitorAdaptor
     public void visit(Or or)
     {
         Code.put(Code.add);
-        Code.loadConst(0);
-        testCondition(Code.ne);
+        Code.loadConst(1);
+        Code.put(Code.add);
+        Code.loadConst(2);
+        Code.put(Code.div);
     }
 
     @Override
     public void visit(And or)
     {
         Code.put(Code.mul);
-        Code.loadConst(0);
-        testCondition(Code.ne);
     }
 
     @Override

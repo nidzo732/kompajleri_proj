@@ -14,8 +14,9 @@ class TableWrapper
     private static HashMap<Obj, List<Obj>> methodParams=new HashMap<>();
     private static Set<Obj> classMethods=new HashSet<>();
     private static Map<Obj, Obj> methodToClassMap=new HashMap<>();
+    private static Map<Obj, Obj> fieldToClassMap=new HashMap<>();
     private static Stack<Obj> scopeStack = new Stack<>();
-    static Map<String,List<String>> VTPData = new HashMap();
+    static Map<String,List<String>> VTPData = new HashMap<>();
     private static Stack<Integer> adrStack=new Stack<>();
     static Obj main=null;
     private static int globMethAdr=0;
@@ -136,6 +137,16 @@ class TableWrapper
         {
             CompilerError.raise("Redeclaration of name "+name, location);
         }
+        if(Tab.currentScope.getLocals()!=null && Tab.currentScope.getLocals().symbols()!=null)
+        {
+        	for(Obj symbol: Tab.currentScope.getLocals().symbols())
+            {
+            	if(symbol.getKind()==Obj.Con && symbol.getAdr()==value)
+            	{
+            		CompilerError.raise("Reuse of value "+value, location);
+            	}
+            }
+        }
         Obj enumConstant = tabInsert(Obj.Con, name, scopeStack.peek().getType());
         enumConstant.setAdr(value);
         return enumConstant;
@@ -149,6 +160,10 @@ class TableWrapper
             if(oldSymbol.getKind()!=Obj.Meth)
             {
                 CompilerError.raise("Redeclaration of name "+name, location);
+            }
+            else if(methodToClassMap.get(oldSymbol)==scopeStack.peek())
+            {
+            	CompilerError.raise("Redeclaration of name "+name, location);
             }
             Tab.currentScope().getLocals().deleteKey(name);
         }
@@ -174,8 +189,13 @@ class TableWrapper
         {
             if(Tab.currentScope().findSymbol(name)!=null)
             {
+            	if(fieldToClassMap.get(Tab.currentScope().findSymbol(name))==scopeStack.peek())
+            	{
+            		CompilerError.raise("Redeclaration of name "+name, location);
+            	}
                 Tab.currentScope().getLocals().deleteKey(name);
-                return declareVariable(name, type,location);
+                Obj obj= declareVariable(name, type,location);
+                fieldToClassMap.put(obj, scopeStack.peek());
             }
             kind=Obj.Fld;
         }
@@ -244,8 +264,12 @@ class TableWrapper
         }
     }
 
-    static void setBaseClass(Struct base)
+    static void setBaseClass(Struct base, SyntaxNode node)
     {
+    	if(base==scopeStack.peek().getType())
+    	{
+    		CompilerError.raise("A class cannot inherit itself", node);
+    	}
         scopeStack.peek().getType().setElementType(base);
         int maxFieldAddr=0;
         for(Obj symbol:base.getMembersTable().symbols())
@@ -262,8 +286,13 @@ class TableWrapper
         adrStack.pop();
         adrStack.push(maxFieldAddr+1);
     }
-    static void addImplementedInterface(Struct interf)
+    static void addImplementedInterface(Struct interf, SyntaxNode location)
     {
+    	if(scopeStack.peek().getType().getImplementedInterfaces()!=null 
+    			&& scopeStack.peek().getType().getImplementedInterfaces().contains(interf))
+    	{
+    		CompilerError.raise("Cannot implement a same interface twice", location);
+    	}
         scopeStack.peek().getType().addImplementedInterface(interf);
     }
     static Struct getType(String name)
@@ -365,6 +394,10 @@ class TableWrapper
     {
         if(src==null || dst==null) return false;
         if(src.assignableTo(dst)) return true;
+        if(dst.getKind()==Struct.Class || dst.getKind()==Struct.Interface)
+        {
+        	if(src==Tab.nullType) return true;
+        }
         if(dst.getKind()==Struct.Int && src.getKind()==Struct.Enum) return true;
         if(dst.getKind()==Struct.Array && src.getKind()==Struct.Array) return assignmentCompatible(dst.getElemType(), src.getElemType());
         if(dst.getKind()==Struct.Interface && src.getKind()==Struct.Class && src.getImplementedInterfaces().contains(dst)) return true;

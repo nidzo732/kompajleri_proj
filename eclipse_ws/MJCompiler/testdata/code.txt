@@ -1,83 +1,64 @@
 program pera
-enum str{VUCICU=444, PEDERU, TRECI}
+enum str{VUCICU=444, PEDERU=88, TRECI=88}
 interface String
 {
     void ispis(int amt);
     void init();
 }
+interface I2
+{
+}
 char c[];
-class Vucicu implements String
+class Vucicu implements String, I2
 {
     str s;
     {
         void printstr(char s[])
         int i;
         {
-            for(i=0;i<len(s) && ord(s[i])!=0;i++)
-            {
-                print(s[i]);
-            }
         }
         void ispis(int amt)
         int i;
         {
-            c=new char[10];
-            for(i=0;i<amt;i++)
-            {
-                if(s==str.VUCICU)
-                {
-                    c[0]='V';
-                    c[1]='u';
-                    c[2]='c';
-                    c[3]='i';
-                    c[4]='c';
-                    c[5]='u';
-                    c[6]=',';
-                    c[7]=' ';
-                    c[8]=chr(0);
-                }
-                else if(s==str.PEDERU)
-                {
-                    c[0]='p';
-                    c[1]='e';
-                    c[2]='d';
-                    c[3]='e';
-                    c[4]='r';
-                    c[5]='u';
-                    c[6]=chr(0);
-                }
-                else
-                {
-                    c[0]='N';
-                    c[1]=chr(0);
-                }
-                printstr(c);
-            }
+           
+            
         }
         void init(){s=str.VUCICU;}
     }
 }
-String s[];
 class Pederu extends Vucicu
 {
-    {
-        void init(){s=str.PEDERU;}
-    }
+	int s;
+	{
+		void init(){s=str.VUCICU;}
+	}
 }
 int i;
 {
+	int x()
+	{
+		if(42==43)
+		{
+			print('Q');
+			return 0;
+		}
+		else
+		{
+			print('A');
+		}
+	}
     void main()
-    int x;
+    bool a,b;
     {
-    	read(x);
-    	print(x*42);
-        s=new String[2];
-        s[0]=new Vucicu;
-        s[1]=new Pederu;
-        for(i=1;i>=0;i--)
-        {
-            s[i].init();
-            s[i].ispis(3);
-        }
+    	a=true;
+    	b=true;
+    	if(a && b)
+    	{
+    		print('P');
+    	}
+    	else
+    	{
+    		print('Q');
+    	}
     }
 }

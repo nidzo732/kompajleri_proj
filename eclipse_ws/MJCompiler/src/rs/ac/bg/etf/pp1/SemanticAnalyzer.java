@@ -225,7 +225,7 @@ public class SemanticAnalyzer extends VisitorAdaptor
         {
             CompilerError.raise("Extending from a non-class type " + ed.getBase(), ed);
         }
-        TableWrapper.setBaseClass(base);
+        TableWrapper.setBaseClass(base, ed);
     }
 
     @Override
@@ -236,9 +236,8 @@ public class SemanticAnalyzer extends VisitorAdaptor
         {
             CompilerError.raise("Implementing from a non-interface type " + impName.getType().getName(), impName);
         }
-        TableWrapper.addImplementedInterface(base);
+        TableWrapper.addImplementedInterface(base, impName);
     }
-
     public void visit(BaseDesignator bd)
     {
         Obj obj = TableWrapper.getSymbol(bd.getName());
@@ -246,6 +245,10 @@ public class SemanticAnalyzer extends VisitorAdaptor
         {
             CompilerError.raise("Unknown symbol: " + bd.getName(), bd);
             obj = Tab.noObj;
+        }
+        if (obj.getKind() == Obj.Type && obj.getType().getKind() != Struct.Enum)
+        {
+        	CompilerError.raise("Cannot use a type here", bd);
         }
         if(obj.getKind()==Obj.Var)
         {
@@ -379,6 +382,19 @@ public class SemanticAnalyzer extends VisitorAdaptor
     {
         c.compilerannotation = new CompilerAnnotation();
         c.compilerannotation.type = c.getDesignator().compilerannotation.type;
+        c.compilerannotation.obj = c.getDesignator().compilerannotation.obj;
+        if(c.compilerannotation.obj.getKind()==Obj.Meth)
+        {
+        	CompilerError.raise("Cannot use a method in an expression", c);
+        }
+        else if(c.compilerannotation.obj.getKind()==Obj.Prog)
+        {
+        	CompilerError.raise("Cannot use a program in an expression", c);
+        }
+        else if(c.compilerannotation.obj.getKind()==Obj.Type)
+        {
+        	CompilerError.raise("Cannot use a type in an expression", c);
+        }
     }
 
     @Override
@@ -682,6 +698,22 @@ public class SemanticAnalyzer extends VisitorAdaptor
     @Override
     public void visit(Assign assign)
     {
+    	if(assign.getDesignator().compilerannotation.obj.getKind()==Obj.Meth)
+        {
+        	CompilerError.raise("Cannot assign to a method", assign);
+        }
+        else if(assign.getDesignator().compilerannotation.obj.getKind()==Obj.Prog)
+        {
+        	CompilerError.raise("Cannot assign to a program", assign);
+        }
+        else if(assign.getDesignator().compilerannotation.obj.getKind()==Obj.Type)
+        {
+        	CompilerError.raise("Cannot assign to a type", assign);
+        }
+        else if(assign.getDesignator().compilerannotation.obj.getKind()==Obj.Con)
+        {
+        	CompilerError.raise("Cannot assign to a constant", assign);
+        }
         if (!TableWrapper.assignmentCompatible(assign.getDesignator().compilerannotation.type, assign.getExpr().compilerannotation.type))
         {
             CompilerError.raise("Assignment between incompatible types", assign);
@@ -759,12 +791,44 @@ public class SemanticAnalyzer extends VisitorAdaptor
     @Override
     public void visit(Increment increment)
     {
+    	if(increment.getDesignator().compilerannotation.obj.getKind()==Obj.Meth)
+        {
+        	CompilerError.raise("Cannot assign to a method", increment);
+        }
+        else if(increment.getDesignator().compilerannotation.obj.getKind()==Obj.Prog)
+        {
+        	CompilerError.raise("Cannot assign to a program", increment);
+        }
+        else if(increment.getDesignator().compilerannotation.obj.getKind()==Obj.Type)
+        {
+        	CompilerError.raise("Cannot assign to a type", increment);
+        }
+        else if(increment.getDesignator().compilerannotation.obj.getKind()==Obj.Con)
+        {
+        	CompilerError.raise("Cannot assign to a constant", increment);
+        }
         enforceTypes(increment, "int", "Only integers can be incremented", increment.getDesignator().compilerannotation);
     }
 
     @Override
     public void visit(Decrement decrement)
     {
+    	if(decrement.getDesignator().compilerannotation.obj.getKind()==Obj.Meth)
+        {
+        	CompilerError.raise("Cannot assign to a method", decrement);
+        }
+        else if(decrement.getDesignator().compilerannotation.obj.getKind()==Obj.Prog)
+        {
+        	CompilerError.raise("Cannot assign to a program", decrement);
+        }
+        else if(decrement.getDesignator().compilerannotation.obj.getKind()==Obj.Type)
+        {
+        	CompilerError.raise("Cannot assign to a type", decrement);
+        }
+        else if(decrement.getDesignator().compilerannotation.obj.getKind()==Obj.Con)
+        {
+        	CompilerError.raise("Cannot assign to a constant", decrement);
+        }
         enforceTypes(decrement, "int", "Only integers can be decremented", decrement.getDesignator().compilerannotation);
     }
 

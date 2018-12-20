@@ -71,7 +71,14 @@ public class Compiler
                 c.dump(args[1]);
                 if(execute)
                 {
-                    Run.main(new String[]{args[1]});
+                	if(verbose)
+                	{
+                		Run.main(new String[]{args[1], "-debug"});
+                	}
+                	else
+                	{
+                		Run.main(new String[]{args[1]});
+                	}
                 }
             }
         }
