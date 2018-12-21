@@ -1,5 +1,5 @@
 program pera
-enum str{VUCICU=444, PEDERU=88, TRECI=88}
+enum str{VUCICU=444, PEDERU=88, TRECI}
 interface String
 {
     void ispis(int amt);
@@ -48,17 +48,24 @@ int i;
 		}
 	}
     void main()
-    bool a,b;
+    Vucicu v;
+    Pederu p;
+    int i;
     {
-    	a=true;
-    	b=true;
-    	if(a && b)
+    	//p=new Pederu;
+    	//p.s=5;
+    	for(i=0;p!=null && p.s>i;i++) print('Q');
+    	//v=new Vucicu;
+    	//v.s=str.PEDERU;
+    	p=new Pederu;
+    	p.s=42;
+    	if(v!=null || p!=null && p.s==42)
     	{
-    		print('P');
+    		print('A');
     	}
     	else
     	{
-    		print('Q');
+    		print('B');
     	}
     }
 }

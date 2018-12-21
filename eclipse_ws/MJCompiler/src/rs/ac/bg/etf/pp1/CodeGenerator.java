@@ -294,6 +294,10 @@ public class CodeGenerator extends VisitorAdaptor
 
     public void visit(ForCond statement)
     {
+    	while(Code.pc>0 && Code.buf[Code.pc-1]==Code.neg)
+    	{
+    		Code.pc--;
+    	}
         Code.loadConst(0);
         Code.put(Code.jcc + Code.eq);
         Code.put2(0);
@@ -339,6 +343,10 @@ public class CodeGenerator extends VisitorAdaptor
 
     public void visit(JmpCondition statement)
     {
+    	while(Code.pc>0 && Code.buf[Code.pc-1]==Code.neg)
+    	{
+    		Code.pc--;
+    	}
         statement.compilerannotation = new CompilerAnnotation();
         Code.loadConst(0);
         Code.put(Code.jcc + Code.eq);
@@ -412,7 +420,7 @@ public class CodeGenerator extends VisitorAdaptor
         Code.put(Code.sub);
     }
 
-    private void testCondition(int condition)
+    private void testCondition(int condition, CompilerAnnotation annotation)
     {
         Code.put(Code.jcc + condition);
         Code.put2(7);
@@ -420,58 +428,102 @@ public class CodeGenerator extends VisitorAdaptor
         Code.put(Code.jmp);
         Code.put2(4);
         Code.loadConst(1);
+        putShortCircuitPatch(annotation);
+    }
+    
+    private void putShortCircuitPatch(CompilerAnnotation annotation)
+    {
+    	annotation.shortCircuitPatchJmp=Code.pc;
+    	Code.put(Code.neg);
+    	Code.put(Code.neg);
+    	Code.put(Code.neg);
+    	Code.put(Code.neg);
+    	/*Code.loadConst(0);
+        Code.put(Code.jmp);
+        Code.put2(3);*/
     }
 
     @Override
     public void visit(Equals eq)
     {
-        testCondition(Code.eq);
+        testCondition(Code.eq, eq.compilerannotation);
     }
 
     @Override
     public void visit(NotEquals neq)
     {
-        testCondition(Code.ne);
+        testCondition(Code.ne, neq.compilerannotation);
     }
 
     @Override
     public void visit(Greater gr)
     {
-        testCondition(Code.gt);
+        testCondition(Code.gt, gr.compilerannotation);
     }
 
     @Override
     public void visit(GreaterEqual ge)
     {
-        testCondition(Code.ge);
+        testCondition(Code.ge, ge.compilerannotation);
     }
 
     @Override
     public void visit(Less lt)
     {
-        testCondition(Code.lt);
+        testCondition(Code.lt, lt.compilerannotation);
     }
 
     @Override
     public void visit(LessEqual le)
     {
-        testCondition(Code.le);
+        testCondition(Code.le, le.compilerannotation);
     }
-
+    
+    public void visit(SingleCondTerm ct)
+    {
+    	ct.compilerannotation.shortCircuitPatchJmp=ct.getCondfactor().compilerannotation.shortCircuitPatchJmp;
+    }
+    public void visit(SingleCondExpr ce)
+    {
+    	ce.compilerannotation.shortCircuitPatchJmp=ce.getCondterm().compilerannotation.shortCircuitPatchJmp;
+    }
+    
+    private void jmpPatch(int addr, int jmpKind, int target)
+    {
+    	int tpc=Code.pc;
+    	Code.pc=addr;
+    	Code.loadConst(0);
+    	Code.put(jmpKind);
+    	Code.put2(target-addr-1);
+    	Code.pc=tpc;
+    }
+    
     @Override
     public void visit(Or or)
     {
-        Code.put(Code.add);
-        Code.loadConst(1);
-        Code.put(Code.add);
-        Code.loadConst(2);
-        Code.put(Code.div);
+    	int jmpAddr = or.getCondexpr().compilerannotation.shortCircuitPatchJmp;
+    	jmpPatch(jmpAddr, Code.jcc+Code.ne, Code.pc);
+    	jmpAddr=or.getCondterm().compilerannotation.shortCircuitPatchJmp;
+    	jmpPatch(jmpAddr, Code.jcc+Code.eq, Code.pc+4);
+    	Code.loadConst(1);
+    	Code.put(Code.jmp);
+    	Code.put2(4);
+    	Code.loadConst(0);
+    	putShortCircuitPatch(or.compilerannotation);
     }
 
     @Override
-    public void visit(And or)
+    public void visit(And and)
     {
-        Code.put(Code.mul);
+    	int jmpAddr = and.getCondterm().compilerannotation.shortCircuitPatchJmp;
+    	jmpPatch(jmpAddr, Code.jcc+Code.eq, Code.pc);
+    	jmpAddr=and.getCondfactor().compilerannotation.shortCircuitPatchJmp;
+    	jmpPatch(jmpAddr, Code.jcc+Code.ne, Code.pc+4);
+    	Code.loadConst(0);
+    	Code.put(Code.jmp);
+    	Code.put2(4);
+    	Code.loadConst(1);
+    	putShortCircuitPatch(and.compilerannotation);
     }
 
     @Override

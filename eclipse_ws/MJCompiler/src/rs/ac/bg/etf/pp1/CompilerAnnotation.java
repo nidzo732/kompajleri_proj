@@ -15,6 +15,7 @@ public class CompilerAnnotation
     Scope scope;
     boolean valueOnStack=false;
     Integer start;
+    Integer shortCircuitPatchJmp;
 
     public void setStart(Integer start)
     {
