@@ -7,6 +7,10 @@ import rs.etf.pp1.mj.runtime.Code;
 import rs.etf.pp1.mj.runtime.Run;
 import rs.etf.pp1.mj.runtime.disasm;
 import rs.etf.pp1.symboltable.Tab;
+import rs.etf.pp1.symboltable.concepts.Obj;
+import rs.etf.pp1.symboltable.concepts.Scope;
+import rs.etf.pp1.symboltable.concepts.Struct;
+import rs.etf.pp1.symboltable.visitors.SymbolTableVisitor;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -113,7 +117,7 @@ public class Compiler
     {
         try
         {
-            Tab.dump();
+            Tab.dump(new SafeTableVisitor());
         }
         catch (StackOverflowError ignored)
         {

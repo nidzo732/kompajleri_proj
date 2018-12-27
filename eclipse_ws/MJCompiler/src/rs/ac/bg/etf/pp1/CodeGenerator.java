@@ -40,7 +40,7 @@ public class CodeGenerator extends VisitorAdaptor
     {
         return node.getParent() instanceof FuncCall;
     }
-
+    
     @Override
     public void visit(FuncName fn)
     {
@@ -272,6 +272,10 @@ public class CodeGenerator extends VisitorAdaptor
 
     public void visit(CallStatement statement)
     {
+    	if(statement.getCall().compilerannotation.type!=Tab.noType)
+    	{
+    		Code.put(Code.pop);
+    	}
         statement.compilerannotation = new CompilerAnnotation();
         statement.compilerannotation.end = Code.pc;
     }

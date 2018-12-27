@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 20/11/2018 13:38:8
+// 28/11/2018 0:12:52
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -23,7 +23,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Constantdeclaration constantdeclaration) { }
     public void visit(Condexpr condexpr) { }
     public void visit(Extendsdeclaration extendsdeclaration) { }
-    public void visit(Errsep errsep) { }
     public void visit(For3 for3) { }
     public void visit(Classcodebody classcodebody) { }
     public void visit(For2 for2) { }
@@ -88,18 +87,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Substraction Substraction) { visit(); }
     public void visit(Addition Addition) { visit(); }
     public void visit(SingleExpr SingleExpr) { visit(); }
-    public void visit(ErrsepDerived12 ErrsepDerived12) { visit(); }
-    public void visit(ErrsepDerived11 ErrsepDerived11) { visit(); }
-    public void visit(ErrsepDerived10 ErrsepDerived10) { visit(); }
-    public void visit(ErrsepDerived9 ErrsepDerived9) { visit(); }
-    public void visit(ErrsepDerived8 ErrsepDerived8) { visit(); }
-    public void visit(ErrsepDerived7 ErrsepDerived7) { visit(); }
-    public void visit(ErrsepDerived6 ErrsepDerived6) { visit(); }
-    public void visit(ErrsepDerived5 ErrsepDerived5) { visit(); }
-    public void visit(ErrsepDerived4 ErrsepDerived4) { visit(); }
-    public void visit(ErrsepDerived3 ErrsepDerived3) { visit(); }
-    public void visit(ErrsepDerived2 ErrsepDerived2) { visit(); }
-    public void visit(ErrsepDerived1 ErrsepDerived1) { visit(); }
     public void visit(LessEqual LessEqual) { visit(); }
     public void visit(Less Less) { visit(); }
     public void visit(GreaterEqual GreaterEqual) { visit(); }

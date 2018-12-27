@@ -97,7 +97,6 @@ nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation implementsdeclaration;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classname;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functionname;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation programname;
-nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation errsep;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designatorline;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfacedeclaration;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfaceinner;
@@ -167,9 +166,8 @@ programdeclarations     ::= {: RESULT=new ProgramdeclarationsDerived1(); :}
 
 extendsdeclaration  ::=       (ExtendsDecl) EXTENDS IDENT:base {: RESULT=new ExtendsDecl(base); RESULT.setLine(baseleft); :}
                             | (EmptyExtendsDeclaration) {: RESULT=new EmptyExtendsDeclaration(); :}
-                            | error {: RESULT=new ExtendsdeclarationDerived1(); :}
-                            | EXTENDS error {: RESULT=new ExtendsdeclarationDerived2(); :}
-//                         |  IDENT:base error LBRACE
+                            | error	{: System.err.println("'extends' or '{' expected"); :} {: RESULT=new ExtendsdeclarationDerived1(); :}
+                            | EXTENDS error	{: System.err.println("Type name expected"); :} {: RESULT=new ExtendsdeclarationDerived2(); :}
                          ;
 
 implementsdeclaration   ::= nonemptyimplementsdeclaration:n1 {: RESULT=new ImplementsdeclarationDerived1(n1); RESULT.setLine(n1left); :} | emptyimplementsdeclaration:e1 {: RESULT=new ImplementsdeclarationDerived2(e1); RESULT.setLine(e1left); :};
@@ -200,7 +198,6 @@ functiondeclarationblock    ::= (FunctionDeclBlock) declarationblock:d1 {: RESUL
 
 declarationblockwrapper ::=     (DeclarationBlockWrapper1) declarationblock:d1 {: RESULT=new DeclarationBlockWrapper1(d1); RESULT.setLine(d1left); :}
                               | declarationblock:d1 error {: RESULT=new DeclarationblockwrapperDerived1(d1); RESULT.setLine(d1left); :}
-                            //| (DeclarationBlockWrapper2) declarationblock error LBRACE
                             ;
 
 declarationblock ::=   (DeclBlock) declarationblock:d1 variabledeclaration:v2 SEMICOLON {: RESULT=new DeclBlock(d1, v2); RESULT.setLine(d1left); :}
@@ -224,8 +221,6 @@ constantdeclaration ::=   (ConstantDeclarations) constantdeclaration:c1 COMA con
 
 variabledeclaration ::=     type:t1 namedeclaration:n2 {: RESULT=new VariabledeclarationDerived1(t1, n2); RESULT.setLine(t1left); :}
                           | variabledeclaration:v1 COMA namedeclaration:n2 {: RESULT=new VariabledeclarationDerived2(v1, n2); RESULT.setLine(v1left); :}
-                          //| variabledeclaration COMA error
-                          //| type error
                           ;
 
 constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val {: RESULT=new BoolConstantDeclaration(name, val); RESULT.setLine(nameleft); :}
@@ -235,7 +230,7 @@ constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:v
 
 namedeclaration     ::=   (Variable) IDENT:name {: RESULT=new Variable(name); RESULT.setLine(nameleft); :}
                         | (Array) IDENT:name LBRACK RBRACK {: RESULT=new Array(name); RESULT.setLine(nameleft); :}
-                        | error {: RESULT=new NamedeclarationDerived1(); :}
+                        | error	{: System.err.println("Variable name expected"); :} {: RESULT=new NamedeclarationDerived1(); :}
                         ;
 
 statement   ::=       (DesignatorLineStmt) designatorline:d1 {: RESULT=new DesignatorLineStmt(d1); RESULT.setLine(d1left); :}
@@ -271,16 +266,14 @@ for3    ::=           (ForIncrement) designatorstmt:d1 {: RESULT=new ForIncremen
                     ;
 
 jmpcond     ::=   (JmpCondition) condexpr:cond {: RESULT=new JmpCondition(cond); RESULT.setLine(condleft); :}
-                | error {: RESULT=new JmpcondDerived1(); :}
+                | error	{: System.err.println("Conditional expression expected"); :} {: RESULT=new JmpcondDerived1(); :}
                 ;
 statementblock  ::=   (EmptyBlock) {: RESULT=new EmptyBlock(); :}
                     | (StmtBlock) statementblock:s1 statement:s2 {: RESULT=new StmtBlock(s1, s2); RESULT.setLine(s1left); :}
                     ;
 
 designatorline  ::=    designatorstmt:d1 SEMICOLON {: RESULT=new DesignatorlineDerived1(d1); RESULT.setLine(d1left); :}
-                     | error SEMICOLON {: RESULT=new DesignatorlineDerived2(); :}
-                    //| designatorstmt error SEMICOLON
-                    //| error SEMICOLON
+                     | error SEMICOLON	{: System.err.println("Statement expected"); :} {: RESULT=new DesignatorlineDerived2(); :}
                     ;
 
 designatorstmt  ::=   (Assign) designator:d1 ASSIGN expr:e2 {: RESULT=new Assign(d1, e2); RESULT.setLine(d1left); :}
@@ -292,12 +285,10 @@ designatorstmt  ::=   (Assign) designator:d1 ASSIGN expr:e2 {: RESULT=new Assign
 
 condexpr ::=   (SingleCondExpr) condterm:c1 {: RESULT=new SingleCondExpr(c1); RESULT.setLine(c1left); :}
              | (Or) condexpr:c1 OR condterm:c2 {: RESULT=new Or(c1, c2); RESULT.setLine(c1left); :}
-             //| (CondExprError) condexpr OR error
              ;
 
 condterm ::=  (SingleCondTerm) condfactor:c1 {: RESULT=new SingleCondTerm(c1); RESULT.setLine(c1left); :}
             | (And) condterm:c1 AND condfactor:c2 {: RESULT=new And(c1, c2); RESULT.setLine(c1left); :}
-            //| (CondTermError) condterm AND error
             ;
 
 condfactor::= (SingleCondFactor) expr:e1 {: RESULT=new SingleCondFactor(e1); RESULT.setLine(e1left); :}
@@ -307,10 +298,6 @@ condfactor::= (SingleCondFactor) expr:e1 {: RESULT=new SingleCondFactor(e1); RES
             | (GreaterEqual) expr:e1 GREATEREQUAL expr:e2 {: RESULT=new GreaterEqual(e1, e2); RESULT.setLine(e1left); :}
             | (Less) expr:e1 LESS expr:e2 {: RESULT=new Less(e1, e2); RESULT.setLine(e1left); :}
             | (LessEqual) expr:e1 LESSEQUAL expr:e2 {: RESULT=new LessEqual(e1, e2); RESULT.setLine(e1left); :}
-            ;
-
-errsep  ::= OR {: RESULT=new ErrsepDerived1(); :} | AND {: RESULT=new ErrsepDerived2(); :} |EQUALS {: RESULT=new ErrsepDerived3(); :}|GREATER {: RESULT=new ErrsepDerived4(); :}|GREATEREQUAL {: RESULT=new ErrsepDerived5(); :}|LESS {: RESULT=new ErrsepDerived6(); :}|LESSEQUAL {: RESULT=new ErrsepDerived7(); :}|DECREMENT {: RESULT=new ErrsepDerived8(); :}|INCREMENT {: RESULT=new ErrsepDerived9(); :}| {: RESULT=new ErrsepDerived10(); :}
-            |IDENT:I1 {: RESULT=new ErrsepDerived11(I1); RESULT.setLine(I1left); :}|COMA {: RESULT=new ErrsepDerived12(); :}
             ;
 
 expr   ::=    (SingleExpr) term:t1 {: RESULT=new SingleExpr(t1); RESULT.setLine(t1left); :}

@@ -97,7 +97,6 @@ nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation implementsdeclaration;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation classname;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation functionname;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation programname;
-nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation errsep;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designatorline;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfacedeclaration;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation interfaceinner;
@@ -167,9 +166,8 @@ programdeclarations     ::=
 
 extendsdeclaration  ::=       (ExtendsDecl) EXTENDS IDENT:base
                             | (EmptyExtendsDeclaration)
-                            | error
-                            | EXTENDS error
-//                         |  IDENT:base error LBRACE
+                            | error	{: System.err.println("'extends' or '{' expected"); :}
+                            | EXTENDS error	{: System.err.println("Type name expected"); :}
                          ;
 
 implementsdeclaration   ::= nonemptyimplementsdeclaration | emptyimplementsdeclaration;
@@ -200,7 +198,6 @@ functiondeclarationblock    ::= (FunctionDeclBlock) declarationblock;
 
 declarationblockwrapper ::=     (DeclarationBlockWrapper1) declarationblock
                               | declarationblock error
-                            //| (DeclarationBlockWrapper2) declarationblock error LBRACE
                             ;
 
 declarationblock ::=   (DeclBlock) declarationblock variabledeclaration SEMICOLON
@@ -224,8 +221,6 @@ constantdeclaration ::=   (ConstantDeclarations) constantdeclaration COMA constn
 
 variabledeclaration ::=     type namedeclaration
                           | variabledeclaration COMA namedeclaration
-                          //| variabledeclaration COMA error
-                          //| type error
                           ;
 
 constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val
@@ -235,7 +230,7 @@ constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:v
 
 namedeclaration     ::=   (Variable) IDENT:name
                         | (Array) IDENT:name LBRACK RBRACK
-                        | error
+                        | error	{: System.err.println("Variable name expected"); :}
                         ;
 
 statement   ::=       (DesignatorLineStmt) designatorline
@@ -271,16 +266,14 @@ for3    ::=           (ForIncrement) designatorstmt
                     ;
 
 jmpcond     ::=   (JmpCondition) condexpr:cond
-                | error
+                | error	{: System.err.println("Conditional expression expected"); :}
                 ;
 statementblock  ::=   (EmptyBlock)
                     | (StmtBlock) statementblock statement
                     ;
 
 designatorline  ::=    designatorstmt SEMICOLON
-                     | error SEMICOLON
-                    //| designatorstmt error SEMICOLON
-                    //| error SEMICOLON
+                     | error SEMICOLON	{: System.err.println("Statement expected"); :}
                     ;
 
 designatorstmt  ::=   (Assign) designator ASSIGN expr
@@ -292,12 +285,10 @@ designatorstmt  ::=   (Assign) designator ASSIGN expr
 
 condexpr ::=   (SingleCondExpr) condterm
              | (Or) condexpr OR condterm
-             //| (CondExprError) condexpr OR error
              ;
 
 condterm ::=  (SingleCondTerm) condfactor
             | (And) condterm AND condfactor
-            //| (CondTermError) condterm AND error
             ;
 
 condfactor::= (SingleCondFactor) expr
@@ -307,10 +298,6 @@ condfactor::= (SingleCondFactor) expr
             | (GreaterEqual) expr GREATEREQUAL expr
             | (Less) expr LESS expr
             | (LessEqual) expr LESSEQUAL expr
-            ;
-
-errsep  ::= OR | AND |EQUALS|GREATER|GREATEREQUAL|LESS|LESSEQUAL|DECREMENT|INCREMENT|
-            |IDENT|COMA
             ;
 
 expr   ::=    (SingleExpr) term

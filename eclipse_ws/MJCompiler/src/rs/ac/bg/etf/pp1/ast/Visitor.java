@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 20/11/2018 13:38:8
+// 28/11/2018 0:12:52
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -23,7 +23,6 @@ public interface Visitor {
     public void visit(Constantdeclaration constantdeclaration);
     public void visit(Condexpr condexpr);
     public void visit(Extendsdeclaration extendsdeclaration);
-    public void visit(Errsep errsep);
     public void visit(For3 for3);
     public void visit(Classcodebody classcodebody);
     public void visit(For2 for2);
@@ -88,18 +87,6 @@ public interface Visitor {
     public void visit(Substraction Substraction);
     public void visit(Addition Addition);
     public void visit(SingleExpr SingleExpr);
-    public void visit(ErrsepDerived12 ErrsepDerived12);
-    public void visit(ErrsepDerived11 ErrsepDerived11);
-    public void visit(ErrsepDerived10 ErrsepDerived10);
-    public void visit(ErrsepDerived9 ErrsepDerived9);
-    public void visit(ErrsepDerived8 ErrsepDerived8);
-    public void visit(ErrsepDerived7 ErrsepDerived7);
-    public void visit(ErrsepDerived6 ErrsepDerived6);
-    public void visit(ErrsepDerived5 ErrsepDerived5);
-    public void visit(ErrsepDerived4 ErrsepDerived4);
-    public void visit(ErrsepDerived3 ErrsepDerived3);
-    public void visit(ErrsepDerived2 ErrsepDerived2);
-    public void visit(ErrsepDerived1 ErrsepDerived1);
     public void visit(LessEqual LessEqual);
     public void visit(Less Less);
     public void visit(GreaterEqual GreaterEqual);

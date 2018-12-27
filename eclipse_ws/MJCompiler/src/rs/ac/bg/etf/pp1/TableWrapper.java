@@ -42,9 +42,30 @@ class TableWrapper
         if(inFunction()) return scopeStack.peek();
         else return null;
     }
-    static int getNextAdr()
+    static int getNextAdr(SyntaxNode node)
     {
         int adr=adrStack.pop();
+        if(scopeStack.peek().getKind()==Obj.Meth)
+    	{
+    		if(adr==256)
+    		{
+    			CompilerError.raise("A method can not have more than 256 local variables", node);
+    		}
+    	}
+        else if(scopeStack.peek().getKind()==Obj.Type)
+        {
+        	if(adr==65536)
+        	{
+        		CompilerError.raise("A class cannot have more than 65535 variables", node);
+        	}
+        }
+        else
+        {
+        	if(adr==65536)
+        	{
+        		CompilerError.raise("A program cannot have more than 65535 global variables", node);
+        	}
+        }
         adrStack.push(adr+1);
         return adr;
     }
@@ -210,7 +231,7 @@ class TableWrapper
         Obj variable=tabInsert(kind, name, type);
         if(scopeStack.peek().getKind()==Obj.Type)
         {
-            variable.setAdr(getNextAdr());
+            variable.setAdr(getNextAdr(location));
         }
         else if(scopeStack.peek().getKind()==Obj.Prog)
         {
@@ -221,12 +242,16 @@ class TableWrapper
             if(inMethodHeader)
             {
                 variable.setFpPos(fpAddr++);
+                if(fpAddr==256)
+                {
+                	CompilerError.raise("A method can not have more than 256 local variables", location);
+                }
                 if(!(fpAddr==1 && name.equals("this") && inClass))
                 {
                     methodParams.get(scopeStack.peek()).add(variable);
                 }
             }
-            variable.setAdr(getNextAdr());
+            variable.setAdr(getNextAdr(location));
         }
         return variable;
     }
@@ -420,7 +445,7 @@ class TableWrapper
     static String nodeToString(Obj obj)
     {
         if(obj==Tab.noObj) return "Symbol not found";
-        DumpSymbolTableVisitor dstv=new DumpSymbolTableVisitor();
+        DumpSymbolTableVisitor dstv=new SafeTableVisitor();
         dstv.visitObjNode(obj);
         return dstv.getOutput();
     }
@@ -442,13 +467,13 @@ class TableWrapper
     }
     static String nodeToString(Struct obj)
     {
-        DumpSymbolTableVisitor dstv=new DumpSymbolTableVisitor();
+        DumpSymbolTableVisitor dstv=new SafeTableVisitor();
         dstv.visitStructNode(obj);
         return dstv.getOutput();
     }
     static String nodeToString(Scope obj)
     {
-        DumpSymbolTableVisitor dstv=new DumpSymbolTableVisitor();
+        DumpSymbolTableVisitor dstv=new SafeTableVisitor();
         dstv.visitScopeNode(obj);
         return dstv.getOutput();
     }
