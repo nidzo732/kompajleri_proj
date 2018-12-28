@@ -166,8 +166,8 @@ programdeclarations     ::= {: RESULT=new ProgramdeclarationsDerived1(); :}
 
 extendsdeclaration  ::=       (ExtendsDecl) EXTENDS IDENT:base {: RESULT=new ExtendsDecl(base); RESULT.setLine(baseleft); :}
                             | (EmptyExtendsDeclaration) {: RESULT=new EmptyExtendsDeclaration(); :}
-                            | error	{: System.err.println("'extends' or '{' expected");	:} {: RESULT=new ExtendsdeclarationDerived1(); :}
-                            | EXTENDS error	{: System.err.println("Type name expected");	:} {: RESULT=new ExtendsdeclarationDerived2(); :}
+                            | error	{: CompilerError.raise("'extends' or '{' expected");	:} {: RESULT=new ExtendsdeclarationDerived1(); :}
+                            | EXTENDS error	{: CompilerError.raise("Type name expected");	:} {: RESULT=new ExtendsdeclarationDerived2(); :}
                          ;
 
 implementsdeclaration   ::= nonemptyimplementsdeclaration:n1 {: RESULT=new ImplementsdeclarationDerived1(n1); RESULT.setLine(n1left); :} | emptyimplementsdeclaration:e1 {: RESULT=new ImplementsdeclarationDerived2(e1); RESULT.setLine(e1left); :};
@@ -213,7 +213,7 @@ formpars    ::=   formpars:f1 COMA formpar:f2 {: RESULT=new FormparsDerived1(f1,
                 ;
 
 formpar		::= type:t1 namedeclaration:n2 {: RESULT=new FormparDerived1(t1, n2); RESULT.setLine(t1left); :}
-				| error		{: System.err.println("Parameter declaration expected"); :} {: RESULT=new FormparDerived2(); :}
+				| error		{: CompilerError.raise("Parameter declaration expected"); :} {: RESULT=new FormparDerived2(); :}
 				;
 				
 constantdeclaration ::=   (ConstantDeclarations) constantdeclaration:c1 COMA constnamedeclaration:c2 {: RESULT=new ConstantDeclarations(c1, c2); RESULT.setLine(c1left); :}
@@ -222,7 +222,7 @@ constantdeclaration ::=   (ConstantDeclarations) constantdeclaration:c1 COMA con
 
 variabledeclaration ::=     type:t1 namedeclaration:n2 {: RESULT=new VariabledeclarationDerived1(t1, n2); RESULT.setLine(t1left); :}
                           | variabledeclaration:v1 COMA namedeclaration:n2 {: RESULT=new VariabledeclarationDerived2(v1, n2); RESULT.setLine(v1left); :}
-                          | error	{: System.err.println("Variable declaration expected");	:} {: RESULT=new VariabledeclarationDerived3(); :}
+                          | error	{: CompilerError.raise("Variable declaration expected");	:} {: RESULT=new VariabledeclarationDerived3(); :}
                           ;
 
 constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val {: RESULT=new BoolConstantDeclaration(name, val); RESULT.setLine(nameleft); :}
@@ -232,7 +232,7 @@ constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:v
 
 namedeclaration     ::=   (Variable) IDENT:name {: RESULT=new Variable(name); RESULT.setLine(nameleft); :}
                         | (Array) IDENT:name LBRACK RBRACK {: RESULT=new Array(name); RESULT.setLine(nameleft); :}
-                        | error		{: System.err.println("Variable name expected");	:} {: RESULT=new NamedeclarationDerived1(); :}
+                        | error		{: CompilerError.raise("Variable name expected");	:} {: RESULT=new NamedeclarationDerived1(); :}
                         ;
 
 statement   ::=       (DesignatorLineStmt) designatorline:d1 {: RESULT=new DesignatorLineStmt(d1); RESULT.setLine(d1left); :}
@@ -268,14 +268,14 @@ for3    ::=           (ForIncrement) designatorstmt:d1 {: RESULT=new ForIncremen
                     ;
 
 jmpcond     ::=   (JmpCondition) condexpr:cond {: RESULT=new JmpCondition(cond); RESULT.setLine(condleft); :}
-					| error {: System.err.println("Conditional expression expected");	:} {: RESULT=new JmpcondDerived1(); :}
+					| error {: CompilerError.raise("Conditional expression expected");	:} {: RESULT=new JmpcondDerived1(); :}
                 ;
 statementblock  ::=   (EmptyBlock) {: RESULT=new EmptyBlock(); :}
                     | (StmtBlock) statementblock:s1 statement:s2 {: RESULT=new StmtBlock(s1, s2); RESULT.setLine(s1left); :}
                     ;
 
 designatorline  ::=    designatorstmt:d1 SEMICOLON {: RESULT=new DesignatorlineDerived1(d1); RESULT.setLine(d1left); :}
-					| error SEMICOLON	{: System.err.println("Statement expected");:} {: RESULT=new DesignatorlineDerived2(); :}
+					| error SEMICOLON	{: CompilerError.raise("Statement expected");:} {: RESULT=new DesignatorlineDerived2(); :}
                     ;
 
 designatorstmt  ::=   (Assign) designator:d1 ASSIGN expr:e2 {: RESULT=new Assign(d1, e2); RESULT.setLine(d1left); :}

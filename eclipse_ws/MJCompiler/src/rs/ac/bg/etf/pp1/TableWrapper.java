@@ -322,9 +322,17 @@ class TableWrapper
     }
     static Struct getType(String name)
     {
+    	return getType(name, null);
+    }
+    static Struct getType(String name, SyntaxNode location)
+    {
         Obj typeObject=getSymbol(name);
         if(typeObject==null) return null;
-        else return typeObject.getType();
+        if(typeObject.getKind()!=Obj.Type)
+        {
+        	if(location!=null) CompilerError.raise(name+" is not a type", location);
+        }
+        return typeObject.getType();
     }
     static boolean validateAgainstBase()
     {

@@ -22,7 +22,7 @@ public class SemanticAnalyzer extends VisitorAdaptor
     @Override
     public void visit(Type type)
     {
-        Struct tableType = TableWrapper.getType(type.getName());
+        Struct tableType = TableWrapper.getType(type.getName(), type);
         if (tableType == null)
         {
             CompilerError.raise("Unknown type: " + type.getName(), type);
@@ -433,6 +433,12 @@ public class SemanticAnalyzer extends VisitorAdaptor
     @Override
     public void visit(ReadCallS call)
     {
+    	if(call.getDesignator().compilerannotation.obj.getKind()!=Obj.Elem
+    		&& call.getDesignator().compilerannotation.obj.getKind()!=Obj.Fld
+    		&& call.getDesignator().compilerannotation.obj.getKind()!=Obj.Var)
+    	{
+    		CompilerError.raise("Read can only handle variables", call);
+    	}
         if (!TableWrapper.assignmentCompatible("int", call.getDesignator().compilerannotation.type) &&
                 !TableWrapper.assignmentCompatible("bool", call.getDesignator().compilerannotation.type) &&
                 !TableWrapper.assignmentCompatible("char", call.getDesignator().compilerannotation.type))
@@ -508,7 +514,7 @@ public class SemanticAnalyzer extends VisitorAdaptor
                         if (taList.get(i).obj != null) args.add(taList.get(i).obj.getName());
                         else args.add("UNKNOWN SYMBOL");
                     }
-                    CompilerError.raise("Type mismatch on arguments " + String.join(",", args), fc);
+                    CompilerError.raise("Type mismatch on arguments", fc);
                 }
                 else
                 {
@@ -691,6 +697,12 @@ public class SemanticAnalyzer extends VisitorAdaptor
 
     @Override
     public void visit(JmpCondition cond)
+    {
+        enforceTypes(cond, "bool", "condition must be a bool", cond.getCondexpr().compilerannotation);
+    }
+    
+    @Override
+    public void visit(ForCond cond)
     {
         enforceTypes(cond, "bool", "condition must be a bool", cond.getCondexpr().compilerannotation);
     }

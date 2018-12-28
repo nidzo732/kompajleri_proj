@@ -61,7 +61,7 @@ terminal READ;
 terminal PRINT;
 
 
-nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation factor;
+nonterminal rs.ac.bg.etf.pp1.NekiTip factor;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation designator;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation term;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation expr;
@@ -166,8 +166,8 @@ programdeclarations     ::=
 
 extendsdeclaration  ::=       (ExtendsDecl) EXTENDS IDENT:base
                             | (EmptyExtendsDeclaration)
-                            | error	{: System.err.println("'extends' or '{' expected");	:}
-                            | EXTENDS error	{: System.err.println("Type name expected");	:}
+                            | error	{: CompilerError.raise("'extends' or '{' expected");	:}
+                            | EXTENDS error	{: CompilerError.raise("Type name expected");	:}
                          ;
 
 implementsdeclaration   ::= nonemptyimplementsdeclaration | emptyimplementsdeclaration;
@@ -213,7 +213,7 @@ formpars    ::=   formpars COMA formpar
                 ;
 
 formpar		::= type namedeclaration
-				| error		{: System.err.println("Parameter declaration expected"); :}
+				| error		{: CompilerError.raise("Parameter declaration expected"); :}
 				;
 				
 constantdeclaration ::=   (ConstantDeclarations) constantdeclaration COMA constnamedeclaration
@@ -222,7 +222,7 @@ constantdeclaration ::=   (ConstantDeclarations) constantdeclaration COMA constn
 
 variabledeclaration ::=     type namedeclaration
                           | variabledeclaration COMA namedeclaration
-                          | error	{: System.err.println("Variable declaration expected");	:}
+                          | error	{: CompilerError.raise("Variable declaration expected");	:}
                           ;
 
 constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val
@@ -232,7 +232,7 @@ constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:v
 
 namedeclaration     ::=   (Variable) IDENT:name
                         | (Array) IDENT:name LBRACK RBRACK
-                        | error		{: System.err.println("Variable name expected");	:}
+                        | error		{: CompilerError.raise("Variable name expected");	:}
                         ;
 
 statement   ::=       (DesignatorLineStmt) designatorline
@@ -268,14 +268,14 @@ for3    ::=           (ForIncrement) designatorstmt
                     ;
 
 jmpcond     ::=   (JmpCondition) condexpr:cond
-					| error {: System.err.println("Conditional expression expected");	:}
+					| error {: CompilerError.raise("Conditional expression expected");	:}
                 ;
 statementblock  ::=   (EmptyBlock)
                     | (StmtBlock) statementblock statement
                     ;
 
 designatorline  ::=    designatorstmt SEMICOLON
-					| error SEMICOLON	{: System.err.println("Statement expected");:}
+					| error SEMICOLON	{: CompilerError.raise("Statement expected");:}
                     ;
 
 designatorstmt  ::=   (Assign) designator ASSIGN expr

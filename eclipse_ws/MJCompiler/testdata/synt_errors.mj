@@ -1,0 +1,74 @@
+program P
+
+// neispravni karakteri
+#^?&$
+
+// ispravna globalna deklaracija
+int x,y,z;
+
+// neispravne deklaracije
+int a, b&&1z+, c;
+int a{13}4,14+1s;
+
+interface I1
+{
+
+}
+
+class Klasa
+{
+	int a,b,c;	//ispravne deklaracije
+	
+	// neispravne deklaracije
+	int p&&3231, q, r;	
+	int qwer, 5741+423a, +-23a;
+}
+
+
+// ispravan extends
+class KlasaChild1 extends Klasa
+{
+}
+
+// neispravan extends
+class KlasaChild2 extends Klasa+321ad7123
+{
+}
+
+
+// neispravan extends
+class KlasaChild3 extends Klasa+321ad7123 implements I1
+{
+}
+
+
+
+{
+	void fIspravna(int a, int b, int c)
+	{
+	}
+	
+	void fneispravna(int a, int 13+1b 14, int 42+1c+)
+	{
+	}
+	void main()
+	int a,b;
+	{
+		// ispravna dodela
+		a=42;
+		
+		// neispravna dodela
+		b=+1-554&&1;
+		
+		// ispravan if
+		if(a>5 && b+7<3)
+		{
+		}
+		
+		// neispravan if
+		if(a++123&&-73.4)
+		{
+		
+		}
+	}
+}

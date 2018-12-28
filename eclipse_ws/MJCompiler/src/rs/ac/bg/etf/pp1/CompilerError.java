@@ -25,6 +25,11 @@ public class CompilerError
     {
         this(message, line, -1);
     }
+    
+    private CompilerError(String message)
+    {
+        this(message, -1, -1);
+    }
 
     public static void raise(String message, int line, int column)
     {
@@ -36,6 +41,12 @@ public class CompilerError
     {
         errorsMade = true;
         raise(message, node.getLine(), -1);
+    }
+    
+    public static void raise(String message)
+    {
+        errorsMade = true;
+        raise(message, -1, -1);
     }
 
     public static void dumpAll()
@@ -49,11 +60,16 @@ public class CompilerError
     @Override
     public String toString()
     {
-        String msg = "Compilation eror: " + message + "\nOn Line:" + line;
+        String msg = "Compilation eror: " + message;
+        if(line!=-1)
+        {
+        	msg += System.lineSeparator()+"On Line:" + line;
+        }
         if (column != -1)
         {
             msg += ", Column:" + column;
         }
+        if(line!=-1 || column!=-1) msg+=System.lineSeparator();
         return msg;
     }
 }
