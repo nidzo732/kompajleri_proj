@@ -1,0 +1,214 @@
+program P
+
+interface I1
+{
+}
+interface I2
+{
+	int x(int a);
+}
+interface I3
+{
+	int x();
+}
+// izvodjenje iz primitiva
+class K1 extends char
+{
+}
+// izvodjenje iz interfejsa
+class K2 extends I1
+{
+}
+// dupla implementacija istog interfejsa
+class K3 implements I1, I1
+{
+}
+
+// implementacija nekompatibilnih interfejsa
+class K4 implements I2, I3
+{
+	{
+		int x(){ return 42;}
+		int x(int a){return 43;}
+		
+	}
+}
+
+// implementacija, fali metoda
+class K5 implements I2
+{
+	{
+		
+		
+	}
+}
+class K6 extends K5
+{
+}
+class K7
+{
+}
+
+// type-mismatch
+const int a=42, b='A';
+const char c=55;
+
+// enum sa duplikatima
+enum E{V1, V1=13, V3=13}
+
+// ispravan enum
+enum E2{V1, V2, V3}
+{
+	void f()
+	{
+		// nepostojeci this
+		if(this==null) {}
+	}
+	// upotreba promenljive na mestu tipa
+	void f(c a)
+	a d;
+	{
+	}
+	
+	int z(int a, int b)
+	{
+		// los return
+		return 'A';
+	}
+	
+	I2 z(int a, int b)
+	K7 k7;
+	{
+		// los return
+		return k7;
+	}
+	I2 i2r()
+	K5 k5;
+	{
+		// ok return
+		return k5;
+	}
+	void fi(I2 i2)
+	{
+		
+	}
+	void fi2(K5 k5)
+	{
+	}
+	
+	// main sa losim potpisom
+	int main()
+	int x;
+	char ch;
+	int arr[];
+	I2 arri[];
+	I2 arri2[];
+	K5 arr5[];
+	E2 enm;
+	I3 i3;
+	I2 i2;
+	K5 k5;
+	K2 k2;
+	K6 k6;
+	K7 k7;
+	{
+		if(42){}
+		for(x=0;42+3;x=13)
+		{
+		}
+		
+		// visak/manjak/neispravni parametri
+		z(5);
+		z(5,6,7);		
+		z('A',4);
+		
+		// van petlje
+		break;
+		continue;
+		
+		// citanje konstante
+		read(a);
+		read(E2.V1);
+		
+		
+		// modifikovanje konstante
+		E2.V1=42;
+		E2.V1=E2.V2;
+		a=42;
+		a++;
+		E2.V1++;
+		E2.V1--;
+		a--;
+		
+		// negacija non-int tipa
+		ch=-'A';
+		
+		// indeksiranje skalara
+		print(a[0]);
+		print(x[4]);
+		
+		// upotreba niza kao skalara
+		arr=42;
+		
+		// dinamicko instanciranje non-class tipa
+		ch= new char;
+		x= new int;
+		enm=new E2;
+		i3=new I3;
+		
+		// indeksiranje non-int tipom
+		arr['A']=42;
+		arr[i3]=88;
+		arr[5]='A';
+		
+		// pristup nepostojecim poljima
+		i3.a=42;
+		arr.p=88;
+		x.b=7;
+		E2.pp=8;
+		
+		// upotreba tipova u izrazima
+		i3=I3;
+		enm=E2;
+		if(E2==E2.V1){}
+		
+		
+		// aritmetika sa non-int tipovima
+		i3=i3+42;
+		enm=E2.V1+4;
+		x='A'+7*i3;
+		
+		// bool aritmetika sa non-boolean tipovima
+		if(x+3){}
+		if(x&&42){}
+		if(x&&x>3){}
+		if(x||x>3){}
+		
+		// poziv sa ok izvodjenjem
+		fi(i2);
+		fi(k5);
+		fi(k6);
+		fi2(k5);
+		fi2(k6);
+		
+		// poziv sa non-ok izvodjenjem
+		fi(i3);
+		fi(k2);
+		fi2(k7);
+		
+		// ok dodele
+		arri[1]=i2;
+		arri[1]=k5;
+		arri[1]=k6;
+		arr5[1]=k5;
+		arr5[1]=k6;
+		arri=null;
+		arri=arri2;
+		
+		//non-ok dodele
+		arri[1]=i3;
+		arri[1]=k2;
+		arr5[1]=k7;
+		arri=arr5;
+	}
+}

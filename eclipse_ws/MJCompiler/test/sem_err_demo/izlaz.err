@@ -1,0 +1,248 @@
+Compilation eror: Extending from a non-class type char
+On Line:15
+
+Compilation eror: Extending from a non-class type I1
+On Line:19
+
+Compilation eror: Cannot implement a same interface twice
+On Line:23
+
+Compilation eror: Redeclaration of name x
+On Line:32
+
+Compilation eror: Incompatible redefinition
+On Line:32
+
+Compilation eror: Class does not implement all interfaces
+On Line:28
+
+Compilation eror: Class does not implement all interfaces
+On Line:38
+
+Compilation eror: Class does not implement all interfaces
+On Line:45
+
+Compilation eror: Mismatch between constant type and value
+On Line:53
+
+Compilation eror: Mismatch between constant type and value
+On Line:54
+
+Compilation eror: Redeclaration of name V1
+On Line:57
+
+Compilation eror: Reuse of value 13
+On Line:57
+
+Compilation eror: Unknown symbol: this
+On Line:65
+
+Compilation eror: Equality test between incompatible types
+On Line:65
+
+Compilation eror: Redeclaration of name f
+On Line:68
+
+Compilation eror: c is not a type
+On Line:68
+
+Compilation eror: a is not a type
+On Line:69
+
+Compilation eror: Returned value does not match function type
+On Line:76
+
+Compilation eror: Redeclaration of name z
+On Line:79
+
+Compilation eror: Returned value does not match function type
+On Line:83
+
+Compilation eror: condition must be a bool
+On Line:115
+
+Compilation eror: condition must be a bool
+On Line:116
+
+Compilation eror: Too few arguments for call, 2 required, got 1
+On Line:121
+
+Compilation eror: Type mismatch on arguments
+On Line:121
+
+Compilation eror: Too many arguments for call, 2 required, got 3
+On Line:122
+
+Compilation eror: Type mismatch on arguments
+On Line:122
+
+Compilation eror: Type mismatch on arguments
+On Line:123
+
+Compilation eror: BREAK must be called in a loop
+On Line:0
+
+Compilation eror: CONTINUE must be called in a loop
+On Line:0
+
+Compilation eror: Read can only handle variables
+On Line:130
+
+Compilation eror: Read can only handle variables
+On Line:131
+
+Compilation eror: Cannot assign to a constant
+On Line:135
+
+Compilation eror: Assignment between incompatible types
+On Line:135
+
+Compilation eror: Cannot assign to a constant
+On Line:136
+
+Compilation eror: Cannot assign to a constant
+On Line:137
+
+Compilation eror: Cannot assign to a constant
+On Line:138
+
+Compilation eror: Cannot assign to a constant
+On Line:139
+
+Compilation eror: Cannot assign to a constant
+On Line:140
+
+Compilation eror: Cannot assign to a constant
+On Line:141
+
+Compilation eror: Only integers can be negated
+On Line:144
+
+Compilation eror: a is not an array
+On Line:147
+
+Compilation eror: Print can only handle builtin types
+On Line:147
+
+Compilation eror: x is not an array
+On Line:148
+
+Compilation eror: Print can only handle builtin types
+On Line:148
+
+Compilation eror: Assignment between incompatible types
+On Line:151
+
+Compilation eror: Cannot dynamically instantiate char
+On Line:154
+
+Compilation eror: Cannot dynamically instantiate int
+On Line:155
+
+Compilation eror: Cannot dynamically instantiate E2
+On Line:156
+
+Compilation eror: Cannot dynamically instantiate I3
+On Line:157
+
+Compilation eror: Array index must be an integer
+On Line:160
+
+Compilation eror: Array index must be an integer
+On Line:161
+
+Compilation eror: Assignment between incompatible types
+On Line:162
+
+Compilation eror: Object i3 does not have a field named: a
+On Line:165
+
+Compilation eror: Assignment between incompatible types
+On Line:165
+
+Compilation eror: Object arr does not have a field named: p
+On Line:166
+
+Compilation eror: Assignment between incompatible types
+On Line:166
+
+Compilation eror: Object x does not have a field named: b
+On Line:167
+
+Compilation eror: Assignment between incompatible types
+On Line:167
+
+Compilation eror: Object E2 does not have a field named: pp
+On Line:168
+
+Compilation eror: Assignment between incompatible types
+On Line:168
+
+Compilation eror: Cannot use a type here
+On Line:171
+
+Compilation eror: Cannot use a type in an expression
+On Line:171
+
+Compilation eror: Cannot use a type in an expression
+On Line:172
+
+Compilation eror: Cannot use a type in an expression
+On Line:173
+
+Compilation eror: Only integers can be added
+On Line:177
+
+Compilation eror: Assignment between incompatible types
+On Line:177
+
+Compilation eror: Assignment between incompatible types
+On Line:178
+
+Compilation eror: Only integers can be multiplied
+On Line:179
+
+Compilation eror: Only integers can be added
+On Line:179
+
+Compilation eror: condition must be a bool
+On Line:182
+
+Compilation eror: AND can only be done on bool
+On Line:183
+
+Compilation eror: AND can only be done on bool
+On Line:183
+
+Compilation eror: AND can only be done on bool
+On Line:184
+
+Compilation eror: OR can only be done on bool
+On Line:185
+
+Compilation eror: Type mismatch on arguments
+On Line:195
+
+Compilation eror: Type mismatch on arguments
+On Line:196
+
+Compilation eror: Type mismatch on arguments
+On Line:197
+
+Compilation eror: Assignment between incompatible types
+On Line:209
+
+Compilation eror: Assignment between incompatible types
+On Line:210
+
+Compilation eror: Assignment between incompatible types
+On Line:211
+
+Compilation eror: Assignment between incompatible types
+On Line:212
+
+Compilation eror: No return in a method returning non-void
+On Line:100
+
+void main() not found
+Input contains errors, skipping compilation

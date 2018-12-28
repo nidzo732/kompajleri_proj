@@ -1,0 +1,149 @@
+program Sorts
+
+// sortiranja sa podesivim komparatorima
+// korisnik unosi duzinu niza i elemente, program sortira i ispisuje
+// komparator se podesava u kodu
+
+interface IComparator
+{
+	bool compare(int x, int y);
+}
+
+class BaseComparator implements IComparator
+{
+	{
+		bool innerCompare(int x, int y)
+		{
+			return true;
+		}
+		int preProcess(int x)
+		{
+			return x;
+		}
+		bool compare(int x, int y)
+		{
+			return innerCompare(this.preProcess(x), this.preProcess(y));
+		}
+	}
+}
+
+// sortira rastuce
+class LessComparator extends BaseComparator
+{
+	{
+		bool innerCompare(int x, int y)
+		{
+			if(x<y) return true; else return false;
+		}
+	}
+}
+
+// sortira opadajuce
+class GreaterComparator extends BaseComparator
+{
+	{
+		bool innerCompare(int x, int y)
+		{
+			if(x<y) return false; else return true;
+		}
+	}
+}
+
+// sortira rastuce po apsolutnoj vrednosti
+class AbsLessComparator extends LessComparator
+{
+	{
+		int preProcess(int x)
+		{
+			if(x<0) return -x;
+			else return x;
+		}
+	}
+}
+
+// sortira opadajuce po apsolutnoj vrednosti
+class AbsGreaterComparator extends GreaterComparator
+{
+	{
+		int preProcess(int x)
+		{
+			if(x<0) return -x;
+			else return x;
+		}
+	}
+}
+IComparator comparators[];
+
+{
+	void initComparators(IComparator comparators[])
+	{
+		comparators[0]=new LessComparator;
+		comparators[1]=new GreaterComparator;
+		comparators[2]=new AbsLessComparator;
+		comparators[3]=new AbsGreaterComparator;
+	}
+	void selSort(int x[], IComparator cmp)
+	int t;
+	int i,j;
+	{
+		for(i=0;i<len(x);i++)
+		{
+			for(j=i+1;j<len(x);j++)
+			{
+				if(cmp.compare(x[j], x[i]))
+				{
+					t=x[j];
+					x[j]=x[i];
+					x[i]=t;
+				}
+			}
+		}
+	}
+	int pivot(int x[], int start, int end, IComparator cmp)
+	int i,j;
+	int pvt;
+	int t;
+	{
+		pvt=x[end];
+		i=start;
+		for(j=start;j<end;j++)
+		{
+			if(cmp.compare(x[j], pvt))
+			{
+				if(i!=j)
+				{
+					t=x[i];
+					x[i]=x[j];
+					x[j]=t;
+				}
+				i++;
+			}
+		}
+		t=x[i];
+		x[i]=x[end];
+		x[end]=t;
+		return i;
+	}
+	void QSort(int x[], int start, int end, IComparator cmp)
+	int p;
+	{
+		if(end<=start) return;
+		p=pivot(x,start,end,cmp);
+		QSort(x, start, p-1, cmp);
+		QSort(x, p+1, end, cmp);
+	}
+	void main()
+	int arr[];
+	int l;
+	int i;
+	{
+		comparators=new IComparator[4];
+		initComparators(comparators);
+		read(l);
+		if(l<=0) return;
+		arr=new int[l];
+		for(i=0;i<l;i++) read(arr[i]);
+		QSort(arr, 0, len(arr)-1, comparators[3]);	// ovde izabrati komparator
+		for(i=0;i<len(arr);i++){print(arr[i]);print(eol);}		
+	}
+}

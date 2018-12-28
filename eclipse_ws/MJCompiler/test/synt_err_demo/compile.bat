@@ -1,0 +1,1 @@
+java -jar ..\..\outputjar\mjcompiler.jar synt_errors.mj a.out -v >izlaz.out 2>izlaz.err

@@ -1,0 +1,52 @@
+Compilation eror: Illegal character: '#'
+On Line:4, Column:1
+
+Compilation eror: Illegal character: '^'
+On Line:4, Column:2
+
+Compilation eror: Illegal character: '?'
+On Line:4, Column:3
+
+Compilation eror: Illegal character: '&'
+On Line:4, Column:4
+
+Compilation eror: Illegal character: '$'
+On Line:4, Column:5
+
+Compilation eror: Syntax error 
+On Line:10, Column:9
+
+Compilation eror: Variable name expected
+Compilation eror: Syntax error 
+On Line:11, Column:6
+
+Compilation eror: Variable name expected
+Compilation eror: Syntax error 
+On Line:23, Column:7
+
+Compilation eror: Variable name expected
+Compilation eror: Syntax error 
+On Line:24, Column:12
+
+Compilation eror: Variable name expected
+Compilation eror: Syntax error 
+On Line:34, Column:32
+
+Compilation eror: Type name expected
+Compilation eror: Syntax error 
+On Line:40, Column:32
+
+Compilation eror: Type name expected
+Compilation eror: Syntax error 
+On Line:51, Column:30
+
+Compilation eror: Parameter declaration expected
+Compilation eror: Syntax error 
+On Line:61, Column:5
+
+Compilation eror: Statement expected
+Compilation eror: Syntax error 
+On Line:69, Column:7
+
+Compilation eror: Conditional expression expected
+Input contains errors, skipping compilation

@@ -1,0 +1,454 @@
+=======================SYNTAX/LEXICAL PROCESSING=======================
+===============================SYNTAX TREE=============================
+ProgramDerived1(
+  ProgName(
+   P
+  ) [ProgName]
+  ProgramdeclarationsDerived2(
+    ProgramdeclarationsDerived2(
+      ProgramdeclarationsDerived2(
+        ProgramdeclarationsDerived2(
+          ProgramdeclarationsDerived3(
+            ProgramdeclarationsDerived6(
+              ProgramdeclarationsDerived6(
+                ProgramdeclarationsDerived6(
+                  ProgramdeclarationsDerived1(
+                  ) [ProgramdeclarationsDerived1]
+                  VariabledeclarationDerived2(
+                    VariabledeclarationDerived2(
+                      VariabledeclarationDerived1(
+                        Type(
+                         int
+                        ) [Type]
+                        Variable(
+                         x
+                        ) [Variable]
+                      ) [VariabledeclarationDerived1]
+                      Variable(
+                       y
+                      ) [Variable]
+                    ) [VariabledeclarationDerived2]
+                    Variable(
+                     z
+                    ) [Variable]
+                  ) [VariabledeclarationDerived2]
+                ) [ProgramdeclarationsDerived6]
+                VariabledeclarationDerived2(
+                  VariabledeclarationDerived2(
+                    VariabledeclarationDerived1(
+                      Type(
+                       int
+                      ) [Type]
+                      Variable(
+                       a
+                      ) [Variable]
+                    ) [VariabledeclarationDerived1]
+                    NamedeclarationDerived1(
+                    ) [NamedeclarationDerived1]
+                  ) [VariabledeclarationDerived2]
+                  Variable(
+                   c
+                  ) [Variable]
+                ) [VariabledeclarationDerived2]
+              ) [ProgramdeclarationsDerived6]
+              VariabledeclarationDerived1(
+                Type(
+                 int
+                ) [Type]
+                NamedeclarationDerived1(
+                ) [NamedeclarationDerived1]
+              ) [VariabledeclarationDerived1]
+            ) [ProgramdeclarationsDerived6]
+            InterfaceDecl(
+              InterfName(
+               I1
+              ) [InterfName]
+              EmptyInterfaceInner(
+              ) [EmptyInterfaceInner]
+            ) [InterfaceDecl]
+          ) [ProgramdeclarationsDerived3]
+          Class(
+            ClsName(
+             Klasa
+            ) [ClsName]
+            EmptyExtendsDeclaration(
+            ) [EmptyExtendsDeclaration]
+            ImplementsdeclarationDerived2(
+              EmptyimplementsdeclarationDerived1(
+              ) [EmptyimplementsdeclarationDerived1]
+            ) [ImplementsdeclarationDerived2]
+            DeclarationBlockWrapper1(
+              DeclBlock(
+                DeclBlock(
+                  DeclBlock(
+                    EmptyDeclarationBlock(
+                    ) [EmptyDeclarationBlock]
+                    VariabledeclarationDerived2(
+                      VariabledeclarationDerived2(
+                        VariabledeclarationDerived1(
+                          Type(
+                           int
+                          ) [Type]
+                          Variable(
+                           a
+                          ) [Variable]
+                        ) [VariabledeclarationDerived1]
+                        Variable(
+                         b
+                        ) [Variable]
+                      ) [VariabledeclarationDerived2]
+                      Variable(
+                       c
+                      ) [Variable]
+                    ) [VariabledeclarationDerived2]
+                  ) [DeclBlock]
+                  VariabledeclarationDerived2(
+                    VariabledeclarationDerived2(
+                      VariabledeclarationDerived1(
+                        Type(
+                         int
+                        ) [Type]
+                        NamedeclarationDerived1(
+                        ) [NamedeclarationDerived1]
+                      ) [VariabledeclarationDerived1]
+                      Variable(
+                       q
+                      ) [Variable]
+                    ) [VariabledeclarationDerived2]
+                    Variable(
+                     r
+                    ) [Variable]
+                  ) [VariabledeclarationDerived2]
+                ) [DeclBlock]
+                VariabledeclarationDerived2(
+                  VariabledeclarationDerived1(
+                    Type(
+                     int
+                    ) [Type]
+                    Variable(
+                     qwer
+                    ) [Variable]
+                  ) [VariabledeclarationDerived1]
+                  NamedeclarationDerived1(
+                  ) [NamedeclarationDerived1]
+                ) [VariabledeclarationDerived2]
+              ) [DeclBlock]
+            ) [DeclarationBlockWrapper1]
+            ClasscodebodyDerived2(
+            ) [ClasscodebodyDerived2]
+          ) [Class]
+        ) [ProgramdeclarationsDerived2]
+        Class(
+          ClsName(
+           KlasaChild1
+          ) [ClsName]
+          ExtendsDecl(
+           Klasa
+          ) [ExtendsDecl]
+          ImplementsdeclarationDerived2(
+            EmptyimplementsdeclarationDerived1(
+            ) [EmptyimplementsdeclarationDerived1]
+          ) [ImplementsdeclarationDerived2]
+          DeclarationBlockWrapper1(
+            EmptyDeclarationBlock(
+            ) [EmptyDeclarationBlock]
+          ) [DeclarationBlockWrapper1]
+          ClasscodebodyDerived2(
+          ) [ClasscodebodyDerived2]
+        ) [Class]
+      ) [ProgramdeclarationsDerived2]
+      Class(
+        ClsName(
+         KlasaChild2
+        ) [ClsName]
+        ExtendsdeclarationDerived2(
+        ) [ExtendsdeclarationDerived2]
+        ImplementsdeclarationDerived2(
+          EmptyimplementsdeclarationDerived1(
+          ) [EmptyimplementsdeclarationDerived1]
+        ) [ImplementsdeclarationDerived2]
+        DeclarationBlockWrapper1(
+          EmptyDeclarationBlock(
+          ) [EmptyDeclarationBlock]
+        ) [DeclarationBlockWrapper1]
+        ClasscodebodyDerived2(
+        ) [ClasscodebodyDerived2]
+      ) [Class]
+    ) [ProgramdeclarationsDerived2]
+    Class(
+      ClsName(
+       KlasaChild3
+      ) [ClsName]
+      ExtendsdeclarationDerived2(
+      ) [ExtendsdeclarationDerived2]
+      ImplementsdeclarationDerived1(
+        NonemptyimplementsdeclarationDerived1(
+          ImplementedNm(
+            Type(
+             I1
+            ) [Type]
+          ) [ImplementedNm]
+        ) [NonemptyimplementsdeclarationDerived1]
+      ) [ImplementsdeclarationDerived1]
+      DeclarationBlockWrapper1(
+        EmptyDeclarationBlock(
+        ) [EmptyDeclarationBlock]
+      ) [DeclarationBlockWrapper1]
+      ClasscodebodyDerived2(
+      ) [ClasscodebodyDerived2]
+    ) [Class]
+  ) [ProgramdeclarationsDerived2]
+  CodebodyDerived2(
+    CodebodyDerived2(
+      CodebodyDerived2(
+        CodebodyDerived1(
+        ) [CodebodyDerived1]
+        Function(
+          FuncHeader(
+            ProcedureName(
+             fIspravna
+            ) [ProcedureName]
+            FormParsWrap(
+              FormparsDerived1(
+                FormparsDerived1(
+                  FormparsDerived2(
+                    FormparDerived1(
+                      Type(
+                       int
+                      ) [Type]
+                      Variable(
+                       a
+                      ) [Variable]
+                    ) [FormparDerived1]
+                  ) [FormparsDerived2]
+                  FormparDerived1(
+                    Type(
+                     int
+                    ) [Type]
+                    Variable(
+                     b
+                    ) [Variable]
+                  ) [FormparDerived1]
+                ) [FormparsDerived1]
+                FormparDerived1(
+                  Type(
+                   int
+                  ) [Type]
+                  Variable(
+                   c
+                  ) [Variable]
+                ) [FormparDerived1]
+              ) [FormparsDerived1]
+            ) [FormParsWrap]
+          ) [FuncHeader]
+          FunctionDeclBlock(
+            EmptyDeclarationBlock(
+            ) [EmptyDeclarationBlock]
+          ) [FunctionDeclBlock]
+          EmptyBlock(
+          ) [EmptyBlock]
+        ) [Function]
+      ) [CodebodyDerived2]
+      Function(
+        FuncHeader(
+          ProcedureName(
+           fneispravna
+          ) [ProcedureName]
+          FormParsWrap(
+            FormparsDerived1(
+              FormparsDerived2(
+                FormparDerived1(
+                  Type(
+                   int
+                  ) [Type]
+                  Variable(
+                   a
+                  ) [Variable]
+                ) [FormparDerived1]
+              ) [FormparsDerived2]
+              FormparDerived2(
+              ) [FormparDerived2]
+            ) [FormparsDerived1]
+          ) [FormParsWrap]
+        ) [FuncHeader]
+        FunctionDeclBlock(
+          EmptyDeclarationBlock(
+          ) [EmptyDeclarationBlock]
+        ) [FunctionDeclBlock]
+        EmptyBlock(
+        ) [EmptyBlock]
+      ) [Function]
+    ) [CodebodyDerived2]
+    Function(
+      FuncHeader(
+        ProcedureName(
+         main
+        ) [ProcedureName]
+        FormParsWrap(
+          FormparsDerived3(
+          ) [FormparsDerived3]
+        ) [FormParsWrap]
+      ) [FuncHeader]
+      FunctionDeclBlock(
+        DeclBlock(
+          EmptyDeclarationBlock(
+          ) [EmptyDeclarationBlock]
+          VariabledeclarationDerived2(
+            VariabledeclarationDerived1(
+              Type(
+               int
+              ) [Type]
+              Variable(
+               a
+              ) [Variable]
+            ) [VariabledeclarationDerived1]
+            Variable(
+             b
+            ) [Variable]
+          ) [VariabledeclarationDerived2]
+        ) [DeclBlock]
+      ) [FunctionDeclBlock]
+      StmtBlock(
+        StmtBlock(
+          StmtBlock(
+            StmtBlock(
+              EmptyBlock(
+              ) [EmptyBlock]
+              DesignatorLineStmt(
+                DesignatorlineDerived1(
+                  Assign(
+                    BaseDesignator(
+                     a
+                    ) [BaseDesignator]
+                    SingleExpr(
+                      SingleTerm(
+                        NumericConstant(
+                         42
+                        ) [NumericConstant]
+                      ) [SingleTerm]
+                    ) [SingleExpr]
+                  ) [Assign]
+                ) [DesignatorlineDerived1]
+              ) [DesignatorLineStmt]
+            ) [StmtBlock]
+            DesignatorLineStmt(
+              DesignatorlineDerived2(
+              ) [DesignatorlineDerived2]
+            ) [DesignatorLineStmt]
+          ) [StmtBlock]
+          If(
+            JmpCondition(
+              SingleCondExpr(
+                And(
+                  SingleCondTerm(
+                    Greater(
+                      SingleExpr(
+                        SingleTerm(
+                          SingleFactor(
+                            BaseDesignator(
+                             a
+                            ) [BaseDesignator]
+                          ) [SingleFactor]
+                        ) [SingleTerm]
+                      ) [SingleExpr]
+                      SingleExpr(
+                        SingleTerm(
+                          NumericConstant(
+                           5
+                          ) [NumericConstant]
+                        ) [SingleTerm]
+                      ) [SingleExpr]
+                    ) [Greater]
+                  ) [SingleCondTerm]
+                  Less(
+                    Addition(
+                      SingleExpr(
+                        SingleTerm(
+                          SingleFactor(
+                            BaseDesignator(
+                             b
+                            ) [BaseDesignator]
+                          ) [SingleFactor]
+                        ) [SingleTerm]
+                      ) [SingleExpr]
+                      SingleTerm(
+                        NumericConstant(
+                         7
+                        ) [NumericConstant]
+                      ) [SingleTerm]
+                    ) [Addition]
+                    SingleExpr(
+                      SingleTerm(
+                        NumericConstant(
+                         3
+                        ) [NumericConstant]
+                      ) [SingleTerm]
+                    ) [SingleExpr]
+                  ) [Less]
+                ) [And]
+              ) [SingleCondExpr]
+            ) [JmpCondition]
+            Block(
+              EmptyBlock(
+              ) [EmptyBlock]
+            ) [Block]
+          ) [If]
+        ) [StmtBlock]
+        If(
+          JmpcondDerived1(
+          ) [JmpcondDerived1]
+          Block(
+            EmptyBlock(
+            ) [EmptyBlock]
+          ) [Block]
+        ) [If]
+      ) [StmtBlock]
+    ) [Function]
+  ) [CodebodyDerived2]
+) [ProgramDerived1]
+==========================SEMANTIC PROCESSING==========================
+=====================SYMBOL TABLE DUMP=========================
+Type int: int, -1, -1 
+Type char: char, -1, -1 
+Con eol: , 10, 0 
+Con null: Class [], 0, 0 
+Meth chr: , 0, 1 
+   Var i: , 0, 1 
+
+Meth ord: , 0, 1 
+   Var ch: , 0, 1 
+
+Meth len: , 0, 1 
+   Var arr: Arr of notype, 0, 1 
+
+Type bool: , 0, 1 
+Prog P: notype, 0, 1 
+   Var x: , 0, 0 
+   Var y: , 1, 0 
+   Var z: , 2, 0 
+   Var a: , 3, 0 
+   Var c: , 4, 0 
+   Type I1: , 1, 0 
+   Type Klasa: Class [Fld $clsid: , 0, 1 Fld a: , 1, 1 Fld b: , 2, 1 Fld c: , 3, 1 Fld q: , 4, 1 Fld r: , 5, 1 Fld qwer: , 6, 1 ], 5, 0 
+   Type KlasaChild1: Class [Fld $clsid: , 0, 1 abcqrqwer], 6, 0 
+   Type KlasaChild2: Class [Fld $clsid: , 0, 1 ], 7, 0 
+   Type KlasaChild3: Class [Fld $clsid: , 0, 1 ], 8, 0 
+   Meth fIspravna: , 0, 3 
+      Var a: , 0, 1 
+      Var b: , 1, 1 
+      Var c: , 2, 1 
+
+   Meth fneispravna: , 1, 1 
+      Var a: , 0, 1 
+
+   Meth main: , 2, 0 
+      Var a: , 0, 1 
+      Var b: , 1, 1 
+
+
+
+===========================REFERENCED SYMBOLS==========================
+Variable referenced: a on Line:58 Var a: int, 0, 1 
+Variable referenced: a on Line:64 Var a: int, 0, 1 
+Variable referenced: b on Line:64 Var b: int, 1, 1 
+==========================END OF INPUT PARSING=========================
