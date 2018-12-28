@@ -220,6 +220,7 @@ public class SemanticAnalyzer extends VisitorAdaptor
         if (base == null)
         {
             CompilerError.raise("Unknown type " + ed.getBase(), ed);
+            base=Tab.noType;
         }
         if (base.getKind() != Struct.Class)
         {

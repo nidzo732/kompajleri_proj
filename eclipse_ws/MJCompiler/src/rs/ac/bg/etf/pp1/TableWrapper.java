@@ -186,6 +186,11 @@ class TableWrapper
             {
             	CompilerError.raise("Redeclaration of name "+name, location);
             }
+            else if(scopeStack.peek().getKind()==Obj.Prog)
+            {
+            	CompilerError.raise("Redeclaration of name "+name, location);
+            	oldSymbol=null;
+            }
             Tab.currentScope().getLocals().deleteKey(name);
         }
         oldBaseFunction=oldSymbol;
@@ -426,19 +431,19 @@ class TableWrapper
     static boolean assignmentCompatible(Struct dst, Struct src)
     {
         if(src==null || dst==null) return false;
-        if(src.assignableTo(dst)) return true;
-        if(dst.getKind()==Struct.Class || dst.getKind()==Struct.Interface)
+        if(dst.getKind()==Struct.Class || dst.getKind()==Struct.Interface || dst.getKind()==Struct.Array)
         {
         	if(src==Tab.nullType) return true;
         }
+        if(src==dst) return true;
         if(dst.getKind()==Struct.Int && src.getKind()==Struct.Enum) return true;
-        if(dst.getKind()==Struct.Array && src.getKind()==Struct.Array) return assignmentCompatible(dst.getElemType(), src.getElemType());
+        if(dst.getKind()==Struct.Array && src.getKind()==Struct.Array) return dst.getElemType()== src.getElemType();
         if(dst.getKind()==Struct.Interface && src.getKind()==Struct.Class && src.getImplementedInterfaces().contains(dst)) return true;
         if(dst.getKind()==Struct.Class && src.getKind()==Struct.Class)
         {
             while(src.getElemType()!=null)
             {
-                if(src.getElemType().assignableTo(dst)) return true;
+                if(src.getElemType()==dst) return true;
                 src=src.getElemType();
             }
         }

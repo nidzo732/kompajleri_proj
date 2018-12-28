@@ -29,6 +29,7 @@ class K4 implements I2, I3
 {
 	{
 		int x(){ return 42;}
+		int x(int a){return 43;}
 		
 	}
 }
@@ -40,6 +41,12 @@ class K5 implements I2
 		
 		
 	}
+}
+class K6 extends K5
+{
+}
+class K7
+{
 }
 
 // type-mismatch
@@ -58,14 +65,35 @@ enum E2{V1, V2, V3}
 		if(this==null) {}
 	}
 	// upotreba promenljive na mestu tipa
-	void f(a b)
-	c d;
+	void f(c a)
+	a d;
 	{
 	}
 	
 	int z(int a, int b)
 	{
-		return 42;
+		// los return
+		return 'A';
+	}
+	
+	I2 z(int a, int b)
+	K7 k7;
+	{
+		// los return
+		return k7;
+	}
+	I2 i2r()
+	K5 k5;
+	{
+		// ok return
+		return k5;
+	}
+	void fi(I2 i2)
+	{
+		
+	}
+	void fi2(K5 k5)
+	{
 	}
 	
 	// main sa losim potpisom
@@ -73,8 +101,16 @@ enum E2{V1, V2, V3}
 	int x;
 	char ch;
 	int arr[];
+	I2 arri[];
+	I2 arri2[];
+	K5 arr5[];
 	E2 enm;
 	I3 i3;
+	I2 i2;
+	K5 k5;
+	K2 k2;
+	K6 k6;
+	K7 k7;
 	{
 		if(42){}
 		for(x=0;42+3;x=13)
@@ -123,6 +159,7 @@ enum E2{V1, V2, V3}
 		// indeksiranje non-int tipom
 		arr['A']=42;
 		arr[i3]=88;
+		arr[5]='A';
 		
 		// pristup nepostojecim poljima
 		i3.a=42;
@@ -146,5 +183,32 @@ enum E2{V1, V2, V3}
 		if(x&&42){}
 		if(x&&x>3){}
 		if(x||x>3){}
+		
+		// poziv sa ok izvodjenjem
+		fi(i2);
+		fi(k5);
+		fi(k6);
+		fi2(k5);
+		fi2(k6);
+		
+		// poziv sa non-ok izvodjenjem
+		fi(i3);
+		fi(k2);
+		fi2(k7);
+		
+		// ok dodele
+		arri[1]=i2;
+		arri[1]=k5;
+		arri[1]=k6;
+		arr5[1]=k5;
+		arr5[1]=k6;
+		arri=null;
+		arri=arri2;
+		
+		//non-ok dodele
+		arri[1]=i3;
+		arri[1]=k2;
+		arr5[1]=k7;
+		arri=arr5;
 	}
 }
