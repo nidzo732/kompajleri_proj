@@ -5,13 +5,11 @@
 
 package rs.ac.bg.etf.pp1.ast;
 
-public abstract class Printcall implements SyntaxNode {
+public abstract class Formpar implements SyntaxNode {
 
     private SyntaxNode parent;
 
     private int line;
-
-    public rs.ac.bg.etf.pp1.CompilerAnnotation compilerannotation = null;
 
     public SyntaxNode getParent() {
         return parent;

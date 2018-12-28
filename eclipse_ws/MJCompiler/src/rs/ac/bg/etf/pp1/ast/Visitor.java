@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 28/11/2018 0:12:52
+// 28/11/2018 16:9:49
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -23,6 +23,7 @@ public interface Visitor {
     public void visit(Constantdeclaration constantdeclaration);
     public void visit(Condexpr condexpr);
     public void visit(Extendsdeclaration extendsdeclaration);
+    public void visit(Formpar formpar);
     public void visit(For3 for3);
     public void visit(Classcodebody classcodebody);
     public void visit(For2 for2);
@@ -98,8 +99,6 @@ public interface Visitor {
     public void visit(SingleCondTerm SingleCondTerm);
     public void visit(Or Or);
     public void visit(SingleCondExpr SingleCondExpr);
-    public void visit(DesignatorstmtDerived2 DesignatorstmtDerived2);
-    public void visit(DesignatorstmtDerived1 DesignatorstmtDerived1);
     public void visit(Decrement Decrement);
     public void visit(Increment Increment);
     public void visit(Assign Assign);
@@ -138,20 +137,19 @@ public interface Visitor {
     public void visit(NumberConstantDeclaration NumberConstantDeclaration);
     public void visit(CharConstantDeclaration CharConstantDeclaration);
     public void visit(BoolConstantDeclaration BoolConstantDeclaration);
+    public void visit(VariabledeclarationDerived3 VariabledeclarationDerived3);
     public void visit(VariabledeclarationDerived2 VariabledeclarationDerived2);
     public void visit(VariabledeclarationDerived1 VariabledeclarationDerived1);
     public void visit(ConstantDeclarationTyped ConstantDeclarationTyped);
     public void visit(ConstantDeclarations ConstantDeclarations);
-    public void visit(FormparsDerived4 FormparsDerived4);
+    public void visit(FormparDerived2 FormparDerived2);
+    public void visit(FormparDerived1 FormparDerived1);
     public void visit(FormparsDerived3 FormparsDerived3);
     public void visit(FormparsDerived2 FormparsDerived2);
     public void visit(FormparsDerived1 FormparsDerived1);
-    public void visit(FormparswrapperDerived1 FormparswrapperDerived1);
     public void visit(FormParsWrap FormParsWrap);
-    public void visit(DeclarationblockDerived1 DeclarationblockDerived1);
     public void visit(EmptyDeclarationBlock EmptyDeclarationBlock);
     public void visit(DeclBlock DeclBlock);
-    public void visit(DeclarationblockwrapperDerived1 DeclarationblockwrapperDerived1);
     public void visit(DeclarationBlockWrapper1 DeclarationBlockWrapper1);
     public void visit(FunctionDeclBlock FunctionDeclBlock);
     public void visit(Function Function);
@@ -171,7 +169,6 @@ public interface Visitor {
     public void visit(ExtendsdeclarationDerived1 ExtendsdeclarationDerived1);
     public void visit(EmptyExtendsDeclaration EmptyExtendsDeclaration);
     public void visit(ExtendsDecl ExtendsDecl);
-    public void visit(ProgramdeclarationsDerived7 ProgramdeclarationsDerived7);
     public void visit(ProgramdeclarationsDerived6 ProgramdeclarationsDerived6);
     public void visit(ProgramdeclarationsDerived5 ProgramdeclarationsDerived5);
     public void visit(ProgramdeclarationsDerived4 ProgramdeclarationsDerived4);

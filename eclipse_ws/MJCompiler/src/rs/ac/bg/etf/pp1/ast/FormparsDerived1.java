@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 28/11/2018 0:12:52
+// 28/11/2018 16:9:49
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,16 +8,13 @@ package rs.ac.bg.etf.pp1.ast;
 public class FormparsDerived1 extends Formpars {
 
     private Formpars formpars;
-    private Type type;
-    private Namedeclaration namedeclaration;
+    private Formpar formpar;
 
-    public FormparsDerived1 (Formpars formpars, Type type, Namedeclaration namedeclaration) {
+    public FormparsDerived1 (Formpars formpars, Formpar formpar) {
         this.formpars=formpars;
         if(formpars!=null) formpars.setParent(this);
-        this.type=type;
-        if(type!=null) type.setParent(this);
-        this.namedeclaration=namedeclaration;
-        if(namedeclaration!=null) namedeclaration.setParent(this);
+        this.formpar=formpar;
+        if(formpar!=null) formpar.setParent(this);
     }
 
     public Formpars getFormpars() {
@@ -28,20 +25,12 @@ public class FormparsDerived1 extends Formpars {
         this.formpars=formpars;
     }
 
-    public Type getType() {
-        return type;
+    public Formpar getFormpar() {
+        return formpar;
     }
 
-    public void setType(Type type) {
-        this.type=type;
-    }
-
-    public Namedeclaration getNamedeclaration() {
-        return namedeclaration;
-    }
-
-    public void setNamedeclaration(Namedeclaration namedeclaration) {
-        this.namedeclaration=namedeclaration;
+    public void setFormpar(Formpar formpar) {
+        this.formpar=formpar;
     }
 
     public void accept(Visitor visitor) {
@@ -50,21 +39,18 @@ public class FormparsDerived1 extends Formpars {
 
     public void childrenAccept(Visitor visitor) {
         if(formpars!=null) formpars.accept(visitor);
-        if(type!=null) type.accept(visitor);
-        if(namedeclaration!=null) namedeclaration.accept(visitor);
+        if(formpar!=null) formpar.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(formpars!=null) formpars.traverseTopDown(visitor);
-        if(type!=null) type.traverseTopDown(visitor);
-        if(namedeclaration!=null) namedeclaration.traverseTopDown(visitor);
+        if(formpar!=null) formpar.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(formpars!=null) formpars.traverseBottomUp(visitor);
-        if(type!=null) type.traverseBottomUp(visitor);
-        if(namedeclaration!=null) namedeclaration.traverseBottomUp(visitor);
+        if(formpar!=null) formpar.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -79,14 +65,8 @@ public class FormparsDerived1 extends Formpars {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(type!=null)
-            buffer.append(type.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        if(namedeclaration!=null)
-            buffer.append(namedeclaration.toString("  "+tab));
+        if(formpar!=null)
+            buffer.append(formpar.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

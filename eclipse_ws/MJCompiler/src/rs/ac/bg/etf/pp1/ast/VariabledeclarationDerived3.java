@@ -1,13 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 28/11/2018 0:12:52
+// 28/11/2018 16:9:49
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class FormparsDerived4 extends Formpars {
+public class VariabledeclarationDerived3 extends Variabledeclaration {
 
-    public FormparsDerived4 () {
+    public VariabledeclarationDerived3 () {
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +28,10 @@ public class FormparsDerived4 extends Formpars {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("FormparsDerived4(\n");
+        buffer.append("VariabledeclarationDerived3(\n");
 
         buffer.append(tab);
-        buffer.append(") [FormparsDerived4]");
+        buffer.append(") [VariabledeclarationDerived3]");
         return buffer.toString();
     }
 }

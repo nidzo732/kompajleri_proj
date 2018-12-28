@@ -1,25 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 28/11/2018 0:12:52
+// 28/11/2018 16:9:49
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class FormparsDerived2 extends Formpars {
 
-    private Formpars formpars;
+    private Formpar formpar;
 
-    public FormparsDerived2 (Formpars formpars) {
-        this.formpars=formpars;
-        if(formpars!=null) formpars.setParent(this);
+    public FormparsDerived2 (Formpar formpar) {
+        this.formpar=formpar;
+        if(formpar!=null) formpar.setParent(this);
     }
 
-    public Formpars getFormpars() {
-        return formpars;
+    public Formpar getFormpar() {
+        return formpar;
     }
 
-    public void setFormpars(Formpars formpars) {
-        this.formpars=formpars;
+    public void setFormpar(Formpar formpar) {
+        this.formpar=formpar;
     }
 
     public void accept(Visitor visitor) {
@@ -27,16 +27,16 @@ public class FormparsDerived2 extends Formpars {
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(formpars!=null) formpars.accept(visitor);
+        if(formpar!=null) formpar.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(formpars!=null) formpars.traverseTopDown(visitor);
+        if(formpar!=null) formpar.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(formpars!=null) formpars.traverseBottomUp(visitor);
+        if(formpar!=null) formpar.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -45,8 +45,8 @@ public class FormparsDerived2 extends Formpars {
         buffer.append(tab);
         buffer.append("FormparsDerived2(\n");
 
-        if(formpars!=null)
-            buffer.append(formpars.toString("  "+tab));
+        if(formpar!=null)
+            buffer.append(formpar.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

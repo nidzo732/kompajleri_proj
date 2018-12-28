@@ -5,20 +5,9 @@
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class CharacterConstant extends Factor {
+public class FormparDerived2 extends Formpar {
 
-    private char val;
-
-    public CharacterConstant (char val) {
-        this.val=val;
-    }
-
-    public char getVal() {
-        return val;
-    }
-
-    public void setVal(char val) {
-        this.val=val;
+    public FormparDerived2 () {
     }
 
     public void accept(Visitor visitor) {
@@ -39,13 +28,10 @@ public class CharacterConstant extends Factor {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("CharacterConstant(\n");
-
-        buffer.append(" "+tab+val);
-        buffer.append("\n");
+        buffer.append("FormparDerived2(\n");
 
         buffer.append(tab);
-        buffer.append(") [CharacterConstant]");
+        buffer.append(") [FormparDerived2]");
         return buffer.toString();
     }
 }

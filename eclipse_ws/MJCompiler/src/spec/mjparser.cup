@@ -116,6 +116,7 @@ nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation whilewrapper;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation readcall;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation printcall;
 nonterminal rs.ac.bg.etf.pp1.CompilerAnnotation printcallw;
+nonterminal formpar;
 
 precedence left ELSE;
 
@@ -161,13 +162,12 @@ programdeclarations     ::=
                             | programdeclarations enumdeclaration
                             | programdeclarations constantdeclaration SEMICOLON
                             | programdeclarations variabledeclaration SEMICOLON
-                            | programdeclarations error SEMICOLON
                             ;
 
 extendsdeclaration  ::=       (ExtendsDecl) EXTENDS IDENT:base
                             | (EmptyExtendsDeclaration)
-                            | error	{: System.err.println("'extends' or '{' expected"); :}
-                            | EXTENDS error	{: System.err.println("Type name expected"); :}
+                            | error	{: System.err.println("'extends' or '{' expected");	:}
+                            | EXTENDS error	{: System.err.println("Type name expected");	:}
                          ;
 
 implementsdeclaration   ::= nonemptyimplementsdeclaration | emptyimplementsdeclaration;
@@ -194,33 +194,35 @@ functionheader  ::=   (FuncHeader) functionname:name formparswrapper
 
 function    ::=    (Function) functionheader functiondeclarationblock LBRACE statementblock RBRACE
                  ;
+                 
 functiondeclarationblock    ::= (FunctionDeclBlock) declarationblock;
 
 declarationblockwrapper ::=     (DeclarationBlockWrapper1) declarationblock
-                              | declarationblock error
                             ;
 
 declarationblock ::=   (DeclBlock) declarationblock variabledeclaration SEMICOLON
                      | (EmptyDeclarationBlock)
-                     | declarationblock error SEMICOLON
                      ;
 
 formparswrapper ::=        (FormParsWrap) LPAREN formpars RPAREN
-                         | LPAREN error COMA formpars RPAREN
                     ;
 
-formpars    ::=   formpars COMA type namedeclaration
-                | formpars COMA error
-                | type namedeclaration
+formpars    ::=   formpars COMA formpar
+                | formpar
                 |
                 ;
 
+formpar		::= type namedeclaration
+				| error		{: System.err.println("Parameter declaration expected"); :}
+				;
+				
 constantdeclaration ::=   (ConstantDeclarations) constantdeclaration COMA constnamedeclaration
                         | (ConstantDeclarationTyped) CONST type constnamedeclaration
                         ;
 
 variabledeclaration ::=     type namedeclaration
                           | variabledeclaration COMA namedeclaration
+                          | error	{: System.err.println("Variable declaration expected");	:}
                           ;
 
 constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:val
@@ -230,7 +232,7 @@ constnamedeclaration    ::=   (BoolConstantDeclaration) IDENT:name ASSIGN BOOL:v
 
 namedeclaration     ::=   (Variable) IDENT:name
                         | (Array) IDENT:name LBRACK RBRACK
-                        | error	{: System.err.println("Variable name expected"); :}
+                        | error		{: System.err.println("Variable name expected");	:}
                         ;
 
 statement   ::=       (DesignatorLineStmt) designatorline
@@ -266,21 +268,19 @@ for3    ::=           (ForIncrement) designatorstmt
                     ;
 
 jmpcond     ::=   (JmpCondition) condexpr:cond
-                | error	{: System.err.println("Conditional expression expected"); :}
+					| error {: System.err.println("Conditional expression expected");	:}
                 ;
 statementblock  ::=   (EmptyBlock)
                     | (StmtBlock) statementblock statement
                     ;
 
 designatorline  ::=    designatorstmt SEMICOLON
-                     | error SEMICOLON	{: System.err.println("Statement expected"); :}
+					| error SEMICOLON	{: System.err.println("Statement expected");:}
                     ;
 
 designatorstmt  ::=   (Assign) designator ASSIGN expr
                     | (Increment) designator INCREMENT
                     | (Decrement) designator DECREMENT
-                    | designator ASSIGN error
-                    | designator error
                     ;
 
 condexpr ::=   (SingleCondExpr) condterm
